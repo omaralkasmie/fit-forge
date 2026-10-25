@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'signup_screen.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -118,7 +119,15 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   height: 54,
                   child: FilledButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ),
+
+                      );
+                    },
                     style: FilledButton.styleFrom(
                       backgroundColor: const Color(0xFF9B5CFF),
                       foregroundColor: Colors.white,
