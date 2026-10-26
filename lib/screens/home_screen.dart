@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'exercises_screen.dart';
 
 const Color bgColor = Color(0xFF0B0B16);
 const Color cardColor = Color(0xFF15182F);
@@ -7,6 +8,13 @@ const Color pinkColor = Color(0xFFE34DFF);
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
+  void _openExercises(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ExercisesScreen()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -305,7 +313,7 @@ class HomeScreen extends StatelessWidget {
               top: BorderSide(color: Colors.white10),
             ),
           ),
-          child: const Row(
+          child:  Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _NavItem(
@@ -313,9 +321,13 @@ class HomeScreen extends StatelessWidget {
                 label: 'الرئيسية',
                 selected: true,
               ),
-              _NavItem(
-                icon: Icons.fitness_center,
-                label: 'التمارين',
+              InkWell(
+                onTap: () => _openExercises(context),
+                borderRadius: BorderRadius.circular(12),
+                child: const _NavItem(
+                  icon: Icons.fitness_center,
+                  label: 'التمارين',
+                ),
               ),
               _NavItem(
                 icon: Icons.insights,
