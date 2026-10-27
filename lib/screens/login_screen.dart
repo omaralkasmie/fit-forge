@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'signup_screen.dart';
-import 'home_screen.dart';
+import 'package:go_router/go_router.dart';
+import '../routes/app_router.dart';
+
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -120,13 +121,7 @@ class LoginScreen extends StatelessWidget {
                   height: 54,
                   child: FilledButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeScreen(),
-                        ),
-
-                      );
+                      context.go(AppRouter.home);
                     },
                     style: FilledButton.styleFrom(
                       backgroundColor: const Color(0xFF9B5CFF),
@@ -156,12 +151,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SignupScreen(),
-                          ),
-                        );
+                        context.go(AppRouter.signup);
                       },
                       child: const Text("إنشاء حساب"),
                     ),

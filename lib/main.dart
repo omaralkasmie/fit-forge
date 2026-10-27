@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/login_screen.dart';
+import 'routes/app_router.dart';
 
 void main() {
   runApp(const FitForgeApp());
@@ -10,7 +10,7 @@ class FitForgeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'FitForge',
       theme: ThemeData(
@@ -22,7 +22,7 @@ class FitForgeApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      routerConfig: appRouter,
     );
   }
 }
