@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../routes/app_router.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -144,7 +146,7 @@ class SignupScreen extends StatelessWidget {
                       style: TextStyle(color: Colors.white60),
                     ),
                     TextButton(
-                      onPressed: () => Navigator.pop(context),
+                      onPressed: () => context.go(AppRouter.login),
                       child: const Text(
                         'تسجيل الدخول',
                         style: TextStyle(

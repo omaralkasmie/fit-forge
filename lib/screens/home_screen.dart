@@ -223,7 +223,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () => 
+                      context.push(AppRouter.programs),
                       child: const Text(
                         'عرض الكل',
                         style: TextStyle(color: purpleColor),
