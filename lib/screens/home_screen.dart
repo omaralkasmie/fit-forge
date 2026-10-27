@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'exercises_screen.dart';
+import 'package:go_router/go_router.dart';
+import '../routes/app_router.dart';
 
 const Color bgColor = Color(0xFF0B0B16);
 const Color cardColor = Color(0xFF15182F);
@@ -8,13 +9,6 @@ const Color pinkColor = Color(0xFFE34DFF);
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
-  void _openExercises(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const ExercisesScreen()),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -322,7 +316,7 @@ class HomeScreen extends StatelessWidget {
                 selected: true,
               ),
               InkWell(
-                onTap: () => _openExercises(context),
+                onTap: () => context.push(AppRouter.exercises),
                 borderRadius: BorderRadius.circular(12),
                 child: const _NavItem(
                   icon: Icons.fitness_center,

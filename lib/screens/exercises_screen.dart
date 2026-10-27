@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'chest_exercises_screen.dart';
+import 'package:go_router/go_router.dart';
+import '../routes/app_router.dart';
 
 const Color exercisesBgColor = Color(0xFF0B0B16);
 const Color exercisesCardColor = Color(0xFF15182F);
@@ -45,13 +46,8 @@ class ExercisesScreen extends StatelessWidget {
             ),
             const SizedBox(height: 25),
             _ExerciseCategory(
-                onTap:() {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ChestExercisesScreen(),
-                        ),
-                    );
+                onTap: () {
+                  context.push(AppRouter.chestExercises);
                 },
               title: 'تمارين الصدر',
               subtitle: 'تقوية عضلات الصدر',
