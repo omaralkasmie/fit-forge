@@ -28,6 +28,7 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
       icon: Icons.fitness_center,
       color: programsPurple,
       category: 1,
+      image: 'assets/images/muscle_building.jpg',
     ),
     _Program(
       title: 'حرق الدهون',
@@ -37,6 +38,7 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
       icon: Icons.local_fire_department,
       color: programsPink,
       category: 2,
+      image: 'assets/images/fat_burning.jpg',
     ),
     _Program(
       title: 'اللياقة العامة',
@@ -46,6 +48,7 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
       icon: Icons.directions_run,
       color: programsBlue,
       category: 3,
+      image: 'assets/images/general_fitness.jpg',
     ),
     _Program(
       title: 'برنامج متقدم',
@@ -55,6 +58,7 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
       icon: Icons.star,
       color: programsOrange,
       category: 1,
+      image: 'assets/images/advanced_program.png',
     ),
   ];
 
@@ -120,7 +124,7 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
           end: Alignment.bottomLeft,
         ),
       ),
-      child: const Row(
+      child:  Row(
         children: [
           Expanded(
             child: Column(
@@ -148,10 +152,17 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
             ),
           ),
           SizedBox(width: 8),
-          Icon(
-            Icons.fitness_center,
-            color: Color(0xFFB66AFF),
-            size: 56,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Opacity(
+              opacity: 0.75,
+            child: Image.asset(
+              'assets/images/hero_athlete.jpg',
+              width: 400,
+              height: 125,
+              fit: BoxFit.cover,
+              ),
+              ),
           ),
         ],
       ),
@@ -251,6 +262,7 @@ class _Program {
   final IconData icon;
   final Color color;
   final int category;
+  final String image;
 
   const _Program({
     required this.title,
@@ -260,6 +272,7 @@ class _Program {
     required this.icon,
     required this.color,
     required this.category,
+    required this.image,
   });
 }
 
@@ -289,18 +302,31 @@ class _ProgramCard extends StatelessWidget {
         ),
       ),
       child: Row(
+        textDirection: TextDirection.ltr,
         children: [
-          Container(
-            width: 76,
-            height: 82,
-            decoration: BoxDecoration(
-              color: program.color.withValues(alpha: 0.22),
-              borderRadius: BorderRadius.circular(20),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child:Opacity(
+              opacity: 0.75,
+            child: Image.asset(
+              program.image,
+              width:200,
+              height: 175,
+              fit: BoxFit.cover,
+              alignment: const Alignment(0, -0.7),
+              errorBuilder: (context, error, stackTrace) {
+              return Container(
+                width: 150,
+                height: 100,
+                color: program.color.withValues(alpha: 0.22),
+                child: Icon(
+                program.icon,
+                size: 38,
+                color: program.color,
+                ),
+              );
+            },
             ),
-            child: Icon(
-              program.icon,
-              size: 38,
-              color: program.color,
             ),
           ),
           const SizedBox(width: 14),
@@ -353,8 +379,6 @@ class _ProgramCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Icon(Icons.arrow_forward_ios,
-                        color: program.color, size: 18),
                   ],
                 ),
               ],
