@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
 import '../routes/app_router.dart';
 
 const Color programsBg = Color(0xFF080B1B);
@@ -67,8 +68,8 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
     final visiblePrograms = selectedFilter == 0
         ? programs
         : programs
-            .where((program) => program.category == selectedFilter)
-            .toList();
+              .where((program) => program.category == selectedFilter)
+              .toList();
 
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -124,9 +125,44 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
           end: Alignment.bottomLeft,
         ),
       ),
-      child:  Row(
+      child: Stack(
         children: [
-          Expanded(
+          // صورة الخلفية
+          Positioned.fill(
+            child: ClipRect(
+              child: Transform.scale(
+                scale: 1.15,
+                child: Image.asset(
+                  'assets/images/hero_athlete.jpg',
+                  fit: BoxFit.cover,
+                  alignment: Alignment.centerRight,
+                ),
+              ),
+            ),
+          ),
+
+          // طبقة داكنة فوق الصورة
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.centerRight,
+                  end: Alignment.centerLeft,
+                  colors: [
+                    Color(0xF2080B1B),
+                    Color(0xCC080B1B),
+                    Color(0x33080B1B),
+                    Colors.transparent,
+                  ],
+                  stops: [0.0, 0.38, 0.62, 1.0],
+                ),
+              ),
+            ),
+          ),
+
+          // النص فوق الصورة
+          Padding(
+            padding: const EdgeInsets.all(20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,34 +171,21 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
                   'اختر برنامجك المثالي',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 22,
+                    fontSize: 21,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'برامج تدريبية مصممة خصيصًا لمساعدتك على تحقيق أهدافك الرياضية',
+                  'برامج تدريبية مصممة خصيصًا لمساعدتك\nعلى تحقيق أهدافك الرياضية',
                   style: TextStyle(
-                    color: Color(0xFFD3D4F4),
-                    fontSize: 14,
+                    color: Colors.white60,
+                    fontSize: 13,
                     height: 1.5,
                   ),
                 ),
               ],
             ),
-          ),
-          SizedBox(width: 8),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: Opacity(
-              opacity: 0.75,
-            child: Image.asset(
-              'assets/images/hero_athlete.jpg',
-              width: 400,
-              height: 125,
-              fit: BoxFit.cover,
-              ),
-              ),
           ),
         ],
       ),
@@ -201,9 +224,7 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
             selectedColor: programsPurple,
             backgroundColor: programsCard,
             side: BorderSide(
-              color: selected
-                  ? programsPurple
-                  : const Color(0xFF303657),
+              color: selected ? programsPurple : const Color(0xFF303657),
             ),
           );
         },
@@ -235,12 +256,12 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
           _NavButton(
             icon: Icons.bar_chart,
             label: 'التقدم',
-            onTap: () => _openFutureScreen(context, 'ProgressScreen'),
+            onTap: () => context.go(AppRouter.progress),
           ),
           _NavButton(
             icon: Icons.person_outline,
             label: 'الملف الشخصي',
-            onTap: () => _openFutureScreen(context, 'ProfileScreen'),
+            onTap: () => context.go(AppRouter.profile),
           ),
         ],
       ),
@@ -289,14 +310,9 @@ class _ProgramCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: programsCard,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(
-          color: program.color.withValues(alpha: 0.8),
-        ),
+        border: Border.all(color: program.color.withValues(alpha: 0.8)),
         gradient: LinearGradient(
-          colors: [
-            program.color.withValues(alpha: 0.12),
-            programsCard,
-          ],
+          colors: [program.color.withValues(alpha: 0.12), programsCard],
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
         ),
@@ -306,27 +322,23 @@ class _ProgramCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child:Opacity(
+            child: Opacity(
               opacity: 0.75,
-            child: Image.asset(
-              program.image,
-              width:200,
-              height: 175,
-              fit: BoxFit.cover,
-              alignment: const Alignment(0, -0.7),
-              errorBuilder: (context, error, stackTrace) {
-              return Container(
-                width: 150,
-                height: 100,
-                color: program.color.withValues(alpha: 0.22),
-                child: Icon(
-                program.icon,
-                size: 38,
-                color: program.color,
-                ),
-              );
-            },
-            ),
+              child: Image.asset(
+                program.image,
+                width: 166,
+                height: 175,
+                fit: BoxFit.cover,
+                alignment: const Alignment(0, -0.7),
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    width: 60,
+                    height: 70,
+                    color: program.color.withValues(alpha: 0.22),
+                    child: Icon(program.icon, size: 38, color: program.color),
+                  );
+                },
+              ),
             ),
           ),
           const SizedBox(width: 14),
@@ -350,7 +362,7 @@ class _ProgramCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       color: Color(0xFFBFC5E8),
-                      fontSize: 12,
+                      fontSize: 14,
                       height: 1.5,
                     ),
                   ),
@@ -363,12 +375,15 @@ class _ProgramCard extends StatelessWidget {
                       program.duration,
                       style: const TextStyle(
                         color: Color(0xFFBFC5E8),
-                        fontSize: 12,
+                        fontSize: 13,
                       ),
                     ),
                     const SizedBox(width: 12),
-                    Icon(Icons.signal_cellular_alt,
-                        color: program.color, size: 18),
+                    Icon(
+                      Icons.signal_cellular_alt,
+                      color: program.color,
+                      size: 18,
+                    ),
                     const SizedBox(width: 4),
                     Expanded(
                       child: Text(
@@ -422,8 +437,7 @@ class _NavButton extends StatelessWidget {
               style: TextStyle(
                 color: color,
                 fontSize: 11,
-                fontWeight:
-                    selected ? FontWeight.bold : FontWeight.normal,
+                fontWeight: selected ? FontWeight.bold : FontWeight.normal,
               ),
             ),
           ],
