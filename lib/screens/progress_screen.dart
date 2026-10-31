@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import '../widgets/custom_bottom_navigation.dart';
 
-import '../routes/app_router.dart';
 
 const Color progressBg = Color(0xFF080B1B);
 const Color progressCard = Color(0xFF10142B);
@@ -49,7 +48,7 @@ class ProgressScreen extends StatelessWidget {
             _buildAchievements(),
           ],
         ),
-        bottomNavigationBar: _buildBottomNavigation(context),
+        bottomNavigationBar:const CustomBottomNavigation(),
       ),
     );
   }
@@ -254,46 +253,6 @@ class ProgressScreen extends StatelessWidget {
       ],
     );
   }
-
-  Widget _buildBottomNavigation(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: progressCard,
-        border: Border(top: BorderSide(color: Colors.white12)),
-      ),
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _NavItem(
-            icon: Icons.home_outlined,
-            label: 'الرئيسية',
-            onTap: () => context.go(AppRouter.home),
-          ),
-          _NavItem(
-            icon: Icons.fitness_center,
-            label: 'التمارين',
-            onTap: () => context.go(AppRouter.exercises),
-          ),
-          _NavItem(
-            icon: Icons.bar_chart,
-            label: 'التقدم',
-            selected: true,
-            onTap: () {},
-          ),
-          _NavItem(
-            icon: Icons.person_outline,
-            label: 'الملف الشخصي',
-            onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('سنضيف شاشة الملف الشخصي لاحقًا')),
-              );
-            },
-          ),
-        ],
-      ),
-    );
-  }
 }
 
 const Color progressOrange = Color(0xFFFF851B);
@@ -443,48 +402,6 @@ class _AchievementCard extends StatelessWidget {
           ),
           Icon(Icons.check_circle, color: color, size: 24),
         ],
-      ),
-    );
-  }
-}
-
-class _NavItem extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final bool selected;
-  final VoidCallback onTap;
-
-  const _NavItem({
-    required this.icon,
-    required this.label,
-    required this.onTap,
-    this.selected = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final color = selected ? const Color(0xFFB04AFF) : Colors.white54;
-
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, color: color, size: 25),
-            const SizedBox(height: 5),
-            Text(
-              label,
-              style: TextStyle(
-                color: color,
-                fontSize: 11,
-                fontWeight: selected ? FontWeight.bold : FontWeight.normal,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
-import '../routes/app_router.dart';
+import '../widgets/custom_bottom_navigation.dart';
 
 const Color programsBg = Color(0xFF080B1B);
 const Color programsCard = Color(0xFF10142B);
@@ -108,7 +106,7 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
             ),
           ],
         ),
-        bottomNavigationBar: _buildBottomNavigation(context),
+        bottomNavigationBar: const CustomBottomNavigation(),
       ),
     );
   }
@@ -205,7 +203,7 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: filters.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 8),
+        separatorBuilder: (_, _) => const SizedBox(width: 8),
         itemBuilder: (context, index) {
           final filter = filters[index];
           final selected = selectedFilter == filter.$2;
@@ -229,48 +227,6 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
           );
         },
       ),
-    );
-  }
-
-  Widget _buildBottomNavigation(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: programsCard,
-        border: Border(top: BorderSide(color: Colors.white12)),
-      ),
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _NavButton(
-            icon: Icons.home_outlined,
-            label: 'الرئيسية',
-            onTap: () => context.go(AppRouter.home),
-          ),
-          _NavButton(
-            icon: Icons.fitness_center,
-            label: 'التمارين',
-            selected: true,
-            onTap: () => context.go(AppRouter.exercises),
-          ),
-          _NavButton(
-            icon: Icons.bar_chart,
-            label: 'التقدم',
-            onTap: () => context.go(AppRouter.progress),
-          ),
-          _NavButton(
-            icon: Icons.person_outline,
-            label: 'الملف الشخصي',
-            onTap: () => context.go(AppRouter.profile),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _openFutureScreen(BuildContext context, String screen) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('سنضيف شاشة $screen في المرحلة القادمة')),
     );
   }
 }
@@ -405,44 +361,3 @@ class _ProgramCard extends StatelessWidget {
   }
 }
 
-class _NavButton extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final bool selected;
-  final VoidCallback onTap;
-
-  const _NavButton({
-    required this.icon,
-    required this.label,
-    required this.onTap,
-    this.selected = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final color = selected ? const Color(0xFFB04AFF) : Colors.white54;
-
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, color: color, size: 25),
-            const SizedBox(height: 5),
-            Text(
-              label,
-              style: TextStyle(
-                color: color,
-                fontSize: 11,
-                fontWeight: selected ? FontWeight.bold : FontWeight.normal,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../routes/app_router.dart';
+import '../widgets/custom_bottom_navigation.dart';
 
 const Color bgColor = Color(0xFF0B0B16);
 const Color cardColor = Color(0xFF15182F);
@@ -297,44 +298,7 @@ class HomeScreen extends StatelessWidget {
         ),
 
         // Bottom navigation preview
-        bottomNavigationBar: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 10,
-          ),
-          decoration: const BoxDecoration(
-            color: cardColor,
-            border: Border(
-              top: BorderSide(color: Colors.white10),
-            ),
-          ),
-          child:  Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _NavItem(
-                icon: Icons.home_rounded,
-                label: 'الرئيسية',
-                selected: true,
-              ),
-              InkWell(
-                onTap: () => context.push(AppRouter.exercises),
-                borderRadius: BorderRadius.circular(12),
-                child: const _NavItem(
-                  icon: Icons.fitness_center,
-                  label: 'التمارين',
-                ),
-              ),
-              _NavItem(
-                icon: Icons.insights,
-                label: 'التقدم',
-              ),
-              _NavItem(
-                icon: Icons.person_outline,
-                label: 'الملف الشخصي',
-              ),
-            ],
-          ),
-        ),
+        bottomNavigationBar: const CustomBottomNavigation(),
       ),
     );
   }
@@ -513,39 +477,6 @@ class _ExerciseTile extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class _NavItem extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final bool selected;
-
-  const _NavItem({
-    required this.icon,
-    required this.label,
-    this.selected = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final color = selected ? pinkColor : Colors.white54;
-
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, color: color, size: 24),
-        const SizedBox(height: 5),
-        Text(
-          label,
-          style: TextStyle(
-            color: color,
-            fontSize: 11,
-            fontWeight: selected ? FontWeight.bold : FontWeight.normal,
-          ),
-        ),
-      ],
     );
   }
 }

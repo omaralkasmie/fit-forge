@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../routes/app_router.dart';
+import '../widgets/custom_bottom_navigation.dart';
 
 const Color exercisesBgColor = Color(0xFF0B0B16);
 const Color exercisesCardColor = Color(0xFF15182F);
@@ -84,6 +85,7 @@ class ExercisesScreen extends StatelessWidget {
             ),
           ],
         ),
+        bottomNavigationBar: const CustomBottomNavigation(),
       ),
     );
   }
