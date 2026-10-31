@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../widgets/custom_bottom_navigation.dart';
+import '../data/chest_exercises.dart';
 
 const Color chestBgColor = Color(0xFF0B0B16);
 const Color chestCardColor = Color(0xFF15182F);
@@ -74,35 +76,28 @@ class ChestExercisesScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            const _ChestExerciseTile(
-              number: '01',
-              title: 'تمرين الضغط',
-              subtitle: '3 مجموعات × 10 تكرارات',
-              icon: Icons.accessibility_new,
-            ),
-            const SizedBox(height: 12),
-            const _ChestExerciseTile(
-              number: '02',
-              title: 'ضغط الصدر بالدمبل',
-              subtitle: '3 مجموعات × 12 تكرارًا',
-              icon: Icons.fitness_center,
-            ),
-            const SizedBox(height: 12),
-            const _ChestExerciseTile(
-              number: '03',
-              title: 'تفتيح الصدر بالدمبل',
-              subtitle: '3 مجموعات × 12 تكرارًا',
-              icon: Icons.sports_gymnastics,
-            ),
-            const SizedBox(height: 12),
-            const _ChestExerciseTile(
-              number: '04',
-              title: 'ضغط الصدر المائل',
-              subtitle: '3 مجموعات × 10 تكرارات',
-              icon: Icons.fitness_center,
+            ...List.generate(
+              chestExercises.length,
+              (index) {
+                final exercise = chestExercises[index];
+                return Padding(
+                  padding: const EdgeInsets.only(bottom:12),
+                  child: _ChestExerciseTile(
+                    number: (index + 1).toString().padLeft(2, '0'),
+                    title: exercise.name,
+                    muscleGroup: exercise.muscleGroup,
+                    equipment: exercise.equipment,
+                    difficulty: exercise.difficulty,
+                    subtitle:
+                        '${exercise.suggestedSets} مجموعات × ${exercise.suggestedReps} تكرارات',
+                    icon: Icons.fitness_center,
+                  ),
+                );
+              },
             ),
           ],
         ),
+        bottomNavigationBar: const CustomBottomNavigation(),
       ),
     );
   }
@@ -112,75 +107,177 @@ class _ChestExerciseTile extends StatelessWidget {
   final String number;
   final String title;
   final String subtitle;
+  final String muscleGroup;
+  final String equipment;
+  final String difficulty;
   final IconData icon;
 
   const _ChestExerciseTile({
     required this.number,
     required this.title,
     required this.subtitle,
+    required this.muscleGroup,
+    required this.equipment,
+    required this.difficulty,
     required this.icon,
+  });
+@override
+Widget build(BuildContext context) {
+  return Container(
+    padding: const EdgeInsets.all(16),
+    decoration: BoxDecoration(
+      color: chestCardColor,
+      borderRadius: BorderRadius.circular(20),
+      border: Border.all(
+        color: chestPurpleColor.withValues(alpha: 0.25),
+      ),
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Container(
+              width: 52,
+              height: 52,
+              decoration: BoxDecoration(
+                color: chestPurpleColor.withValues(alpha: 0.16),
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: Icon(
+                icon,
+                color: chestPinkColor,
+                size: 27,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    muscleGroup,
+                    style: const TextStyle(
+                      color: chestPurpleColor,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Text(
+              number,
+              style: const TextStyle(
+                color: chestPurpleColor,
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+
+        const SizedBox(height: 16),
+
+        Row(
+          children: [
+            _ExerciseInfoChip(
+              icon: Icons.fitness_center,
+              label: equipment,
+            ),
+            const SizedBox(width: 8),
+            _ExerciseInfoChip(
+              icon: Icons.bar_chart,
+              label: difficulty,
+            ),
+          ],
+        ),
+
+        const SizedBox(height: 14),
+
+        Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 12,
+            vertical: 10,
+          ),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.05),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            children: [
+              const Icon(
+                Icons.repeat,
+                color: chestPinkColor,
+                size: 19,
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  subtitle,
+                  style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+}
+class _ExerciseInfoChip extends StatelessWidget {
+  final IconData icon;
+  final String label;
+
+  const _ExerciseInfoChip({
+    required this.icon,
+    required this.label,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: chestCardColor,
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(
-          color: chestPurpleColor.withValues(alpha: 0.25),
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 10,
+          vertical: 9,
         ),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 52,
-            height: 58,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: chestPurpleColor.withValues(alpha: 0.16),
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: Icon(
+        decoration: BoxDecoration(
+          color: chestPurpleColor.withValues(alpha: 0.10),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          children: [
+            Icon(
               icon,
-              color: chestPinkColor,
-              size: 27,
-            ),
-          ),
-          const SizedBox(width: 13),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 7),
-                Text(
-                  subtitle,
-                  style: const TextStyle(
-                    color: Colors.white60,
-                    fontSize: 12,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Text(
-            number,
-            style: const TextStyle(
               color: chestPurpleColor,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+              size: 16,
             ),
-          ),
-        ],
+            const SizedBox(width: 7),
+            Expanded(
+              child: Text(
+                label,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: Colors.white70,
+                  fontSize: 11,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

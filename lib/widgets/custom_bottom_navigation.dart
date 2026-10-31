@@ -33,7 +33,8 @@ class CustomBottomNavigation extends StatelessWidget {
           _NavItem(
             icon: Icons.fitness_center,
             label: 'التمارين',
-            selected: currentLocation == AppRouter.exercises,
+            selected: currentLocation == AppRouter.exercises || 
+            currentLocation == AppRouter.chestExercises,
             onTap: () => context.go(AppRouter.exercises),
           ),
           _NavItem(
