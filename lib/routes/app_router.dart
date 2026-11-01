@@ -8,6 +8,8 @@ import '../screens/chest_exercises_screen.dart';
 import '../screens/programs_screen.dart';
 import '../screens/progress_screen.dart';
 import '../screens/profile_screen.dart';
+import '../screens/exercise_details_screen.dart';
+import '../models/exercise.dart';
 
 class AppRouter {
   static const login = '/login';
@@ -18,6 +20,7 @@ class AppRouter {
   static const programs = '/programs';
   static const progress = '/progress';
   static const profile = '/profile';
+  static const exerciseDetails = '/exercise-details';
 }
 
 final appRouter = GoRouter(
@@ -61,6 +64,13 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRouter.profile,
       builder: (context, state) => const ProfileScreen(),
+    ),
+    GoRoute(
+      path: AppRouter.exerciseDetails,
+      builder: (context, state) {
+        final exercise = state.extra as Exercise;
+        return ExerciseDetailsScreen(exercise: exercise);
+      },
     ),
   ],
 );

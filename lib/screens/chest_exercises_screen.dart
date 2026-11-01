@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_bottom_navigation.dart';
 import '../data/chest_exercises.dart';
+import 'package:go_router/go_router.dart';
+import '../routes/app_router.dart';
 
 const Color chestBgColor = Color(0xFF0B0B16);
 const Color chestCardColor = Color(0xFF15182F);
@@ -91,6 +93,9 @@ class ChestExercisesScreen extends StatelessWidget {
                     subtitle:
                         '${exercise.suggestedSets} مجموعات × ${exercise.suggestedReps} تكرارات',
                     icon: Icons.fitness_center,
+                    onTap: (){
+                      context.push(AppRouter.exerciseDetails, extra: exercise);
+                    },
                   ),
                 );
               },
@@ -111,6 +116,7 @@ class _ChestExerciseTile extends StatelessWidget {
   final String equipment;
   final String difficulty;
   final IconData icon;
+  final VoidCallback onTap;
 
   const _ChestExerciseTile({
     required this.number,
@@ -120,119 +126,120 @@ class _ChestExerciseTile extends StatelessWidget {
     required this.equipment,
     required this.difficulty,
     required this.icon,
+    required this.onTap,
   });
 @override
 Widget build(BuildContext context) {
-  return Container(
-    padding: const EdgeInsets.all(16),
-    decoration: BoxDecoration(
-      color: chestCardColor,
-      borderRadius: BorderRadius.circular(20),
-      border: Border.all(
-        color: chestPurpleColor.withValues(alpha: 0.25),
+  return InkWell(
+    onTap: onTap,
+    borderRadius: BorderRadius.circular(20),
+    child: Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: chestCardColor,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: chestPurpleColor.withValues(alpha: 0.25),
+        ),
       ),
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            Container(
-              width: 52,
-              height: 52,
-              decoration: BoxDecoration(
-                color: chestPurpleColor.withValues(alpha: 0.16),
-                borderRadius: BorderRadius.circular(14),
-              ),
-              child: Icon(
-                icon,
-                color: chestPinkColor,
-                size: 27,
-              ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    muscleGroup,
-                    style: const TextStyle(
-                      color: chestPurpleColor,
-                      fontSize: 12,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Text(
-              number,
-              style: const TextStyle(
-                color: chestPurpleColor,
-                fontSize: 17,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-
-        const SizedBox(height: 16),
-
-        Row(
-          children: [
-            _ExerciseInfoChip(
-              icon: Icons.fitness_center,
-              label: equipment,
-            ),
-            const SizedBox(width: 8),
-            _ExerciseInfoChip(
-              icon: Icons.bar_chart,
-              label: difficulty,
-            ),
-          ],
-        ),
-
-        const SizedBox(height: 14),
-
-        Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 10,
-          ),
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.05),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
             children: [
-              const Icon(
-                Icons.repeat,
-                color: chestPinkColor,
-                size: 19,
+              Container(
+                width: 52,
+                height: 52,
+                decoration: BoxDecoration(
+                  color: chestPurpleColor.withValues(alpha: 0.16),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Icon(
+                  icon,
+                  color: chestPinkColor,
+                  size: 27,
+                ),
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 12),
               Expanded(
-                child: Text(
-                  subtitle,
-                  style: const TextStyle(
-                    color: Colors.white70,
-                    fontSize: 12,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      muscleGroup,
+                      style: const TextStyle(
+                        color: chestPurpleColor,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Text(
+                number,
+                style: const TextStyle(
+                  color: chestPurpleColor,
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],
           ),
-        ),
-      ],
+          const SizedBox(height: 16),
+          Row(
+            children: [
+              _ExerciseInfoChip(
+                icon: Icons.fitness_center,
+                label: equipment,
+              ),
+              const SizedBox(width: 8),
+              _ExerciseInfoChip(
+                icon: Icons.bar_chart,
+                label: difficulty,
+              ),
+            ],
+          ),
+          const SizedBox(height: 14),
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 10,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.05),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.repeat,
+                  color: chestPinkColor,
+                  size: 19,
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    subtitle,
+                    style: const TextStyle(
+                      color: Colors.white70,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }
