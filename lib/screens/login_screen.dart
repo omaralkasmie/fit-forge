@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../routes/app_router.dart';
 
+import '../l10n/app_localizations.dart';
+import '../routes/app_router.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final isArabic = Localizations.localeOf(context).languageCode == 'ar';
+
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -38,10 +42,10 @@ class LoginScreen extends StatelessWidget {
 
                 const SizedBox(height: 8),
 
-                const Text(
-                  'اصنع قوتك، وحقق هدفك',
+                Text(
+                  l10n.tagline,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white60,
                     fontSize: 16,
                   ),
@@ -49,10 +53,10 @@ class LoginScreen extends StatelessWidget {
 
                 const SizedBox(height: 40),
 
-                const Text(
-                  'مرحباً بعودتك',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
+                Text(
+                  l10n.welcomeBack,
+                  textAlign: isArabic ? TextAlign.right : TextAlign.left,
+                  style: const TextStyle(
                     fontSize: 26,
                     fontWeight: FontWeight.bold,
                   ),
@@ -60,30 +64,30 @@ class LoginScreen extends StatelessWidget {
 
                 const SizedBox(height: 8),
 
-                const Text(
-                  'سجّل الدخول لمتابعة رحلتك الرياضية',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(color: Colors.white60),
+                Text(
+                  l10n.loginSubtitle,
+                  textAlign: isArabic ? TextAlign.right : TextAlign.left,
+                  style: const TextStyle(color: Colors.white60),
                 ),
 
                 const SizedBox(height: 28),
 
-                const Text(
-                  'البريد الإلكتروني',
-                  textAlign: TextAlign.right,
+                Text(
+                  l10n.email,
+                  textAlign: isArabic ? TextAlign.right : TextAlign.left,
                 ),
 
                 const SizedBox(height: 8),
 
-                const TextField(
+                TextField(
                   keyboardType: TextInputType.emailAddress,
                   textDirection: TextDirection.ltr,
                   decoration: InputDecoration(
-                    hintText: 'example@email.com',
-                    prefixIcon: Icon(Icons.email_outlined),
+                    hintText: l10n.emailHint,
+                    prefixIcon: const Icon(Icons.email_outlined),
                     filled: true,
-                    fillColor: Color(0xFF171722),
-                    border: OutlineInputBorder(
+                    fillColor: const Color(0xFF171722),
+                    border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(14),
                       ),
@@ -93,21 +97,21 @@ class LoginScreen extends StatelessWidget {
 
                 const SizedBox(height: 20),
 
-                const Text(
-                  'كلمة المرور',
-                  textAlign: TextAlign.right,
+                Text(
+                  l10n.password,
+                  textAlign: isArabic ? TextAlign.right : TextAlign.left,
                 ),
 
                 const SizedBox(height: 8),
 
-                const TextField(
+                TextField(
                   obscureText: true,
                   decoration: InputDecoration(
-                    hintText: 'أدخل كلمة المرور',
-                    prefixIcon: Icon(Icons.lock_outline),
+                    hintText: l10n.passwordHint,
+                    prefixIcon: const Icon(Icons.lock_outline),
                     filled: true,
-                    fillColor: Color(0xFF171722),
-                    border: OutlineInputBorder(
+                    fillColor: const Color(0xFF171722),
+                    border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(14),
                       ),
@@ -130,9 +134,9 @@ class LoginScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(14),
                       ),
                     ),
-                    child: const Text(
-                      'تسجيل الدخول',
-                      style: TextStyle(
+                    child: Text(
+                      l10n.login,
+                      style: const TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
@@ -142,18 +146,18 @@ class LoginScreen extends StatelessWidget {
 
                 const SizedBox(height: 24),
 
-                 Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'ليس لديك حساب؟ ',
-                      style: TextStyle(color: Colors.white60),
+                      l10n.noAccount,
+                      style: const TextStyle(color: Colors.white60),
                     ),
                     TextButton(
-                      onPressed: (){
+                      onPressed: () {
                         context.go(AppRouter.signup);
                       },
-                      child: const Text("إنشاء حساب"),
+                      child: Text(l10n.signup),
                     ),
                   ],
                 ),

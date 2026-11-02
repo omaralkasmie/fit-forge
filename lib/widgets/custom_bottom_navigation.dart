@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../l10n/app_localizations.dart';
 import '../routes/app_router.dart';
 
 class CustomBottomNavigation extends StatelessWidget {
@@ -9,6 +10,7 @@ class CustomBottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentLocation = GoRouterState.of(context).uri.path;
+    final l10n = AppLocalizations.of(context)!;
 
     return Container(
       padding: const EdgeInsets.symmetric(
@@ -26,32 +28,32 @@ class CustomBottomNavigation extends StatelessWidget {
         children: [
           _NavItem(
             icon: Icons.home_rounded,
-            label: 'الرئيسية',
+            label: l10n.navHome,
             selected: currentLocation == AppRouter.home,
             onTap: () => context.go(AppRouter.home),
           ),
           _NavItem(
             icon: Icons.fitness_center,
-            label: 'التمارين',
-            selected: currentLocation == AppRouter.exercises || 
-            currentLocation == AppRouter.chestExercises,
+            label: l10n.navExercises,
+            selected: currentLocation == AppRouter.exercises ||
+                currentLocation == AppRouter.chestExercises,
             onTap: () => context.go(AppRouter.exercises),
           ),
           _NavItem(
             icon: Icons.calendar_month_rounded,
-            label: 'البرامج',
+            label: l10n.navPrograms,
             selected: currentLocation == AppRouter.programs,
             onTap: () => context.go(AppRouter.programs),
           ),
           _NavItem(
             icon: Icons.insights_rounded,
-            label: 'التقدم',
+            label: l10n.navProgress,
             selected: currentLocation == AppRouter.progress,
             onTap: () => context.go(AppRouter.progress),
           ),
           _NavItem(
             icon: Icons.person_outline_rounded,
-            label: 'حسابي',
+            label: l10n.navProfile,
             selected: currentLocation == AppRouter.profile,
             onTap: () => context.go(AppRouter.profile),
           ),

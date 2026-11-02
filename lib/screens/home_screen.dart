@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../l10n/app_localizations.dart';
 import '../routes/app_router.dart';
 import '../widgets/custom_bottom_navigation.dart';
 
@@ -13,293 +15,290 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        backgroundColor: bgColor,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Header
-                Row(
+    final l10n = AppLocalizations.of(context)!;
+
+    return Scaffold(
+      backgroundColor: bgColor,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Header
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: cardColor,
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: const Icon(
+                      Icons.notifications_none,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const Spacer(),
+                  const Text(
+                    'FitForge',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const Spacer(),
+                  const CircleAvatar(
+                    radius: 23,
+                    backgroundColor: purpleColor,
+                    child: Icon(
+                      Icons.person,
+                      color: Colors.white,
+                      size: 28,
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 30),
+
+              // Welcome
+              Text(
+                l10n.homeWelcome,
+                style: const TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                l10n.homeTagline,
+                style: const TextStyle(
+                  fontSize: 15,
+                  color: Colors.white60,
+                ),
+              ),
+
+              const SizedBox(height: 25),
+
+              // Daily goal
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(22),
+                  gradient: const LinearGradient(
+                    colors: [purpleColor, Color(0xFF4932C9)],
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: cardColor,
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      child: const Icon(
-                        Icons.notifications_none,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const Spacer(),
-                    const Text(
-                      'FitForge',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const Spacer(),
-                    const CircleAvatar(
-                      radius: 23,
-                      backgroundColor: purpleColor,
-                      child: Icon(
-                        Icons.person,
-                        color: Colors.white,
-                        size: 28,
-                      ),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 30),
-
-                // Welcome
-                const Text(
-                  'مرحباً بك! 👋',
-                  style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                const Text(
-                  'معاً نصنع نسخة أقوى منك',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.white60,
-                  ),
-                ),
-
-                const SizedBox(height: 25),
-
-                // Daily goal
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(22),
-                    gradient: const LinearGradient(
-                      colors: [purpleColor, Color(0xFF4932C9)],
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                    ),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Row(
-                        children: [
-                          Icon(
-                            Icons.track_changes,
-                            color: Colors.white,
-                            size: 35,
-                          ),
-                          SizedBox(width: 12),
-                          Expanded(
-                            child: Text(
-                              'هدفك اليومي',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            '60%',
-                            style: TextStyle(
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.track_changes,
+                          color: Colors.white,
+                          size: 35,
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            l10n.dailyGoal,
+                            style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
                           ),
-                        ],
-                      ),
-                      const SizedBox(height: 12),
-                      const Text(
-                        'أكمل تمرينك اليوم لتحقيق هدفك',
-                        style: TextStyle(color: Colors.white70),
-                      ),
-                      const SizedBox(height: 16),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: const LinearProgressIndicator(
-                          value: 0.6,
-                          minHeight: 9,
-                          backgroundColor: Colors.white24,
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            Colors.white,
+                        ),
+                        const Text(
+                          '60%',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 25),
-
-                // Statistics
-                const Text(
-                  'نشاطك اليوم',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 15),
-
-                Row(
-                  children: [
-                    Expanded(
-                      child: _StatCard(
-                        icon: Icons.local_fire_department,
-                        iconColor: Colors.orangeAccent,
-                        title: 'السعرات الحرارية',
-                        value: '420',
-                        subtitle: 'من 800 سعرة',
-                      ),
+                      ],
                     ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: _StatCard(
-                        icon: Icons.timer_outlined,
-                        iconColor: purpleColor,
-                        title: 'وقت التمرين',
-                        value: '35',
-                        subtitle: 'من 60 دقيقة',
-                      ),
+                    const SizedBox(height: 12),
+                    Text(
+                      l10n.dailyGoalSubtitle,
+                      style: const TextStyle(color: Colors.white70),
                     ),
-                  ],
-                ),
-
-                const SizedBox(height: 12),
-
-                Row(
-                  children: [
-                    Expanded(
-                      child: _StatCard(
-                        icon: Icons.directions_walk,
-                        iconColor: pinkColor,
-                        title: 'الخطوات',
-                        value: '6,850',
-                        subtitle: 'خطوة اليوم',
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: _StatCard(
-                        icon: Icons.water_drop_outlined,
-                        iconColor: Colors.lightBlueAccent,
-                        title: 'الماء',
-                        value: '1.5 L',
-                        subtitle: 'من 2.5 لتر',
-                      ),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 30),
-
-                // Programs header
-                Row(
-                  children: [
-                    const Expanded(
-                      child: Text(
-                        'برامج التدريب',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                    const SizedBox(height: 16),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: const LinearProgressIndicator(
+                        value: 0.6,
+                        minHeight: 9,
+                        backgroundColor: Colors.white24,
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          Colors.white,
                         ),
                       ),
                     ),
-                    TextButton(
-                      onPressed: () => 
-                      context.push(AppRouter.programs),
-                      child: const Text(
-                        'عرض الكل',
-                        style: TextStyle(color: purpleColor),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 25),
+
+              // Statistics
+              Text(
+                l10n.todayActivity,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 15),
+
+              Row(
+                children: [
+                  Expanded(
+                    child: _StatCard(
+                      icon: Icons.local_fire_department,
+                      iconColor: Colors.orangeAccent,
+                      title: l10n.calories,
+                      value: '420',
+                      subtitle: l10n.caloriesTarget,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: _StatCard(
+                      icon: Icons.timer_outlined,
+                      iconColor: purpleColor,
+                      title: l10n.workoutTime,
+                      value: '35',
+                      subtitle: l10n.minutesTarget,
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 12),
+
+              Row(
+                children: [
+                  Expanded(
+                    child: _StatCard(
+                      icon: Icons.directions_walk,
+                      iconColor: pinkColor,
+                      title: l10n.steps,
+                      value: '6,850',
+                      subtitle: l10n.stepsToday,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: _StatCard(
+                      icon: Icons.water_drop_outlined,
+                      iconColor: Colors.lightBlueAccent,
+                      title: l10n.water,
+                      value: '1.5 L',
+                      subtitle: l10n.waterTarget,
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 30),
+
+              // Programs header
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      l10n.trainingPrograms,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () => context.push(AppRouter.programs),
+                    child: Text(
+                      l10n.viewAll,
+                      style: const TextStyle(color: purpleColor),
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 10),
+
+              SizedBox(
+                height: 175,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    _ProgramCard(
+                      title: l10n.muscleBuilding,
+                      subtitle: l10n.weeks4,
+                      icon: Icons.fitness_center,
+                    ),
+                    _ProgramCard(
+                      title: l10n.fatBurning,
+                      subtitle: l10n.weeks3,
+                      icon: Icons.local_fire_department,
+                    ),
+                    _ProgramCard(
+                      title: l10n.generalFitness,
+                      subtitle: l10n.beginnerLevel,
+                      icon: Icons.directions_run,
                     ),
                   ],
                 ),
+              ),
 
-                const SizedBox(height: 10),
+              const SizedBox(height: 25),
 
-                SizedBox(
-                  height: 175,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: const [
-                      _ProgramCard(
-                        title: 'بناء العضلات',
-                        subtitle: '4 أسابيع',
-                        icon: Icons.fitness_center,
-                      ),
-                      _ProgramCard(
-                        title: 'حرق الدهون',
-                        subtitle: '3 أسابيع',
-                        icon: Icons.local_fire_department,
-                      ),
-                      _ProgramCard(
-                        title: 'اللياقة العامة',
-                        subtitle: 'مستوى مبتدئ',
-                        icon: Icons.directions_run,
-                      ),
-                    ],
-                  ),
+              // Exercises
+              Text(
+                l10n.suggestedExercises,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
+              ),
+              const SizedBox(height: 15),
 
-                const SizedBox(height: 25),
+              _ExerciseTile(
+                title: l10n.pushUps,
+                subtitle: l10n.setsReps(12),
+                icon: Icons.accessibility_new,
+              ),
+              const SizedBox(height: 12),
+              _ExerciseTile(
+                title: l10n.squats,
+                subtitle: l10n.setsReps(15),
+                icon: Icons.fitness_center,
+              ),
+              const SizedBox(height: 12),
+              _ExerciseTile(
+                title: l10n.plank,
+                subtitle: l10n.setsSeconds(45),
+                icon: Icons.self_improvement,
+              ),
 
-                // Exercises
-                const Text(
-                  'تمارين مقترحة',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 15),
-
-                const _ExerciseTile(
-                  title: 'تمرين الضغط',
-                  subtitle: '3 مجموعات × 12 تكرار',
-                  icon: Icons.accessibility_new,
-                ),
-                const SizedBox(height: 12),
-                const _ExerciseTile(
-                  title: 'تمرين القرفصاء',
-                  subtitle: '3 مجموعات × 15 تكرار',
-                  icon: Icons.fitness_center,
-                ),
-                const SizedBox(height: 12),
-                const _ExerciseTile(
-                  title: 'تمرين البلانك',
-                  subtitle: '3 مجموعات × 45 ثانية',
-                  icon: Icons.self_improvement,
-                ),
-
-                const SizedBox(height: 25),
-              ],
-            ),
+              const SizedBox(height: 25),
+            ],
           ),
         ),
-
-        // Bottom navigation preview
-        bottomNavigationBar: const CustomBottomNavigation(),
       ),
+
+      bottomNavigationBar: const CustomBottomNavigation(),
     );
   }
 }
@@ -377,7 +376,7 @@ class _ProgramCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 155,
-      margin: const EdgeInsets.only(left: 12),
+      margin: const EdgeInsetsDirectional.only(end: 12),
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: cardColor,

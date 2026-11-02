@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../l10n/app_localizations.dart';
 import '../routes/app_router.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -7,6 +9,8 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -29,87 +33,93 @@ class SignupScreen extends StatelessWidget {
                   color: Color(0xFFB47AFF),
                 ),
                 const SizedBox(height: 16),
-                const Text(
-                  'انضم إلى FitForge',
+                Text(
+                  l10n.signupTitle,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(height: 8),
-                const Text(
-                  'ابدأ اليوم ببناء نسخة أقوى من نفسك',
+                Text(
+                  l10n.signupSubtitle,
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white60),
+                  style: const TextStyle(color: Colors.white60),
                 ),
                 const SizedBox(height: 32),
 
-                const Text('الاسم الكامل', textAlign: TextAlign.right),
+                Text(
+                  l10n.fullName,
+                  textAlign: TextAlign.right,
+                ),
                 const SizedBox(height: 8),
-                const TextField(
+                TextField(
                   textDirection: TextDirection.rtl,
                   decoration: InputDecoration(
-                    hintText: 'أدخل اسمك الكامل',
-                    prefixIcon: Icon(Icons.person_outline),
+                    hintText: l10n.fullNameHint,
+                    prefixIcon: const Icon(Icons.person_outline),
                     filled: true,
-                    fillColor: Color(0xFF171722),
-                    border: OutlineInputBorder(
+                    fillColor: const Color(0xFF171722),
+                    border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(14)),
                     ),
                   ),
                 ),
                 const SizedBox(height: 18),
 
-                const Text(
-                  'البريد الإلكتروني',
+                Text(
+                  l10n.email,
                   textAlign: TextAlign.right,
                 ),
                 const SizedBox(height: 8),
-                const TextField(
+                TextField(
                   keyboardType: TextInputType.emailAddress,
                   textDirection: TextDirection.ltr,
                   decoration: InputDecoration(
-                    hintText: 'example@email.com',
-                    prefixIcon: Icon(Icons.email_outlined),
+                    hintText: l10n.emailHint,
+                    prefixIcon: const Icon(Icons.email_outlined),
                     filled: true,
-                    fillColor: Color(0xFF171722),
-                    border: OutlineInputBorder(
+                    fillColor: const Color(0xFF171722),
+                    border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(14)),
                     ),
                   ),
                 ),
                 const SizedBox(height: 18),
 
-                const Text('كلمة المرور', textAlign: TextAlign.right),
-                const SizedBox(height: 8),
-                const TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: 'أنشئ كلمة مرور',
-                    prefixIcon: Icon(Icons.lock_outline),
-                    filled: true,
-                    fillColor: Color(0xFF171722),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(14)),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 18),
-
-                const Text(
-                  'تأكيد كلمة المرور',
+                Text(
+                  l10n.password,
                   textAlign: TextAlign.right,
                 ),
                 const SizedBox(height: 8),
-                const TextField(
+                TextField(
                   obscureText: true,
                   decoration: InputDecoration(
-                    hintText: 'أعد إدخال كلمة المرور',
-                    prefixIcon: Icon(Icons.lock_reset_outlined),
+                    hintText: l10n.passwordCreateHint,
+                    prefixIcon: const Icon(Icons.lock_outline),
                     filled: true,
-                    fillColor: Color(0xFF171722),
-                    border: OutlineInputBorder(
+                    fillColor: const Color(0xFF171722),
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(14)),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 18),
+
+                Text(
+                  l10n.confirmPassword,
+                  textAlign: TextAlign.right,
+                ),
+                const SizedBox(height: 8),
+                TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: l10n.confirmPasswordHint,
+                    prefixIcon: const Icon(Icons.lock_reset_outlined),
+                    filled: true,
+                    fillColor: const Color(0xFF171722),
+                    border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(14)),
                     ),
                   ),
@@ -127,9 +137,9 @@ class SignupScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(14),
                       ),
                     ),
-                    child: const Text(
-                      'إنشاء حساب',
-                      style: TextStyle(
+                    child: Text(
+                      l10n.signup,
+                      style: const TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
@@ -141,15 +151,15 @@ class SignupScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      'لديك حساب بالفعل؟ ',
-                      style: TextStyle(color: Colors.white60),
+                    Text(
+                      l10n.alreadyHaveAccount,
+                      style: const TextStyle(color: Colors.white60),
                     ),
                     TextButton(
                       onPressed: () => context.go(AppRouter.login),
-                      child: const Text(
-                        'تسجيل الدخول',
-                        style: TextStyle(
+                      child: Text(
+                        l10n.login,
+                        style: const TextStyle(
                           color: Color(0xFFB47AFF),
                           fontWeight: FontWeight.bold,
                         ),

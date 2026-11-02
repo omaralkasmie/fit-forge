@@ -29,6 +29,30 @@ const List<Exercise> chestExercises = [
       'فتح المرفقين بزاوية مبالغ فيها.',
       'استخدام وزن أكبر من القدرة على التحكم.',
     ],
+    nameEn: 'Barbell Bench Press',
+muscleGroupEn: 'Chest',
+descriptionEn:
+    'A compound exercise that builds chest strength and size while engaging the shoulders and triceps.',
+difficultyEn: 'Intermediate',
+equipmentEn: 'Barbell',
+targetMusclesEn: [
+  'Pectoralis Major',
+  'Triceps',
+  'Anterior Deltoids',
+],
+instructionsEn: [
+  'Lie on the bench and plant your feet firmly on the floor.',
+  'Grip the bar slightly wider than shoulder width.',
+  'Lower the bar slowly toward the middle of your chest.',
+  'Press the bar upward without forcefully locking your elbows.',
+  'Keep your shoulders and back stable throughout the movement.',
+],
+commonMistakesEn: [
+  'Lifting your feet off the floor.',
+  'Lowering the bar too quickly or without control.',
+  'Flaring your elbows excessively.',
+  'Using more weight than you can control.',
+],
   ),
   Exercise(
     id: 'chest_002',
@@ -58,6 +82,30 @@ const List<Exercise> chestExercises = [
       'إنزال الأوزان بسرعة.',
       'تقويس أسفل الظهر بشكل مبالغ فيه.',
     ],
+    nameEn: 'Dumbbell Bench Press',
+muscleGroupEn: 'Chest',
+descriptionEn:
+    'A dumbbell pressing exercise that develops chest muscles and improves balance between both sides of the body.',
+difficultyEn: 'Beginner',
+equipmentEn: 'Dumbbells',
+targetMusclesEn: [
+  'Pectoralis Major',
+  'Triceps',
+  'Anterior Deltoids',
+],
+instructionsEn: [
+  'Lie on the bench holding a dumbbell in each hand.',
+  'Start with the dumbbells beside your chest and palms facing forward.',
+  'Press both dumbbells upward with a balanced movement.',
+  'Slowly lower the dumbbells to chest level.',
+  'Maintain control throughout the entire repetition.',
+],
+commonMistakesEn: [
+  'Using dumbbells that are too heavy.',
+  'Allowing the dumbbells to collide forcefully.',
+  'Lowering the weights too quickly.',
+  'Arching the lower back excessively.',
+],
   ),
   Exercise(
     id: 'chest_003',
@@ -87,6 +135,30 @@ const List<Exercise> chestExercises = [
       'رفع الكتفين باتجاه الأذنين.',
       'تقليل مدى الحركة دون سبب.',
     ],
+    nameEn: 'Incline Dumbbell Press',
+muscleGroupEn: 'Upper Chest',
+descriptionEn:
+    'An incline pressing exercise that places greater emphasis on the upper chest muscles.',
+difficultyEn: 'Intermediate',
+equipmentEn: 'Dumbbells',
+targetMusclesEn: [
+  'Upper Pectoralis Major',
+  'Anterior Deltoids',
+  'Triceps',
+],
+instructionsEn: [
+  'Set the bench to an incline of approximately 30 to 45 degrees.',
+  'Sit back against the bench holding a dumbbell in each hand.',
+  'Start with the dumbbells beside your upper chest.',
+  'Press the dumbbells upward while maintaining balance.',
+  'Slowly lower the dumbbells to the starting position.',
+],
+commonMistakesEn: [
+  'Setting the bench angle too high.',
+  'Using weights that are too heavy to control.',
+  'Shrugging your shoulders toward your ears.',
+  'Reducing the range of motion unnecessarily.',
+],
   ),
   Exercise(
     id: 'chest_004',
@@ -115,6 +187,29 @@ const List<Exercise> chestExercises = [
       'إنزال الذراعين أكثر من مدى حركة الكتف المريح.',
       'تحويل الحركة إلى تمرين ضغط.',
     ],
+    nameEn: 'Dumbbell Fly',
+muscleGroupEn: 'Chest',
+descriptionEn:
+    'An isolation exercise that targets the chest muscles through an opening and closing movement using dumbbells.',
+difficultyEn: 'Beginner',
+equipmentEn: 'Dumbbells',
+targetMusclesEn: [
+  'Pectoralis Major',
+  'Chest Inner Range',
+],
+instructionsEn: [
+  'Lie on the bench holding a dumbbell in each hand.',
+  'Raise your arms above your chest with a slight bend in your elbows.',
+  'Slowly open your arms out to the sides.',
+  'Stop when you feel a comfortable stretch in your chest.',
+  'Bring your arms back up in a controlled arc.',
+],
+commonMistakesEn: [
+  'Using weights that are too heavy.',
+  'Fully straightening and locking the elbows.',
+  'Lowering the arms beyond a comfortable shoulder range.',
+  'Turning the movement into a pressing exercise.',
+],
   ),
   Exercise(
     id: 'chest_005',
@@ -145,5 +240,30 @@ const List<Exercise> chestExercises = [
       'عدم الوصول إلى مدى حركة مناسب.',
       'تحريك الرأس بشكل منفصل عن الجسم.',
     ],
+    nameEn: 'Push-Ups',
+muscleGroupEn: 'Chest',
+descriptionEn:
+    'A bodyweight exercise that develops chest and arm strength while improving core stability.',
+difficultyEn: 'Beginner',
+equipmentEn: 'Bodyweight',
+targetMusclesEn: [
+  'Pectoralis Major',
+  'Triceps',
+  'Anterior Deltoids',
+  'Core Muscles',
+],
+instructionsEn: [
+  'Start in a plank position with your hands slightly wider than shoulder width.',
+  'Keep your body straight from head to heels.',
+  'Lower your chest toward the floor by bending your elbows.',
+  'Push through your hands to return to the starting position.',
+  'Keep your core stable and avoid letting your hips sag.',
+],
+commonMistakesEn: [
+  'Allowing the lower back to sag.',
+  'Raising the hips excessively.',
+  'Not using an appropriate range of motion.',
+  'Moving the head independently from the body.',
+],
   ),
 ];

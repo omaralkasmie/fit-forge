@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widgets/custom_bottom_navigation.dart';
 
+import '../l10n/app_localizations.dart';
+import '../widgets/custom_bottom_navigation.dart';
 
 const Color progressBg = Color(0xFF080B1B);
 const Color progressCard = Color(0xFF10142B);
@@ -8,52 +9,52 @@ const Color progressPurple = Color(0xFF7138FF);
 const Color progressPink = Color(0xFFED168E);
 const Color progressBlue = Color(0xFF168BFF);
 const Color progressGreen = Color(0xFF20D6A1);
+const Color progressOrange = Color(0xFFFF851B);
 
 class ProgressScreen extends StatelessWidget {
   const ProgressScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
+    final l10n = AppLocalizations.of(context)!;
+
+    return Scaffold(
+      backgroundColor: progressBg,
+      appBar: AppBar(
         backgroundColor: progressBg,
-        appBar: AppBar(
-          backgroundColor: progressBg,
-          foregroundColor: Colors.white,
-          centerTitle: true,
-          title: const Text(
-            'تقدمي الرياضي',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
+        foregroundColor: Colors.white,
+        centerTitle: true,
+        title: Text(
+          l10n.progressTitle,
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        body: ListView(
-          padding: const EdgeInsets.all(20),
-          children: [
-            _buildHeader(),
-            const SizedBox(height: 24),
-            const Text(
-              'ملخص نشاطك',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 21,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 16),
-            _buildStats(),
-            const SizedBox(height: 26),
-            _buildWeightCard(),
-            const SizedBox(height: 26),
-            _buildAchievements(),
-          ],
-        ),
-        bottomNavigationBar:const CustomBottomNavigation(),
       ),
+      body: ListView(
+        padding: const EdgeInsets.all(20),
+        children: [
+          _buildHeader(l10n),
+          const SizedBox(height: 24),
+          Text(
+            l10n.activitySummary,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 21,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 16),
+          _buildStats(l10n),
+          const SizedBox(height: 26),
+          _buildWeightCard(l10n),
+          const SizedBox(height: 26),
+          _buildAchievements(l10n),
+        ],
+      ),
+      bottomNavigationBar: const CustomBottomNavigation(),
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(AppLocalizations l10n) {
     return Container(
       padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
@@ -64,23 +65,23 @@ class ProgressScreen extends StatelessWidget {
           end: Alignment.bottomLeft,
         ),
       ),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.insights, color: Colors.white, size: 34),
-          SizedBox(height: 14),
+          const Icon(Icons.insights, color: Colors.white, size: 34),
+          const SizedBox(height: 14),
           Text(
-            'كل تمرين يقربك من هدفك',
-            style: TextStyle(
+            l10n.everyWorkout,
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 21,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
-            'تابع تقدمك واستمر في بناء نسخة أقوى من نفسك.',
-            style: TextStyle(
+            l10n.progressSubtitle,
+            style: const TextStyle(
               color: Color(0xFFD3D4F4),
               fontSize: 14,
               height: 1.6,
@@ -91,34 +92,34 @@ class ProgressScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStats() {
-    return const Row(
+  Widget _buildStats(AppLocalizations l10n) {
+    return Row(
       children: [
         Expanded(
           child: _StatCard(
-            title: 'التمارين',
+            title: l10n.workoutsLabel,
             value: '24',
-            subtitle: 'هذا الشهر',
+            subtitle: l10n.thisMonth,
             icon: Icons.fitness_center,
             color: progressPurple,
           ),
         ),
-        SizedBox(width: 12),
+        const SizedBox(width: 12),
         Expanded(
           child: _StatCard(
-            title: 'أيام التدريب',
+            title: l10n.trainingDaysLabel,
             value: '12',
-            subtitle: 'هذا الشهر',
+            subtitle: l10n.thisMonth,
             icon: Icons.calendar_month,
             color: progressPink,
           ),
         ),
-        SizedBox(width: 12),
+        const SizedBox(width: 12),
         Expanded(
           child: _StatCard(
-            title: 'الساعات',
+            title: l10n.hoursLabel,
             value: '18',
-            subtitle: 'ساعة تدريب',
+            subtitle: l10n.trainingHours,
             icon: Icons.timer_outlined,
             color: progressBlue,
           ),
@@ -127,7 +128,7 @@ class ProgressScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildWeightCard() {
+  Widget _buildWeightCard(AppLocalizations l10n) {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
@@ -138,25 +139,32 @@ class ProgressScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+          Row(
             children: [
               Expanded(
                 child: Text(
-                  'تطور الوزن',
-                  style: TextStyle(
+                  l10n.weightProgress,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 19,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              Icon(Icons.show_chart, color: progressPurple, size: 28),
+              const Icon(
+                Icons.show_chart,
+                color: progressPurple,
+                size: 28,
+              ),
             ],
           ),
           const SizedBox(height: 8),
-          const Text(
-            'آخر 7 أسابيع',
-            style: TextStyle(color: Colors.white54, fontSize: 13),
+          Text(
+            l10n.last7Weeks,
+            style: const TextStyle(
+              color: Colors.white54,
+              fontSize: 13,
+            ),
           ),
           const SizedBox(height: 20),
           Row(
@@ -171,11 +179,14 @@ class ProgressScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 6),
-              const Padding(
-                padding: EdgeInsets.only(bottom: 5),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 5),
                 child: Text(
-                  'كغم',
-                  style: TextStyle(color: Colors.white60, fontSize: 14),
+                  l10n.weightUnit,
+                  style: const TextStyle(
+                    color: Colors.white60,
+                    fontSize: 14,
+                  ),
                 ),
               ),
               const Spacer(),
@@ -188,9 +199,12 @@ class ProgressScreen extends StatelessWidget {
                   color: progressGreen.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Text(
-                  'الوزن الحالي',
-                  style: TextStyle(color: progressGreen, fontSize: 12),
+                child: Text(
+                  l10n.currentWeight,
+                  style: const TextStyle(
+                    color: progressGreen,
+                    fontSize: 12,
+                  ),
                 ),
               ),
             ],
@@ -213,10 +227,13 @@ class ProgressScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          const Center(
+          Center(
             child: Text(
-              'الأسبوع',
-              style: TextStyle(color: Colors.white54, fontSize: 12),
+              l10n.weekLabel,
+              style: const TextStyle(
+                color: Colors.white54,
+                fontSize: 12,
+              ),
             ),
           ),
         ],
@@ -224,38 +241,36 @@ class ProgressScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAchievements() {
+  Widget _buildAchievements(AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'إنجازاتك',
-          style: TextStyle(
+        Text(
+          l10n.achievementsTitle,
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 21,
             fontWeight: FontWeight.bold,
           ),
         ),
         const SizedBox(height: 16),
-        const _AchievementCard(
+        _AchievementCard(
           icon: Icons.local_fire_department,
-          title: 'بداية قوية',
-          description: 'أكملت 10 أيام تدريب',
+          title: l10n.strongStart,
+          description: l10n.completedTrainingDays,
           color: progressPink,
         ),
         const SizedBox(height: 12),
-        const _AchievementCard(
+        _AchievementCard(
           icon: Icons.bolt,
-          title: 'طاقة مستمرة',
-          description: 'أنجزت 20 تمرينًا',
+          title: l10n.consistentEnergy,
+          description: l10n.completedWorkouts,
           color: progressOrange,
         ),
       ],
     );
   }
 }
-
-const Color progressOrange = Color(0xFFFF851B);
 
 class _StatCard extends StatelessWidget {
   final String title;
@@ -298,14 +313,20 @@ class _StatCard extends StatelessWidget {
             title,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(color: Colors.white, fontSize: 12),
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 12,
+            ),
           ),
           const SizedBox(height: 5),
           Text(
             subtitle,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(color: Colors.white54, fontSize: 10),
+            style: const TextStyle(
+              color: Colors.white54,
+              fontSize: 10,
+            ),
           ),
         ],
       ),
@@ -317,7 +338,10 @@ class _WeightBar extends StatelessWidget {
   final double height;
   final String label;
 
-  const _WeightBar({required this.height, required this.label});
+  const _WeightBar({
+    required this.height,
+    required this.label,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -339,7 +363,10 @@ class _WeightBar extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           label,
-          style: const TextStyle(color: Colors.white54, fontSize: 11),
+          style: const TextStyle(
+            color: Colors.white54,
+            fontSize: 11,
+          ),
         ),
       ],
     );
@@ -395,7 +422,10 @@ class _AchievementCard extends StatelessWidget {
                 const SizedBox(height: 5),
                 Text(
                   description,
-                  style: const TextStyle(color: Colors.white60, fontSize: 13),
+                  style: const TextStyle(
+                    color: Colors.white60,
+                    fontSize: 13,
+                  ),
                 ),
               ],
             ),
