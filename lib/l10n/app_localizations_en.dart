@@ -456,4 +456,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get navProfile => 'Profile';
+
+  @override
+  String get absExercises => 'Abs Exercises';
 }

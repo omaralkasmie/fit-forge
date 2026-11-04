@@ -42,10 +42,7 @@ class ExercisesScreen extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             l10n.chooseMuscleGroup,
-            style: const TextStyle(
-              color: Colors.white60,
-              fontSize: 14,
-            ),
+            style: const TextStyle(color: Colors.white60, fontSize: 14),
           ),
           const SizedBox(height: 25),
 
@@ -61,6 +58,9 @@ class ExercisesScreen extends StatelessWidget {
           const SizedBox(height: 14),
 
           _ExerciseCategory(
+            onTap: () {
+              context.push(AppRouter.backExercises);
+            },
             title: l10n.backExercises,
             subtitle: l10n.backDescription,
             icon: Icons.accessibility_new,
@@ -69,6 +69,9 @@ class ExercisesScreen extends StatelessWidget {
           const SizedBox(height: 14),
 
           _ExerciseCategory(
+            onTap: () {
+              context.push(AppRouter.shoulderExercises);
+            },
             title: l10n.shoulderExercises,
             subtitle: l10n.shoulderDescription,
             icon: Icons.sports_gymnastics,
@@ -77,6 +80,9 @@ class ExercisesScreen extends StatelessWidget {
           const SizedBox(height: 14),
 
           _ExerciseCategory(
+            onTap: () {
+              context.push(AppRouter.legExercises);
+            },
             title: l10n.legExercises,
             subtitle: l10n.legDescription,
             icon: Icons.directions_run,
@@ -85,10 +91,24 @@ class ExercisesScreen extends StatelessWidget {
           const SizedBox(height: 14),
 
           _ExerciseCategory(
+            onTap: () {
+              context.push(AppRouter.armsExercises);
+            },
             title: l10n.armExercises,
             subtitle: l10n.armDescription,
             icon: Icons.sports_handball,
             color: exercisesPinkColor,
+          ),
+          const SizedBox(height: 14),
+
+          _ExerciseCategory(
+            onTap: () {
+              context.push(AppRouter.absExercises);
+            },
+            title: l10n.absExercises,
+            subtitle: 'تمارين عضلات البطن وتقوية الجذع',
+            icon: Icons.accessibility,
+            color: Colors.greenAccent,
           ),
         ],
       ),
@@ -122,9 +142,7 @@ class _ExerciseCategory extends StatelessWidget {
         decoration: BoxDecoration(
           color: exercisesCardColor,
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            color: color.withValues(alpha: 0.35),
-          ),
+          border: Border.all(color: color.withValues(alpha: 0.35)),
         ),
         child: Row(
           children: [
@@ -135,11 +153,7 @@ class _ExerciseCategory extends StatelessWidget {
                 color: color.withValues(alpha: 0.16),
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: Icon(
-                icon,
-                color: color,
-                size: 30,
-              ),
+              child: Icon(icon, color: color, size: 30),
             ),
             const SizedBox(width: 15),
             Expanded(
@@ -157,19 +171,12 @@ class _ExerciseCategory extends StatelessWidget {
                   const SizedBox(height: 6),
                   Text(
                     subtitle,
-                    style: const TextStyle(
-                      color: Colors.white60,
-                      fontSize: 12,
-                    ),
+                    style: const TextStyle(color: Colors.white60, fontSize: 12),
                   ),
                 ],
               ),
             ),
-            Icon(
-              Icons.arrow_back_ios_new,
-              color: color,
-              size: 18,
-            ),
+            Icon(Icons.arrow_back_ios_new, color: color, size: 18),
           ],
         ),
       ),

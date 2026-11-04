@@ -456,4 +456,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get navProfile => 'حسابي';
+
+  @override
+  String get absExercises => 'تمارين البطن';
 }

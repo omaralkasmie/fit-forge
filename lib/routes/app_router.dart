@@ -10,6 +10,13 @@ import '../screens/progress_screen.dart';
 import '../screens/profile_screen.dart';
 import '../screens/exercise_details_screen.dart';
 import '../models/exercise.dart';
+import '../screens/muscle_group_exercises_screen.dart';
+import '../data/exercises/back_exercises.dart';
+import '../l10n/app_localizations.dart';
+import '../data/exercises/shoulder_exercises.dart';
+import '../data/exercises/leg_exercises.dart';
+import '../data/exercises/arms_exercises.dart';
+import '../data/exercises/abs_exercises.dart';
 
 class AppRouter {
   static const login = '/login';
@@ -21,6 +28,11 @@ class AppRouter {
   static const progress = '/progress';
   static const profile = '/profile';
   static const exerciseDetails = '/exercise-details';
+  static const backExercises = '/back_exercises';
+  static const shoulderExercises = '/shoulder-exercises';
+  static const legExercises = '/leg_exercises';
+  static const armsExercises = '/arms-exercises';
+  static const absExercises = '/abs_exercises';
 }
 
 final appRouter = GoRouter(
@@ -70,6 +82,71 @@ final appRouter = GoRouter(
       builder: (context, state) {
         final exercise = state.extra as Exercise;
         return ExerciseDetailsScreen(exercise: exercise);
+      },
+    ),
+    GoRoute(
+      path: AppRouter.backExercises,
+      builder: (context, state) {
+        final l10n = AppLocalizations.of(context)!;
+
+        return MuscleGroupExercisesScreen(
+          title: l10n.backExercises,
+          bannerTitle: l10n.backExercises,
+          bannerSubtitle: l10n.backExercises,
+          exercises: backExercises,
+        );
+      },
+    ),
+    GoRoute(
+      path: AppRouter.shoulderExercises,
+      builder: (context, state) {
+        final l10n = AppLocalizations.of(context)!;
+
+        return MuscleGroupExercisesScreen(
+          title: l10n.shoulderExercises,
+          bannerTitle: l10n.shoulderExercises,
+          bannerSubtitle: l10n.shoulderExercises,
+          exercises: shoulderExercises,
+        );
+      },
+    ),
+    GoRoute(
+      path: AppRouter.legExercises,
+      builder: (context, state) {
+        final l10n = AppLocalizations.of(context)!;
+
+        return MuscleGroupExercisesScreen(
+          title: l10n.legExercises,
+          bannerTitle: l10n.legExercises,
+          bannerSubtitle: l10n.legExercises,
+          exercises: legExercises,
+        );
+      },
+    ),
+    GoRoute(
+      path: AppRouter.armsExercises,
+      builder: (context, state) {
+        final l10n = AppLocalizations.of(context)!;
+
+        return MuscleGroupExercisesScreen(
+          title: l10n.armExercises,
+          bannerTitle: l10n.armExercises,
+          bannerSubtitle: l10n.armExercises,
+          exercises: armsExercises,
+        );
+      },
+    ),
+    GoRoute(
+      path: AppRouter.absExercises,
+      builder: (context, state) {
+        final l10n = AppLocalizations.of(context)!;
+
+        return MuscleGroupExercisesScreen(
+          title: l10n.absExercises,
+          bannerTitle: l10n.absExercises,
+          bannerSubtitle: l10n.absExercises,
+          exercises: absExercises,
+        );
       },
     ),
   ],

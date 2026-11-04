@@ -976,6 +976,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get navProfile;
+
+  /// No description provided for @absExercises.
+  ///
+  /// In en, this message translates to:
+  /// **'Abs Exercises'**
+  String get absExercises;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
