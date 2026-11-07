@@ -459,4 +459,116 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get absExercises => 'تمارين البطن';
+
+  @override
+  String get workoutSetupTitle => 'إعداد التمرين';
+
+  @override
+  String get freeWorkout => 'تمرين حر';
+
+  @override
+  String get programWorkout => 'تمرين من برنامج';
+
+  @override
+  String get selectedExercises => 'التمارين المختارة';
+
+  @override
+  String get addExercises => 'إضافة تمارين';
+
+  @override
+  String get startWorkout => 'ابدأ التمرين';
+
+  @override
+  String get removeExercise => 'حذف التمرين';
+
+  @override
+  String get noExercisesSelected => 'لم تختر أي تمارين بعد';
+
+  @override
+  String get selectExercises => 'اختر التمارين';
+
+  @override
+  String get searchExercises => 'ابحث عن تمرين';
+
+  @override
+  String exerciseCount(Object count) {
+    return '$count تمارين';
+  }
+
+  @override
+  String get activeWorkoutTitle => 'التمرين الحالي';
+
+  @override
+  String get workoutProgress => 'تقدم التمرين';
+
+  @override
+  String get weightLabel => 'الوزن';
+
+  @override
+  String get repsInputLabel => 'التكرارات';
+
+  @override
+  String get kgUnit => 'كغم';
+
+  @override
+  String get completeSet => 'إكمال المجموعة';
+
+  @override
+  String get setCompleted => 'مكتملة';
+
+  @override
+  String get finishWorkout => 'إنهاء التمرين';
+
+  @override
+  String get workoutCompleted => 'أحسنت! أكملت جميع التمارين';
+
+  @override
+  String completedExercisesCount(Object completed, Object total) {
+    return '$completed من $total تمارين';
+  }
+
+  @override
+  String get workoutSummaryTitle => 'ملخص التمرين';
+
+  @override
+  String get workoutDuration => 'مدة التمرين';
+
+  @override
+  String get exercisesCompleted => 'التمارين المكتملة';
+
+  @override
+  String get setsCompleted => 'المجموعات المكتملة';
+
+  @override
+  String get totalWeightLifted => 'إجمالي الوزن المرفوع';
+
+  @override
+  String get backToHome => 'العودة للرئيسية';
+
+  @override
+  String get minutesUnit => 'دقيقة';
+
+  @override
+  String get kilogramsUnit => 'كغم';
+
+  @override
+  String get workoutHistoryTitle => 'سجل التمارين';
+
+  @override
+  String get totalWorkouts => 'إجمالي التمارين';
+
+  @override
+  String get noWorkoutHistory => 'لا توجد تمارين سابقة';
+
+  @override
+  String get startFirstWorkout => 'أكمل أول جلسة تدريبية لتظهر هنا.';
+
+  @override
+  String get exercisesLabel => 'التمارين';
+
+  @override
+  String get durationLabel => 'المدة';
+
+  @override
+  String get workoutHistorySetsLabel => 'المجموعات';
 }

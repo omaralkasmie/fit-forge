@@ -52,11 +52,7 @@ class HomeScreen extends StatelessWidget {
                   const CircleAvatar(
                     radius: 23,
                     backgroundColor: purpleColor,
-                    child: Icon(
-                      Icons.person,
-                      color: Colors.white,
-                      size: 28,
-                    ),
+                    child: Icon(Icons.person, color: Colors.white, size: 28),
                   ),
                 ],
               ),
@@ -75,10 +71,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 8),
               Text(
                 l10n.homeTagline,
-                style: const TextStyle(
-                  fontSize: 15,
-                  color: Colors.white60,
-                ),
+                style: const TextStyle(fontSize: 15, color: Colors.white60),
               ),
 
               const SizedBox(height: 25),
@@ -138,9 +131,7 @@ class HomeScreen extends StatelessWidget {
                         value: 0.6,
                         minHeight: 9,
                         backgroundColor: Colors.white24,
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                          Colors.white,
-                        ),
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                       ),
                     ),
                   ],
@@ -150,14 +141,34 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 25),
 
               // Statistics
-              Text(
-                l10n.todayActivity,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+              SizedBox(
+                width: double.infinity,
+                height: 58,
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    context.push(AppRouter.workoutSetup);
+                  },
+                  icon: const Icon(Icons.fitness_center, color: Colors.white),
+                  label: Text(
+                    l10n.startWorkout,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: purpleColor,
+                    foregroundColor: Colors.white,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
                 ),
               ),
+              const SizedBox(height: 30),
+              Text(l10n.todayActivity),
               const SizedBox(height: 15),
 
               Row(
@@ -333,10 +344,7 @@ class _StatCard extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             title,
-            style: const TextStyle(
-              color: Colors.white70,
-              fontSize: 13,
-            ),
+            style: const TextStyle(color: Colors.white70, fontSize: 13),
           ),
           const SizedBox(height: 7),
           Text(
@@ -350,10 +358,7 @@ class _StatCard extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             subtitle,
-            style: const TextStyle(
-              color: Colors.white38,
-              fontSize: 11,
-            ),
+            style: const TextStyle(color: Colors.white38, fontSize: 11),
           ),
         ],
       ),
@@ -405,10 +410,7 @@ class _ProgramCard extends StatelessWidget {
           ),
           Text(
             subtitle,
-            style: const TextStyle(
-              color: Colors.white54,
-              fontSize: 12,
-            ),
+            style: const TextStyle(color: Colors.white54, fontSize: 12),
           ),
         ],
       ),
@@ -461,19 +463,12 @@ class _ExerciseTile extends StatelessWidget {
                 const SizedBox(height: 6),
                 Text(
                   subtitle,
-                  style: const TextStyle(
-                    color: Colors.white54,
-                    fontSize: 12,
-                  ),
+                  style: const TextStyle(color: Colors.white54, fontSize: 12),
                 ),
               ],
             ),
           ),
-          const Icon(
-            Icons.play_circle_fill,
-            color: purpleColor,
-            size: 35,
-          ),
+          const Icon(Icons.play_circle_fill, color: purpleColor, size: 35),
         ],
       ),
     );

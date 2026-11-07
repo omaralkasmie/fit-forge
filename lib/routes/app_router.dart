@@ -17,6 +17,11 @@ import '../data/exercises/shoulder_exercises.dart';
 import '../data/exercises/leg_exercises.dart';
 import '../data/exercises/arms_exercises.dart';
 import '../data/exercises/abs_exercises.dart';
+import '../screens/workout_exercise_selection_screen.dart';
+import '../screens/workout_setup_screen.dart';
+import '../screens/active_workout_screen.dart';
+import '../screens/workout_summary_screen.dart';
+import '../screens/workout_history_screen.dart';
 
 class AppRouter {
   static const login = '/login';
@@ -33,6 +38,11 @@ class AppRouter {
   static const legExercises = '/leg_exercises';
   static const armsExercises = '/arms-exercises';
   static const absExercises = '/abs_exercises';
+  static const workoutExerciseSelection = '/workout-exercise-selection';
+  static const workoutSetup = '/workout-setup';
+  static const activeWorkout = '/active-workout';
+  static const workoutSummary = '/workout-summary';
+  static const workoutHistory = '/workout-history';
 }
 
 final appRouter = GoRouter(
@@ -148,6 +158,33 @@ final appRouter = GoRouter(
           exercises: absExercises,
         );
       },
+    ),
+    GoRoute(
+      path: AppRouter.workoutExerciseSelection,
+      builder: (context, state) {
+        final selectedExercises =
+            state.extra as List<Exercise>? ?? const <Exercise>[];
+
+        return WorkoutExerciseSelectionScreen(
+          initialSelectedExercises: selectedExercises,
+        );
+      },
+    ),
+    GoRoute(
+      path: AppRouter.workoutSetup,
+      builder: (context, state) => const WorkoutSetupScreen(),
+    ),
+    GoRoute(
+      path: AppRouter.activeWorkout,
+      builder: (context, state) => const ActiveWorkoutScreen(),
+    ),
+    GoRoute(
+      path: AppRouter.workoutSummary,
+      builder: (context, state) => const WorkoutSummaryScreen(),
+    ),
+    GoRoute(
+      path: AppRouter.workoutHistory,
+      builder: (context, state) => const WorkoutHistoryScreen(),
     ),
   ],
 );

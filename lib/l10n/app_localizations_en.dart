@@ -459,4 +459,116 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get absExercises => 'Abs Exercises';
+
+  @override
+  String get workoutSetupTitle => 'Workout Setup';
+
+  @override
+  String get freeWorkout => 'Free Workout';
+
+  @override
+  String get programWorkout => 'Program Workout';
+
+  @override
+  String get selectedExercises => 'Selected Exercises';
+
+  @override
+  String get addExercises => 'Add Exercises';
+
+  @override
+  String get startWorkout => 'Start Workout';
+
+  @override
+  String get removeExercise => 'Remove Exercise';
+
+  @override
+  String get noExercisesSelected => 'You haven\'t selected any exercises yet';
+
+  @override
+  String get selectExercises => 'Select Exercises';
+
+  @override
+  String get searchExercises => 'Search Exercises';
+
+  @override
+  String exerciseCount(Object count) {
+    return '$count Exercises';
+  }
+
+  @override
+  String get activeWorkoutTitle => 'Active Workout';
+
+  @override
+  String get workoutProgress => 'Workout Progress';
+
+  @override
+  String get weightLabel => 'Weight';
+
+  @override
+  String get repsInputLabel => 'Reps';
+
+  @override
+  String get kgUnit => 'kg';
+
+  @override
+  String get completeSet => 'Complete Set';
+
+  @override
+  String get setCompleted => 'Completed';
+
+  @override
+  String get finishWorkout => 'Finish Workout';
+
+  @override
+  String get workoutCompleted => 'Great! You completed all exercises';
+
+  @override
+  String completedExercisesCount(Object completed, Object total) {
+    return '$completed of $total Exercises';
+  }
+
+  @override
+  String get workoutSummaryTitle => 'Workout Summary';
+
+  @override
+  String get workoutDuration => 'Workout Duration';
+
+  @override
+  String get exercisesCompleted => 'Exercises Completed';
+
+  @override
+  String get setsCompleted => 'Sets Completed';
+
+  @override
+  String get totalWeightLifted => 'Total Weight Lifted';
+
+  @override
+  String get backToHome => 'Back to Home';
+
+  @override
+  String get minutesUnit => 'min';
+
+  @override
+  String get kilogramsUnit => 'kg';
+
+  @override
+  String get workoutHistoryTitle => 'Workout History';
+
+  @override
+  String get totalWorkouts => 'Total Workouts';
+
+  @override
+  String get noWorkoutHistory => 'No workouts yet';
+
+  @override
+  String get startFirstWorkout => 'Complete your first workout to see it here.';
+
+  @override
+  String get exercisesLabel => 'Exercises';
+
+  @override
+  String get durationLabel => 'Duration';
+
+  @override
+  String get workoutHistorySetsLabel => 'Sets';
 }

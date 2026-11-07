@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../widgets/custom_bottom_navigation.dart';
 
+import 'package:go_router/go_router.dart';
+
+import '../routes/app_router.dart';
+
 const Color progressBg = Color(0xFF080B1B);
 const Color progressCard = Color(0xFF10142B);
 const Color progressPurple = Color(0xFF7138FF);
@@ -33,6 +37,8 @@ class ProgressScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         children: [
           _buildHeader(l10n),
+          const SizedBox(height: 16),
+          _buildWorkoutHistoryButton(context, l10n),
           const SizedBox(height: 24),
           Text(
             l10n.activitySummary,
@@ -51,6 +57,55 @@ class ProgressScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: const CustomBottomNavigation(),
+    );
+  }
+
+  Widget _buildWorkoutHistoryButton(
+    BuildContext context,
+    AppLocalizations l10n,
+  ) {
+    return InkWell(
+      onTap: () {
+        context.push(AppRouter.workoutHistory);
+      },
+      borderRadius: BorderRadius.circular(18),
+      child: Container(
+        padding: const EdgeInsets.all(18),
+        decoration: BoxDecoration(
+          color: progressCard,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: progressPurple.withValues(alpha: 0.35)),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 48,
+              height: 48,
+              decoration: BoxDecoration(
+                color: progressPurple.withValues(alpha: 0.15),
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: const Icon(Icons.history, color: progressPurple, size: 26),
+            ),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Text(
+                l10n.workoutHistoryTitle,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.white54,
+              size: 17,
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -151,20 +206,13 @@ class ProgressScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const Icon(
-                Icons.show_chart,
-                color: progressPurple,
-                size: 28,
-              ),
+              const Icon(Icons.show_chart, color: progressPurple, size: 28),
             ],
           ),
           const SizedBox(height: 8),
           Text(
             l10n.last7Weeks,
-            style: const TextStyle(
-              color: Colors.white54,
-              fontSize: 13,
-            ),
+            style: const TextStyle(color: Colors.white54, fontSize: 13),
           ),
           const SizedBox(height: 20),
           Row(
@@ -183,10 +231,7 @@ class ProgressScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 5),
                 child: Text(
                   l10n.weightUnit,
-                  style: const TextStyle(
-                    color: Colors.white60,
-                    fontSize: 14,
-                  ),
+                  style: const TextStyle(color: Colors.white60, fontSize: 14),
                 ),
               ),
               const Spacer(),
@@ -201,10 +246,7 @@ class ProgressScreen extends StatelessWidget {
                 ),
                 child: Text(
                   l10n.currentWeight,
-                  style: const TextStyle(
-                    color: progressGreen,
-                    fontSize: 12,
-                  ),
+                  style: const TextStyle(color: progressGreen, fontSize: 12),
                 ),
               ),
             ],
@@ -230,10 +272,7 @@ class ProgressScreen extends StatelessWidget {
           Center(
             child: Text(
               l10n.weekLabel,
-              style: const TextStyle(
-                color: Colors.white54,
-                fontSize: 12,
-              ),
+              style: const TextStyle(color: Colors.white54, fontSize: 12),
             ),
           ),
         ],
@@ -313,20 +352,14 @@ class _StatCard extends StatelessWidget {
             title,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-            ),
+            style: const TextStyle(color: Colors.white, fontSize: 12),
           ),
           const SizedBox(height: 5),
           Text(
             subtitle,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              color: Colors.white54,
-              fontSize: 10,
-            ),
+            style: const TextStyle(color: Colors.white54, fontSize: 10),
           ),
         ],
       ),
@@ -338,10 +371,7 @@ class _WeightBar extends StatelessWidget {
   final double height;
   final String label;
 
-  const _WeightBar({
-    required this.height,
-    required this.label,
-  });
+  const _WeightBar({required this.height, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -363,10 +393,7 @@ class _WeightBar extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           label,
-          style: const TextStyle(
-            color: Colors.white54,
-            fontSize: 11,
-          ),
+          style: const TextStyle(color: Colors.white54, fontSize: 11),
         ),
       ],
     );
@@ -422,10 +449,7 @@ class _AchievementCard extends StatelessWidget {
                 const SizedBox(height: 5),
                 Text(
                   description,
-                  style: const TextStyle(
-                    color: Colors.white60,
-                    fontSize: 13,
-                  ),
+                  style: const TextStyle(color: Colors.white60, fontSize: 13),
                 ),
               ],
             ),

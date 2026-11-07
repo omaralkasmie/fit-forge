@@ -982,6 +982,222 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Abs Exercises'**
   String get absExercises;
+
+  /// No description provided for @workoutSetupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Workout Setup'**
+  String get workoutSetupTitle;
+
+  /// No description provided for @freeWorkout.
+  ///
+  /// In en, this message translates to:
+  /// **'Free Workout'**
+  String get freeWorkout;
+
+  /// No description provided for @programWorkout.
+  ///
+  /// In en, this message translates to:
+  /// **'Program Workout'**
+  String get programWorkout;
+
+  /// No description provided for @selectedExercises.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected Exercises'**
+  String get selectedExercises;
+
+  /// No description provided for @addExercises.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Exercises'**
+  String get addExercises;
+
+  /// No description provided for @startWorkout.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Workout'**
+  String get startWorkout;
+
+  /// No description provided for @removeExercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove Exercise'**
+  String get removeExercise;
+
+  /// No description provided for @noExercisesSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'You haven\'t selected any exercises yet'**
+  String get noExercisesSelected;
+
+  /// No description provided for @selectExercises.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Exercises'**
+  String get selectExercises;
+
+  /// No description provided for @searchExercises.
+  ///
+  /// In en, this message translates to:
+  /// **'Search Exercises'**
+  String get searchExercises;
+
+  /// No description provided for @exerciseCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Exercises'**
+  String exerciseCount(Object count);
+
+  /// No description provided for @activeWorkoutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Workout'**
+  String get activeWorkoutTitle;
+
+  /// No description provided for @workoutProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Workout Progress'**
+  String get workoutProgress;
+
+  /// No description provided for @weightLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight'**
+  String get weightLabel;
+
+  /// No description provided for @repsInputLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reps'**
+  String get repsInputLabel;
+
+  /// No description provided for @kgUnit.
+  ///
+  /// In en, this message translates to:
+  /// **'kg'**
+  String get kgUnit;
+
+  /// No description provided for @completeSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete Set'**
+  String get completeSet;
+
+  /// No description provided for @setCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get setCompleted;
+
+  /// No description provided for @finishWorkout.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish Workout'**
+  String get finishWorkout;
+
+  /// No description provided for @workoutCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Great! You completed all exercises'**
+  String get workoutCompleted;
+
+  /// No description provided for @completedExercisesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{completed} of {total} Exercises'**
+  String completedExercisesCount(Object completed, Object total);
+
+  /// No description provided for @workoutSummaryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Workout Summary'**
+  String get workoutSummaryTitle;
+
+  /// No description provided for @workoutDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'Workout Duration'**
+  String get workoutDuration;
+
+  /// No description provided for @exercisesCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercises Completed'**
+  String get exercisesCompleted;
+
+  /// No description provided for @setsCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Sets Completed'**
+  String get setsCompleted;
+
+  /// No description provided for @totalWeightLifted.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Weight Lifted'**
+  String get totalWeightLifted;
+
+  /// No description provided for @backToHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Home'**
+  String get backToHome;
+
+  /// No description provided for @minutesUnit.
+  ///
+  /// In en, this message translates to:
+  /// **'min'**
+  String get minutesUnit;
+
+  /// No description provided for @kilogramsUnit.
+  ///
+  /// In en, this message translates to:
+  /// **'kg'**
+  String get kilogramsUnit;
+
+  /// No description provided for @workoutHistoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Workout History'**
+  String get workoutHistoryTitle;
+
+  /// No description provided for @totalWorkouts.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Workouts'**
+  String get totalWorkouts;
+
+  /// No description provided for @noWorkoutHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'No workouts yet'**
+  String get noWorkoutHistory;
+
+  /// No description provided for @startFirstWorkout.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete your first workout to see it here.'**
+  String get startFirstWorkout;
+
+  /// No description provided for @exercisesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercises'**
+  String get exercisesLabel;
+
+  /// No description provided for @durationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Duration'**
+  String get durationLabel;
+
+  /// No description provided for @workoutHistorySetsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Sets'**
+  String get workoutHistorySetsLabel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
