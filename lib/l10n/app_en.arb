@@ -187,5 +187,16 @@
 "exercisesLabel": "Exercises",
 "durationLabel": "Duration",
 "totalWeightLifted": "Total Weight Lifted",
-"workoutHistorySetsLabel": "Sets"
+"workoutHistorySetsLabel": "Sets",
+"workoutDetailsTitle": "Workout Details",
+"workoutDetailsError": "Unable to load workout details",
+"workoutExercisesTitle": "Exercises",
+"workoutDetailsDate": "Date",
+"workoutDetailsDuration": "Duration",
+"workoutDetailsExercises": "Exercises",
+"workoutDetailsCompletedSets": "Completed Sets",
+"workoutDetailsTotalWeight": "Total Weight",
+"workoutDetailsSet": "Set",
+"workoutDetailsWeight": "Weight",
+"workoutDetailsReps": "Reps"
 }

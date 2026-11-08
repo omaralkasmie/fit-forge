@@ -571,4 +571,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get workoutHistorySetsLabel => 'Sets';
+
+  @override
+  String get workoutDetailsTitle => 'Workout Details';
+
+  @override
+  String get workoutDetailsError => 'Unable to load workout details';
+
+  @override
+  String get workoutExercisesTitle => 'Exercises';
+
+  @override
+  String get workoutDetailsDate => 'Date';
+
+  @override
+  String get workoutDetailsDuration => 'Duration';
+
+  @override
+  String get workoutDetailsExercises => 'Exercises';
+
+  @override
+  String get workoutDetailsCompletedSets => 'Completed Sets';
+
+  @override
+  String get workoutDetailsTotalWeight => 'Total Weight';
+
+  @override
+  String get workoutDetailsSet => 'Set';
+
+  @override
+  String get workoutDetailsWeight => 'Weight';
+
+  @override
+  String get workoutDetailsReps => 'Reps';
 }

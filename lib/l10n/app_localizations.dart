@@ -1198,6 +1198,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sets'**
   String get workoutHistorySetsLabel;
+
+  /// No description provided for @workoutDetailsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Workout Details'**
+  String get workoutDetailsTitle;
+
+  /// No description provided for @workoutDetailsError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to load workout details'**
+  String get workoutDetailsError;
+
+  /// No description provided for @workoutExercisesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercises'**
+  String get workoutExercisesTitle;
+
+  /// No description provided for @workoutDetailsDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get workoutDetailsDate;
+
+  /// No description provided for @workoutDetailsDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'Duration'**
+  String get workoutDetailsDuration;
+
+  /// No description provided for @workoutDetailsExercises.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercises'**
+  String get workoutDetailsExercises;
+
+  /// No description provided for @workoutDetailsCompletedSets.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed Sets'**
+  String get workoutDetailsCompletedSets;
+
+  /// No description provided for @workoutDetailsTotalWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Weight'**
+  String get workoutDetailsTotalWeight;
+
+  /// No description provided for @workoutDetailsSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Set'**
+  String get workoutDetailsSet;
+
+  /// No description provided for @workoutDetailsWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight'**
+  String get workoutDetailsWeight;
+
+  /// No description provided for @workoutDetailsReps.
+  ///
+  /// In en, this message translates to:
+  /// **'Reps'**
+  String get workoutDetailsReps;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

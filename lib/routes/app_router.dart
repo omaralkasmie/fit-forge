@@ -22,6 +22,7 @@ import '../screens/workout_setup_screen.dart';
 import '../screens/active_workout_screen.dart';
 import '../screens/workout_summary_screen.dart';
 import '../screens/workout_history_screen.dart';
+import '../screens/workout_details_screen.dart';
 
 class AppRouter {
   static const login = '/login';
@@ -43,6 +44,7 @@ class AppRouter {
   static const activeWorkout = '/active-workout';
   static const workoutSummary = '/workout-summary';
   static const workoutHistory = '/workout-history';
+  static const workoutDetails ='/workout-details';
 }
 
 final appRouter = GoRouter(
@@ -185,6 +187,13 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRouter.workoutHistory,
       builder: (context, state) => const WorkoutHistoryScreen(),
+    ),
+    GoRoute(
+      path: AppRouter.workoutDetails,
+      builder: (context, state) {
+        final sessionId = state.extra as String;
+        return WorkoutDetailsScreen(sessionId: sessionId);
+      },
     ),
   ],
 );

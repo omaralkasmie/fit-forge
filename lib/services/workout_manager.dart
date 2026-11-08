@@ -5,6 +5,7 @@ import '../models/workout_exercise.dart';
 import '../models/workout_session.dart';
 import '../repositories/workout_repository.dart';
 import '../models/workout_history_item.dart';
+import '../models/workout_session_details.dart';
 
 class WorkoutManager extends ChangeNotifier {
   final WorkoutRepository _workoutRepository;
@@ -235,4 +236,9 @@ class WorkoutManager extends ChangeNotifier {
 
     notifyListeners();
   }
+  Future<WorkoutSessionDetails?> getWorkoutDetails(
+  String sessionId,
+) {
+  return _workoutRepository.getWorkoutDetails(sessionId);
+}
 }

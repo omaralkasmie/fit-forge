@@ -187,5 +187,16 @@
 "exercisesLabel": "التمارين",
 "durationLabel": "المدة",
 "totalWeightLifted": "إجمالي الوزن المرفوع",
-"workoutHistorySetsLabel": "المجموعات"
+"workoutHistorySetsLabel": "المجموعات",
+"workoutDetailsTitle": "تفاصيل التمرين",
+"workoutDetailsError": "تعذر تحميل تفاصيل التمرين",
+"workoutExercisesTitle": "التمارين",
+"workoutDetailsDate": "التاريخ",
+"workoutDetailsDuration": "المدة",
+"workoutDetailsExercises": "عدد التمارين",
+"workoutDetailsCompletedSets": "المجموعات المكتملة",
+"workoutDetailsTotalWeight": "إجمالي الوزن",
+"workoutDetailsSet": "المجموعة",
+"workoutDetailsWeight": "الوزن",
+"workoutDetailsReps": "التكرارات"
 }

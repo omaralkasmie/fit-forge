@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 import '../l10n/app_localizations.dart';
 import '../models/workout_history_item.dart';
 import '../services/workout_scope.dart';
+import 'package:go_router/go_router.dart';
+import '../routes/app_router.dart';
 
 const Color _backgroundColor = Color(0xFF0B0B16);
 const Color _cardColor = Color(0xFF15182F);
@@ -136,27 +138,35 @@ class _WorkoutHistoryScreenState extends State<WorkoutHistoryScreen> {
   }
 
   Widget _buildWorkoutCard(WorkoutHistoryItem item, AppLocalizations l10n) {
-    final isArabic = Localizations.localeOf(context).languageCode == 'ar';
+  final isArabic = Localizations.localeOf(context).languageCode == 'ar';
 
-    final date = DateFormat(
-      'dd MMM yyyy',
-      isArabic ? 'ar' : 'en',
-    ).format(item.startTime);
+  final date = DateFormat(
+    'dd MMM yyyy',
+    isArabic ? 'ar' : 'en',
+  ).format(item.startTime);
 
-    final time = DateFormat(
-      'hh:mm a',
-      isArabic ? 'ar' : 'en',
-    ).format(item.startTime);
+  final time = DateFormat(
+    'hh:mm a',
+    isArabic ? 'ar' : 'en',
+  ).format(item.startTime);
 
-    final duration = item.duration;
-    final durationText =
-        '${duration.inMinutes} min ${duration.inSeconds.remainder(60)} sec';
+  final duration = item.duration;
+  final durationText =
+      '${duration.inMinutes} min ${duration.inSeconds.remainder(60)} sec';
 
-    final workoutType = item.type == 'free'
-        ? l10n.freeWorkout
-        : l10n.programWorkout;
+  final workoutType = item.type == 'free'
+      ? l10n.freeWorkout
+      : l10n.programWorkout;
 
-    return Container(
+  return InkWell(
+    onTap: () {
+      context.push(
+        AppRouter.workoutDetails,
+        extra: item.id,
+      );
+    },
+    borderRadius: BorderRadius.circular(20),
+    child: Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: _cardColor,
@@ -175,7 +185,10 @@ class _WorkoutHistoryScreenState extends State<WorkoutHistoryScreen> {
                   color: _purpleColor.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(14),
                 ),
-                child: const Icon(Icons.fitness_center, color: _purpleColor),
+                child: const Icon(
+                  Icons.fitness_center,
+                  color: _purpleColor,
+                ),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -201,7 +214,11 @@ class _WorkoutHistoryScreenState extends State<WorkoutHistoryScreen> {
                   ],
                 ),
               ),
-              const Icon(Icons.check_circle, color: _greenColor, size: 24),
+              const Icon(
+                Icons.check_circle,
+                color: _greenColor,
+                size: 24,
+              ),
             ],
           ),
           const SizedBox(height: 20),
@@ -229,11 +246,18 @@ class _WorkoutHistoryScreenState extends State<WorkoutHistoryScreen> {
           const SizedBox(height: 16),
           Row(
             children: [
-              const Icon(Icons.fitness_center, color: _purpleColor, size: 18),
+              const Icon(
+                Icons.fitness_center,
+                color: _purpleColor,
+                size: 18,
+              ),
               const SizedBox(width: 8),
               Text(
                 l10n.totalWeightLifted,
-                style: const TextStyle(color: Colors.white60, fontSize: 13),
+                style: const TextStyle(
+                  color: Colors.white60,
+                  fontSize: 13,
+                ),
               ),
               const Spacer(),
               Text(
@@ -248,8 +272,9 @@ class _WorkoutHistoryScreenState extends State<WorkoutHistoryScreen> {
           ),
         ],
       ),
-    );
-  }
+    ),
+  );
+}
 
   Widget _buildEmptyState(AppLocalizations l10n) {
     return Center(

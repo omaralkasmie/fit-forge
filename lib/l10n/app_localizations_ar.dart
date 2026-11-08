@@ -571,4 +571,37 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get workoutHistorySetsLabel => 'المجموعات';
+
+  @override
+  String get workoutDetailsTitle => 'تفاصيل التمرين';
+
+  @override
+  String get workoutDetailsError => 'تعذر تحميل تفاصيل التمرين';
+
+  @override
+  String get workoutExercisesTitle => 'التمارين';
+
+  @override
+  String get workoutDetailsDate => 'التاريخ';
+
+  @override
+  String get workoutDetailsDuration => 'المدة';
+
+  @override
+  String get workoutDetailsExercises => 'عدد التمارين';
+
+  @override
+  String get workoutDetailsCompletedSets => 'المجموعات المكتملة';
+
+  @override
+  String get workoutDetailsTotalWeight => 'إجمالي الوزن';
+
+  @override
+  String get workoutDetailsSet => 'المجموعة';
+
+  @override
+  String get workoutDetailsWeight => 'الوزن';
+
+  @override
+  String get workoutDetailsReps => 'التكرارات';
 }
