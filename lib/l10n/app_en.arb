@@ -198,5 +198,17 @@
 "workoutDetailsTotalWeight": "Total Weight",
 "workoutDetailsSet": "Set",
 "workoutDetailsWeight": "Weight",
-"workoutDetailsReps": "Reps"
+"workoutDetailsReps": "Reps",
+"progressWeek": "This Week",
+"progressMonth": "This Month",
+"progressYear": "This Year",
+"progressActivityTitle": "Your Training Activity",
+"progressActivitySubtitle": "Your activity during the selected period",
+"progressNoActivity": "No training activity during this period",
+"progressTotalWeight": "Total Weight Lifted",
+"progressPeriodWorkouts": "Workout Sessions",
+"progressPeriodDays": "Training Days",
+"progressPeriodHours": "Training Hours",
+"progressUnlocked": "Achievement Unlocked",
+"progressLocked": "Keep training to unlock this achievement"
 }

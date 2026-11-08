@@ -6,6 +6,7 @@ import '../models/workout_session.dart';
 import '../repositories/workout_repository.dart';
 import '../models/workout_history_item.dart';
 import '../models/workout_session_details.dart';
+import '../models/workout_progress_stats.dart';
 
 class WorkoutManager extends ChangeNotifier {
   final WorkoutRepository _workoutRepository;
@@ -240,5 +241,58 @@ class WorkoutManager extends ChangeNotifier {
   String sessionId,
 ) {
   return _workoutRepository.getWorkoutDetails(sessionId);
+}
+Future<WorkoutProgressStats> getProgressStats({
+  required DateTime startDate,
+  required DateTime endDate,
+}) async {
+  final history = await getWorkoutHistory();
+
+  final filteredWorkouts = history.where((workout) {
+    return !workout.startTime.isBefore(startDate) &&
+        workout.startTime.isBefore(endDate);
+  }).toList();
+
+  final trainingDays = <String>{};
+  final dailyActivity = <DateTime, WorkoutActivityPoint>{};
+
+  Duration totalDuration = Duration.zero;
+  double totalWeightLifted = 0;
+
+  for (final workout in filteredWorkouts) {
+    final date = DateTime(
+      workout.startTime.year,
+      workout.startTime.month,
+      workout.startTime.day,
+    );
+
+    final dateKey = '${date.year}-${date.month}-${date.day}';
+
+    trainingDays.add(dateKey);
+
+    totalDuration += workout.duration;
+    totalWeightLifted += workout.totalWeightLifted;
+
+    final previous = dailyActivity[date];
+
+    dailyActivity[date] = WorkoutActivityPoint(
+      date: date,
+      workoutCount: (previous?.workoutCount ?? 0) + 1,
+      totalWeightLifted:
+          (previous?.totalWeightLifted ?? 0) +
+              workout.totalWeightLifted,
+    );
+  }
+
+  final activityPoints = dailyActivity.values.toList()
+    ..sort((a, b) => a.date.compareTo(b.date));
+
+  return WorkoutProgressStats(
+    workoutCount: filteredWorkouts.length,
+    trainingDays: trainingDays.length,
+    totalDuration: totalDuration,
+    totalWeightLifted: totalWeightLifted,
+    activityPoints: activityPoints,
+  );
 }
 }

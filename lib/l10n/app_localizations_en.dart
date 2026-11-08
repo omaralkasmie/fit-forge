@@ -604,4 +604,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get workoutDetailsReps => 'Reps';
+
+  @override
+  String get progressWeek => 'This Week';
+
+  @override
+  String get progressMonth => 'This Month';
+
+  @override
+  String get progressYear => 'This Year';
+
+  @override
+  String get progressActivityTitle => 'Your Training Activity';
+
+  @override
+  String get progressActivitySubtitle => 'Your activity during the selected period';
+
+  @override
+  String get progressNoActivity => 'No training activity during this period';
+
+  @override
+  String get progressTotalWeight => 'Total Weight Lifted';
+
+  @override
+  String get progressPeriodWorkouts => 'Workout Sessions';
+
+  @override
+  String get progressPeriodDays => 'Training Days';
+
+  @override
+  String get progressPeriodHours => 'Training Hours';
+
+  @override
+  String get progressUnlocked => 'Achievement Unlocked';
+
+  @override
+  String get progressLocked => 'Keep training to unlock this achievement';
 }

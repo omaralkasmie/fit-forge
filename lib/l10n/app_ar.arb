@@ -198,5 +198,17 @@
 "workoutDetailsTotalWeight": "إجمالي الوزن",
 "workoutDetailsSet": "المجموعة",
 "workoutDetailsWeight": "الوزن",
-"workoutDetailsReps": "التكرارات"
+"workoutDetailsReps": "التكرارات",
+"progressWeek": "هذا الأسبوع",
+"progressMonth": "هذا الشهر",
+"progressYear": "هذه السنة",
+"progressActivityTitle": "نشاطك التدريبي",
+"progressActivitySubtitle": "ملخص نشاطك خلال الفترة المختارة",
+"progressNoActivity": "لا يوجد نشاط تدريبي خلال هذه الفترة",
+"progressTotalWeight": "إجمالي الوزن المرفوع",
+"progressPeriodWorkouts": "جلسات التدريب",
+"progressPeriodDays": "أيام التدريب",
+"progressPeriodHours": "ساعات التدريب",
+"progressUnlocked": "تم تحقيق الإنجاز",
+"progressLocked": "واصل التدريب لتحقيق هذا الإنجاز"
 }

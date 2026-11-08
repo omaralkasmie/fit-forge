@@ -604,4 +604,40 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get workoutDetailsReps => 'التكرارات';
+
+  @override
+  String get progressWeek => 'هذا الأسبوع';
+
+  @override
+  String get progressMonth => 'هذا الشهر';
+
+  @override
+  String get progressYear => 'هذه السنة';
+
+  @override
+  String get progressActivityTitle => 'نشاطك التدريبي';
+
+  @override
+  String get progressActivitySubtitle => 'ملخص نشاطك خلال الفترة المختارة';
+
+  @override
+  String get progressNoActivity => 'لا يوجد نشاط تدريبي خلال هذه الفترة';
+
+  @override
+  String get progressTotalWeight => 'إجمالي الوزن المرفوع';
+
+  @override
+  String get progressPeriodWorkouts => 'جلسات التدريب';
+
+  @override
+  String get progressPeriodDays => 'أيام التدريب';
+
+  @override
+  String get progressPeriodHours => 'ساعات التدريب';
+
+  @override
+  String get progressUnlocked => 'تم تحقيق الإنجاز';
+
+  @override
+  String get progressLocked => 'واصل التدريب لتحقيق هذا الإنجاز';
 }

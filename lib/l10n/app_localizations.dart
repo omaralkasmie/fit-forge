@@ -1264,6 +1264,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Reps'**
   String get workoutDetailsReps;
+
+  /// No description provided for @progressWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'This Week'**
+  String get progressWeek;
+
+  /// No description provided for @progressMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'This Month'**
+  String get progressMonth;
+
+  /// No description provided for @progressYear.
+  ///
+  /// In en, this message translates to:
+  /// **'This Year'**
+  String get progressYear;
+
+  /// No description provided for @progressActivityTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Training Activity'**
+  String get progressActivityTitle;
+
+  /// No description provided for @progressActivitySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your activity during the selected period'**
+  String get progressActivitySubtitle;
+
+  /// No description provided for @progressNoActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'No training activity during this period'**
+  String get progressNoActivity;
+
+  /// No description provided for @progressTotalWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Weight Lifted'**
+  String get progressTotalWeight;
+
+  /// No description provided for @progressPeriodWorkouts.
+  ///
+  /// In en, this message translates to:
+  /// **'Workout Sessions'**
+  String get progressPeriodWorkouts;
+
+  /// No description provided for @progressPeriodDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Training Days'**
+  String get progressPeriodDays;
+
+  /// No description provided for @progressPeriodHours.
+  ///
+  /// In en, this message translates to:
+  /// **'Training Hours'**
+  String get progressPeriodHours;
+
+  /// No description provided for @progressUnlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Achievement Unlocked'**
+  String get progressUnlocked;
+
+  /// No description provided for @progressLocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep training to unlock this achievement'**
+  String get progressLocked;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
