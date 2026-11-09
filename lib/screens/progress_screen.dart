@@ -8,6 +8,8 @@ import '../routes/app_router.dart';
 import '../services/workout_manager.dart';
 import '../services/workout_scope.dart';
 import '../widgets/custom_bottom_navigation.dart';
+import '../models/workout_achievement.dart';
+
 
 const Color progressBg = Color(0xFF080B1B);
 const Color progressCard = Color(0xFF10142B);
@@ -30,7 +32,13 @@ class _ProgressScreenState extends State<ProgressScreen> {
   WorkoutManager? _workoutManager;
   Future<WorkoutProgressStats>? _statsFuture;
 
+  Future<List<WorkoutAchievement>>? _achievementsFuture;
+
   _ProgressPeriod _selectedPeriod = _ProgressPeriod.month;
+
+  void _loadAchievements() {
+    _achievementsFuture = _workoutManager!.getWorkoutAchievements();
+  }
 
   @override
   void didChangeDependencies() {
@@ -39,6 +47,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
     if (_workoutManager == null) {
       _workoutManager = WorkoutScope.of(context);
       _loadStats();
+      _loadAchievements();
     }
   }
 
@@ -95,7 +104,10 @@ class _ProgressScreenState extends State<ProgressScreen> {
     await context.push(AppRouter.workoutHistory);
 
     if (mounted) {
-      setState(_loadStats);
+      setState(() {
+        _loadStats();
+        _loadAchievements();
+      });
     }
   }
 
@@ -169,6 +181,8 @@ class _ProgressScreenState extends State<ProgressScreen> {
                   _buildStats(stats, l10n),
                   const SizedBox(height: 22),
                   _buildActivityCard(stats, l10n),
+                  const SizedBox(height: 24),
+                  _buildAchievementsSection(l10n),
                 ],
               );
             },
@@ -337,124 +351,253 @@ class _ProgressScreenState extends State<ProgressScreen> {
   }
 
   Widget _buildActivityCard(
-    WorkoutProgressStats stats,
-    AppLocalizations l10n,
-  ) {
-    final bars = _createActivityBars(stats, l10n);
+  WorkoutProgressStats stats,
+  AppLocalizations l10n,
+) {
+  final bars = _createActivityBars(stats, l10n);
+  final hasActivity = bars.any((bar) => bar.value > 0);
 
-    final hasActivity = bars.any((bar) => bar.value > 0);
-
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: progressCard,
-        borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: Colors.white10),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            l10n.progressActivityTitle,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 19,
-              fontWeight: FontWeight.bold,
-            ),
+  return Container(
+    padding: const EdgeInsets.all(20),
+    decoration: BoxDecoration(
+      color: progressCard,
+      borderRadius: BorderRadius.circular(22),
+      border: Border.all(color: Colors.white10),
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          l10n.progressActivityTitle,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 19,
+            fontWeight: FontWeight.bold,
           ),
-          const SizedBox(height: 8),
-          Text(
-            l10n.progressActivitySubtitle,
-            style: const TextStyle(
-              color: Colors.white54,
-              fontSize: 13,
-            ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          l10n.progressActivitySubtitle,
+          style: const TextStyle(
+            color: Colors.white54,
+            fontSize: 13,
           ),
-          const SizedBox(height: 20),
-
-          // Total weight lifted
-          Container(
-            padding: const EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              color: progressPurple.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.fitness_center,
-                  color: progressPurple,
-                  size: 26,
+        ),
+        const SizedBox(height: 20),
+        Container(
+          padding: const EdgeInsets.all(15),
+          decoration: BoxDecoration(
+            color: progressPurple.withValues(alpha: 0.12),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Row(
+            children: [
+              const Icon(
+                Icons.fitness_center,
+                color: progressPurple,
+                size: 26,
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  l10n.progressTotalWeight,
+                  style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 13,
+                  ),
                 ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Text(
-                    l10n.progressTotalWeight,
+              ),
+              Text(
+                '${stats.totalWeightLifted.toStringAsFixed(1)} ${l10n.weightUnit}',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 24),
+        if (!hasActivity)
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 30),
+            child: Center(
+              child: Column(
+                children: [
+                  const Icon(
+                    Icons.insert_chart_outlined,
+                    color: Colors.white38,
+                    size: 42,
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    l10n.progressNoActivity,
+                    textAlign: TextAlign.center,
                     style: const TextStyle(
-                      color: Colors.white70,
+                      color: Colors.white54,
                       fontSize: 13,
                     ),
                   ),
-                ),
-                Text(
-                  '${stats.totalWeightLifted.toStringAsFixed(1)} ${l10n.weightUnit}',
+                ],
+              ),
+            ),
+          )
+        else
+          SizedBox(
+            height: 150,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: bars.map((bar) {
+                return _ActivityBar(
+                  value: bar.value,
+                  maxValue: bars
+                      .map((item) => item.value)
+                      .reduce((a, b) => a > b ? a : b),
+                  label: bar.label,
+                );
+              }).toList(),
+            ),
+          ),
+      ],
+    ),
+  );
+}
+
+Widget _buildAchievementsSection(AppLocalizations l10n) {
+  return FutureBuilder<List<WorkoutAchievement>>(
+    future: _achievementsFuture,
+    builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return const Center(
+          child: Padding(
+            padding: EdgeInsets.all(24),
+            child: CircularProgressIndicator(color: progressPurple),
+          ),
+        );
+      }
+
+      if (snapshot.hasError || !snapshot.hasData) {
+        return const SizedBox.shrink();
+      }
+
+      final achievements = snapshot.data!;
+      final unlockedCount =
+          achievements.where((item) => item.isUnlocked).length;
+
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  l10n.achievementsTitle,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 21,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              ],
-            ),
-          ),
-
-          const SizedBox(height: 24),
-
-          if (!hasActivity)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30),
-              child: Center(
-                child: Column(
-                  children: [
-                    const Icon(
-                      Icons.insert_chart_outlined,
-                      color: Colors.white38,
-                      size: 42,
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      l10n.progressNoActivity,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white54,
-                        fontSize: 13,
-                      ),
-                    ),
-                  ],
+              ),
+              Text(
+                '$unlockedCount / ${achievements.length}',
+                style: const TextStyle(
+                  color: progressPurple,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            )
-          else
-            SizedBox(
-              height: 150,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: bars.map((bar) {
-                  return _ActivityBar(
-                    value: bar.value,
-                    maxValue: bars
-                        .map((item) => item.value)
-                        .reduce((a, b) => a > b ? a : b),
-                    label: bar.label,
-                  );
-                }).toList(),
-              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: achievements.length,
+            gridDelegate:
+                const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              childAspectRatio: 0.88,
             ),
+            itemBuilder: (context, index) {
+              final achievement = achievements[index];
+
+              return _AchievementCard(
+                achievement: achievement,
+                title: _achievementTitle(achievement.id, l10n),
+                description:
+                    _achievementDescription(achievement.id, l10n),
+                icon: _achievementIcon(achievement.id),
+                l10n: l10n,
+              );
+            },
+          ),
         ],
-      ),
-    );
+      );
+    },
+  );
+}
+
+String _achievementTitle(String id, AppLocalizations l10n) {
+  switch (id) {
+    case 'first_workout':
+      return l10n.achievementFirstWorkout;
+    case 'five_workouts':
+      return l10n.achievementFiveWorkouts;
+    case 'ten_workouts':
+      return l10n.achievementTenWorkouts;
+    case 'ten_training_days':
+      return l10n.achievementTenDays;
+    case 'twenty_five_workouts':
+      return l10n.achievementTwentyFiveWorkouts;
+    case 'fifty_workouts':
+      return l10n.achievementFiftyWorkouts;
+    default:
+      return '';
   }
+}
+
+String _achievementDescription(String id, AppLocalizations l10n) {
+  switch (id) {
+    case 'first_workout':
+      return l10n.achievementFirstWorkoutDesc;
+    case 'five_workouts':
+      return l10n.achievementFiveWorkoutsDesc;
+    case 'ten_workouts':
+      return l10n.achievementTenWorkoutsDesc;
+    case 'ten_training_days':
+      return l10n.achievementTenDaysDesc;
+    case 'twenty_five_workouts':
+      return l10n.achievementTwentyFiveWorkoutsDesc;
+    case 'fifty_workouts':
+      return l10n.achievementFiftyWorkoutsDesc;
+    default:
+      return '';
+  }
+}
+
+IconData _achievementIcon(String id) {
+  switch (id) {
+    case 'first_workout':
+      return Icons.flag_rounded;
+    case 'five_workouts':
+      return Icons.local_fire_department_rounded;
+    case 'ten_workouts':
+      return Icons.fitness_center_rounded;
+    case 'ten_training_days':
+      return Icons.calendar_month_rounded;
+    case 'twenty_five_workouts':
+      return Icons.military_tech_rounded;
+    case 'fifty_workouts':
+      return Icons.emoji_events_rounded;
+    default:
+      return Icons.star_rounded;
+  }
+}
 
   List<_ActivityBarData> _createActivityBars(
     WorkoutProgressStats stats,
@@ -700,6 +843,181 @@ class _ActivityBar extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+class _AchievementCard extends StatefulWidget {
+  final WorkoutAchievement achievement;
+  final String title;
+  final String description;
+  final IconData icon;
+  final AppLocalizations l10n;
+
+  const _AchievementCard({
+    required this.achievement,
+    required this.title,
+    required this.description,
+    required this.icon,
+    required this.l10n,
+  });
+
+  @override
+  State<_AchievementCard> createState() => _AchievementCardState();
+}
+
+class _AchievementCardState extends State<_AchievementCard>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation<double> _scaleAnimation;
+  late final Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 750),
+    );
+
+    _scaleAnimation = Tween<double>(
+      begin: 0.75,
+      end: 1.0,
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeOutBack,
+      ),
+    );
+
+    _fadeAnimation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeIn,
+    );
+
+    _controller.forward();
+  }
+
+  @override
+  void didUpdateWidget(covariant _AchievementCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (!oldWidget.achievement.isUnlocked &&
+        widget.achievement.isUnlocked) {
+      _controller.forward(from: 0);
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final achievement = widget.achievement;
+    final unlocked = achievement.isUnlocked;
+    final color = unlocked ? progressPurple : Colors.blueGrey;
+
+    return FadeTransition(
+      opacity: _fadeAnimation,
+      child: ScaleTransition(
+        scale: _scaleAnimation,
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (context, child) {
+            return Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                color: progressCard,
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(
+                  color: color.withValues(
+                    alpha: unlocked ? 0.55 : 0.2,
+                  ),
+                ),
+                boxShadow: unlocked
+                    ? [
+                        BoxShadow(
+                          color: progressPurple.withValues(
+                            alpha: 0.22 * _controller.value,
+                          ),
+                          blurRadius: 18 * _controller.value,
+                          spreadRadius: 1,
+                        ),
+                      ]
+                    : [],
+              ),
+              child: child,
+            );
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 42,
+                height: 42,
+                decoration: BoxDecoration(
+                  color: color.withValues(alpha: 0.15),
+                  borderRadius: BorderRadius.circular(13),
+                ),
+                child: Icon(
+                  widget.icon,
+                  color: color,
+                  size: 24,
+                ),
+              ),
+              const SizedBox(height: 12),
+              Text(
+                widget.title,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: unlocked ? Colors.white : Colors.white70,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                ),
+              ),
+              const SizedBox(height: 6),
+              Expanded(
+                child: Text(
+                  widget.description,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    color: Colors.white54,
+                    fontSize: 11,
+                    height: 1.4,
+                  ),
+                ),
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: LinearProgressIndicator(
+                  value: achievement.progress,
+                  minHeight: 6,
+                  backgroundColor: Colors.white10,
+                  valueColor: AlwaysStoppedAnimation<Color>(color),
+                ),
+              ),
+              const SizedBox(height: 7),
+              Text(
+                unlocked
+                    ? widget.l10n.achievementUnlocked
+                    : '${achievement.currentValue} / ${achievement.targetValue} ${widget.l10n.achievementProgress}',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: unlocked ? progressGreen : Colors.white54,
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

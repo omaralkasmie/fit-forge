@@ -7,6 +7,7 @@ import '../repositories/workout_repository.dart';
 import '../models/workout_history_item.dart';
 import '../models/workout_session_details.dart';
 import '../models/workout_progress_stats.dart';
+import '../models/workout_achievement.dart';
 
 class WorkoutManager extends ChangeNotifier {
   final WorkoutRepository _workoutRepository;
@@ -295,4 +296,55 @@ Future<WorkoutProgressStats> getProgressStats({
     activityPoints: activityPoints,
   );
 }
+Future<List<WorkoutAchievement>> getWorkoutAchievements() async {
+  final history = await getWorkoutHistory();
+
+  final completedWorkouts = history
+      .where((workout) => workout.completedSets > 0)
+      .toList();
+
+  final trainingDays = <String>{};
+
+  for (final workout in completedWorkouts) {
+    final date = workout.startTime;
+
+    trainingDays.add(
+      '${date.year}-${date.month}-${date.day}',
+    );
+  }
+
+  return [
+    WorkoutAchievement(
+      id: 'first_workout',
+      currentValue: completedWorkouts.length,
+      targetValue: 1,
+    ),
+    WorkoutAchievement(
+      id: 'five_workouts',
+      currentValue: completedWorkouts.length,
+      targetValue: 5,
+    ),
+    WorkoutAchievement(
+      id: 'ten_workouts',
+      currentValue: completedWorkouts.length,
+      targetValue: 10,
+    ),
+    WorkoutAchievement(
+      id: 'ten_training_days',
+      currentValue: trainingDays.length,
+      targetValue: 10,
+    ),
+    WorkoutAchievement(
+      id: 'twenty_five_workouts',
+      currentValue: completedWorkouts.length,
+      targetValue: 25,
+    ),
+    WorkoutAchievement(
+      id: 'fifty_workouts',
+      currentValue: completedWorkouts.length,
+      targetValue: 50,
+    ),
+  ];
+}
+
 }

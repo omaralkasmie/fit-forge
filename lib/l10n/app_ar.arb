@@ -210,5 +210,20 @@
 "progressPeriodDays": "أيام التدريب",
 "progressPeriodHours": "ساعات التدريب",
 "progressUnlocked": "تم تحقيق الإنجاز",
-"progressLocked": "واصل التدريب لتحقيق هذا الإنجاز"
+"progressLocked": "واصل التدريب لتحقيق هذا الإنجاز",
+"achievementsTitle": "إنجازاتي",
+"achievementFirstWorkout": "البداية القوية",
+"achievementFirstWorkoutDesc": "أكمل أول جلسة تدريبية",
+"achievementFiveWorkouts": "ملتزم بالتدريب",
+"achievementFiveWorkoutsDesc": "أكمل 5 جلسات تدريبية",
+"achievementTenWorkouts": "محارب الحديد",
+"achievementTenWorkoutsDesc": "أكمل 10 جلسات تدريبية",
+"achievementTenDays": "رياضي نشيط",
+"achievementTenDaysDesc": "تدرب في 10 أيام مختلفة",
+"achievementTwentyFiveWorkouts": "بطل FitForge",
+"achievementTwentyFiveWorkoutsDesc": "أكمل 25 جلسة تدريبية",
+"achievementFiftyWorkouts": "أسطورة التدريب",
+"achievementFiftyWorkoutsDesc": "أكمل 50 جلسة تدريبية",
+"achievementProgress": "التقدم",
+"achievementUnlocked": "تم فتح الإنجاز"
 }

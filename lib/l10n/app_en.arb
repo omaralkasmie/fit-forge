@@ -210,5 +210,20 @@
 "progressPeriodDays": "Training Days",
 "progressPeriodHours": "Training Hours",
 "progressUnlocked": "Achievement Unlocked",
-"progressLocked": "Keep training to unlock this achievement"
+"progressLocked": "Keep training to unlock this achievement",
+"achievementsTitle": "My Achievements",
+"achievementFirstWorkout": "Strong Start",
+"achievementFirstWorkoutDesc": "Complete your first workout",
+"achievementFiveWorkouts": "Consistent Athlete",
+"achievementFiveWorkoutsDesc": "Complete 5 workouts",
+"achievementTenWorkouts": "Iron Warrior",
+"achievementTenWorkoutsDesc": "Complete 10 workouts",
+"achievementTenDays": "Active Athlete",
+"achievementTenDaysDesc": "Train on 10 different days",
+"achievementTwentyFiveWorkouts": "FitForge Champion",
+"achievementTwentyFiveWorkoutsDesc": "Complete 25 workouts",
+"achievementFiftyWorkouts": "Training Legend",
+"achievementFiftyWorkoutsDesc": "Complete 50 workouts",
+"achievementProgress": "Progress",
+"achievementUnlocked": "Achievement Unlocked"
 }

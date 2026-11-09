@@ -800,7 +800,7 @@ abstract class AppLocalizations {
   /// No description provided for @achievementsTitle.
   ///
   /// In en, this message translates to:
-  /// **'Achievements'**
+  /// **'My Achievements'**
   String get achievementsTitle;
 
   /// No description provided for @strongStart.
@@ -1336,6 +1336,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Keep training to unlock this achievement'**
   String get progressLocked;
+
+  /// No description provided for @achievementFirstWorkout.
+  ///
+  /// In en, this message translates to:
+  /// **'Strong Start'**
+  String get achievementFirstWorkout;
+
+  /// No description provided for @achievementFirstWorkoutDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete your first workout'**
+  String get achievementFirstWorkoutDesc;
+
+  /// No description provided for @achievementFiveWorkouts.
+  ///
+  /// In en, this message translates to:
+  /// **'Consistent Athlete'**
+  String get achievementFiveWorkouts;
+
+  /// No description provided for @achievementFiveWorkoutsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete 5 workouts'**
+  String get achievementFiveWorkoutsDesc;
+
+  /// No description provided for @achievementTenWorkouts.
+  ///
+  /// In en, this message translates to:
+  /// **'Iron Warrior'**
+  String get achievementTenWorkouts;
+
+  /// No description provided for @achievementTenWorkoutsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete 10 workouts'**
+  String get achievementTenWorkoutsDesc;
+
+  /// No description provided for @achievementTenDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Athlete'**
+  String get achievementTenDays;
+
+  /// No description provided for @achievementTenDaysDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Train on 10 different days'**
+  String get achievementTenDaysDesc;
+
+  /// No description provided for @achievementTwentyFiveWorkouts.
+  ///
+  /// In en, this message translates to:
+  /// **'FitForge Champion'**
+  String get achievementTwentyFiveWorkouts;
+
+  /// No description provided for @achievementTwentyFiveWorkoutsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete 25 workouts'**
+  String get achievementTwentyFiveWorkoutsDesc;
+
+  /// No description provided for @achievementFiftyWorkouts.
+  ///
+  /// In en, this message translates to:
+  /// **'Training Legend'**
+  String get achievementFiftyWorkouts;
+
+  /// No description provided for @achievementFiftyWorkoutsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete 50 workouts'**
+  String get achievementFiftyWorkoutsDesc;
+
+  /// No description provided for @achievementProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Progress'**
+  String get achievementProgress;
+
+  /// No description provided for @achievementUnlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Achievement Unlocked'**
+  String get achievementUnlocked;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

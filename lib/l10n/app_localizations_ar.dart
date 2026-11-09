@@ -368,7 +368,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get weekLabel => 'الأسبوع';
 
   @override
-  String get achievementsTitle => 'إنجازاتك';
+  String get achievementsTitle => 'إنجازاتي';
 
   @override
   String get strongStart => 'بداية قوية';
@@ -640,4 +640,46 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get progressLocked => 'واصل التدريب لتحقيق هذا الإنجاز';
+
+  @override
+  String get achievementFirstWorkout => 'البداية القوية';
+
+  @override
+  String get achievementFirstWorkoutDesc => 'أكمل أول جلسة تدريبية';
+
+  @override
+  String get achievementFiveWorkouts => 'ملتزم بالتدريب';
+
+  @override
+  String get achievementFiveWorkoutsDesc => 'أكمل 5 جلسات تدريبية';
+
+  @override
+  String get achievementTenWorkouts => 'محارب الحديد';
+
+  @override
+  String get achievementTenWorkoutsDesc => 'أكمل 10 جلسات تدريبية';
+
+  @override
+  String get achievementTenDays => 'رياضي نشيط';
+
+  @override
+  String get achievementTenDaysDesc => 'تدرب في 10 أيام مختلفة';
+
+  @override
+  String get achievementTwentyFiveWorkouts => 'بطل FitForge';
+
+  @override
+  String get achievementTwentyFiveWorkoutsDesc => 'أكمل 25 جلسة تدريبية';
+
+  @override
+  String get achievementFiftyWorkouts => 'أسطورة التدريب';
+
+  @override
+  String get achievementFiftyWorkoutsDesc => 'أكمل 50 جلسة تدريبية';
+
+  @override
+  String get achievementProgress => 'التقدم';
+
+  @override
+  String get achievementUnlocked => 'تم فتح الإنجاز';
 }

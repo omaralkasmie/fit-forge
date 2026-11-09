@@ -368,7 +368,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get weekLabel => 'Week';
 
   @override
-  String get achievementsTitle => 'Achievements';
+  String get achievementsTitle => 'My Achievements';
 
   @override
   String get strongStart => 'Strong Start';
@@ -640,4 +640,46 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get progressLocked => 'Keep training to unlock this achievement';
+
+  @override
+  String get achievementFirstWorkout => 'Strong Start';
+
+  @override
+  String get achievementFirstWorkoutDesc => 'Complete your first workout';
+
+  @override
+  String get achievementFiveWorkouts => 'Consistent Athlete';
+
+  @override
+  String get achievementFiveWorkoutsDesc => 'Complete 5 workouts';
+
+  @override
+  String get achievementTenWorkouts => 'Iron Warrior';
+
+  @override
+  String get achievementTenWorkoutsDesc => 'Complete 10 workouts';
+
+  @override
+  String get achievementTenDays => 'Active Athlete';
+
+  @override
+  String get achievementTenDaysDesc => 'Train on 10 different days';
+
+  @override
+  String get achievementTwentyFiveWorkouts => 'FitForge Champion';
+
+  @override
+  String get achievementTwentyFiveWorkoutsDesc => 'Complete 25 workouts';
+
+  @override
+  String get achievementFiftyWorkouts => 'Training Legend';
+
+  @override
+  String get achievementFiftyWorkoutsDesc => 'Complete 50 workouts';
+
+  @override
+  String get achievementProgress => 'Progress';
+
+  @override
+  String get achievementUnlocked => 'Achievement Unlocked';
 }
