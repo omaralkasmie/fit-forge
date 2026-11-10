@@ -1,3 +1,4 @@
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
@@ -503,11 +504,14 @@ Widget _buildAchievementsSection(AppLocalizations l10n) {
               ),
               Text(
                 '$unlockedCount / ${achievements.length}',
+                textDirection: ui.TextDirection.rtl,
                 style: const TextStyle(
                   color: progressPurple,
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
+                  
                 ),
+            
               ),
             ],
           ),
@@ -878,11 +882,11 @@ class _AchievementCardState extends State<_AchievementCard>
 
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 750),
+      duration: const Duration(milliseconds: 1400),
     );
 
     _scaleAnimation = Tween<double>(
-      begin: 0.75,
+      begin: 0.45,
       end: 1.0,
     ).animate(
       CurvedAnimation(
@@ -896,7 +900,11 @@ class _AchievementCardState extends State<_AchievementCard>
       curve: Curves.easeIn,
     );
 
-    _controller.forward();
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      if(mounted) {
+        _controller.forward();
+      }
+    });
   }
 
   @override
@@ -1007,6 +1015,7 @@ class _AchievementCardState extends State<_AchievementCard>
                 unlocked
                     ? widget.l10n.achievementUnlocked
                     : '${achievement.currentValue} / ${achievement.targetValue} ${widget.l10n.achievementProgress}',
+                    textDirection: ui.TextDirection.rtl,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
