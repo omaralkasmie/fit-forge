@@ -29,6 +29,18 @@ class Exercise {
   final int suggestedReps;
   final bool isCustom;
 
+  // External library data
+  final List<String> secondaryMuscles;
+  final List<String>? secondaryMusclesEn;
+
+  final String? category;
+  final String? mechanic;
+  final String? force;
+
+  final List<String> images;
+
+  final String source;
+
   const Exercise({
     required this.id,
     required this.name,
@@ -51,6 +63,13 @@ class Exercise {
     this.targetMusclesEn,
     this.instructionsEn,
     this.commonMistakesEn,
+    this.secondaryMuscles = const [],
+    this.secondaryMusclesEn,
+    this.category,
+    this.mechanic,
+    this.force,
+    this.images = const [],
+    this.source = 'local',
   });
 
   // Localized content helpers

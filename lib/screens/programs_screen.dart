@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../widgets/custom_bottom_navigation.dart';
+import '../services/training_program_manager.dart';
+import '../services/training_program_scope.dart';
+import '../models/training_program.dart';
 
 const Color programsBg = Color(0xFF080B1B);
 const Color programsCard = Color(0xFF10142B);
@@ -19,54 +22,27 @@ class ProgramsScreen extends StatefulWidget {
 class _ProgramsScreenState extends State<ProgramsScreen> {
   int selectedFilter = 0;
 
+  TrainingProgramManager? _programManager;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final manager = TrainingProgramScope.of(context);
+
+    if (_programManager != manager) {
+      _programManager = manager;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final isArabic =
         Localizations.localeOf(context).languageCode == 'ar';
 
-    final programs = [
-      _Program(
-        title: l10n.muscleBuilding,
-        description: l10n.muscleBuildingDescription,
-        duration: l10n.weeks4,
-        level: l10n.intermediateLevel,
-        icon: Icons.fitness_center,
-        color: programsPurple,
-        category: 1,
-        image: 'assets/images/muscle_building.jpg',
-      ),
-      _Program(
-        title: l10n.fatBurning,
-        description: l10n.fatBurningDescription,
-        duration: l10n.weeks3,
-        level: l10n.beginnerLevel,
-        icon: Icons.local_fire_department,
-        color: programsPink,
-        category: 2,
-        image: 'assets/images/fat_burning.jpg',
-      ),
-      _Program(
-        title: l10n.generalFitness,
-        description: l10n.generalFitnessDescription,
-        duration: l10n.weeks4,
-        level: l10n.beginnerLevel,
-        icon: Icons.directions_run,
-        color: programsBlue,
-        category: 3,
-        image: 'assets/images/general_fitness.jpg',
-      ),
-      _Program(
-        title: l10n.advancedProgram,
-        description: l10n.advancedProgramDescription,
-        duration: l10n.weeks8,
-        level: l10n.advancedLevel,
-        icon: Icons.star,
-        color: programsOrange,
-        category: 1,
-        image: 'assets/images/advanced_program.png',
-      ),
-    ];
+    final programs = _programManager!.programs.map((program) => 
+    _mapProgram(program, isArabic)).toList();
 
     final visiblePrograms = selectedFilter == 0
         ? programs
@@ -115,6 +91,54 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
       bottomNavigationBar: const CustomBottomNavigation(),
     );
   }
+  _Program _mapProgram(
+  TrainingProgram program,
+  bool isArabic,
+) {
+  final metadata = {
+    'muscle_building': (
+      icon: Icons.fitness_center,
+      color: programsPurple,
+      image: 'assets/images/muscle_building.jpg',
+    ),
+    'fat_burning': (
+      icon: Icons.local_fire_department,
+      color: programsPink,
+      image: 'assets/images/fat_burning.jpg',
+    ),
+    'general_fitness': (
+      icon: Icons.directions_run,
+      color: programsBlue,
+      image: 'assets/images/general_fitness.jpg',
+    ),
+    'advanced_program': (
+      icon: Icons.star,
+      color: programsOrange,
+      image: 'assets/images/advanced_program.png',
+    ),
+  };
+
+  final style = metadata[program.sourceProgramId ?? program.id] ??
+      (
+        icon: Icons.fitness_center,
+        color: programsPurple,
+        image: '',
+      );
+
+  return _Program(
+    id: program.id,
+    title: program.nameFor(isArabic),
+    description: program.descriptionFor(isArabic),
+    duration: isArabic
+        ? '${program.durationWeeks} أسابيع'
+        : '${program.durationWeeks} weeks',
+    level: program.levelFor(isArabic),
+    icon: style.icon,
+    color: style.color,
+    category: program.category,
+    image: style.image,
+  );
+}
 
   Widget _buildHero(AppLocalizations l10n) {
     return Container(
@@ -235,6 +259,7 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
 }
 
 class _Program {
+  final String id;
   final String title;
   final String description;
   final String duration;
@@ -245,6 +270,7 @@ class _Program {
   final String image;
 
   const _Program({
+    required this.id,
     required this.title,
     required this.description,
     required this.duration,
