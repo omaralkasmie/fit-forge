@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../data/exercises/chest_exercises.dart';
-import '../data/exercises/back_exercises.dart';
-import '../data/exercises/shoulder_exercises.dart';
-import '../data/exercises/leg_exercises.dart';
-import '../data/exercises/arms_exercises.dart';
-import '../data/exercises/abs_exercises.dart';
+import '../data/workouts/exercise_library.dart';
 import '../l10n/app_localizations.dart';
 import '../models/exercise.dart';
 
