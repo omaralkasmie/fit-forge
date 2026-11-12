@@ -6,10 +6,7 @@ import '../l10n/app_localizations.dart';
 class ExerciseDetailsScreen extends StatelessWidget {
   final Exercise exercise;
 
-  const ExerciseDetailsScreen({
-    super.key,
-    required this.exercise,
-  });
+  const ExerciseDetailsScreen({super.key, required this.exercise});
 
   static const Color bgColor = Color(0xFF0B0B16);
   static const Color cardColor = Color(0xFF15182F);
@@ -19,8 +16,7 @@ class ExerciseDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final isArabic =
-        Localizations.localeOf(context).languageCode == 'ar';
+    final isArabic = Localizations.localeOf(context).languageCode == 'ar';
 
     final targetMuscles = exercise.targetMusclesFor(isArabic);
     final instructions = exercise.instructionsFor(isArabic);
@@ -42,34 +38,11 @@ class ExerciseDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 210,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: cardColor,
-                borderRadius: BorderRadius.circular(22),
-                border: Border.all(
-                  color: purpleColor.withValues(alpha: 0.3),
-                ),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(22),
-                child: Image.asset(
-                  exercise.image,
-                  width: double.infinity,
-                  height: double.infinity,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Center(
-                      child: Icon(
-                        Icons.fitness_center,
-                        color: pinkColor,
-                        size: 75,
-                      ),
-                    );
-                  },
-                ),
-              ),
+            _ExerciseImageGallery(
+              exercise: exercise,
+              cardColor: cardColor,
+              purpleColor: purpleColor,
+              pinkColor: pinkColor,
             ),
             const SizedBox(height: 24),
 
@@ -207,10 +180,7 @@ class _DetailCard extends StatelessWidget {
   final String title;
   final Widget child;
 
-  const _DetailCard({
-    required this.title,
-    required this.child,
-  });
+  const _DetailCard({required this.title, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -260,19 +230,12 @@ class _InfoRow extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 14),
       child: Row(
         children: [
-          Icon(
-            icon,
-            color: ExerciseDetailsScreen.purpleColor,
-            size: 20,
-          ),
+          Icon(icon, color: ExerciseDetailsScreen.purpleColor, size: 20),
           const SizedBox(width: 10),
           Expanded(
             child: Text(
               label,
-              style: const TextStyle(
-                color: Colors.white70,
-                fontSize: 13,
-              ),
+              style: const TextStyle(color: Colors.white70, fontSize: 13),
             ),
           ),
           Text(
@@ -293,10 +256,7 @@ class _InstructionRow extends StatelessWidget {
   final int number;
   final String instruction;
 
-  const _InstructionRow({
-    required this.number,
-    required this.instruction,
-  });
+  const _InstructionRow({required this.number, required this.instruction});
 
   @override
   Widget build(BuildContext context) {
@@ -341,9 +301,7 @@ class _InstructionRow extends StatelessWidget {
 class _MistakeRow extends StatelessWidget {
   final String mistake;
 
-  const _MistakeRow({
-    required this.mistake,
-  });
+  const _MistakeRow({required this.mistake});
 
   @override
   Widget build(BuildContext context) {
@@ -370,6 +328,136 @@ class _MistakeRow extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _ExerciseImageGallery extends StatefulWidget {
+  final Exercise exercise;
+  final Color cardColor;
+  final Color purpleColor;
+  final Color pinkColor;
+
+  const _ExerciseImageGallery({
+    required this.exercise,
+    required this.cardColor,
+    required this.purpleColor,
+    required this.pinkColor,
+  });
+
+  @override
+  State<_ExerciseImageGallery> createState() => _ExerciseImageGalleryState();
+}
+
+class _ExerciseImageGalleryState extends State<_ExerciseImageGallery> {
+  late final PageController _pageController;
+  int _currentPage = 0;
+
+  List<String> get _imagePaths {
+    final exercise = widget.exercise;
+
+    if (exercise.source == 'free_exercise_db' && exercise.images.isNotEmpty) {
+      return exercise.images.map((path) {
+        if (path.startsWith('assets/')) return path;
+
+        return 'assets/images/external_exercises/$path';
+      }).toList();
+    }
+
+    if (exercise.image.isNotEmpty) {
+      return [exercise.image];
+    }
+
+    return [];
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final images = _imagePaths;
+
+    return Column(
+      children: [
+        Container(
+          height: 210,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: widget.cardColor,
+            borderRadius: BorderRadius.circular(22),
+            border: Border.all(
+              color: widget.purpleColor.withValues(alpha: 0.3),
+            ),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(22),
+            child: images.isEmpty
+                ? Center(
+                    child: Icon(
+                      Icons.fitness_center,
+                      color: widget.pinkColor,
+                      size: 75,
+                    ),
+                  )
+                : PageView.builder(
+                    controller: _pageController,
+                    itemCount: images.length,
+                    onPageChanged: (index) {
+                      setState(() {
+                        _currentPage = index;
+                      });
+                    },
+                    itemBuilder: (context, index) {
+                      return Image.asset(
+                        images[index],
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Center(
+                            child: Icon(
+                              Icons.fitness_center,
+                              color: widget.pinkColor,
+                              size: 75,
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+          ),
+        ),
+
+        if (images.length > 1) ...[
+          const SizedBox(height: 12),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(images.length, (index) {
+              final isActive = index == _currentPage;
+
+              return AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                margin: const EdgeInsets.symmetric(horizontal: 4),
+                width: isActive ? 20 : 7,
+                height: 7,
+                decoration: BoxDecoration(
+                  color: isActive ? widget.purpleColor : Colors.white24,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              );
+            }),
+          ),
+        ],
+      ],
     );
   }
 }

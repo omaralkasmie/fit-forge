@@ -5,8 +5,14 @@ import '../models/exercise.dart';
 import '../l10n/app_localizations.dart';
 import '../routes/app_router.dart';
 import '../widgets/custom_bottom_navigation.dart';
+import '../data/workouts/exercise_library.dart';
 
-class MuscleGroupExercisesScreen extends StatelessWidget {
+class MuscleGroupExercisesScreen extends StatefulWidget {
+  static const Color bgColor = Color(0xFF0B0B16);
+  static const Color cardColor = Color(0xFF15182F);
+  static const Color purpleColor = Color(0xFF9B5CFF);
+  static const Color pinkColor = Color(0xFFE34DFF);
+
   final String title;
   final String bannerTitle;
   final String bannerSubtitle;
@@ -20,10 +26,49 @@ class MuscleGroupExercisesScreen extends StatelessWidget {
     required this.exercises,
   });
 
-  static const Color bgColor = Color(0xFF0B0B16);
-  static const Color cardColor = Color(0xFF15182F);
-  static const Color purpleColor = Color(0xFF9B5CFF);
-  static const Color pinkColor = Color(0xFFE34DFF);
+  @override
+  State<MuscleGroupExercisesScreen> createState() =>
+      _MuscleGroupExercisesScreenState();
+}
+
+class _MuscleGroupExercisesScreenState
+    extends State<MuscleGroupExercisesScreen> {
+  List<Exercise> _exercises = [];
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadExercises();
+  }
+
+  Future<void> _loadExercises() async {
+    try {
+      final all = await loadAllExercises();
+
+      final muscleGroups = widget.exercises
+          .map((exercise) => exercise.muscleGroup)
+          .toSet();
+
+      final filtered = all.where((exercise) {
+        return muscleGroups.contains(exercise.muscleGroup);
+      }).toList();
+
+      if (!mounted) return;
+
+      setState(() {
+        _exercises = filtered;
+        _isLoading = false;
+      });
+    } catch (e) {
+      if (!mounted) return;
+
+      setState(() {
+        _exercises = widget.exercises;
+        _isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +76,14 @@ class MuscleGroupExercisesScreen extends StatelessWidget {
     final isArabic = Localizations.localeOf(context).languageCode == 'ar';
 
     return Scaffold(
-      backgroundColor: bgColor,
+      backgroundColor: MuscleGroupExercisesScreen.bgColor,
       appBar: AppBar(
-        backgroundColor: bgColor,
+        backgroundColor: MuscleGroupExercisesScreen.bgColor,
         foregroundColor: Colors.white,
-        title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+        title: Text(
+          widget.title,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
       ),
       body: ListView(
@@ -46,7 +94,10 @@ class MuscleGroupExercisesScreen extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(22),
               gradient: const LinearGradient(
-                colors: [purpleColor, Color(0xFF4932C9)],
+                colors: [
+                  MuscleGroupExercisesScreen.purpleColor,
+                  Color(0xFF4932C9),
+                ],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
               ),
@@ -57,7 +108,7 @@ class MuscleGroupExercisesScreen extends StatelessWidget {
                 const Icon(Icons.fitness_center, color: Colors.white, size: 40),
                 const SizedBox(height: 16),
                 Text(
-                  bannerTitle,
+                  widget.bannerTitle,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 21,
@@ -66,7 +117,7 @@ class MuscleGroupExercisesScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  bannerSubtitle,
+                  widget.bannerSubtitle,
                   style: const TextStyle(color: Colors.white70, fontSize: 14),
                 ),
               ],
@@ -82,28 +133,39 @@ class MuscleGroupExercisesScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          ...List.generate(exercises.length, (index) {
-            final exercise = exercises[index];
 
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: _ExerciseTile(
-                number: (index + 1).toString().padLeft(2, '0'),
-                title: exercise.nameFor(isArabic),
-                muscleGroup: exercise.muscleGroupFor(isArabic),
-                equipment: exercise.equipmentFor(isArabic),
-                difficulty: exercise.difficultyFor(isArabic),
-                subtitle: isArabic
-                    ? '${exercise.suggestedSets} مجموعات × '
-                          '${exercise.suggestedReps} تكرارات'
-                    : '${exercise.suggestedSets} sets × '
-                          '${exercise.suggestedReps} reps',
-                onTap: () {
-                  context.push(AppRouter.exerciseDetails, extra: exercise);
-                },
+          if (_isLoading)
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 40),
+              child: Center(
+                child: CircularProgressIndicator(
+                  color: MuscleGroupExercisesScreen.purpleColor,
+                ),
               ),
-            );
-          }),
+            )
+          else
+            ...List.generate(_exercises.length, (index) {
+              final exercise = _exercises[index];
+
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: _ExerciseTile(
+                  number: (index + 1).toString().padLeft(2, '0'),
+                  title: exercise.nameFor(isArabic),
+                  muscleGroup: exercise.muscleGroupFor(isArabic),
+                  equipment: exercise.equipmentFor(isArabic),
+                  difficulty: exercise.difficultyFor(isArabic),
+                  subtitle: isArabic
+                      ? '${exercise.suggestedSets} مجموعات × '
+                            '${exercise.suggestedReps} تكرارات'
+                      : '${exercise.suggestedSets} sets × '
+                            '${exercise.suggestedReps} reps',
+                  onTap: () {
+                    context.push(AppRouter.exerciseDetails, extra: exercise);
+                  },
+                ),
+              );
+            }),
         ],
       ),
       bottomNavigationBar: const CustomBottomNavigation(),

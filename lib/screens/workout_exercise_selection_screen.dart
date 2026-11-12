@@ -27,7 +27,13 @@ class _WorkoutExerciseSelectionScreenState
     extends State<WorkoutExerciseSelectionScreen> {
   final TextEditingController _searchController = TextEditingController();
 
+  final ScrollController _scrollController = ScrollController();
+
   late List<Exercise> _selectedExercises;
+
+  List<Exercise> _allExercises = [];
+
+  bool _isLoading = true;
 
   int _selectedCategory = 0;
 
@@ -38,41 +44,83 @@ class _WorkoutExerciseSelectionScreenState
     super.initState();
 
     _selectedExercises = [...widget.initialSelectedExercises];
+
+    _loadExercises();
   }
+  Future<void> _loadExercises() async {
+  try {
+    final exercises = await loadAllExercises();
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+    if (!mounted) return;
 
-    final l10n = AppLocalizations.of(context)!;
+    setState(() {
+      _allExercises = exercises;
+      _isLoading = false;
+      _updateCategories();
+    });
+  } catch (e) {
+    if (!mounted) return;
 
-    _categories = [
-      _ExerciseCategory(
-        title: l10n.exercisesTitle,
-        exercises: [
-          ...chestExercises,
-          ...backExercises,
-          ...shoulderExercises,
-          ...legExercises,
-          ...armsExercises,
-          ...absExercises,
-        ],
-      ),
-      _ExerciseCategory(title: l10n.chestExercises, exercises: chestExercises),
-      _ExerciseCategory(title: l10n.backExercises, exercises: backExercises),
-      _ExerciseCategory(
-        title: l10n.shoulderExercises,
-        exercises: shoulderExercises,
-      ),
-      _ExerciseCategory(title: l10n.legExercises, exercises: legExercises),
-      _ExerciseCategory(title: l10n.armExercises, exercises: armsExercises),
-      _ExerciseCategory(title: l10n.absExercises, exercises: absExercises),
-    ];
+    setState(() {
+      _allExercises = allExercises;
+      _isLoading = false;
+      _updateCategories();
+    });
   }
+}
+@override
+void didChangeDependencies() {
+  super.didChangeDependencies();
+  _updateCategories();
+}
+
+void _updateCategories() {
+  final l10n = AppLocalizations.of(context)!;
+
+  final chest = _allExercises
+      .where((e) =>
+          e.muscleGroup == 'عضلات الصدر' ||
+          e.muscleGroup == 'عضلات الصدر العلوية')
+      .toList();
+
+  final back = _allExercises
+      .where((e) => e.muscleGroup == 'الظهر')
+      .toList();
+
+  final shoulders = _allExercises
+      .where((e) => e.muscleGroup == 'الأكتاف')
+      .toList();
+
+  final legs = _allExercises
+      .where((e) => e.muscleGroup == 'الأرجل')
+      .toList();
+
+  final arms = _allExercises
+      .where((e) => e.muscleGroup == 'الذراعين')
+      .toList();
+
+  final abs = _allExercises
+      .where((e) => e.muscleGroup == 'البطن')
+      .toList();
+
+  _categories = [
+    _ExerciseCategory(
+      title: l10n.exercisesTitle,
+      exercises: _allExercises,
+    ),
+    _ExerciseCategory(title: l10n.chestExercises, exercises: chest),
+    _ExerciseCategory(title: l10n.backExercises, exercises: back),
+    _ExerciseCategory(title: l10n.shoulderExercises, exercises: shoulders),
+    _ExerciseCategory(title: l10n.legExercises, exercises: legs),
+    _ExerciseCategory(title: l10n.armExercises, exercises: arms),
+    _ExerciseCategory(title: l10n.absExercises, exercises: abs),
+  ];
+}
 
   @override
   void dispose() {
     _searchController.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -237,6 +285,8 @@ class _WorkoutExerciseSelectionScreenState
                             setState(() {
                               _selectedCategory = index;
                             });
+
+                            _scrollController.jumpTo(0);
                           },
                           selectedColor: _purpleColor,
                           backgroundColor: _cardColor,
@@ -259,31 +309,38 @@ class _WorkoutExerciseSelectionScreenState
             ),
 
             Expanded(
-              child: exercises.isEmpty
-                  ? Center(
-                      child: Icon(
-                        Icons.search_off,
-                        color: Colors.white24,
-                        size: 55,
-                      ),
-                    )
-                  : ListView.separated(
-                      padding: const EdgeInsets.fromLTRB(20, 4, 20, 20),
-                      itemCount: exercises.length,
-                      separatorBuilder: (_, _) => const SizedBox(height: 12),
-                      itemBuilder: (context, index) {
-                        final exercise = exercises[index];
-                        final selected = _isSelected(exercise);
+  child: _isLoading
+      ? const Center(
+          child: CircularProgressIndicator(
+            color: _purpleColor,
+          ),
+        )
+      : exercises.isEmpty
+          ? const Center(
+              child: Icon(
+                Icons.search_off,
+                color: Colors.white24,
+                size: 55,
+              ),
+            )
+          : ListView.separated(
+              controller: _scrollController,
+              padding: const EdgeInsets.fromLTRB(20, 4, 20, 20),
+              itemCount: exercises.length,
+              separatorBuilder: (_, _) => const SizedBox(height: 12),
+              itemBuilder: (context, index) {
+                final exercise = exercises[index];
+                final selected = _isSelected(exercise);
 
-                        return _ExerciseSelectionCard(
-                          exercise: exercise,
-                          isArabic: isArabic,
-                          isSelected: selected,
-                          onTap: () => _toggleExercise(exercise),
-                        );
-                      },
-                    ),
+                return _ExerciseSelectionCard(
+                  exercise: exercise,
+                  isArabic: isArabic,
+                  isSelected: selected,
+                  onTap: () => _toggleExercise(exercise),
+                );
+              },
             ),
+        ),
 
             Container(
               padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
@@ -360,18 +417,33 @@ class _ExerciseSelectionCard extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                width: 48,
-                height: 48,
-                decoration: BoxDecoration(
-                  color: _purpleColor.withValues(alpha: 0.16),
-                  borderRadius: BorderRadius.circular(13),
-                ),
-                child: const Icon(
-                  Icons.fitness_center,
-                  color: _pinkColor,
-                  size: 25,
-                ),
-              ),
+  width: 48,
+  height: 48,
+  decoration: BoxDecoration(
+    color: _purpleColor.withValues(alpha: 0.16),
+    borderRadius: BorderRadius.circular(13),
+  ),
+  child: exercise.image.isNotEmpty
+      ? ClipRRect(
+          borderRadius: BorderRadius.circular(13),
+          child: Image.asset(
+            exercise.image,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              return const Icon(
+                Icons.fitness_center,
+                color: _pinkColor,
+                size: 25,
+              );
+            },
+          ),
+        )
+      : const Icon(
+          Icons.fitness_center,
+          color: _pinkColor,
+          size: 25,
+        ),
+),
 
               const SizedBox(width: 13),
 

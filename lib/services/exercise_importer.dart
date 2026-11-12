@@ -9,11 +9,20 @@ class ExerciseImporter {
     final jsonString = await rootBundle.loadString(
       'assets/data/exercises.json',
     );
+    final translationsString = await rootBundle.loadString(
+      'assets/data/exercise_translations_ar.json',
+    );
+
+    final Map<String, dynamic> translations = jsonDecode(translationsString);
 
     final List<dynamic> data = jsonDecode(jsonString);
 
     return data.map((item) {
       final Map<String, dynamic> json = item as Map<String, dynamic>;
+      final String exerciseId = 'external_${json['id']}';
+
+      final Map<String, dynamic> translation =
+          translations[exerciseId] as Map<String, dynamic>? ?? {};
 
       final List<String> primaryMuscles = List<String>.from(
         json['primaryMuscles'] ?? [],
@@ -31,6 +40,15 @@ class ExerciseImporter {
 
       final String name = json['name'] ?? 'Unknown Exercise';
 
+      final String nameAr = translation['name'] as String? ?? name;
+
+      final String descriptionAr =
+          translation['description'] as String? ?? instructions.join('\n');
+
+      final List<String> instructionsAr = translation['instructions'] != null
+          ? List<String>.from(translation['instructions'])
+          : instructions;
+
       final String muscleGroup = primaryMuscles.isNotEmpty
           ? _translateMuscleGroup(primaryMuscles.first)
           : 'الأرجل';
@@ -44,16 +62,18 @@ class ExerciseImporter {
       );
 
       return Exercise(
-        id: 'external_${json['id']}',
-        name: name,
+        id: exerciseId,
+        name: nameAr,
         nameEn: name,
         muscleGroup: muscleGroup,
         muscleGroupEn: primaryMuscles.isNotEmpty
             ? primaryMuscles.first
             : 'General',
-        description: instructions.join('\n'),
+        description: descriptionAr,
         descriptionEn: instructions.join('\n'),
-        image: images.isNotEmpty ? images.first : '',
+        image: images.isNotEmpty
+            ? 'assets/images/external_exercises/${images.first}'
+            : '',
         images: images,
         suggestedSets: 3,
         suggestedReps: 10,
@@ -65,7 +85,7 @@ class ExerciseImporter {
         targetMusclesEn: primaryMuscles,
         secondaryMuscles: secondaryMuscles.map(_translateMuscle).toList(),
         secondaryMusclesEn: secondaryMuscles,
-        instructions: instructions,
+        instructions: instructionsAr,
         instructionsEn: instructions,
         category: json['category'],
         mechanic: json['mechanic'],
