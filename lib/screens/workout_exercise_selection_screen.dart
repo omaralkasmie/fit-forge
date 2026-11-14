@@ -37,6 +37,8 @@ class _WorkoutExerciseSelectionScreenState
 
   int _selectedCategory = 0;
 
+  String? _selectedEquipment;
+
   late List<_ExerciseCategory> _categories;
 
   @override
@@ -125,21 +127,26 @@ void _updateCategories() {
   }
 
   List<Exercise> get _filteredExercises {
-    final query = _searchController.text.trim().toLowerCase();
+  final query = _searchController.text.trim().toLowerCase();
 
-    final exercises = _categories[_selectedCategory].exercises;
+  final exercises = _categories[_selectedCategory].exercises;
+  return exercises.where((exercise) {
+    final matchesSearch = query.isEmpty ||
+        exercise.name.toLowerCase().contains(query) ||
+        (exercise.nameEn?.toLowerCase().contains(query) ?? false) ||
+        exercise.muscleGroup.toLowerCase().contains(query) ||
+        (exercise.muscleGroupEn?.toLowerCase().contains(query) ?? false);
 
-    if (query.isEmpty) {
-      return exercises;
-    }
+    final equipment = (exercise.equipmentEn ?? exercise.equipment)
+        .trim()
+        .toLowerCase();
 
-    return exercises.where((exercise) {
-      return exercise.name.toLowerCase().contains(query) ||
-          (exercise.nameEn?.toLowerCase().contains(query) ?? false) ||
-          exercise.muscleGroup.toLowerCase().contains(query) ||
-          (exercise.muscleGroupEn?.toLowerCase().contains(query) ?? false);
-    }).toList();
-  }
+    final matchesEquipment = _selectedEquipment == null ||
+        equipment == _selectedEquipment;
+
+    return matchesSearch && matchesEquipment;
+  }).toList();
+}
 
   bool _isSelected(Exercise exercise) {
     return _selectedExercises.any((item) => item.id == exercise.id);
@@ -304,6 +311,54 @@ void _updateCategories() {
                       },
                     ),
                   ),
+                  const SizedBox(height: 14),
+
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  children: [
+    const Text(
+      'المعدات',
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 15,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    if (_selectedEquipment != null)
+      TextButton(
+        onPressed: () {
+          setState(() {
+            _selectedEquipment = null;
+          });
+          _scrollController.jumpTo(0);
+        },
+        child: const Text('إلغاء التصفية'),
+      ),
+  ],
+),
+
+const SizedBox(height: 8),
+
+SizedBox(
+  height: 40,
+  child: ListView(
+    scrollDirection: Axis.horizontal,
+    children: [
+      _buildEquipmentChip(value: 'bands', label: 'أشرطة مقاومة'),
+      _buildEquipmentChip(value: 'barbell', label: 'بار'),
+      _buildEquipmentChip(value: 'body only', label: 'وزن الجسم'),
+      _buildEquipmentChip(value: 'cable', label: 'كيبل'),
+      _buildEquipmentChip(value: 'dumbbell', label: 'دامبل'),
+      _buildEquipmentChip(value: 'e-z curl bar', label: 'بار EZ'),
+      _buildEquipmentChip(value: 'exercise ball', label: 'كرة تمرين'),
+      _buildEquipmentChip(value: 'foam roll', label: 'رول'),
+      _buildEquipmentChip(value: 'kettlebells', label: 'كتل بيل'),
+      _buildEquipmentChip(value: 'machine', label: 'أجهزة'),
+      _buildEquipmentChip(value: 'medicine ball', label: 'كرة طبية'),
+      _buildEquipmentChip(value: 'other', label: 'أخرى'),
+    ],
+  ),
+),
                 ],
               ),
             ),
@@ -375,8 +430,37 @@ void _updateCategories() {
       ),
     );
   }
-}
+Widget _buildEquipmentChip({
+  required String value,
+  required String label,
+}) {
+  final isActive = _selectedEquipment == value;
 
+  return Padding(
+    padding: const EdgeInsets.only(right: 8),
+    child: ChoiceChip(
+      label: Text(label),
+      selected: isActive,
+      onSelected: (_) {
+        setState(() {
+          _selectedEquipment = isActive ? null : value;
+        });
+        _scrollController.jumpTo(0);
+      },
+      selectedColor: _purpleColor,
+      backgroundColor: _cardColor,
+      labelStyle: TextStyle(
+        color: Colors.white,
+        fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+      ),
+      side: BorderSide(
+        color: isActive ? _purpleColor : Colors.white12,
+      ),
+      showCheckmark: false,
+    ),
+  );
+}
+    }
 class _ExerciseCategory {
   final String title;
   final List<Exercise> exercises;

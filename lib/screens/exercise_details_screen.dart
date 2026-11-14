@@ -390,7 +390,7 @@ class _ExerciseImageGalleryState extends State<_ExerciseImageGallery> {
     return Column(
       children: [
         Container(
-          height: 210,
+          height: 240,
           width: double.infinity,
           decoration: BoxDecoration(
             color: widget.cardColor,

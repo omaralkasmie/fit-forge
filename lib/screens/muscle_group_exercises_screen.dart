@@ -155,6 +155,7 @@ class _MuscleGroupExercisesScreenState
                   muscleGroup: exercise.muscleGroupFor(isArabic),
                   equipment: exercise.equipmentFor(isArabic),
                   difficulty: exercise.difficultyFor(isArabic),
+                  imagePath: exercise.image,
                   subtitle: isArabic
                       ? '${exercise.suggestedSets} مجموعات × '
                             '${exercise.suggestedReps} تكرارات'
@@ -180,6 +181,7 @@ class _ExerciseTile extends StatelessWidget {
   final String muscleGroup;
   final String equipment;
   final String difficulty;
+  final String imagePath;
   final VoidCallback onTap;
 
   const _ExerciseTile({
@@ -189,6 +191,7 @@ class _ExerciseTile extends StatelessWidget {
     required this.muscleGroup,
     required this.equipment,
     required this.difficulty,
+    required this.imagePath,
     required this.onTap,
   });
 
@@ -222,11 +225,28 @@ class _ExerciseTile extends StatelessWidget {
                     ),
                     borderRadius: BorderRadius.circular(14),
                   ),
-                  child: const Icon(
-                    Icons.fitness_center,
-                    color: MuscleGroupExercisesScreen.pinkColor,
-                    size: 27,
-                  ),
+                  child: ClipRRect(
+  borderRadius: BorderRadius.circular(14),
+  child: imagePath.isNotEmpty
+      ? Image.asset(
+          imagePath,
+          width: 52,
+          height: 52,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) {
+            return const Icon(
+              Icons.fitness_center,
+              color: MuscleGroupExercisesScreen.pinkColor,
+              size: 27,
+            );
+          },
+        )
+      : const Icon(
+          Icons.fitness_center,
+          color: MuscleGroupExercisesScreen.pinkColor,
+          size: 27,
+        ),
+),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
