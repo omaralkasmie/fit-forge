@@ -275,7 +275,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get equipmentLabel => 'Equipment';
 
   @override
-  String get difficultyLabel => 'Difficulty Level';
+  String get difficultyLabel => 'Difficulty';
 
   @override
   String get setsCountLabel => 'Number of Sets';
@@ -682,4 +682,57 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get achievementUnlocked => 'Achievement Unlocked';
+
+  @override
+  String exerciseCountLabel(int count) {
+    return 'Exercises: $count';
+  }
+
+  @override
+  String get clearFilters => 'Clear filters';
+
+  @override
+  String get equipmentBands => 'Resistance Bands';
+
+  @override
+  String get equipmentBarbell => 'Barbell';
+
+  @override
+  String get equipmentBodyOnly => 'Bodyweight';
+
+  @override
+  String get equipmentCable => 'Cable';
+
+  @override
+  String get equipmentDumbbell => 'Dumbbell';
+
+  @override
+  String get equipmentEzCurlBar => 'EZ Curl Bar';
+
+  @override
+  String get equipmentExerciseBall => 'Exercise Ball';
+
+  @override
+  String get equipmentFoamRoll => 'Foam Roll';
+
+  @override
+  String get equipmentKettlebells => 'Kettlebells';
+
+  @override
+  String get equipmentMachine => 'Machine';
+
+  @override
+  String get equipmentMedicineBall => 'Medicine Ball';
+
+  @override
+  String get equipmentOther => 'Other';
+
+  @override
+  String get difficultyBeginner => 'Beginner';
+
+  @override
+  String get difficultyIntermediate => 'Intermediate';
+
+  @override
+  String get difficultyAdvanced => 'Advanced';
 }

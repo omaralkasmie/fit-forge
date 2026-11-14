@@ -614,7 +614,7 @@ abstract class AppLocalizations {
   /// No description provided for @difficultyLabel.
   ///
   /// In en, this message translates to:
-  /// **'Difficulty Level'**
+  /// **'Difficulty'**
   String get difficultyLabel;
 
   /// No description provided for @setsCountLabel.
@@ -1420,6 +1420,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Achievement Unlocked'**
   String get achievementUnlocked;
+
+  /// No description provided for @exerciseCountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercises: {count}'**
+  String exerciseCountLabel(int count);
+
+  /// No description provided for @clearFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filters'**
+  String get clearFilters;
+
+  /// No description provided for @equipmentBands.
+  ///
+  /// In en, this message translates to:
+  /// **'Resistance Bands'**
+  String get equipmentBands;
+
+  /// No description provided for @equipmentBarbell.
+  ///
+  /// In en, this message translates to:
+  /// **'Barbell'**
+  String get equipmentBarbell;
+
+  /// No description provided for @equipmentBodyOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Bodyweight'**
+  String get equipmentBodyOnly;
+
+  /// No description provided for @equipmentCable.
+  ///
+  /// In en, this message translates to:
+  /// **'Cable'**
+  String get equipmentCable;
+
+  /// No description provided for @equipmentDumbbell.
+  ///
+  /// In en, this message translates to:
+  /// **'Dumbbell'**
+  String get equipmentDumbbell;
+
+  /// No description provided for @equipmentEzCurlBar.
+  ///
+  /// In en, this message translates to:
+  /// **'EZ Curl Bar'**
+  String get equipmentEzCurlBar;
+
+  /// No description provided for @equipmentExerciseBall.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercise Ball'**
+  String get equipmentExerciseBall;
+
+  /// No description provided for @equipmentFoamRoll.
+  ///
+  /// In en, this message translates to:
+  /// **'Foam Roll'**
+  String get equipmentFoamRoll;
+
+  /// No description provided for @equipmentKettlebells.
+  ///
+  /// In en, this message translates to:
+  /// **'Kettlebells'**
+  String get equipmentKettlebells;
+
+  /// No description provided for @equipmentMachine.
+  ///
+  /// In en, this message translates to:
+  /// **'Machine'**
+  String get equipmentMachine;
+
+  /// No description provided for @equipmentMedicineBall.
+  ///
+  /// In en, this message translates to:
+  /// **'Medicine Ball'**
+  String get equipmentMedicineBall;
+
+  /// No description provided for @equipmentOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get equipmentOther;
+
+  /// No description provided for @difficultyBeginner.
+  ///
+  /// In en, this message translates to:
+  /// **'Beginner'**
+  String get difficultyBeginner;
+
+  /// No description provided for @difficultyIntermediate.
+  ///
+  /// In en, this message translates to:
+  /// **'Intermediate'**
+  String get difficultyIntermediate;
+
+  /// No description provided for @difficultyAdvanced.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced'**
+  String get difficultyAdvanced;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -324,23 +324,25 @@ class _WorkoutExerciseSelectionScreenState
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
-                          'المعدات',
-                          style: TextStyle(
+                        Text(
+                          l10n.equipmentLabel,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        if (_selectedEquipment != null)
+                        if (_selectedEquipment != null ||
+                            _selectedDifficulty != null)
                           TextButton(
                             onPressed: () {
                               setState(() {
                                 _selectedEquipment = null;
+                                _selectedDifficulty = null;
                               });
                               _scrollController.jumpTo(0);
                             },
-                            child: const Text('إلغاء التصفية'),
+                            child: Text(l10n.clearFilters),
                           ),
                       ],
                     ),
@@ -354,47 +356,62 @@ class _WorkoutExerciseSelectionScreenState
                         children: [
                           _buildEquipmentChip(
                             value: 'bands',
-                            label: 'أشرطة مقاومة',
+                            label: l10n.equipmentBands,
                           ),
-                          _buildEquipmentChip(value: 'barbell', label: 'بار'),
+                          _buildEquipmentChip(
+                            value: 'barbell',
+                            label: l10n.equipmentBarbell,
+                          ),
                           _buildEquipmentChip(
                             value: 'body only',
-                            label: 'وزن الجسم',
+                            label: l10n.equipmentBodyOnly,
                           ),
-                          _buildEquipmentChip(value: 'cable', label: 'كيبل'),
+                          _buildEquipmentChip(
+                            value: 'cable',
+                            label: l10n.equipmentCable,
+                          ),
                           _buildEquipmentChip(
                             value: 'dumbbell',
-                            label: 'دامبل',
+                            label: l10n.equipmentDumbbell,
                           ),
                           _buildEquipmentChip(
                             value: 'e-z curl bar',
-                            label: 'بار EZ',
+                            label: l10n.equipmentEzCurlBar,
                           ),
                           _buildEquipmentChip(
                             value: 'exercise ball',
-                            label: 'كرة تمرين',
+                            label: l10n.equipmentExerciseBall,
                           ),
-                          _buildEquipmentChip(value: 'foam roll', label: 'رول'),
+                          _buildEquipmentChip(
+                            value: 'foam roll',
+                            label: l10n.equipmentFoamRoll,
+                          ),
                           _buildEquipmentChip(
                             value: 'kettlebells',
-                            label: 'كتل بيل',
+                            label: l10n.equipmentKettlebells,
                           ),
-                          _buildEquipmentChip(value: 'machine', label: 'أجهزة'),
+                          _buildEquipmentChip(
+                            value: 'machine',
+                            label: l10n.equipmentMachine,
+                          ),
                           _buildEquipmentChip(
                             value: 'medicine ball',
-                            label: 'كرة طبية',
+                            label: l10n.equipmentMedicineBall,
                           ),
-                          _buildEquipmentChip(value: 'other', label: 'أخرى'),
+                          _buildEquipmentChip(
+                            value: 'other',
+                            label: l10n.equipmentOther,
+                          ),
                         ],
                       ),
                     ),
                     const SizedBox(height: 14),
 
-                    const Align(
+                    Align(
                       alignment: Alignment.centerRight,
                       child: Text(
-                        'مستوى الصعوبة',
-                        style: TextStyle(
+                        l10n.difficultyLabel,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
@@ -409,9 +426,18 @@ class _WorkoutExerciseSelectionScreenState
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
-                          _buildDifficultyChip(value: 'مبتدئ', label: 'مبتدئ'),
-                          _buildDifficultyChip(value: 'متوسط', label: 'متوسط'),
-                          _buildDifficultyChip(value: 'متقدم', label: 'متقدم'),
+                          _buildDifficultyChip(
+                            value: 'مبتدئ',
+                            label: l10n.difficultyBeginner,
+                          ),
+                          _buildDifficultyChip(
+                            value: 'متوسط',
+                            label: l10n.difficultyIntermediate,
+                          ),
+                          _buildDifficultyChip(
+                            value: 'متقدم',
+                            label: l10n.difficultyAdvanced,
+                          ),
                         ],
                       ),
                     ),
@@ -419,6 +445,24 @@ class _WorkoutExerciseSelectionScreenState
                 ),
               ),
             ),
+            if (!_isLoading)
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 8,
+                ),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    l10n.exerciseCountLabel(exercises.length),
+                    style: const TextStyle(
+                      color: Colors.white70,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
 
             Flexible(
               child: _isLoading

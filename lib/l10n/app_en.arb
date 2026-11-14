@@ -225,5 +225,31 @@
 "achievementFiftyWorkouts": "Training Legend",
 "achievementFiftyWorkoutsDesc": "Complete 50 workouts",
 "achievementProgress": "Progress",
-"achievementUnlocked": "Achievement Unlocked"
+"achievementUnlocked": "Achievement Unlocked",
+"exerciseCountLabel": "Exercises: {count}",
+"@exerciseCountLabel": {
+  "placeholders": {
+    "count": {
+      "type": "int"
+    }
+  }
+},
+"equipmentLabel": "Equipment",
+"difficultyLabel": "Difficulty",
+"clearFilters": "Clear filters",
+"equipmentBands": "Resistance Bands",
+"equipmentBarbell": "Barbell",
+"equipmentBodyOnly": "Bodyweight",
+"equipmentCable": "Cable",
+"equipmentDumbbell": "Dumbbell",
+"equipmentEzCurlBar": "EZ Curl Bar",
+"equipmentExerciseBall": "Exercise Ball",
+"equipmentFoamRoll": "Foam Roll",
+"equipmentKettlebells": "Kettlebells",
+"equipmentMachine": "Machine",
+"equipmentMedicineBall": "Medicine Ball",
+"equipmentOther": "Other",
+"difficultyBeginner": "Beginner",
+"difficultyIntermediate": "Intermediate",
+"difficultyAdvanced": "Advanced"
 }

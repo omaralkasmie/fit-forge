@@ -225,5 +225,31 @@
 "achievementFiftyWorkouts": "أسطورة التدريب",
 "achievementFiftyWorkoutsDesc": "أكمل 50 جلسة تدريبية",
 "achievementProgress": "التقدم",
-"achievementUnlocked": "تم فتح الإنجاز"
+"achievementUnlocked": "تم فتح الإنجاز",
+"exerciseCountLabel": "عدد التمارين: {count}",
+"@exerciseCountLabel": {
+  "placeholders": {
+    "count": {
+      "type": "int"
+    }
+  }
+},
+"equipmentLabel": "المعدات",
+"difficultyLabel": "مستوى الصعوبة",
+"clearFilters": "إلغاء التصفية",
+"equipmentBands": "أشرطة مقاومة",
+"equipmentBarbell": "بار",
+"equipmentBodyOnly": "وزن الجسم",
+"equipmentCable": "كيبل",
+"equipmentDumbbell": "دامبل",
+"equipmentEzCurlBar": "بار EZ",
+"equipmentExerciseBall": "كرة تمرين",
+"equipmentFoamRoll": "رول",
+"equipmentKettlebells": "كتل بيل",
+"equipmentMachine": "أجهزة",
+"equipmentMedicineBall": "كرة طبية",
+"equipmentOther": "أخرى",
+"difficultyBeginner": "مبتدئ",
+"difficultyIntermediate": "متوسط",
+"difficultyAdvanced": "متقدم"
 }

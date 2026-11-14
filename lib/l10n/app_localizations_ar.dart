@@ -682,4 +682,57 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get achievementUnlocked => 'تم فتح الإنجاز';
+
+  @override
+  String exerciseCountLabel(int count) {
+    return 'عدد التمارين: $count';
+  }
+
+  @override
+  String get clearFilters => 'إلغاء التصفية';
+
+  @override
+  String get equipmentBands => 'أشرطة مقاومة';
+
+  @override
+  String get equipmentBarbell => 'بار';
+
+  @override
+  String get equipmentBodyOnly => 'وزن الجسم';
+
+  @override
+  String get equipmentCable => 'كيبل';
+
+  @override
+  String get equipmentDumbbell => 'دامبل';
+
+  @override
+  String get equipmentEzCurlBar => 'بار EZ';
+
+  @override
+  String get equipmentExerciseBall => 'كرة تمرين';
+
+  @override
+  String get equipmentFoamRoll => 'رول';
+
+  @override
+  String get equipmentKettlebells => 'كتل بيل';
+
+  @override
+  String get equipmentMachine => 'أجهزة';
+
+  @override
+  String get equipmentMedicineBall => 'كرة طبية';
+
+  @override
+  String get equipmentOther => 'أخرى';
+
+  @override
+  String get difficultyBeginner => 'مبتدئ';
+
+  @override
+  String get difficultyIntermediate => 'متوسط';
+
+  @override
+  String get difficultyAdvanced => 'متقدم';
 }
