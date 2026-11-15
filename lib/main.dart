@@ -17,9 +17,13 @@ import 'repositories/training_program_repository.dart';
 void main() {
   runApp(const FitForgeApp());
 }
-
 class FitForgeApp extends StatefulWidget {
-  const FitForgeApp({super.key});
+  final AppDatabase? database;
+
+  const FitForgeApp({
+    super.key,
+    this.database,
+  });
 
   @override
   State<FitForgeApp> createState() => _FitForgeAppState();
@@ -38,7 +42,7 @@ class _FitForgeAppState extends State<FitForgeApp> {
   void initState() {
     super.initState();
 
-    _database = AppDatabase();
+    _database = widget.database ?? AppDatabase();
 
     _workoutRepository = WorkoutRepository(_database);
     _trainingProgramRepository = TrainingProgramRepository(_database);
