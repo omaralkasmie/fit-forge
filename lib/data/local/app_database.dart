@@ -128,6 +128,22 @@ class ProgramSets extends Table {
 }
 
 // ==============================
+// Training Cycle Table
+// ==============================
+
+class TrainingCycle extends Table {
+  IntColumn get id => integer()();
+
+  DateTimeColumn get startDate => dateTime()();
+
+  IntColumn get targetDays =>
+      integer().withDefault(const Constant(28))();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+// ==============================
 // Database
 // ==============================
 
@@ -139,13 +155,14 @@ class ProgramSets extends Table {
     TrainingPrograms,
     ProgramExercises,
     ProgramSets,
+    TrainingCycle,
   ],
 )
 class AppDatabase extends _$AppDatabase {
   AppDatabase([QueryExecutor? executor]) : super(executor ?? _openConnection());
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -157,6 +174,9 @@ class AppDatabase extends _$AppDatabase {
             await m.createTable(trainingPrograms);
             await m.createTable(programExercises);
             await m.createTable(programSets);
+          }
+          if (from < 3) {
+            await m.createTable(trainingCycle);
           }
         },
       );

@@ -8,11 +8,17 @@ import '../models/workout_history_item.dart';
 import '../models/workout_session_details.dart';
 import '../models/workout_progress_stats.dart';
 import '../models/workout_achievement.dart';
+import '../repositories/training_cycle_repository.dart';
+import '../models/training_cycle_progress.dart';
 
 class WorkoutManager extends ChangeNotifier {
   final WorkoutRepository _workoutRepository;
+  final TrainingCycleRepository _trainingCycleRepository;
 
-  WorkoutManager({required this._workoutRepository});
+  WorkoutManager({
+  required this._workoutRepository,
+  required this._trainingCycleRepository,
+});
 
   WorkoutSession? _session;
 
@@ -345,6 +351,20 @@ Future<List<WorkoutAchievement>> getWorkoutAchievements() async {
       targetValue: 50,
     ),
   ];
+}
+Future<TrainingCycleProgress> getTrainingCycleProgress() async {
+  final cycle = await _trainingCycleRepository.getOrCreateCycle();
+
+  final completedDays =
+      await _workoutRepository.getCompletedTrainingDaysSince(
+    cycle.startDate,
+  );
+
+  return TrainingCycleProgress(
+    completedDays: completedDays.clamp(0, cycle.targetDays),
+    targetDays: cycle.targetDays,
+    startDate: cycle.startDate,
+  );
 }
 
 }

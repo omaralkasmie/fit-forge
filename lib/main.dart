@@ -13,6 +13,7 @@ import 'data/local/app_database.dart';
 
 import 'repositories/workout_repository.dart';
 import 'repositories/training_program_repository.dart';
+import 'repositories/training_cycle_repository.dart';
 
 void main() {
   runApp(const FitForgeApp());
@@ -37,25 +38,29 @@ class _FitForgeAppState extends State<FitForgeApp> {
 
   late final WorkoutManager _workoutManager;
   late final TrainingProgramManager _trainingProgramManager;
+  late TrainingCycleRepository _trainingCycleRepository;
 
-  @override
-  void initState() {
-    super.initState();
+@override
+void initState() {
+  super.initState();
 
-    _database = widget.database ?? AppDatabase();
+  _database = widget.database ?? AppDatabase();
 
-    _workoutRepository = WorkoutRepository(_database);
-    _trainingProgramRepository = TrainingProgramRepository(_database);
+  _workoutRepository = WorkoutRepository(_database);
+  _trainingProgramRepository = TrainingProgramRepository(_database);
+  _trainingCycleRepository = TrainingCycleRepository(_database);
 
-    _workoutManager = WorkoutManager(
-      workoutRepository: _workoutRepository,
-    );
+  _workoutManager = WorkoutManager(
+    workoutRepository: _workoutRepository,
+    trainingCycleRepository: _trainingCycleRepository,
+  );
 
-    _trainingProgramManager = TrainingProgramManager(
-      _trainingProgramRepository,
-    );
-    _trainingProgramManager.loadPrograms();
-  }
+  _trainingProgramManager = TrainingProgramManager(
+    _trainingProgramRepository,
+  );
+
+  _trainingProgramManager.loadPrograms();
+}
 
   @override
   void dispose() {

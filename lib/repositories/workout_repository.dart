@@ -178,4 +178,25 @@ class WorkoutRepository {
     exercises: exerciseDetails,
   );
 }
+
+Future<int> getCompletedTrainingDaysSince(
+  DateTime startDate,
+) async {
+  final history = await getWorkoutHistoryItems();
+
+  final trainingDays = <String>{};
+
+  for (final workout in history) {
+    if (workout.completedSets <= 0) continue;
+    if (workout.startTime.isBefore(startDate)) continue;
+
+    final date = workout.startTime;
+
+    trainingDays.add(
+      '${date.year}-${date.month}-${date.day}',
+    );
+  }
+
+  return trainingDays.length;
+}
 }

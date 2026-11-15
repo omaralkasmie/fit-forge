@@ -2717,6 +2717,254 @@ class ProgramSetsCompanion extends UpdateCompanion<ProgramSet> {
   }
 }
 
+class $TrainingCycleTable extends TrainingCycle
+    with TableInfo<$TrainingCycleTable, TrainingCycleData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $TrainingCycleTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _startDateMeta = const VerificationMeta(
+    'startDate',
+  );
+  @override
+  late final GeneratedColumn<DateTime> startDate = GeneratedColumn<DateTime>(
+    'start_date',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _targetDaysMeta = const VerificationMeta(
+    'targetDays',
+  );
+  @override
+  late final GeneratedColumn<int> targetDays = GeneratedColumn<int>(
+    'target_days',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(28),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [id, startDate, targetDays];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'training_cycle';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<TrainingCycleData> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('start_date')) {
+      context.handle(
+        _startDateMeta,
+        startDate.isAcceptableOrUnknown(data['start_date']!, _startDateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_startDateMeta);
+    }
+    if (data.containsKey('target_days')) {
+      context.handle(
+        _targetDaysMeta,
+        targetDays.isAcceptableOrUnknown(data['target_days']!, _targetDaysMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  TrainingCycleData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return TrainingCycleData(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      startDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}start_date'],
+      )!,
+      targetDays: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}target_days'],
+      )!,
+    );
+  }
+
+  @override
+  $TrainingCycleTable createAlias(String alias) {
+    return $TrainingCycleTable(attachedDatabase, alias);
+  }
+}
+
+class TrainingCycleData extends DataClass
+    implements Insertable<TrainingCycleData> {
+  final int id;
+  final DateTime startDate;
+  final int targetDays;
+  const TrainingCycleData({
+    required this.id,
+    required this.startDate,
+    required this.targetDays,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['start_date'] = Variable<DateTime>(startDate);
+    map['target_days'] = Variable<int>(targetDays);
+    return map;
+  }
+
+  TrainingCycleCompanion toCompanion(bool nullToAbsent) {
+    return TrainingCycleCompanion(
+      id: Value(id),
+      startDate: Value(startDate),
+      targetDays: Value(targetDays),
+    );
+  }
+
+  factory TrainingCycleData.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return TrainingCycleData(
+      id: serializer.fromJson<int>(json['id']),
+      startDate: serializer.fromJson<DateTime>(json['startDate']),
+      targetDays: serializer.fromJson<int>(json['targetDays']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'startDate': serializer.toJson<DateTime>(startDate),
+      'targetDays': serializer.toJson<int>(targetDays),
+    };
+  }
+
+  TrainingCycleData copyWith({int? id, DateTime? startDate, int? targetDays}) =>
+      TrainingCycleData(
+        id: id ?? this.id,
+        startDate: startDate ?? this.startDate,
+        targetDays: targetDays ?? this.targetDays,
+      );
+  TrainingCycleData copyWithCompanion(TrainingCycleCompanion data) {
+    return TrainingCycleData(
+      id: data.id.present ? data.id.value : this.id,
+      startDate: data.startDate.present ? data.startDate.value : this.startDate,
+      targetDays: data.targetDays.present
+          ? data.targetDays.value
+          : this.targetDays,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('TrainingCycleData(')
+          ..write('id: $id, ')
+          ..write('startDate: $startDate, ')
+          ..write('targetDays: $targetDays')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, startDate, targetDays);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is TrainingCycleData &&
+          other.id == this.id &&
+          other.startDate == this.startDate &&
+          other.targetDays == this.targetDays);
+}
+
+class TrainingCycleCompanion extends UpdateCompanion<TrainingCycleData> {
+  final Value<int> id;
+  final Value<DateTime> startDate;
+  final Value<int> targetDays;
+  const TrainingCycleCompanion({
+    this.id = const Value.absent(),
+    this.startDate = const Value.absent(),
+    this.targetDays = const Value.absent(),
+  });
+  TrainingCycleCompanion.insert({
+    this.id = const Value.absent(),
+    required DateTime startDate,
+    this.targetDays = const Value.absent(),
+  }) : startDate = Value(startDate);
+  static Insertable<TrainingCycleData> custom({
+    Expression<int>? id,
+    Expression<DateTime>? startDate,
+    Expression<int>? targetDays,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (startDate != null) 'start_date': startDate,
+      if (targetDays != null) 'target_days': targetDays,
+    });
+  }
+
+  TrainingCycleCompanion copyWith({
+    Value<int>? id,
+    Value<DateTime>? startDate,
+    Value<int>? targetDays,
+  }) {
+    return TrainingCycleCompanion(
+      id: id ?? this.id,
+      startDate: startDate ?? this.startDate,
+      targetDays: targetDays ?? this.targetDays,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (startDate.present) {
+      map['start_date'] = Variable<DateTime>(startDate.value);
+    }
+    if (targetDays.present) {
+      map['target_days'] = Variable<int>(targetDays.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('TrainingCycleCompanion(')
+          ..write('id: $id, ')
+          ..write('startDate: $startDate, ')
+          ..write('targetDays: $targetDays')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -2734,6 +2982,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     this,
   );
   late final $ProgramSetsTable programSets = $ProgramSetsTable(this);
+  late final $TrainingCycleTable trainingCycle = $TrainingCycleTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -2745,6 +2994,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     trainingPrograms,
     programExercises,
     programSets,
+    trainingCycle,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -5070,6 +5320,177 @@ typedef $$ProgramSetsTableProcessedTableManager =
       ProgramSet,
       PrefetchHooks Function({bool programExerciseId})
     >;
+typedef $$TrainingCycleTableCreateCompanionBuilder =
+    TrainingCycleCompanion Function({
+      Value<int> id,
+      required DateTime startDate,
+      Value<int> targetDays,
+    });
+typedef $$TrainingCycleTableUpdateCompanionBuilder =
+    TrainingCycleCompanion Function({
+      Value<int> id,
+      Value<DateTime> startDate,
+      Value<int> targetDays,
+    });
+
+class $$TrainingCycleTableFilterComposer
+    extends Composer<_$AppDatabase, $TrainingCycleTable> {
+  $$TrainingCycleTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get startDate => $composableBuilder(
+    column: $table.startDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get targetDays => $composableBuilder(
+    column: $table.targetDays,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$TrainingCycleTableOrderingComposer
+    extends Composer<_$AppDatabase, $TrainingCycleTable> {
+  $$TrainingCycleTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get startDate => $composableBuilder(
+    column: $table.startDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get targetDays => $composableBuilder(
+    column: $table.targetDays,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$TrainingCycleTableAnnotationComposer
+    extends Composer<_$AppDatabase, $TrainingCycleTable> {
+  $$TrainingCycleTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get startDate =>
+      $composableBuilder(column: $table.startDate, builder: (column) => column);
+
+  GeneratedColumn<int> get targetDays => $composableBuilder(
+    column: $table.targetDays,
+    builder: (column) => column,
+  );
+}
+
+class $$TrainingCycleTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $TrainingCycleTable,
+          TrainingCycleData,
+          $$TrainingCycleTableFilterComposer,
+          $$TrainingCycleTableOrderingComposer,
+          $$TrainingCycleTableAnnotationComposer,
+          $$TrainingCycleTableCreateCompanionBuilder,
+          $$TrainingCycleTableUpdateCompanionBuilder,
+          (
+            TrainingCycleData,
+            BaseReferences<
+              _$AppDatabase,
+              $TrainingCycleTable,
+              TrainingCycleData
+            >,
+          ),
+          TrainingCycleData,
+          PrefetchHooks Function()
+        > {
+  $$TrainingCycleTableTableManager(_$AppDatabase db, $TrainingCycleTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$TrainingCycleTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$TrainingCycleTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$TrainingCycleTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<DateTime> startDate = const Value.absent(),
+                Value<int> targetDays = const Value.absent(),
+              }) => TrainingCycleCompanion(
+                id: id,
+                startDate: startDate,
+                targetDays: targetDays,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required DateTime startDate,
+                Value<int> targetDays = const Value.absent(),
+              }) => TrainingCycleCompanion.insert(
+                id: id,
+                startDate: startDate,
+                targetDays: targetDays,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$TrainingCycleTable, TrainingCycleData>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $TrainingCycleTable,
+                    TrainingCycleData
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$TrainingCycleTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $TrainingCycleTable,
+      TrainingCycleData,
+      $$TrainingCycleTableFilterComposer,
+      $$TrainingCycleTableOrderingComposer,
+      $$TrainingCycleTableAnnotationComposer,
+      $$TrainingCycleTableCreateCompanionBuilder,
+      $$TrainingCycleTableUpdateCompanionBuilder,
+      (
+        TrainingCycleData,
+        BaseReferences<_$AppDatabase, $TrainingCycleTable, TrainingCycleData>,
+      ),
+      TrainingCycleData,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -5086,4 +5507,6 @@ class $AppDatabaseManager {
       $$ProgramExercisesTableTableManager(_db, _db.programExercises);
   $$ProgramSetsTableTableManager get programSets =>
       $$ProgramSetsTableTableManager(_db, _db.programSets);
+  $$TrainingCycleTableTableManager get trainingCycle =>
+      $$TrainingCycleTableTableManager(_db, _db.trainingCycle);
 }
