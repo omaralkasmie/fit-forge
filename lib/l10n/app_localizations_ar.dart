@@ -636,6 +636,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get progressPeriodHours => 'ساعات التدريب';
 
   @override
+  String get weeks => 'أسابيع';
+
+  @override
   String get progressUnlocked => 'تم تحقيق الإنجاز';
 
   @override

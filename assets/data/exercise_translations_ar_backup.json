@@ -1,0 +1,2703 @@
+{
+  "external_3_4_Sit-Up": {
+    "name": "تمرين البطن 3/4"
+  },
+  "external_90_90_Hamstring": {
+    "name": "إطالة أوتار المأبض 90/90"
+  },
+  "external_Ab_Crunch_Machine": {
+    "name": "تمرين البطن على الجهاز"
+  },
+  "external_Ab_Roller": {
+    "name": "تمرين البطن بعجلة التمرين"
+  },
+  "external_Adductor": {
+    "name": "تمرين تقريب الفخذ"
+  },
+  "external_Adductor_Groin": {
+    "name": "تمرين عضلات الفخذ الداخلية"
+  },
+  "external_Advanced_Kettlebell_Windmill": {
+    "name": "تمرين طاحونة الكيتل بيل المتقدم"
+  },
+  "external_Air_Bike": {
+    "name": "الدراجة الهوائية الثابتة"
+  },
+  "external_All_Fours_Quad_Stretch": {
+    "name": "إطالة العضلة الرباعية بوضعية الأطراف الأربعة"
+  },
+  "external_Alternate_Hammer_Curl": {
+    "name": "ثني المطرقة بالتبادل"
+  },
+  "external_Alternate_Heel_Touchers": {
+    "name": "لمس الكعبين بالتبادل"
+  },
+  "external_Alternate_Incline_Dumbbell_Curl": {
+    "name": "ثني الدمبل المائل بالتبادل"
+  },
+  "external_Alternate_Leg_Diagonal_Bound": {
+    "name": "القفز القطري بالساقين بالتبادل"
+  },
+  "external_Alternating_Cable_Shoulder_Press": {
+    "name": "ضغط الكابل للأكتاف بالتبادل"
+  },
+  "external_Alternating_Deltoid_Raise": {
+    "name": "رفع عضلات الكتف بالتبادل"
+  },
+  "external_Alternating_Floor_Press": {
+    "name": "ضغط الصدر الأرضي بالتبادل"
+  },
+  "external_Alternating_Hang_Clean": {
+    "name": "رفع البار من وضع التعليق بالتبادل"
+  },
+  "external_Alternating_Kettlebell_Press": {
+    "name": "ضغط الكيتل بيل بالتبادل"
+  },
+  "external_Alternating_Kettlebell_Row": {
+    "name": "سحب الكيتل بيل بالتبادل"
+  },
+  "external_Alternating_Renegade_Row": {
+    "name": "سحب المتمرد بالتبادل"
+  },
+  "external_Ankle_Circles": {
+    "name": "تدوير الكاحل"
+  },
+  "external_Ankle_On_The_Knee": {
+    "name": "وضع الكاحل على الركبة"
+  },
+  "external_Anterior_Tibialis-SMR": {
+    "name": "تدليك العضلة الظنبوبية الأمامية"
+  },
+  "external_Anti-Gravity_Press": {
+    "name": "ضغط مضاد للجاذبية"
+  },
+  "external_Arm_Circles": {
+    "name": "تدوير الذراعين"
+  },
+  "external_Arnold_Dumbbell_Press": {
+    "name": "ضغط أرنولد بالدمبل"
+  },
+  "external_Around_The_Worlds": {
+    "name": "تمرين الدوران حول الجسم"
+  },
+  "external_Atlas_Stone_Trainer": {
+    "name": "تدريب رفع حجر أطلس"
+  },
+  "external_Atlas_Stones": {
+    "name": "رفع أحجار أطلس"
+  },
+  "external_Axle_Deadlift": {
+    "name": "الرفعة الميتة باستخدام البار السميك"
+  },
+  "external_Back_Flyes_-_With_Bands": {
+    "name": "تفتيح الكتف الخلفي باستخدام الأربطة المطاطية"
+  },
+  "external_Backward_Drag": {
+    "name": "السحب إلى الخلف"
+  },
+  "external_Backward_Medicine_Ball_Throw": {
+    "name": "رمي الكرة الطبية إلى الخلف"
+  },
+  "external_Balance_Board": {
+    "name": "تمرين لوح التوازن"
+  },
+  "external_Ball_Leg_Curl": {
+    "name": "ثني الساق باستخدام الكرة"
+  },
+  "external_Band_Assisted_Pull-Up": {
+    "name": "العقلة بمساعدة الرباط المطاطي"
+  },
+  "external_Band_Good_Morning": {
+    "name": "تمرين صباح الخير باستخدام الرباط المطاطي"
+  },
+  "external_Band_Good_Morning_Pull_Through": {
+    "name": "سحب الرباط المطاطي بين الساقين"
+  },
+  "external_Band_Hip_Adductions": {
+    "name": "تقريب الفخذ باستخدام الرباط المطاطي"
+  },
+  "external_Band_Pull_Apart": {
+    "name": "فتح الرباط المطاطي"
+  },
+  "external_Band_Skull_Crusher": {
+    "name": "تمديد الترايسبس بالرباط المطاطي"
+  },
+  "external_Barbell_Ab_Rollout": {
+    "name": "تمرين البطن بالبار"
+  },
+  "external_Barbell_Ab_Rollout_-_On_Knees": {
+    "name": "تمرين البطن بالبار من وضع الركوع"
+  },
+  "external_Barbell_Bench_Press_-_Medium_Grip": {
+    "name": "ضغط الصدر بالبار بقبضة متوسطة"
+  },
+  "external_Barbell_Curl": {
+    "name": "ثني الذراع بالبار"
+  },
+  "external_Barbell_Curls_Lying_Against_An_Incline": {
+    "name": "ثني الذراع بالبار أثناء الاستلقاء على مقعد مائل"
+  },
+  "external_Barbell_Deadlift": {
+    "name": "الرفعة الميتة بالبار"
+  },
+  "external_Barbell_Full_Squat": {
+    "name": "القرفصاء الكاملة بالبار"
+  },
+  "external_Barbell_Glute_Bridge": {
+    "name": "جسر الأرداف بالبار"
+  },
+  "external_Barbell_Guillotine_Bench_Press": {
+    "name": "ضغط الصدر بالبار نحو الرقبة"
+  },
+  "external_Barbell_Hack_Squat": {
+    "name": "هاك سكوات بالبار"
+  },
+  "external_Barbell_Hip_Thrust": {
+    "name": "دفع الورك بالبار"
+  },
+  "external_Barbell_Incline_Bench_Press_-_Medium_Grip": {
+    "name": "ضغط الصدر المائل بالبار بقبضة متوسطة"
+  },
+  "external_Barbell_Incline_Shoulder_Raise": {
+    "name": "رفع الكتف بالبار على مقعد مائل"
+  },
+  "external_Barbell_Lunge": {
+    "name": "اندفاع أمامي بالبار"
+  },
+  "external_Barbell_Rear_Delt_Row": {
+    "name": "سحب البار للكتف الخلفي"
+  },
+  "external_Barbell_Rollout_from_Bench": {
+    "name": "تمرين البطن بالبار من المقعد"
+  },
+  "external_Barbell_Seated_Calf_Raise": {
+    "name": "رفع السمانة بالبار أثناء الجلوس"
+  },
+  "external_Barbell_Shoulder_Press": {
+    "name": "ضغط الكتف بالبار"
+  },
+  "external_Barbell_Shrug": {
+    "name": "رفع الكتفين بالبار"
+  },
+  "external_Barbell_Shrug_Behind_The_Back": {
+    "name": "رفع الكتفين بالبار خلف الظهر"
+  },
+  "external_Barbell_Side_Bend": {
+    "name": "إمالة الجذع جانبياً بالبار"
+  },
+  "external_Barbell_Side_Split_Squat": {
+    "name": "القرفصاء الجانبية بالبار"
+  },
+  "external_Barbell_Squat": {
+    "name": "القرفصاء بالبار"
+  },
+  "external_Barbell_Squat_To_A_Bench": {
+    "name": "القرفصاء بالبار إلى المقعد"
+  },
+  "external_Barbell_Step_Ups": {
+    "name": "الصعود على المنصة بالبار"
+  },
+  "external_Barbell_Walking_Lunge": {
+    "name": "المشي بخطوات الاندفاع بالبار"
+  },
+  "external_Battling_Ropes": {
+    "name": "تمرين الحبال القتالية"
+  },
+  "external_Bear_Crawl_Sled_Drags": {
+    "name": "سحب الزلاجة بوضعية مشية الدب"
+  },
+  "external_Behind_Head_Chest_Stretch": {
+    "name": "إطالة الصدر خلف الرأس"
+  },
+  "external_Bench_Dips": {
+    "name": "غطس الترايسبس على المقعد"
+  },
+  "external_Bench_Jump": {
+    "name": "القفز على المقعد"
+  },
+  "external_Bench_Press_-_Powerlifting": {
+    "name": "ضغط الصدر بالبار بأسلوب القوة"
+  },
+  "external_Bench_Press_-_With_Bands": {
+    "name": "ضغط الصدر بالبار باستخدام الأربطة المطاطية"
+  },
+  "external_Bench_Press_with_Chains": {
+    "name": "ضغط الصدر بالبار مع السلاسل"
+  },
+  "external_Bench_Sprint": {
+    "name": "العدو السريع حول المقعد"
+  },
+  "external_Bent-Arm_Barbell_Pullover": {
+    "name": "سحب البار خلف الرأس مع ثني الذراعين"
+  },
+  "external_Bent-Arm_Dumbbell_Pullover": {
+    "name": "سحب الدمبل خلف الرأس مع ثني الذراعين"
+  },
+  "external_Bent-Knee_Hip_Raise": {
+    "name": "رفع الورك مع ثني الركبتين"
+  },
+  "external_Bent_Over_Barbell_Row": {
+    "name": "سحب البار من وضع الانحناء"
+  },
+  "external_Bent_Over_Dumbbell_Rear_Delt_Raise_With_Head_On_Bench": {
+    "name": "رفع الدمبل للكتف الخلفي مع إسناد الرأس على المقعد"
+  },
+  "external_Bent_Over_Low-Pulley_Side_Lateral": {
+    "name": "الرفع الجانبي بالكابل المنخفض من وضع الانحناء"
+  },
+  "external_Bent_Over_One-Arm_Long_Bar_Row": {
+    "name": "سحب البار الطويل بذراع واحدة من وضع الانحناء"
+  },
+  "external_Bent_Over_Two-Arm_Long_Bar_Row": {
+    "name": "سحب البار الطويل بالذراعين من وضع الانحناء"
+  },
+  "external_Bent_Over_Two-Dumbbell_Row": {
+    "name": "سحب الدمبل بالذراعين من وضع الانحناء"
+  },
+  "external_Bent_Over_Two-Dumbbell_Row_With_Palms_In": {
+    "name": "سحب الدمبل بقبضة متقابلة من وضع الانحناء"
+  },
+  "external_Bent_Press": {
+    "name": "ضغط البار مع إمالة الجذع"
+  },
+  "external_Bicycling": {
+    "name": "ركوب الدراجة"
+  },
+  "external_Bicycling_Stationary": {
+    "name": "ركوب الدراجة الثابتة"
+  },
+  "external_Board_Press": {
+    "name": "ضغط الصدر باستخدام لوح"
+  },
+  "external_Body-Up": {
+    "name": "تمرين رفع الجسم"
+  },
+  "external_Body_Tricep_Press": {
+    "name": "ضغط الترايسبس بوزن الجسم"
+  },
+  "external_Bodyweight_Flyes": {
+    "name": "تفتيح الصدر بوزن الجسم"
+  },
+  "external_Bodyweight_Mid_Row": {
+    "name": "سحب منتصف الظهر بوزن الجسم"
+  },
+  "external_Bodyweight_Squat": {
+    "name": "القرفصاء بوزن الجسم"
+  },
+  "external_Bodyweight_Walking_Lunge": {
+    "name": "المشي بخطوات الاندفاع بوزن الجسم"
+  },
+  "external_Bosu_Ball_Cable_Crunch_With_Side_Bends": {
+    "name": "تمرين البطن بالكابل على كرة بوسو مع إمالة جانبية"
+  },
+  "external_Bottoms-Up_Clean_From_The_Hang_Position": {
+    "name": "رفع الكيتل بيل من وضع التعليق والقاعدة للأعلى"
+  },
+  "external_Bottoms_Up": {
+    "name": "حمل الكيتل بيل والقاعدة للأعلى"
+  },
+  "external_Box_Jump_Multiple_Response": {
+    "name": "القفز المتكرر على الصندوق"
+  },
+  "external_Box_Skip": {
+    "name": "القفز المتتابع فوق الصندوق"
+  },
+  "external_Box_Squat": {
+    "name": "القرفصاء إلى الصندوق"
+  },
+  "external_Box_Squat_with_Bands": {
+    "name": "القرفصاء إلى الصندوق باستخدام الأربطة المطاطية"
+  },
+  "external_Box_Squat_with_Chains": {
+    "name": "القرفصاء إلى الصندوق باستخدام السلاسل"
+  },
+  "external_Brachialis-SMR": {
+    "name": "تدليك العضلة العضدية"
+  },
+  "external_Bradford_Rocky_Presses": {
+    "name": "ضغط برادفورد روكي للكتفين"
+  },
+  "external_Butt-Ups": {
+    "name": "رفع الوركين للأعلى"
+  },
+  "external_Butt_Lift_Bridge": {
+    "name": "جسر رفع الأرداف"
+  },
+  "external_Butterfly": {
+    "name": "تمرين الفراشة"
+  },
+  "external_Cable_Chest_Press": {
+    "name": "ضغط الصدر بالكابل"
+  },
+  "external_Cable_Crossover": {
+    "name": "تفتيح الصدر بالكابل"
+  },
+  "external_Cable_Crunch": {
+    "name": "تمرين البطن بالكابل"
+  },
+  "external_Cable_Deadlifts": {
+    "name": "الرفعة الميتة بالكابل"
+  },
+  "external_Cable_Hammer_Curls_-_Rope_Attachment": {
+    "name": "ثني المطرقة بالكابل باستخدام الحبل"
+  },
+  "external_Cable_Hip_Adduction": {
+    "name": "تقريب الفخذ بالكابل"
+  },
+  "external_Cable_Incline_Pushdown": {
+    "name": "ضغط الترايسبس بالكابل من وضع مائل"
+  },
+  "external_Cable_Incline_Triceps_Extension": {
+    "name": "تمديد الترايسبس بالكابل على مقعد مائل"
+  },
+  "external_Cable_Internal_Rotation": {
+    "name": "الدوران الداخلي بالكابل"
+  },
+  "external_Cable_Iron_Cross": {
+    "name": "تمرين الصليب بالكابل"
+  },
+  "external_Cable_Judo_Flip": {
+    "name": "قلب الجودو بالكابل"
+  },
+  "external_Cable_Lying_Triceps_Extension": {
+    "name": "تمديد الترايسبس بالكابل أثناء الاستلقاء"
+  },
+  "external_Cable_One_Arm_Tricep_Extension": {
+    "name": "تمديد الترايسبس بالكابل بذراع واحدة"
+  },
+  "external_Cable_Preacher_Curl": {
+    "name": "ثني البايسبس بالكابل على مسند الواعظ"
+  },
+  "external_Cable_Rear_Delt_Fly": {
+    "name": "تفتيح الكتف الخلفي بالكابل"
+  },
+  "external_Cable_Reverse_Crunch": {
+    "name": "تمرين البطن العكسي بالكابل"
+  },
+  "external_Cable_Rope_Overhead_Triceps_Extension": {
+    "name": "تمديد الترايسبس فوق الرأس بالكابل والحبل"
+  },
+  "external_Cable_Rope_Rear-Delt_Rows": {
+    "name": "سحب الحبل للكتف الخلفي"
+  },
+  "external_Cable_Russian_Twists": {
+    "name": "لف الجذع الروسي بالكابل"
+  },
+  "external_Cable_Seated_Crunch": {
+    "name": "تمرين البطن بالكابل أثناء الجلوس"
+  },
+  "external_Cable_Seated_Lateral_Raise": {
+    "name": "الرفع الجانبي بالكابل أثناء الجلوس"
+  },
+  "external_Cable_Shoulder_Press": {
+    "name": "ضغط الكتف بالكابل"
+  },
+  "external_Cable_Shrugs": {
+    "name": "رفع الكتفين بالكابل"
+  },
+  "external_Cable_Wrist_Curl": {
+    "name": "ثني الرسغ بالكابل"
+  },
+  "external_Calf-Machine_Shoulder_Shrug": {
+    "name": "رفع الكتفين باستخدام جهاز السمانة"
+  },
+  "external_Calf_Press": {
+    "name": "ضغط السمانة"
+  },
+  "external_Calf_Press_On_The_Leg_Press_Machine": {
+    "name": "ضغط السمانة على جهاز ضغط الأرجل"
+  },
+  "external_Calf_Raise_On_A_Dumbbell": {
+    "name": "رفع السمانة باستخدام الدمبل"
+  },
+  "external_Calf_Raises_-_With_Bands": {
+    "name": "رفع السمانة باستخدام الأربطة المطاطية"
+  },
+  "external_Calf_Stretch_Elbows_Against_Wall": {
+    "name": "إطالة السمانة مع إسناد المرفقين إلى الحائط"
+  },
+  "external_Calf_Stretch_Hands_Against_Wall": {
+    "name": "إطالة السمانة مع إسناد اليدين إلى الحائط"
+  },
+  "external_Calves-SMR": {
+    "name": "تدليك عضلات السمانة"
+  },
+  "external_Car_Deadlift": {
+    "name": "الرفعة الميتة بالسيارة"
+  },
+  "external_Car_Drivers": {
+    "name": "تمرين تدوير المقود"
+  },
+  "external_Carioca_Quick_Step": {
+    "name": "خطوات كاريـوكا السريعة"
+  },
+  "external_Cat_Stretch": {
+    "name": "إطالة القطة"
+  },
+  "external_Catch_and_Overhead_Throw": {
+    "name": "التقاط الكرة ورميها فوق الرأس"
+  },
+  "external_Chain_Handle_Extension": {
+    "name": "تمديد الذراع باستخدام مقبض السلسلة"
+  },
+  "external_Chain_Press": {
+    "name": "تمرين الضغط باستخدام السلاسل"
+  },
+  "external_Chair_Leg_Extended_Stretch": {
+    "name": "إطالة الساق على الكرسي"
+  },
+  "external_Chair_Lower_Back_Stretch": {
+    "name": "إطالة أسفل الظهر على الكرسي"
+  },
+  "external_Chair_Squat": {
+    "name": "القرفصاء باستخدام الكرسي"
+  },
+  "external_Chair_Upper_Body_Stretch": {
+    "name": "إطالة الجزء العلوي من الجسم على الكرسي"
+  },
+  "external_Chest_And_Front_Of_Shoulder_Stretch": {
+    "name": "إطالة الصدر والجزء الأمامي من الكتف"
+  },
+  "external_Chest_Push_from_3_point_stance": {
+    "name": "دفع الصدر من وضعية الارتكاز الثلاثي"
+  },
+  "external_Chest_Push_multiple_response": {
+    "name": "دفع الصدر بتكرارات متعددة"
+  },
+  "external_Chest_Push_single_response": {
+    "name": "دفع الصدر بتكرار واحد"
+  },
+  "external_Chest_Push_with_Run_Release": {
+    "name": "دفع الصدر مع الانطلاق بالجري"
+  },
+  "external_Chest_Stretch_on_Stability_Ball": {
+    "name": "إطالة الصدر على كرة التوازن"
+  },
+  "external_Childs_Pose": {
+    "name": "وضعية الطفل للإطالة"
+  },
+  "external_Chin-Up": {
+    "name": "العقلة بقبضة عكسية"
+  },
+  "external_Chin_To_Chest_Stretch": {
+    "name": "إطالة الرقبة بضم الذقن نحو الصدر"
+  },
+  "external_Circus_Bell": {
+    "name": "رفع جرس السيرك"
+  },
+  "external_Clean": {
+    "name": "رفعة الكلين الأولمبية"
+  },
+  "external_Clean_Deadlift": {
+    "name": "الرفعة الميتة الخاصة بالكلين"
+  },
+  "external_Clean_Pull": {
+    "name": "سحب الكلين"
+  },
+  "external_Clean_Shrug": {
+    "name": "رفع الكتفين من حركة الكلين"
+  },
+  "external_Clean_and_Jerk": {
+    "name": "النتر الأولمبي"
+  },
+  "external_Clean_and_Press": {
+    "name": "الكلين والضغط"
+  },
+  "external_Clean_from_Blocks": {
+    "name": "رفعة الكلين من المنصات"
+  },
+  "external_Clock_Push-Up": {
+    "name": "تمرين الضغط بنمط الساعة"
+  },
+  "external_Close-Grip_Barbell_Bench_Press": {
+    "name": "ضغط الصدر بالبار بقبضة ضيقة"
+  },
+  "external_Close-Grip_Dumbbell_Press": {
+    "name": "ضغط الدمبل بقبضة ضيقة"
+  },
+  "external_Close-Grip_EZ-Bar_Curl_with_Band": {
+    "name": "ثني الذراع ببار EZ بقبضة ضيقة مع رباط مطاطي"
+  },
+  "external_Close-Grip_EZ-Bar_Press": {
+    "name": "ضغط بار EZ بقبضة ضيقة"
+  },
+  "external_Close-Grip_EZ_Bar_Curl": {
+    "name": "ثني الذراع ببار EZ بقبضة ضيقة"
+  },
+  "external_Close-Grip_Front_Lat_Pulldown": {
+    "name": "سحب البار العلوي بقبضة ضيقة"
+  },
+  "external_Close-Grip_Push-Up_off_of_a_Dumbbell": {
+    "name": "ضغط بقبضة ضيقة مع الاستناد على الدمبل"
+  },
+  "external_Close-Grip_Standing_Barbell_Curl": {
+    "name": "ثني الذراع بالبار واقفاً بقبضة ضيقة"
+  },
+  "external_Cocoons": {
+    "name": "تمرين الكوكونز للبطن"
+  },
+  "external_Conans_Wheel": {
+    "name": "عجلة كونان"
+  },
+  "external_Concentration_Curls": {
+    "name": "ثني العضلة ذات الرأسين بالتركيز"
+  },
+  "external_Cross-Body_Crunch": {
+    "name": "كرنش البطن المتقاطع"
+  },
+  "external_Cross_Body_Hammer_Curl": {
+    "name": "ثني المطرقة عبر الجسم"
+  },
+  "external_Cross_Over_-_With_Bands": {
+    "name": "تمرين الكروس أوفر باستخدام الأربطة"
+  },
+  "external_Crossover_Reverse_Lunge": {
+    "name": "اندفاع خلفي متقاطع"
+  },
+  "external_Crucifix": {
+    "name": "تمرين الصليب"
+  },
+  "external_Crunch_-_Hands_Overhead": {
+    "name": "كرنش مع وضع اليدين فوق الرأس"
+  },
+  "external_Crunch_-_Legs_On_Exercise_Ball": {
+    "name": "كرنش مع وضع الساقين على كرة التمرين"
+  },
+  "external_Crunches": {
+    "name": "تمرين الكرنش للبطن"
+  },
+  "external_Cuban_Press": {
+    "name": "الضغط الكوبي"
+  },
+  "external_Dancers_Stretch": {
+    "name": "إطالة الراقص"
+  },
+  "external_Dead_Bug": {
+    "name": "تمرين الحشرة الميتة"
+  },
+  "external_Deadlift_with_Bands": {
+    "name": "الرفعة الميتة باستخدام الأربطة"
+  },
+  "external_Deadlift_with_Chains": {
+    "name": "الرفعة الميتة باستخدام السلاسل"
+  },
+  "external_Decline_Barbell_Bench_Press": {
+    "name": "ضغط الصدر بالبار على مقعد مائل للأسفل"
+  },
+  "external_Decline_Close-Grip_Bench_To_Skull_Crusher": {
+    "name": "ضغط ضيق على مقعد مائل للأسفل يتبعه تمديد الترايسبس"
+  },
+  "external_Decline_Crunch": {
+    "name": "كرنش البطن على مقعد مائل للأسفل"
+  },
+  "external_Decline_Dumbbell_Bench_Press": {
+    "name": "ضغط الصدر بالدمبل على مقعد مائل للأسفل"
+  },
+  "external_Decline_Dumbbell_Flyes": {
+    "name": "تفتيح الصدر بالدمبل على مقعد مائل للأسفل"
+  },
+  "external_Decline_Dumbbell_Triceps_Extension": {
+    "name": "تمديد الترايسبس بالدمبل على مقعد مائل للأسفل"
+  },
+  "external_Decline_EZ_Bar_Triceps_Extension": {
+    "name": "تمديد الترايسبس ببار EZ على مقعد مائل للأسفل"
+  },
+  "external_Decline_Oblique_Crunch": {
+    "name": "كرنش مائل للبطن على مقعد منخفض"
+  },
+  "external_Decline_Push-Up": {
+    "name": "تمرين الضغط مع رفع القدمين"
+  },
+  "external_Decline_Reverse_Crunch": {
+    "name": "كرنش عكسي على مقعد منخفض"
+  },
+  "external_Decline_Smith_Press": {
+    "name": "ضغط الصدر بجهاز سميث على مقعد منخفض"
+  },
+  "external_Deficit_Deadlift": {
+    "name": "الرفعة الميتة من ارتفاع منخفض"
+  },
+  "external_Depth_Jump_Leap": {
+    "name": "القفز الارتدادي من ارتفاع"
+  },
+  "external_Dip_Machine": {
+    "name": "تمرين المتوازي باستخدام الجهاز"
+  },
+  "external_Dips_-_Chest_Version": {
+    "name": "تمرين المتوازي للصدر"
+  },
+  "external_Dips_-_Triceps_Version": {
+    "name": "تمرين المتوازي للترايسبس"
+  },
+  "external_Donkey_Calf_Raises": {
+    "name": "رفع السمانة بوضعية الحمار"
+  },
+  "external_Double_Kettlebell_Alternating_Hang_Clean": {
+    "name": "كلين متناوب ب kettlebell مزدوج"
+  },
+  "external_Double_Kettlebell_Jerk": {
+    "name": "نتر بال kettlebell المزدوج"
+  },
+  "external_Double_Kettlebell_Push_Press": {
+    "name": "دفع وضغط بال kettlebell المزدوج"
+  },
+  "external_Double_Kettlebell_Snatch": {
+    "name": "خطف بال kettlebell المزدوج"
+  },
+  "external_Double_Kettlebell_Windmill": {
+    "name": "تمرين الطاحونة بال kettlebell المزدوج"
+  },
+  "external_Double_Leg_Butt_Kick": {
+    "name": "ركل المؤخرة بالساقين معاً"
+  },
+  "external_Downward_Facing_Balance": {
+    "name": "وضعية التوازن المواجهة للأسفل"
+  },
+  "external_Drag_Curl": {
+    "name": "ثني الذراع بالسحب الخلفي"
+  },
+  "external_Drop_Push": {
+    "name": "تمرين الدفع السريع مع الهبوط"
+  },
+  "external_Dumbbell_Alternate_Bicep_Curl": {
+    "name": "ثني العضلة ذات الرأسين بالدمبل بالتناوب"
+  },
+  "external_Dumbbell_Bench_Press": {
+    "name": "ضغط الصدر بالدمبل"
+  },
+  "external_Dumbbell_Bench_Press_with_Neutral_Grip": {
+    "name": "ضغط الصدر بالدمبل بقبضة محايدة"
+  },
+  "external_Dumbbell_Bicep_Curl": {
+    "name": "ثني العضلة ذات الرأسين بالدمبل"
+  },
+  "external_Dumbbell_Clean": {
+    "name": "كلين بالدمبل"
+  },
+  "external_Dumbbell_Floor_Press": {
+    "name": "ضغط الدمبل من وضعية الاستلقاء على الأرض"
+  },
+  "external_Dumbbell_Flyes": {
+    "name": "تفتيح الصدر بالدمبل"
+  },
+  "external_Dumbbell_Incline_Row": {
+    "name": "سحب الدمبل على مقعد مائل"
+  },
+  "external_Dumbbell_Incline_Shoulder_Raise": {
+    "name": "رفع الكتف بالدمبل على مقعد مائل"
+  },
+  "external_Dumbbell_Lunges": {
+    "name": "اندفاع الساقين بالدمبل"
+  },
+  "external_Dumbbell_Lying_One-Arm_Rear_Lateral_Raise": {
+    "name": "رفع الدمبل جانبياً للخلف بذراع واحدة أثناء الاستلقاء"
+  },
+  "external_Dumbbell_Lying_Pronation": {
+    "name": "كبّ الساعد بالدمبل أثناء الاستلقاء"
+  },
+  "external_Dumbbell_Lying_Rear_Lateral_Raise": {
+    "name": "رفع الدمبل جانبياً للخلف أثناء الاستلقاء"
+  },
+  "external_Dumbbell_Lying_Supination": {
+    "name": "استلقاء الساعد بالدمبل أثناء الاستلقاء"
+  },
+  "external_Dumbbell_One-Arm_Shoulder_Press": {
+    "name": "ضغط الكتف بالدمبل بذراع واحدة"
+  },
+  "external_Dumbbell_One-Arm_Triceps_Extension": {
+    "name": "تمديد الترايسبس بالدمبل بذراع واحدة"
+  },
+  "external_Dumbbell_One-Arm_Upright_Row": {
+    "name": "سحب الدمبل العمودي بذراع واحدة"
+  },
+  "external_Dumbbell_Prone_Incline_Curl": {
+    "name": "ثني الذراع بالدمبل على مقعد مائل مع الاستلقاء على البطن"
+  },
+  "external_Dumbbell_Raise": {
+    "name": "رفع الدمبل"
+  },
+  "external_Dumbbell_Rear_Lunge": {
+    "name": "اندفاع خلفي بالدمبل"
+  },
+  "external_Dumbbell_Scaption": {
+    "name": "رفع الدمبل بمسار لوح الكتف"
+  },
+  "external_Dumbbell_Seated_Box_Jump": {
+    "name": "القفز من وضعية الجلوس باستخدام صندوق"
+  },
+  "external_Dumbbell_Seated_One-Leg_Calf_Raise": {
+    "name": "رفع السمانة بساق واحدة أثناء الجلوس مع الدمبل"
+  },
+  "external_Dumbbell_Shoulder_Press": {
+    "name": "ضغط الكتف بالدمبل"
+  },
+  "external_Dumbbell_Shrug": {
+    "name": "رفع الكتفين بالدمبل"
+  },
+  "external_Dumbbell_Side_Bend": {
+    "name": "الانحناء الجانبي بالدمبل"
+  },
+  "external_Dumbbell_Squat": {
+    "name": "القرفصاء بالدمبل"
+  },
+  "external_Dumbbell_Squat_To_A_Bench": {
+    "name": "القرفصاء بالدمبل إلى المقعد"
+  },
+  "external_Dumbbell_Step_Ups": {
+    "name": "الصعود على منصة بالدمبل"
+  },
+  "external_Dumbbell_Tricep_Extension_-Pronated_Grip": {
+    "name": "تمديد الترايسبس بالدمبل بقبضة سفلية"
+  },
+  "external_Dynamic_Back_Stretch": {
+    "name": "إطالة الظهر الديناميكية"
+  },
+  "external_Dynamic_Chest_Stretch": {
+    "name": "إطالة الصدر الديناميكية"
+  },
+  "external_EZ-Bar_Curl": {
+    "name": "ثني الذراع باستخدام بار EZ"
+  },
+  "external_EZ-Bar_Skullcrusher": {
+    "name": "تمديد الترايسبس باستخدام بار EZ"
+  },
+  "external_Elbow_Circles": {
+    "name": "حركات دائرية للمرفقين"
+  },
+  "external_Elbow_to_Knee": {
+    "name": "ملامسة المرفق للركبة"
+  },
+  "external_Elbows_Back": {
+    "name": "سحب المرفقين إلى الخلف"
+  },
+  "external_Elevated_Back_Lunge": {
+    "name": "اندفاع خلفي مع رفع القدم"
+  },
+  "external_Elevated_Cable_Rows": {
+    "name": "سحب الكابل من وضعية مرتفعة"
+  },
+  "external_Elliptical_Trainer": {
+    "name": "تمرين الجهاز الإهليلجي"
+  },
+  "external_Exercise_Ball_Crunch": {
+    "name": "كرنش البطن على كرة التمرين"
+  },
+  "external_Exercise_Ball_Pull-In": {
+    "name": "سحب الركبتين باستخدام كرة التمرين"
+  },
+  "external_Extended_Range_One-Arm_Kettlebell_Floor_Press": {
+    "name": "ضغط أرضي بمدى ممتد باستخدام kettlebell بذراع واحدة"
+  },
+  "external_External_Rotation": {
+    "name": "الدوران الخارجي للكتف"
+  },
+  "external_External_Rotation_with_Band": {
+    "name": "الدوران الخارجي للكتف باستخدام رباط مطاطي"
+  },
+  "external_External_Rotation_with_Cable": {
+    "name": "الدوران الخارجي للكتف باستخدام الكابل"
+  },
+  "external_Face_Pull": {
+    "name": "سحب الكابل باتجاه الوجه"
+  },
+  "external_Farmers_Walk": {
+    "name": "مشي المزارع بالأوزان"
+  },
+  "external_Fast_Skipping": {
+    "name": "نط الحبل السريع"
+  },
+  "external_Finger_Curls": {
+    "name": "ثني الأصابع بالأوزان"
+  },
+  "external_Flat_Bench_Cable_Flyes": {
+    "name": "تفتيح الصدر بالكابل على مقعد مستوٍ"
+  },
+  "external_Flat_Bench_Leg_Pull-In": {
+    "name": "سحب الركبتين على مقعد مستوٍ"
+  },
+  "external_Flat_Bench_Lying_Leg_Raise": {
+    "name": "رفع الساقين أثناء الاستلقاء على مقعد مستوٍ"
+  },
+  "external_Flexor_Incline_Dumbbell_Curls": {
+    "name": "ثني عضلات الساعد بالدمبل على مقعد مائل"
+  },
+  "external_Floor_Glute-Ham_Raise": {
+    "name": "رفع عضلات المؤخرة وأوتار الركبة من الأرض"
+  },
+  "external_Floor_Press": {
+    "name": "ضغط الصدر من وضعية الاستلقاء على الأرض"
+  },
+  "external_Floor_Press_with_Chains": {
+    "name": "ضغط الصدر الأرضي باستخدام السلاسل"
+  },
+  "external_Flutter_Kicks": {
+    "name": "ركلات الرفرفة"
+  },
+  "external_Foot-SMR": {
+    "name": "التدليك الذاتي لعضلات القدم"
+  },
+  "external_Forward_Drag_with_Press": {
+    "name": "سحب الزلاجة للأمام مع الضغط"
+  },
+  "external_Frankenstein_Squat": {
+    "name": "سكوات فرانكنشتاين"
+  },
+  "external_Freehand_Jump_Squat": {
+    "name": "سكوات القفز دون أوزان"
+  },
+  "external_Frog_Hops": {
+    "name": "قفزات الضفدع"
+  },
+  "external_Frog_Sit-Ups": {
+    "name": "تمرين بطن الضفدع"
+  },
+  "external_Front_Barbell_Squat": {
+    "name": "سكوات أمامي بالبار"
+  },
+  "external_Front_Barbell_Squat_To_A_Bench": {
+    "name": "سكوات أمامي بالبار إلى المقعد"
+  },
+  "external_Front_Box_Jump": {
+    "name": "القفز الأمامي على الصندوق"
+  },
+  "external_Front_Cable_Raise": {
+    "name": "رفع أمامي بالكابل"
+  },
+  "external_Front_Cone_Hops_or_hurdle_hops": {
+    "name": "قفزات أمامية فوق الأقماع أو الحواجز"
+  },
+  "external_Front_Dumbbell_Raise": {
+    "name": "الرفع الأمامي بالدمبل"
+  },
+  "external_Front_Incline_Dumbbell_Raise": {
+    "name": "الرفع الأمامي بالدمبل على مقعد مائل"
+  },
+  "external_Front_Leg_Raises": {
+    "name": "رفع الساقين للأمام"
+  },
+  "external_Front_Plate_Raise": {
+    "name": "الرفع الأمامي بقرص الأوزان"
+  },
+  "external_Front_Raise_And_Pullover": {
+    "name": "الرفع الأمامي مع سحب الوزن للخلف"
+  },
+  "external_Front_Squat_Clean_Grip": {
+    "name": "السكوات الأمامي بقبضة الكلين"
+  },
+  "external_Front_Squats_With_Two_Kettlebells": {
+    "name": "السكوات الأمامي باستخدام جرسين حديديين"
+  },
+  "external_Front_Two-Dumbbell_Raise": {
+    "name": "الرفع الأمامي باستخدام دمبلين"
+  },
+  "external_Full_Range-Of-Motion_Lat_Pulldown": {
+    "name": "سحب علوي للظهر بمدى حركة كامل"
+  },
+  "external_Gironda_Sternum_Chins": {
+    "name": "العقلة باتجاه عظمة القص بأسلوب جيروندا"
+  },
+  "external_Glute_Ham_Raise": {
+    "name": "رفع عضلات المؤخرة وأوتار الركبة"
+  },
+  "external_Glute_Kickback": {
+    "name": "ركلة خلفية لعضلات المؤخرة"
+  },
+  "external_Goblet_Squat": {
+    "name": "سكوات الغوبلت"
+  },
+  "external_Good_Morning": {
+    "name": "تمرين صباح الخير"
+  },
+  "external_Good_Morning_off_Pins": {
+    "name": "تمرين صباح الخير من الدعامات"
+  },
+  "external_Gorilla_Chin_Crunch": {
+    "name": "كرنش البطن بأسلوب الغوريلا"
+  },
+  "external_Groin_and_Back_Stretch": {
+    "name": "إطالة عضلات الأربية والظهر"
+  },
+  "external_Groiners": {
+    "name": "تمرين فتح الورك الديناميكي"
+  },
+  "external_Hack_Squat": {
+    "name": "هاك سكوات"
+  },
+  "external_Hammer_Curls": {
+    "name": "ثني الذراع بقبضة المطرقة"
+  },
+  "external_Hammer_Grip_Incline_DB_Bench_Press": {
+    "name": "ضغط الصدر بالدمبل بقبضة المطرقة على مقعد مائل"
+  },
+  "external_Hamstring-SMR": {
+    "name": "التدليك الذاتي لأوتار الركبة"
+  },
+  "external_Hamstring_Stretch": {
+    "name": "إطالة أوتار الركبة"
+  },
+  "external_Handstand_Push-Ups": {
+    "name": "تمرين الضغط على اليدين"
+  },
+  "external_Hang_Clean": {
+    "name": "كلين من وضع التعليق"
+  },
+  "external_Hang_Clean_-_Below_the_Knees": {
+    "name": "كلين من وضع التعليق أسفل الركبتين"
+  },
+  "external_Hang_Snatch": {
+    "name": "خطف من وضع التعليق"
+  },
+  "external_Hang_Snatch_-_Below_Knees": {
+    "name": "خطف من وضع التعليق أسفل الركبتين"
+  },
+  "external_Hanging_Bar_Good_Morning": {
+    "name": "تمرين صباح الخير باستخدام البار من وضع التعليق"
+  },
+  "external_Hanging_Leg_Raise": {
+    "name": "رفع الساقين من وضع التعليق"
+  },
+  "external_Hanging_Pike": {
+    "name": "تمرين بايك من وضع التعليق"
+  },
+  "external_Heaving_Snatch_Balance": {
+    "name": "توازن الخطف بالدفع"
+  },
+  "external_Heavy_Bag_Thrust": {
+    "name": "دفع الكيس الثقيل"
+  },
+  "external_High_Cable_Curls": {
+    "name": "ثني الذراع بالكابل المرتفع"
+  },
+  "external_Hip_Circles_prone": {
+    "name": "تدوير الورك من وضع الانبطاح"
+  },
+  "external_Hip_Extension_with_Bands": {
+    "name": "تمديد الورك باستخدام الأربطة المطاطية"
+  },
+  "external_Hip_Flexion_with_Band": {
+    "name": "ثني الورك باستخدام الرباط المطاطي"
+  },
+  "external_Hip_Lift_with_Band": {
+    "name": "رفع الورك باستخدام الرباط المطاطي"
+  },
+  "external_Hug_A_Ball": {
+    "name": "ضم الكرة"
+  },
+  "external_Hug_Knees_To_Chest": {
+    "name": "ضم الركبتين نحو الصدر"
+  },
+  "external_Hurdle_Hops": {
+    "name": "القفز فوق الحواجز"
+  },
+  "external_Hyperextensions_Back_Extensions": {
+    "name": "تمديد الظهر"
+  },
+  "external_Hyperextensions_With_No_Hyperextension_Bench": {
+    "name": "تمديد الظهر دون استخدام مقعد مخصص"
+  },
+  "external_IT_Band_and_Glute_Stretch": {
+    "name": "إطالة الشريط الحرقفي الظنبوبي وعضلات الأرداف"
+  },
+  "external_Iliotibial_Tract-SMR": {
+    "name": "التدليك الذاتي للشريط الحرقفي الظنبوبي"
+  },
+  "external_Inchworm": {
+    "name": "تمرين الدودة"
+  },
+  "external_Incline_Barbell_Triceps_Extension": {
+    "name": "تمديد الترايسبس باستخدام البار على مقعد مائل"
+  },
+  "external_Incline_Bench_Pull": {
+    "name": "سحب باستخدام المقعد على مقعد مائل"
+  },
+  "external_Incline_Cable_Chest_Press": {
+    "name": "ضغط الصدر باستخدام الكابل على مقعد مائل"
+  },
+  "external_Incline_Cable_Flye": {
+    "name": "تفتيح باستخدام الكابل على مقعد مائل"
+  },
+  "external_Incline_Dumbbell_Bench_With_Palms_Facing_In": {
+    "name": "تمرين باستخدام الدمبل على مقعد مائل"
+  },
+  "external_Incline_Dumbbell_Curl": {
+    "name": "ثني الذراع باستخدام الدمبل على مقعد مائل"
+  },
+  "external_Incline_Dumbbell_Flyes": {
+    "name": "تفتيح باستخدام الدمبل على مقعد مائل"
+  },
+  "external_Incline_Dumbbell_Flyes_-_With_A_Twist": {
+    "name": "تفتيح باستخدام الدمبل على مقعد مائل"
+  },
+  "external_Incline_Dumbbell_Press": {
+    "name": "ضغط باستخدام الدمبل على مقعد مائل"
+  },
+  "external_Incline_Hammer_Curls": {
+    "name": "ثني الذراع على مقعد مائل بقبضة المطرقة"
+  },
+  "external_Incline_Inner_Biceps_Curl": {
+    "name": "ثني البايسبس على مقعد مائل"
+  },
+  "external_Incline_Push-Up": {
+    "name": "تمرين الضغط على مقعد مائل"
+  },
+  "external_Incline_Push-Up_Close-Grip": {
+    "name": "تمرين الضغط على مقعد مائل بقبضة ضيقة"
+  },
+  "external_Incline_Push-Up_Depth_Jump": {
+    "name": "تمرين الضغط على مقعد مائل"
+  },
+  "external_Incline_Push-Up_Medium": {
+    "name": "تمرين الضغط على مقعد مائل"
+  },
+  "external_Incline_Push-Up_Reverse_Grip": {
+    "name": "تمرين الضغط على مقعد مائل عكسي"
+  },
+  "external_Incline_Push-Up_Wide": {
+    "name": "تمرين الضغط على مقعد مائل"
+  },
+  "external_Intermediate_Groin_Stretch": {
+    "name": "إطالة الأربية"
+  },
+  "external_Intermediate_Hip_Flexor_and_Quad_Stretch": {
+    "name": "إطالة الورك"
+  },
+  "external_Internal_Rotation_with_Band": {
+    "name": "دوران باستخدام الرباط المطاطي"
+  },
+  "external_Inverted_Row": {
+    "name": "سحب مقلوب"
+  },
+  "external_Inverted_Row_with_Straps": {
+    "name": "سحب باستخدام الأحزمة مقلوب"
+  },
+  "external_Iron_Cross": {
+    "name": "تمرين"
+  },
+  "external_Iron_Crosses_stretch": {
+    "name": "إطالة"
+  },
+  "external_Isometric_Chest_Squeezes": {
+    "name": "تمرين الصدر ثابت"
+  },
+  "external_Isometric_Neck_Exercise_-_Front_And_Back": {
+    "name": "تمرين الرقبة ثابت"
+  },
+  "external_Isometric_Neck_Exercise_-_Sides": {
+    "name": "تمرين الرقبة ثابت"
+  },
+  "external_Isometric_Wipers": {
+    "name": "تمرين ثابت"
+  },
+  "external_JM_Press": {
+    "name": "ضغط"
+  },
+  "external_Jackknife_Sit-Up": {
+    "name": "تمرين النهوض للبطن"
+  },
+  "external_Janda_Sit-Up": {
+    "name": "تمرين النهوض للبطن"
+  },
+  "external_Jefferson_Squats": {
+    "name": "سكوات"
+  },
+  "external_Jerk_Balance": {
+    "name": "نتر"
+  },
+  "external_Jerk_Dip_Squat": {
+    "name": "نتر"
+  },
+  "external_Jogging_Treadmill": {
+    "name": "هرولة باستخدام جهاز المشي"
+  },
+  "external_Keg_Load": {
+    "name": "تحميل"
+  },
+  "external_Kettlebell_Arnold_Press": {
+    "name": "ضغط باستخدام الكيتل بيل أرنولد"
+  },
+  "external_Kettlebell_Dead_Clean": {
+    "name": "كلين باستخدام الكيتل بيل"
+  },
+  "external_Kettlebell_Figure_8": {
+    "name": "تمرين باستخدام الكيتل بيل"
+  },
+  "external_Kettlebell_Halo": {
+    "name": "تمرين باستخدام الكيتل بيل"
+  },
+  "external_Kettlebell_Halo_With_Overhead_Extension": {
+    "name": "تمديد باستخدام الكيتل بيل فوق الرأس"
+  },
+  "external_Kettlebell_Hang_Clean": {
+    "name": "كلين باستخدام الكيتل بيل"
+  },
+  "external_Kettlebell_One-Legged_Deadlift": {
+    "name": "الرفعة الميتة باستخدام الكيتل بيل"
+  },
+  "external_Kettlebell_Overhead_Triceps_Extension": {
+    "name": "تمديد الترايسبس باستخدام الكيتل بيل فوق الرأس"
+  },
+  "external_Kettlebell_Pass_Between_The_Legs": {
+    "name": "تمرين الساقين باستخدام الكيتل بيل"
+  },
+  "external_Kettlebell_Pirate_Ships": {
+    "name": "تمرين باستخدام الكيتل بيل"
+  },
+  "external_Kettlebell_Pistol_Squat": {
+    "name": "سكوات باستخدام الكيتل بيل بأسلوب المسدس"
+  },
+  "external_Kettlebell_Seated_Press": {
+    "name": "ضغط باستخدام الكيتل بيل أثناء الجلوس"
+  },
+  "external_Kettlebell_Seesaw_Press": {
+    "name": "ضغط باستخدام الكيتل بيل"
+  },
+  "external_Kettlebell_Sumo_High_Pull": {
+    "name": "سحب باستخدام الكيتل بيل سومو"
+  },
+  "external_Kettlebell_Thruster": {
+    "name": "تمرين باستخدام الكيتل بيل"
+  },
+  "external_Kettlebell_Turkish_Get-Up_Lunge_style": {
+    "name": "رفع باستخدام الكيتل بيل تركي"
+  },
+  "external_Kettlebell_Turkish_Get-Up_Squat_style": {
+    "name": "رفع باستخدام الكيتل بيل تركي"
+  },
+  "external_Kettlebell_Windmill": {
+    "name": "الطاحونة باستخدام الكيتل بيل"
+  },
+  "external_Kipping_Muscle_Up": {
+    "name": "رفع"
+  },
+  "external_Knee_Across_The_Body": {
+    "name": "تمرين"
+  },
+  "external_Knee_Circles": {
+    "name": "تدوير"
+  },
+  "external_Knee_Hip_Raise_On_Parallel_Bars": {
+    "name": "رفع الورك"
+  },
+  "external_Knee_Tuck_Jump": {
+    "name": "قفز"
+  },
+  "external_Kneeling_Arm_Drill": {
+    "name": "تمرين الذراع من وضع الركوع"
+  },
+  "external_Kneeling_Cable_Crunch_With_Alternating_Oblique_Twists": {
+    "name": "كرنش البطن باستخدام الكابل من وضع الركوع بالتبادل"
+  },
+  "external_Kneeling_Cable_Triceps_Extension": {
+    "name": "تمديد الترايسبس باستخدام الكابل من وضع الركوع"
+  },
+  "external_Kneeling_Forearm_Stretch": {
+    "name": "إطالة الساعد من وضع الركوع"
+  },
+  "external_Kneeling_High_Pulley_Row": {
+    "name": "سحب من وضع الركوع"
+  },
+  "external_Kneeling_Hip_Flexor": {
+    "name": "تمرين الورك من وضع الركوع"
+  },
+  "external_Kneeling_Jump_Squat": {
+    "name": "سكوات القفز من وضع الركوع"
+  },
+  "external_Kneeling_Single-Arm_High_Pulley_Row": {
+    "name": "سحب الذراع من وضع الركوع أحادي"
+  },
+  "external_Kneeling_Squat": {
+    "name": "سكوات من وضع الركوع"
+  },
+  "external_Landmine_180s": {
+    "name": "تمرين باستخدام جهاز لاندماين"
+  },
+  "external_Landmine_Linear_Jammer": {
+    "name": "تمرين باستخدام جهاز لاندماين"
+  },
+  "external_Lateral_Bound": {
+    "name": "تمرين"
+  },
+  "external_Lateral_Box_Jump": {
+    "name": "القفز باستخدام الصندوق"
+  },
+  "external_Lateral_Cone_Hops": {
+    "name": "قفز"
+  },
+  "external_Lateral_Raise_-_With_Bands": {
+    "name": "رفع باستخدام الأربطة المطاطية"
+  },
+  "external_Latissimus_Dorsi-SMR": {
+    "name": "تمرين الظهر العريض"
+  },
+  "external_Leg-Over_Floor_Press": {
+    "name": "ضغط الساق"
+  },
+  "external_Leg-Up_Hamstring_Stretch": {
+    "name": "رفع الساق"
+  },
+  "external_Leg_Extensions": {
+    "name": "تمديد الساق"
+  },
+  "external_Leg_Lift": {
+    "name": "تمرين الساق"
+  },
+  "external_Leg_Press": {
+    "name": "ضغط الساق"
+  },
+  "external_Leg_Pull-In": {
+    "name": "سحب الساق"
+  },
+  "external_Leverage_Chest_Press": {
+    "name": "ضغط الصدر"
+  },
+  "external_Leverage_Deadlift": {
+    "name": "الرفعة الميتة"
+  },
+  "external_Leverage_Decline_Chest_Press": {
+    "name": "ضغط الصدر على مقعد مائل للأسفل"
+  },
+  "external_Leverage_High_Row": {
+    "name": "سحب"
+  },
+  "external_Leverage_Incline_Chest_Press": {
+    "name": "ضغط الصدر على مقعد مائل"
+  },
+  "external_Leverage_Iso_Row": {
+    "name": "سحب"
+  },
+  "external_Leverage_Shoulder_Press": {
+    "name": "ضغط الكتفين"
+  },
+  "external_Leverage_Shrug": {
+    "name": "رفع الكتفين"
+  },
+  "external_Linear_3-Part_Start_Technique": {
+    "name": "تمرين"
+  },
+  "external_Linear_Acceleration_Wall_Drill": {
+    "name": "تمرين"
+  },
+  "external_Linear_Depth_Jump": {
+    "name": "قفز"
+  },
+  "external_Log_Lift": {
+    "name": "تمرين باستخدام الجذع"
+  },
+  "external_London_Bridges": {
+    "name": "تمرين"
+  },
+  "external_Looking_At_Ceiling": {
+    "name": "تمرين"
+  },
+  "external_Low_Cable_Crossover": {
+    "name": "تمرين باستخدام الكابل"
+  },
+  "external_Low_Cable_Triceps_Extension": {
+    "name": "تمديد الترايسبس باستخدام الكابل"
+  },
+  "external_Low_Pulley_Row_To_Neck": {
+    "name": "سحب الرقبة"
+  },
+  "external_Lower_Back-SMR": {
+    "name": "تمرين الظهر"
+  },
+  "external_Lower_Back_Curl": {
+    "name": "ثني الظهر"
+  },
+  "external_Lunge_Pass_Through": {
+    "name": "اندفاع"
+  },
+  "external_Lunge_Sprint": {
+    "name": "اندفاع"
+  },
+  "external_Lying_Bent_Leg_Groin": {
+    "name": "تمرين الساق أثناء الاستلقاء"
+  },
+  "external_Lying_Cable_Curl": {
+    "name": "ثني الذراع باستخدام الكابل أثناء الاستلقاء"
+  },
+  "external_Lying_Cambered_Barbell_Row": {
+    "name": "سحب باستخدام البار أثناء الاستلقاء"
+  },
+  "external_Lying_Close-Grip_Bar_Curl_On_High_Pulley": {
+    "name": "ثني الذراع باستخدام البار أثناء الاستلقاء بقبضة ضيقة"
+  },
+  "external_Lying_Close-Grip_Barbell_Triceps_Extension_Behind_The_Head": {
+    "name": "تمديد الترايسبس باستخدام البار أثناء الاستلقاء بقبضة ضيقة خلف"
+  },
+  "external_Lying_Close-Grip_Barbell_Triceps_Press_To_Chin": {
+    "name": "ضغط الترايسبس باستخدام البار أثناء الاستلقاء بقبضة ضيقة"
+  },
+  "external_Lying_Crossover": {
+    "name": "تمرين أثناء الاستلقاء"
+  },
+  "external_Lying_Dumbbell_Tricep_Extension": {
+    "name": "تمديد باستخدام الدمبل أثناء الاستلقاء"
+  },
+  "external_Lying_Face_Down_Plate_Neck_Resistance": {
+    "name": "تمرين الرقبة باستخدام قرص الوزن أثناء الاستلقاء"
+  },
+  "external_Lying_Face_Up_Plate_Neck_Resistance": {
+    "name": "رفع الرقبة باستخدام قرص الوزن أثناء الاستلقاء"
+  },
+  "external_Lying_Glute": {
+    "name": "تمرين الأرداف أثناء الاستلقاء"
+  },
+  "external_Lying_Hamstring": {
+    "name": "تمرين أوتار الركبة أثناء الاستلقاء"
+  },
+  "external_Lying_High_Bench_Barbell_Curl": {
+    "name": "ثني الذراع باستخدام المقعد أثناء الاستلقاء"
+  },
+  "external_Lying_Leg_Curls": {
+    "name": "ثني الساق أثناء الاستلقاء"
+  },
+  "external_Lying_Machine_Squat": {
+    "name": "سكوات باستخدام الجهاز أثناء الاستلقاء"
+  },
+  "external_Lying_One-Arm_Lateral_Raise": {
+    "name": "رفع الذراع أثناء الاستلقاء"
+  },
+  "external_Lying_Prone_Quadriceps": {
+    "name": "تمرين العضلة الرباعية أثناء الاستلقاء من وضع الانبطاح"
+  },
+  "external_Lying_Rear_Delt_Raise": {
+    "name": "رفع الكتف أثناء الاستلقاء"
+  },
+  "external_Lying_Supine_Dumbbell_Curl": {
+    "name": "ثني الذراع باستخدام الدمبل أثناء الاستلقاء من وضع الاستلقاء على الظهر"
+  },
+  "external_Lying_T-Bar_Row": {
+    "name": "سحب باستخدام البار أثناء الاستلقاء"
+  },
+  "external_Lying_Triceps_Press": {
+    "name": "ضغط الترايسبس أثناء الاستلقاء"
+  },
+  "external_Machine_Bench_Press": {
+    "name": "ضغط باستخدام الجهاز"
+  },
+  "external_Machine_Bicep_Curl": {
+    "name": "ثني الذراع باستخدام الجهاز"
+  },
+  "external_Machine_Preacher_Curls": {
+    "name": "ثني الذراع باستخدام الجهاز على مسند الواعظ"
+  },
+  "external_Machine_Shoulder_Military_Press": {
+    "name": "ضغط الكتفين باستخدام الجهاز"
+  },
+  "external_Machine_Triceps_Extension": {
+    "name": "تمديد الترايسبس باستخدام الجهاز"
+  },
+  "external_Medicine_Ball_Chest_Pass": {
+    "name": "تمرين الصدر باستخدام الطبية"
+  },
+  "external_Medicine_Ball_Full_Twist": {
+    "name": "لف الجذع باستخدام الطبية"
+  },
+  "external_Medicine_Ball_Scoop_Throw": {
+    "name": "رمي باستخدام الطبية"
+  },
+  "external_Middle_Back_Shrug": {
+    "name": "رفع الكتفين الظهر"
+  },
+  "external_Middle_Back_Stretch": {
+    "name": "إطالة الظهر"
+  },
+  "external_Mixed_Grip_Chin": {
+    "name": "تمرين مختلط"
+  },
+  "external_Monster_Walk": {
+    "name": "مشي"
+  },
+  "external_Mountain_Climbers": {
+    "name": "تسلق"
+  },
+  "external_Moving_Claw_Series": {
+    "name": "تمرين"
+  },
+  "external_Muscle_Snatch": {
+    "name": "خطف"
+  },
+  "external_Muscle_Up": {
+    "name": "رفع"
+  },
+  "external_Narrow_Stance_Hack_Squats": {
+    "name": "سكوات بقبضة ضيقة"
+  },
+  "external_Narrow_Stance_Leg_Press": {
+    "name": "ضغط الساق بقبضة ضيقة"
+  },
+  "external_Narrow_Stance_Squats": {
+    "name": "سكوات بقبضة ضيقة"
+  },
+  "external_Natural_Glute_Ham_Raise": {
+    "name": "رفع الأرداف"
+  },
+  "external_Neck-SMR": {
+    "name": "تمرين الرقبة"
+  },
+  "external_Neck_Press": {
+    "name": "ضغط الرقبة"
+  },
+  "external_Oblique_Crunches": {
+    "name": "كرنش البطن"
+  },
+  "external_Oblique_Crunches_-_On_The_Floor": {
+    "name": "كرنش البطن"
+  },
+  "external_Olympic_Squat": {
+    "name": "سكوات أولمبي"
+  },
+  "external_On-Your-Back_Quad_Stretch": {
+    "name": "إطالة الظهر"
+  },
+  "external_On_Your_Side_Quad_Stretch": {
+    "name": "إطالة العضلة الرباعية"
+  },
+  "external_One-Arm_Dumbbell_Row": {
+    "name": "سحب الذراع باستخدام الدمبل"
+  },
+  "external_One-Arm_Flat_Bench_Dumbbell_Flye": {
+    "name": "تفتيح الذراع باستخدام المقعد"
+  },
+  "external_One-Arm_High-Pulley_Cable_Side_Bends": {
+    "name": "تمرين الذراع باستخدام الكابل"
+  },
+  "external_One-Arm_Incline_Lateral_Raise": {
+    "name": "رفع الذراع على مقعد مائل"
+  },
+  "external_One-Arm_Kettlebell_Clean": {
+    "name": "كلين الذراع باستخدام الكيتل بيل"
+  },
+  "external_One-Arm_Kettlebell_Clean_and_Jerk": {
+    "name": "كلين الذراع باستخدام الكيتل بيل"
+  },
+  "external_One-Arm_Kettlebell_Floor_Press": {
+    "name": "ضغط الذراع باستخدام الكيتل بيل"
+  },
+  "external_One-Arm_Kettlebell_Jerk": {
+    "name": "نتر الذراع باستخدام الكيتل بيل"
+  },
+  "external_One-Arm_Kettlebell_Military_Press_To_The_Side": {
+    "name": "ضغط الذراع باستخدام الكيتل بيل"
+  },
+  "external_One-Arm_Kettlebell_Para_Press": {
+    "name": "ضغط الذراع باستخدام الكيتل بيل"
+  },
+  "external_One-Arm_Kettlebell_Push_Press": {
+    "name": "دفع الذراع باستخدام الكيتل بيل"
+  },
+  "external_One-Arm_Kettlebell_Row": {
+    "name": "سحب الذراع باستخدام الكيتل بيل"
+  },
+  "external_One-Arm_Kettlebell_Snatch": {
+    "name": "خطف الذراع باستخدام الكيتل بيل"
+  },
+  "external_One-Arm_Kettlebell_Split_Jerk": {
+    "name": "نتر الذراع باستخدام الكيتل بيل"
+  },
+  "external_One-Arm_Kettlebell_Split_Snatch": {
+    "name": "خطف الذراع باستخدام الكيتل بيل"
+  },
+  "external_One-Arm_Kettlebell_Swings": {
+    "name": "تأرجح الذراع باستخدام الكيتل بيل"
+  },
+  "external_One-Arm_Long_Bar_Row": {
+    "name": "سحب الذراع باستخدام البار"
+  },
+  "external_One-Arm_Medicine_Ball_Slam": {
+    "name": "تمرين الذراع باستخدام الطبية"
+  },
+  "external_One-Arm_Open_Palm_Kettlebell_Clean": {
+    "name": "كلين الذراع باستخدام الكيتل بيل"
+  },
+  "external_One-Arm_Overhead_Kettlebell_Squats": {
+    "name": "سكوات باستخدام الكيتل بيل فوق الرأس"
+  },
+  "external_One-Arm_Side_Deadlift": {
+    "name": "الرفعة الميتة"
+  },
+  "external_One-Arm_Side_Laterals": {
+    "name": "تمرين الذراع"
+  },
+  "external_One-Legged_Cable_Kickback": {
+    "name": "ركلة خلفية باستخدام الكابل"
+  },
+  "external_One_Arm_Against_Wall": {
+    "name": "تمرين الذراع"
+  },
+  "external_One_Arm_Chin-Up": {
+    "name": "رفع الذراع"
+  },
+  "external_One_Arm_Dumbbell_Bench_Press": {
+    "name": "ضغط الذراع باستخدام الدمبل"
+  },
+  "external_One_Arm_Dumbbell_Preacher_Curl": {
+    "name": "ثني الذراع باستخدام الدمبل على مسند الواعظ"
+  },
+  "external_One_Arm_Floor_Press": {
+    "name": "ضغط الذراع"
+  },
+  "external_One_Arm_Lat_Pulldown": {
+    "name": "سحب علوي الذراع"
+  },
+  "external_One_Arm_Pronated_Dumbbell_Triceps_Extension": {
+    "name": "تمديد الذراع باستخدام الدمبل"
+  },
+  "external_One_Arm_Supinated_Dumbbell_Triceps_Extension": {
+    "name": "تمديد الذراع باستخدام الدمبل"
+  },
+  "external_One_Half_Locust": {
+    "name": "تمرين"
+  },
+  "external_One_Handed_Hang": {
+    "name": "تمرين"
+  },
+  "external_One_Knee_To_Chest": {
+    "name": "تمرين الصدر"
+  },
+  "external_One_Leg_Barbell_Squat": {
+    "name": "سكوات باستخدام البار"
+  },
+  "external_Open_Palm_Kettlebell_Clean": {
+    "name": "كلين باستخدام الكيتل بيل"
+  },
+  "external_Otis-Up": {
+    "name": "رفع"
+  },
+  "external_Overhead_Cable_Curl": {
+    "name": "ثني الذراع باستخدام الكابل فوق الرأس"
+  },
+  "external_Overhead_Lat": {
+    "name": "تمرين فوق الرأس"
+  },
+  "external_Overhead_Slam": {
+    "name": "تمرين فوق الرأس"
+  },
+  "external_Overhead_Squat": {
+    "name": "سكوات فوق الرأس"
+  },
+  "external_Overhead_Stretch": {
+    "name": "إطالة فوق الرأس"
+  },
+  "external_Overhead_Triceps": {
+    "name": "تمرين الترايسبس فوق الرأس"
+  },
+  "external_Pallof_Press": {
+    "name": "ضغط"
+  },
+  "external_Pallof_Press_With_Rotation": {
+    "name": "ضغط"
+  },
+  "external_Palms-Down_Dumbbell_Wrist_Curl_Over_A_Bench": {
+    "name": "ثني الرسغ باستخدام الدمبل"
+  },
+  "external_Palms-Down_Wrist_Curl_Over_A_Bench": {
+    "name": "ثني الرسغ باستخدام المقعد"
+  },
+  "external_Palms-Up_Barbell_Wrist_Curl_Over_A_Bench": {
+    "name": "رفع الرسغ باستخدام البار"
+  },
+  "external_Palms-Up_Dumbbell_Wrist_Curl_Over_A_Bench": {
+    "name": "رفع الرسغ باستخدام الدمبل"
+  },
+  "external_Parallel_Bar_Dip": {
+    "name": "غطس باستخدام البار"
+  },
+  "external_Pelvic_Tilt_Into_Bridge": {
+    "name": "جسر"
+  },
+  "external_Peroneals-SMR": {
+    "name": "تمرين عضلات الشظية"
+  },
+  "external_Peroneals_Stretch": {
+    "name": "إطالة عضلات الشظية"
+  },
+  "external_Physioball_Hip_Bridge": {
+    "name": "جسر الورك"
+  },
+  "external_Pin_Presses": {
+    "name": "تمرين"
+  },
+  "external_Piriformis-SMR": {
+    "name": "تمرين الكمثرية"
+  },
+  "external_Plank": {
+    "name": "بلانك"
+  },
+  "external_Plate_Pinch": {
+    "name": "تمرين باستخدام قرص الوزن"
+  },
+  "external_Plate_Twist": {
+    "name": "لف الجذع باستخدام قرص الوزن"
+  },
+  "external_Platform_Hamstring_Slides": {
+    "name": "تمرين أوتار الركبة"
+  },
+  "external_Plie_Dumbbell_Squat": {
+    "name": "سكوات باستخدام الدمبل"
+  },
+  "external_Plyo_Kettlebell_Pushups": {
+    "name": "تمرين باستخدام الكيتل بيل"
+  },
+  "external_Plyo_Push-up": {
+    "name": "تمرين الضغط"
+  },
+  "external_Posterior_Tibialis_Stretch": {
+    "name": "إطالة الظنبوبية"
+  },
+  "external_Power_Clean": {
+    "name": "كلين للقوة"
+  },
+  "external_Power_Clean_from_Blocks": {
+    "name": "كلين للقوة"
+  },
+  "external_Power_Jerk": {
+    "name": "نتر للقوة"
+  },
+  "external_Power_Partials": {
+    "name": "تمرين للقوة"
+  },
+  "external_Power_Snatch": {
+    "name": "خطف للقوة"
+  },
+  "external_Power_Snatch_from_Blocks": {
+    "name": "خطف للقوة"
+  },
+  "external_Power_Stairs": {
+    "name": "تمرين للقوة"
+  },
+  "external_Preacher_Curl": {
+    "name": "ثني الذراع على مسند الواعظ"
+  },
+  "external_Preacher_Hammer_Dumbbell_Curl": {
+    "name": "ثني الذراع باستخدام الدمبل على مسند الواعظ بقبضة المطرقة"
+  },
+  "external_Press_Sit-Up": {
+    "name": "تمرين النهوض للبطن"
+  },
+  "external_Prone_Manual_Hamstring": {
+    "name": "تمرين أوتار الركبة من وضع الانبطاح"
+  },
+  "external_Prowler_Sprint": {
+    "name": "عدو سريع باستخدام زلاجة الدفع"
+  },
+  "external_Pull_Through": {
+    "name": "سحب"
+  },
+  "external_Pullups": {
+    "name": "تمرين"
+  },
+  "external_Push-Up_Wide": {
+    "name": "تمرين الضغط"
+  },
+  "external_Push-Ups_-_Close_Triceps_Position": {
+    "name": "تمرين الضغط الترايسبس بقبضة ضيقة"
+  },
+  "external_Push-Ups_With_Feet_Elevated": {
+    "name": "تمرين الضغط مع رفع القدمين"
+  },
+  "external_Push-Ups_With_Feet_On_An_Exercise_Ball": {
+    "name": "تمرين الضغط باستخدام الكرة"
+  },
+  "external_Push_Press": {
+    "name": "دفع"
+  },
+  "external_Push_Press_-_Behind_the_Neck": {
+    "name": "دفع الرقبة خلف"
+  },
+  "external_Push_Up_to_Side_Plank": {
+    "name": "تمرين الضغط"
+  },
+  "external_Pushups": {
+    "name": "تمرين"
+  },
+  "external_Pushups_Close_and_Wide_Hand_Positions": {
+    "name": "تمرين بقبضة ضيقة"
+  },
+  "external_Pyramid": {
+    "name": "تمرين الهرم"
+  },
+  "external_Quad_Stretch": {
+    "name": "إطالة العضلة الرباعية"
+  },
+  "external_Quadriceps-SMR": {
+    "name": "تمرين العضلة الرباعية"
+  },
+  "external_Quick_Leap": {
+    "name": "تمرين سريع"
+  },
+  "external_Rack_Delivery": {
+    "name": "تمرين"
+  },
+  "external_Rack_Pull_with_Bands": {
+    "name": "سحب باستخدام الأربطة المطاطية"
+  },
+  "external_Rack_Pulls": {
+    "name": "تمرين"
+  },
+  "external_Rear_Leg_Raises": {
+    "name": "رفع الساق"
+  },
+  "external_Recumbent_Bike": {
+    "name": "تمرين باستخدام الدراجة"
+  },
+  "external_Return_Push_from_Stance": {
+    "name": "دفع"
+  },
+  "external_Reverse_Band_Bench_Press": {
+    "name": "ضغط باستخدام الرباط المطاطي عكسي"
+  },
+  "external_Reverse_Band_Box_Squat": {
+    "name": "سكوات باستخدام الرباط المطاطي عكسي"
+  },
+  "external_Reverse_Band_Deadlift": {
+    "name": "الرفعة الميتة باستخدام الرباط المطاطي عكسي"
+  },
+  "external_Reverse_Band_Power_Squat": {
+    "name": "سكوات باستخدام الرباط المطاطي عكسي للقوة"
+  },
+  "external_Reverse_Band_Sumo_Deadlift": {
+    "name": "الرفعة الميتة باستخدام الرباط المطاطي عكسي سومو"
+  },
+  "external_Reverse_Barbell_Curl": {
+    "name": "ثني الذراع باستخدام البار عكسي"
+  },
+  "external_Reverse_Barbell_Preacher_Curls": {
+    "name": "ثني الذراع باستخدام البار عكسي على مسند الواعظ"
+  },
+  "external_Reverse_Cable_Curl": {
+    "name": "ثني الذراع باستخدام الكابل عكسي"
+  },
+  "external_Reverse_Crunch": {
+    "name": "كرنش البطن عكسي"
+  },
+  "external_Reverse_Flyes": {
+    "name": "تفتيح عكسي"
+  },
+  "external_Reverse_Flyes_With_External_Rotation": {
+    "name": "تفتيح عكسي"
+  },
+  "external_Reverse_Grip_Bent-Over_Rows": {
+    "name": "سحب عكسي"
+  },
+  "external_Reverse_Grip_Triceps_Pushdown": {
+    "name": "ضغط للأسفل الترايسبس عكسي"
+  },
+  "external_Reverse_Hyperextension": {
+    "name": "تمديد الظهر عكسي"
+  },
+  "external_Reverse_Machine_Flyes": {
+    "name": "تفتيح باستخدام الجهاز عكسي"
+  },
+  "external_Reverse_Plate_Curls": {
+    "name": "ثني الذراع باستخدام قرص الوزن عكسي"
+  },
+  "external_Reverse_Triceps_Bench_Press": {
+    "name": "ضغط الترايسبس باستخدام المقعد عكسي"
+  },
+  "external_Rhomboids-SMR": {
+    "name": "تمرين العضلات المعينية"
+  },
+  "external_Rickshaw_Carry": {
+    "name": "حمل"
+  },
+  "external_Rickshaw_Deadlift": {
+    "name": "الرفعة الميتة"
+  },
+  "external_Ring_Dips": {
+    "name": "غطس باستخدام الحلقات"
+  },
+  "external_Rocket_Jump": {
+    "name": "قفز"
+  },
+  "external_Rocking_Standing_Calf_Raise": {
+    "name": "رفع السمانة أثناء الوقوف"
+  },
+  "external_Rocky_Pull-Ups_Pulldowns": {
+    "name": "تمرين العقلة"
+  },
+  "external_Romanian_Deadlift": {
+    "name": "الرفعة الميتة روماني"
+  },
+  "external_Romanian_Deadlift_from_Deficit": {
+    "name": "الرفعة الميتة روماني"
+  },
+  "external_Rope_Climb": {
+    "name": "تسلق باستخدام الحبل"
+  },
+  "external_Rope_Crunch": {
+    "name": "كرنش البطن باستخدام الحبل"
+  },
+  "external_Rope_Jumping": {
+    "name": "تمرين باستخدام الحبل"
+  },
+  "external_Rope_Straight-Arm_Pulldown": {
+    "name": "سحب علوي الذراع باستخدام الحبل مستقيم"
+  },
+  "external_Round_The_World_Shoulder_Stretch": {
+    "name": "إطالة الكتفين"
+  },
+  "external_Rowing_Stationary": {
+    "name": "التجديف"
+  },
+  "external_Runners_Stretch": {
+    "name": "إطالة"
+  },
+  "external_Running_Treadmill": {
+    "name": "جري باستخدام جهاز المشي"
+  },
+  "external_Russian_Twist": {
+    "name": "لف الجذع"
+  },
+  "external_Sandbag_Load": {
+    "name": "تحميل باستخدام كيس الرمل"
+  },
+  "external_Scapular_Pull-Up": {
+    "name": "تمرين العقلة"
+  },
+  "external_Scissor_Kick": {
+    "name": "تمرين"
+  },
+  "external_Scissors_Jump": {
+    "name": "قفز"
+  },
+  "external_Seated_Band_Hamstring_Curl": {
+    "name": "ثني أوتار الركبة باستخدام الرباط المطاطي أثناء الجلوس"
+  },
+  "external_Seated_Barbell_Military_Press": {
+    "name": "ضغط باستخدام البار أثناء الجلوس"
+  },
+  "external_Seated_Barbell_Twist": {
+    "name": "لف الجذع باستخدام البار أثناء الجلوس"
+  },
+  "external_Seated_Bent-Over_One-Arm_Dumbbell_Triceps_Extension": {
+    "name": "تمديد الذراع باستخدام الدمبل أثناء الجلوس"
+  },
+  "external_Seated_Bent-Over_Rear_Delt_Raise": {
+    "name": "رفع الكتف أثناء الجلوس"
+  },
+  "external_Seated_Bent-Over_Two-Arm_Dumbbell_Triceps_Extension": {
+    "name": "تمديد الذراع باستخدام الدمبل أثناء الجلوس"
+  },
+  "external_Seated_Biceps": {
+    "name": "تمرين البايسبس أثناء الجلوس"
+  },
+  "external_Seated_Cable_Rows": {
+    "name": "سحب باستخدام الكابل أثناء الجلوس"
+  },
+  "external_Seated_Cable_Shoulder_Press": {
+    "name": "ضغط الكتفين باستخدام الكابل أثناء الجلوس"
+  },
+  "external_Seated_Calf_Raise": {
+    "name": "رفع السمانة أثناء الجلوس"
+  },
+  "external_Seated_Calf_Stretch": {
+    "name": "إطالة السمانة أثناء الجلوس"
+  },
+  "external_Seated_Close-Grip_Concentration_Barbell_Curl": {
+    "name": "ثني الذراع باستخدام البار أثناء الجلوس بقبضة ضيقة"
+  },
+  "external_Seated_Dumbbell_Curl": {
+    "name": "ثني الذراع باستخدام الدمبل أثناء الجلوس"
+  },
+  "external_Seated_Dumbbell_Inner_Biceps_Curl": {
+    "name": "ثني البايسبس باستخدام الدمبل أثناء الجلوس"
+  },
+  "external_Seated_Dumbbell_Palms-Down_Wrist_Curl": {
+    "name": "ثني الرسغ باستخدام الدمبل أثناء الجلوس"
+  },
+  "external_Seated_Dumbbell_Palms-Up_Wrist_Curl": {
+    "name": "رفع الرسغ باستخدام الدمبل أثناء الجلوس"
+  },
+  "external_Seated_Dumbbell_Press": {
+    "name": "ضغط باستخدام الدمبل أثناء الجلوس"
+  },
+  "external_Seated_Flat_Bench_Leg_Pull-In": {
+    "name": "سحب الساق باستخدام المقعد أثناء الجلوس"
+  },
+  "external_Seated_Floor_Hamstring_Stretch": {
+    "name": "إطالة أوتار الركبة أثناء الجلوس"
+  },
+  "external_Seated_Front_Deltoid": {
+    "name": "تمرين الكتف أثناء الجلوس"
+  },
+  "external_Seated_Glute": {
+    "name": "تمرين الأرداف أثناء الجلوس"
+  },
+  "external_Seated_Good_Mornings": {
+    "name": "تمرين أثناء الجلوس"
+  },
+  "external_Seated_Hamstring": {
+    "name": "تمرين أوتار الركبة أثناء الجلوس"
+  },
+  "external_Seated_Hamstring_and_Calf_Stretch": {
+    "name": "إطالة أوتار الركبة أثناء الجلوس"
+  },
+  "external_Seated_Head_Harness_Neck_Resistance": {
+    "name": "تمرين الرقبة أثناء الجلوس"
+  },
+  "external_Seated_Leg_Curl": {
+    "name": "ثني الساق أثناء الجلوس"
+  },
+  "external_Seated_Leg_Tucks": {
+    "name": "تمرين الساق أثناء الجلوس"
+  },
+  "external_Seated_One-Arm_Dumbbell_Palms-Down_Wrist_Curl": {
+    "name": "ثني الذراع باستخدام الدمبل أثناء الجلوس"
+  },
+  "external_Seated_One-Arm_Dumbbell_Palms-Up_Wrist_Curl": {
+    "name": "رفع الذراع باستخدام الدمبل أثناء الجلوس"
+  },
+  "external_Seated_One-arm_Cable_Pulley_Rows": {
+    "name": "سحب الذراع باستخدام الكابل أثناء الجلوس"
+  },
+  "external_Seated_Overhead_Stretch": {
+    "name": "إطالة أثناء الجلوس فوق الرأس"
+  },
+  "external_Seated_Palm-Up_Barbell_Wrist_Curl": {
+    "name": "رفع الرسغ باستخدام البار أثناء الجلوس"
+  },
+  "external_Seated_Palms-Down_Barbell_Wrist_Curl": {
+    "name": "ثني الرسغ باستخدام البار أثناء الجلوس"
+  },
+  "external_Seated_Side_Lateral_Raise": {
+    "name": "رفع أثناء الجلوس"
+  },
+  "external_Seated_Triceps_Press": {
+    "name": "ضغط الترايسبس أثناء الجلوس"
+  },
+  "external_Seated_Two-Arm_Palms-Up_Low-Pulley_Wrist_Curl": {
+    "name": "رفع الذراع أثناء الجلوس"
+  },
+  "external_See-Saw_Press_Alternating_Side_Press": {
+    "name": "ضغط بالتبادل"
+  },
+  "external_Shotgun_Row": {
+    "name": "سحب"
+  },
+  "external_Shoulder_Circles": {
+    "name": "تدوير الكتفين"
+  },
+  "external_Shoulder_Press_-_With_Bands": {
+    "name": "ضغط الكتفين باستخدام الأربطة المطاطية"
+  },
+  "external_Shoulder_Raise": {
+    "name": "رفع الكتفين"
+  },
+  "external_Shoulder_Stretch": {
+    "name": "إطالة الكتفين"
+  },
+  "external_Side-Lying_Floor_Stretch": {
+    "name": "إطالة أثناء الاستلقاء"
+  },
+  "external_Side_Bridge": {
+    "name": "جسر"
+  },
+  "external_Side_Hop-Sprint": {
+    "name": "قفز"
+  },
+  "external_Side_Jackknife": {
+    "name": "تمرين"
+  },
+  "external_Side_Lateral_Raise": {
+    "name": "رفع"
+  },
+  "external_Side_Laterals_to_Front_Raise": {
+    "name": "رفع"
+  },
+  "external_Side_Leg_Raises": {
+    "name": "رفع الساق"
+  },
+  "external_Side_Lying_Groin_Stretch": {
+    "name": "إطالة الأربية أثناء الاستلقاء"
+  },
+  "external_Side_Neck_Stretch": {
+    "name": "إطالة الرقبة"
+  },
+  "external_Side_Standing_Long_Jump": {
+    "name": "قفز أثناء الوقوف"
+  },
+  "external_Side_To_Side_Chins": {
+    "name": "تمرين"
+  },
+  "external_Side_Wrist_Pull": {
+    "name": "سحب الرسغ"
+  },
+  "external_Side_to_Side_Box_Shuffle": {
+    "name": "تمرين باستخدام الصندوق"
+  },
+  "external_Single-Arm_Cable_Crossover": {
+    "name": "تمرين الذراع باستخدام الكابل أحادي"
+  },
+  "external_Single-Arm_Linear_Jammer": {
+    "name": "تمرين الذراع أحادي"
+  },
+  "external_Single-Arm_Push-Up": {
+    "name": "تمرين الضغط الذراع أحادي"
+  },
+  "external_Single-Cone_Sprint_Drill": {
+    "name": "عدو سريع أحادي"
+  },
+  "external_Single-Leg_High_Box_Squat": {
+    "name": "سكوات باستخدام الصندوق أحادي"
+  },
+  "external_Single-Leg_Hop_Progression": {
+    "name": "قفز الساق أحادي"
+  },
+  "external_Single-Leg_Lateral_Hop": {
+    "name": "قفز الساق أحادي"
+  },
+  "external_Single-Leg_Leg_Extension": {
+    "name": "تمديد الساق أحادي"
+  },
+  "external_Single-Leg_Stride_Jump": {
+    "name": "قفز الساق أحادي"
+  },
+  "external_Single_Dumbbell_Raise": {
+    "name": "رفع باستخدام الدمبل أحادي"
+  },
+  "external_Single_Leg_Butt_Kick": {
+    "name": "تمرين الساق أحادي"
+  },
+  "external_Single_Leg_Glute_Bridge": {
+    "name": "جسر الساق أحادي"
+  },
+  "external_Single_Leg_Push-off": {
+    "name": "دفع الساق أحادي"
+  },
+  "external_Sit-Up": {
+    "name": "تمرين النهوض للبطن"
+  },
+  "external_Sit_Squats": {
+    "name": "جلوس"
+  },
+  "external_Skating": {
+    "name": "التزلج"
+  },
+  "external_Sled_Drag_-_Harness": {
+    "name": "تمرين باستخدام الزلاجة"
+  },
+  "external_Sled_Overhead_Backward_Walk": {
+    "name": "مشي باستخدام الزلاجة فوق الرأس للخلف"
+  },
+  "external_Sled_Overhead_Triceps_Extension": {
+    "name": "تمديد الترايسبس باستخدام الزلاجة فوق الرأس"
+  },
+  "external_Sled_Push": {
+    "name": "دفع باستخدام الزلاجة"
+  },
+  "external_Sled_Reverse_Flye": {
+    "name": "تفتيح باستخدام الزلاجة عكسي"
+  },
+  "external_Sled_Row": {
+    "name": "سحب باستخدام الزلاجة"
+  },
+  "external_Sledgehammer_Swings": {
+    "name": "تأرجح"
+  },
+  "external_Smith_Incline_Shoulder_Raise": {
+    "name": "رفع الكتفين باستخدام جهاز سميث على مقعد مائل"
+  },
+  "external_Smith_Machine_Behind_the_Back_Shrug": {
+    "name": "رفع الكتفين الظهر باستخدام جهاز سميث خلف"
+  },
+  "external_Smith_Machine_Bench_Press": {
+    "name": "ضغط باستخدام جهاز سميث"
+  },
+  "external_Smith_Machine_Bent_Over_Row": {
+    "name": "سحب باستخدام جهاز سميث"
+  },
+  "external_Smith_Machine_Calf_Raise": {
+    "name": "رفع السمانة باستخدام جهاز سميث"
+  },
+  "external_Smith_Machine_Close-Grip_Bench_Press": {
+    "name": "ضغط باستخدام جهاز سميث بقبضة ضيقة"
+  },
+  "external_Smith_Machine_Decline_Press": {
+    "name": "ضغط باستخدام جهاز سميث على مقعد مائل للأسفل"
+  },
+  "external_Smith_Machine_Hang_Power_Clean": {
+    "name": "كلين باستخدام جهاز سميث للقوة"
+  },
+  "external_Smith_Machine_Hip_Raise": {
+    "name": "رفع الورك باستخدام جهاز سميث"
+  },
+  "external_Smith_Machine_Incline_Bench_Press": {
+    "name": "ضغط باستخدام جهاز سميث على مقعد مائل"
+  },
+  "external_Smith_Machine_Leg_Press": {
+    "name": "ضغط الساق باستخدام جهاز سميث"
+  },
+  "external_Smith_Machine_One-Arm_Upright_Row": {
+    "name": "سحب الذراع باستخدام جهاز سميث"
+  },
+  "external_Smith_Machine_Overhead_Shoulder_Press": {
+    "name": "ضغط الكتفين باستخدام جهاز سميث فوق الرأس"
+  },
+  "external_Smith_Machine_Pistol_Squat": {
+    "name": "سكوات باستخدام جهاز سميث بأسلوب المسدس"
+  },
+  "external_Smith_Machine_Reverse_Calf_Raises": {
+    "name": "رفع السمانة باستخدام جهاز سميث عكسي"
+  },
+  "external_Smith_Machine_Squat": {
+    "name": "سكوات باستخدام جهاز سميث"
+  },
+  "external_Smith_Machine_Stiff-Legged_Deadlift": {
+    "name": "الرفعة الميتة باستخدام جهاز سميث بساقين مستقيمتين"
+  },
+  "external_Smith_Machine_Upright_Row": {
+    "name": "سحب باستخدام جهاز سميث"
+  },
+  "external_Smith_Single-Leg_Split_Squat": {
+    "name": "سكوات باستخدام جهاز سميث أحادي"
+  },
+  "external_Snatch": {
+    "name": "خطف"
+  },
+  "external_Snatch_Balance": {
+    "name": "خطف"
+  },
+  "external_Snatch_Deadlift": {
+    "name": "خطف"
+  },
+  "external_Snatch_Pull": {
+    "name": "خطف"
+  },
+  "external_Snatch_Shrug": {
+    "name": "خطف"
+  },
+  "external_Snatch_from_Blocks": {
+    "name": "خطف"
+  },
+  "external_Speed_Band_Overhead_Triceps": {
+    "name": "تمرين الترايسبس باستخدام الرباط المطاطي للسرعة فوق الرأس"
+  },
+  "external_Speed_Box_Squat": {
+    "name": "سكوات باستخدام الصندوق للسرعة"
+  },
+  "external_Speed_Squats": {
+    "name": "سكوات للسرعة"
+  },
+  "external_Spell_Caster": {
+    "name": "تمرين"
+  },
+  "external_Spider_Crawl": {
+    "name": "تمرين"
+  },
+  "external_Spider_Curl": {
+    "name": "ثني الذراع"
+  },
+  "external_Spinal_Stretch": {
+    "name": "إطالة"
+  },
+  "external_Split_Clean": {
+    "name": "كلين"
+  },
+  "external_Split_Jerk": {
+    "name": "نتر"
+  },
+  "external_Split_Jump": {
+    "name": "قفز"
+  },
+  "external_Split_Snatch": {
+    "name": "خطف"
+  },
+  "external_Split_Squat_with_Dumbbells": {
+    "name": "سكوات"
+  },
+  "external_Split_Squats": {
+    "name": "سكوات"
+  },
+  "external_Squat_Jerk": {
+    "name": "سكوات"
+  },
+  "external_Squat_with_Bands": {
+    "name": "سكوات باستخدام الأربطة المطاطية"
+  },
+  "external_Squat_with_Chains": {
+    "name": "سكوات باستخدام السلاسل"
+  },
+  "external_Squat_with_Plate_Movers": {
+    "name": "سكوات باستخدام قرص الوزن"
+  },
+  "external_Squats_-_With_Bands": {
+    "name": "سكوات باستخدام الأربطة المطاطية"
+  },
+  "external_Stairmaster": {
+    "name": "صعود الدرج"
+  },
+  "external_Standing_Alternating_Dumbbell_Press": {
+    "name": "ضغط باستخدام الدمبل أثناء الوقوف بالتبادل"
+  },
+  "external_Standing_Barbell_Calf_Raise": {
+    "name": "رفع السمانة باستخدام البار أثناء الوقوف"
+  },
+  "external_Standing_Barbell_Press_Behind_Neck": {
+    "name": "ضغط الرقبة باستخدام البار أثناء الوقوف خلف"
+  },
+  "external_Standing_Bent-Over_One-Arm_Dumbbell_Triceps_Extension": {
+    "name": "تمديد الذراع باستخدام الدمبل أثناء الوقوف"
+  },
+  "external_Standing_Bent-Over_Two-Arm_Dumbbell_Triceps_Extension": {
+    "name": "تمديد الذراع باستخدام الدمبل أثناء الوقوف"
+  },
+  "external_Standing_Biceps_Cable_Curl": {
+    "name": "ثني البايسبس باستخدام الكابل أثناء الوقوف"
+  },
+  "external_Standing_Biceps_Stretch": {
+    "name": "إطالة البايسبس أثناء الوقوف"
+  },
+  "external_Standing_Bradford_Press": {
+    "name": "ضغط أثناء الوقوف"
+  },
+  "external_Standing_Cable_Chest_Press": {
+    "name": "ضغط الصدر باستخدام الكابل أثناء الوقوف"
+  },
+  "external_Standing_Cable_Lift": {
+    "name": "تمرين باستخدام الكابل أثناء الوقوف"
+  },
+  "external_Standing_Cable_Wood_Chop": {
+    "name": "تمرين باستخدام الكابل أثناء الوقوف"
+  },
+  "external_Standing_Calf_Raises": {
+    "name": "رفع السمانة أثناء الوقوف"
+  },
+  "external_Standing_Concentration_Curl": {
+    "name": "ثني الذراع أثناء الوقوف"
+  },
+  "external_Standing_Dumbbell_Calf_Raise": {
+    "name": "رفع السمانة باستخدام الدمبل أثناء الوقوف"
+  },
+  "external_Standing_Dumbbell_Press": {
+    "name": "ضغط باستخدام الدمبل أثناء الوقوف"
+  },
+  "external_Standing_Dumbbell_Reverse_Curl": {
+    "name": "ثني الذراع باستخدام الدمبل أثناء الوقوف عكسي"
+  },
+  "external_Standing_Dumbbell_Straight-Arm_Front_Delt_Raise_Above_Head": {
+    "name": "رفع الذراع باستخدام الدمبل أثناء الوقوف مستقيم"
+  },
+  "external_Standing_Dumbbell_Triceps_Extension": {
+    "name": "تمديد الترايسبس باستخدام الدمبل أثناء الوقوف"
+  },
+  "external_Standing_Dumbbell_Upright_Row": {
+    "name": "سحب باستخدام الدمبل أثناء الوقوف"
+  },
+  "external_Standing_Elevated_Quad_Stretch": {
+    "name": "إطالة العضلة الرباعية أثناء الوقوف مع رفع القدمين"
+  },
+  "external_Standing_Front_Barbell_Raise_Over_Head": {
+    "name": "رفع باستخدام البار أثناء الوقوف"
+  },
+  "external_Standing_Gastrocnemius_Calf_Stretch": {
+    "name": "إطالة السمانة أثناء الوقوف"
+  },
+  "external_Standing_Hamstring_and_Calf_Stretch": {
+    "name": "إطالة أوتار الركبة أثناء الوقوف"
+  },
+  "external_Standing_Hip_Circles": {
+    "name": "تدوير الورك أثناء الوقوف"
+  },
+  "external_Standing_Hip_Flexors": {
+    "name": "تمرين الورك أثناء الوقوف"
+  },
+  "external_Standing_Inner-Biceps_Curl": {
+    "name": "ثني البايسبس أثناء الوقوف"
+  },
+  "external_Standing_Lateral_Stretch": {
+    "name": "إطالة أثناء الوقوف"
+  },
+  "external_Standing_Leg_Curl": {
+    "name": "ثني الساق أثناء الوقوف"
+  },
+  "external_Standing_Long_Jump": {
+    "name": "قفز أثناء الوقوف"
+  },
+  "external_Standing_Low-Pulley_Deltoid_Raise": {
+    "name": "رفع الكتف أثناء الوقوف"
+  },
+  "external_Standing_Low-Pulley_One-Arm_Triceps_Extension": {
+    "name": "تمديد الذراع أثناء الوقوف"
+  },
+  "external_Standing_Military_Press": {
+    "name": "ضغط أثناء الوقوف"
+  },
+  "external_Standing_Olympic_Plate_Hand_Squeeze": {
+    "name": "عصر باستخدام قرص الوزن أثناء الوقوف أولمبي"
+  },
+  "external_Standing_One-Arm_Cable_Curl": {
+    "name": "ثني الذراع باستخدام الكابل أثناء الوقوف"
+  },
+  "external_Standing_One-Arm_Dumbbell_Curl_Over_Incline_Bench": {
+    "name": "ثني الذراع باستخدام الدمبل أثناء الوقوف على مقعد مائل"
+  },
+  "external_Standing_One-Arm_Dumbbell_Triceps_Extension": {
+    "name": "تمديد الذراع باستخدام الدمبل أثناء الوقوف"
+  },
+  "external_Standing_Overhead_Barbell_Triceps_Extension": {
+    "name": "تمديد الترايسبس باستخدام البار أثناء الوقوف فوق الرأس"
+  },
+  "external_Standing_Palm-In_One-Arm_Dumbbell_Press": {
+    "name": "ضغط الذراع باستخدام الدمبل أثناء الوقوف"
+  },
+  "external_Standing_Palms-In_Dumbbell_Press": {
+    "name": "ضغط باستخدام الدمبل أثناء الوقوف"
+  },
+  "external_Standing_Palms-Up_Barbell_Behind_The_Back_Wrist_Curl": {
+    "name": "رفع الظهر باستخدام البار أثناء الوقوف خلف"
+  },
+  "external_Standing_Pelvic_Tilt": {
+    "name": "تمرين أثناء الوقوف"
+  },
+  "external_Standing_Rope_Crunch": {
+    "name": "كرنش البطن باستخدام الحبل أثناء الوقوف"
+  },
+  "external_Standing_Soleus_And_Achilles_Stretch": {
+    "name": "إطالة النعلية أثناء الوقوف"
+  },
+  "external_Standing_Toe_Touches": {
+    "name": "تمرين أصابع القدم أثناء الوقوف"
+  },
+  "external_Standing_Towel_Triceps_Extension": {
+    "name": "تمديد الترايسبس أثناء الوقوف"
+  },
+  "external_Standing_Two-Arm_Overhead_Throw": {
+    "name": "رمي الذراع أثناء الوقوف فوق الرأس"
+  },
+  "external_Star_Jump": {
+    "name": "قفز"
+  },
+  "external_Step-up_with_Knee_Raise": {
+    "name": "رفع"
+  },
+  "external_Step_Mill": {
+    "name": "تمرين"
+  },
+  "external_Stiff-Legged_Barbell_Deadlift": {
+    "name": "الرفعة الميتة باستخدام البار بساقين مستقيمتين"
+  },
+  "external_Stiff-Legged_Dumbbell_Deadlift": {
+    "name": "الرفعة الميتة باستخدام الدمبل بساقين مستقيمتين"
+  },
+  "external_Stiff_Leg_Barbell_Good_Morning": {
+    "name": "تمرين صباح الخير الساق باستخدام البار بساقين مستقيمتين"
+  },
+  "external_Stomach_Vacuum": {
+    "name": "شفط البطن"
+  },
+  "external_Straight-Arm_Dumbbell_Pullover": {
+    "name": "سحب خلف الرأس الذراع باستخدام الدمبل مستقيم"
+  },
+  "external_Straight-Arm_Pulldown": {
+    "name": "سحب علوي الذراع مستقيم"
+  },
+  "external_Straight_Bar_Bench_Mid_Rows": {
+    "name": "سحب باستخدام البار مستقيم"
+  },
+  "external_Straight_Raises_on_Incline_Bench": {
+    "name": "رفع باستخدام المقعد مستقيم على مقعد مائل"
+  },
+  "external_Stride_Jump_Crossover": {
+    "name": "قفز"
+  },
+  "external_Sumo_Deadlift": {
+    "name": "الرفعة الميتة سومو"
+  },
+  "external_Sumo_Deadlift_with_Bands": {
+    "name": "الرفعة الميتة باستخدام الأربطة المطاطية سومو"
+  },
+  "external_Sumo_Deadlift_with_Chains": {
+    "name": "الرفعة الميتة باستخدام السلاسل سومو"
+  },
+  "external_Superman": {
+    "name": "تمرين"
+  },
+  "external_Supine_Chest_Throw": {
+    "name": "رمي الصدر من وضع الاستلقاء على الظهر"
+  },
+  "external_Supine_One-Arm_Overhead_Throw": {
+    "name": "رمي الذراع من وضع الاستلقاء على الظهر فوق الرأس"
+  },
+  "external_Supine_Two-Arm_Overhead_Throw": {
+    "name": "رمي الذراع من وضع الاستلقاء على الظهر فوق الرأس"
+  },
+  "external_Suspended_Fallout": {
+    "name": "تمرين معلّق"
+  },
+  "external_Suspended_Push-Up": {
+    "name": "تمرين الضغط معلّق"
+  },
+  "external_Suspended_Reverse_Crunch": {
+    "name": "كرنش البطن معلّق عكسي"
+  },
+  "external_Suspended_Row": {
+    "name": "سحب معلّق"
+  },
+  "external_Suspended_Split_Squat": {
+    "name": "سكوات معلّق"
+  },
+  "external_Svend_Press": {
+    "name": "ضغط"
+  },
+  "external_T-Bar_Row_with_Handle": {
+    "name": "سحب باستخدام البار"
+  },
+  "external_Tate_Press": {
+    "name": "ضغط"
+  },
+  "external_The_Straddle": {
+    "name": "تمرين"
+  },
+  "external_Thigh_Abductor": {
+    "name": "تمرين الفخذ"
+  },
+  "external_Thigh_Adductor": {
+    "name": "تمرين الفخذ"
+  },
+  "external_Tire_Flip": {
+    "name": "قلب"
+  },
+  "external_Toe_Touchers": {
+    "name": "تمرين أصابع القدم"
+  },
+  "external_Torso_Rotation": {
+    "name": "دوران"
+  },
+  "external_Trail_Running_Walking": {
+    "name": "جري"
+  },
+  "external_Trap_Bar_Deadlift": {
+    "name": "الرفعة الميتة باستخدام البار"
+  },
+  "external_Tricep_Dumbbell_Kickback": {
+    "name": "ركلة خلفية باستخدام الدمبل"
+  },
+  "external_Tricep_Side_Stretch": {
+    "name": "إطالة"
+  },
+  "external_Triceps_Overhead_Extension_with_Rope": {
+    "name": "تمديد الترايسبس باستخدام الحبل فوق الرأس"
+  },
+  "external_Triceps_Pushdown": {
+    "name": "ضغط للأسفل الترايسبس"
+  },
+  "external_Triceps_Pushdown_-_Rope_Attachment": {
+    "name": "ضغط للأسفل الترايسبس باستخدام الحبل"
+  },
+  "external_Triceps_Pushdown_-_V-Bar_Attachment": {
+    "name": "ضغط للأسفل الترايسبس باستخدام البار"
+  },
+  "external_Triceps_Stretch": {
+    "name": "إطالة الترايسبس"
+  },
+  "external_Tuck_Crunch": {
+    "name": "كرنش البطن"
+  },
+  "external_Two-Arm_Dumbbell_Preacher_Curl": {
+    "name": "ثني الذراع باستخدام الدمبل على مسند الواعظ"
+  },
+  "external_Two-Arm_Kettlebell_Clean": {
+    "name": "كلين الذراع باستخدام الكيتل بيل"
+  },
+  "external_Two-Arm_Kettlebell_Jerk": {
+    "name": "نتر الذراع باستخدام الكيتل بيل"
+  },
+  "external_Two-Arm_Kettlebell_Military_Press": {
+    "name": "ضغط الذراع باستخدام الكيتل بيل"
+  },
+  "external_Two-Arm_Kettlebell_Row": {
+    "name": "سحب الذراع باستخدام الكيتل بيل"
+  },
+  "external_Underhand_Cable_Pulldowns": {
+    "name": "تمرين باستخدام الكابل"
+  },
+  "external_Upper_Back-Leg_Grab": {
+    "name": "تمرين الظهر"
+  },
+  "external_Upper_Back_Stretch": {
+    "name": "إطالة الظهر"
+  },
+  "external_Upright_Barbell_Row": {
+    "name": "سحب باستخدام البار"
+  },
+  "external_Upright_Cable_Row": {
+    "name": "سحب باستخدام الكابل"
+  },
+  "external_Upright_Row_-_With_Bands": {
+    "name": "سحب باستخدام الأربطة المطاطية"
+  },
+  "external_Upward_Stretch": {
+    "name": "إطالة"
+  },
+  "external_V-Bar_Pulldown": {
+    "name": "سحب علوي باستخدام البار"
+  },
+  "external_V-Bar_Pullup": {
+    "name": "تمرين العقلة باستخدام البار"
+  },
+  "external_Vertical_Swing": {
+    "name": "تأرجح"
+  },
+  "external_Walking_Treadmill": {
+    "name": "مشي باستخدام جهاز المشي"
+  },
+  "external_Weighted_Ball_Hyperextension": {
+    "name": "تمديد الظهر باستخدام الكرة بالأوزان"
+  },
+  "external_Weighted_Ball_Side_Bend": {
+    "name": "تمرين باستخدام الكرة بالأوزان"
+  },
+  "external_Weighted_Bench_Dip": {
+    "name": "غطس باستخدام المقعد بالأوزان"
+  },
+  "external_Weighted_Crunches": {
+    "name": "كرنش البطن بالأوزان"
+  },
+  "external_Weighted_Jump_Squat": {
+    "name": "سكوات القفز بالأوزان"
+  },
+  "external_Weighted_Pull_Ups": {
+    "name": "تمرين العقلة بالأوزان"
+  },
+  "external_Weighted_Sissy_Squat": {
+    "name": "سكوات بالأوزان"
+  },
+  "external_Weighted_Sit-Ups_-_With_Bands": {
+    "name": "تمرين النهوض للبطن باستخدام الأربطة المطاطية بالأوزان"
+  },
+  "external_Weighted_Squat": {
+    "name": "سكوات بالأوزان"
+  },
+  "external_Wide-Grip_Barbell_Bench_Press": {
+    "name": "ضغط باستخدام البار"
+  },
+  "external_Wide-Grip_Decline_Barbell_Bench_Press": {
+    "name": "ضغط باستخدام البار على مقعد مائل للأسفل"
+  },
+  "external_Wide-Grip_Decline_Barbell_Pullover": {
+    "name": "سحب خلف الرأس باستخدام البار على مقعد مائل للأسفل"
+  },
+  "external_Wide-Grip_Lat_Pulldown": {
+    "name": "سحب علوي"
+  },
+  "external_Wide-Grip_Pulldown_Behind_The_Neck": {
+    "name": "سحب علوي الرقبة خلف"
+  },
+  "external_Wide-Grip_Rear_Pull-Up": {
+    "name": "تمرين العقلة"
+  },
+  "external_Wide-Grip_Standing_Barbell_Curl": {
+    "name": "ثني الذراع باستخدام البار أثناء الوقوف"
+  },
+  "external_Wide_Stance_Barbell_Squat": {
+    "name": "سكوات باستخدام البار"
+  },
+  "external_Wide_Stance_Stiff_Legs": {
+    "name": "تمرين الساقين بساقين مستقيمتين"
+  },
+  "external_Wind_Sprints": {
+    "name": "تمرين"
+  },
+  "external_Windmills": {
+    "name": "الطواحين"
+  },
+  "external_Worlds_Greatest_Stretch": {
+    "name": "إطالة"
+  },
+  "external_Wrist_Circles": {
+    "name": "تدوير الرسغ"
+  },
+  "external_Wrist_Roller": {
+    "name": "دحرجة الرسغ"
+  },
+  "external_Wrist_Rotations_with_Straight_Bar": {
+    "name": "دوران الرسغ باستخدام البار مستقيم"
+  },
+  "external_Yoke_Walk": {
+    "name": "مشي"
+  },
+  "external_Zercher_Squats": {
+    "name": "سكوات زيرشر"
+  },
+  "external_Zottman_Curl": {
+    "name": "ثني الذراع زوتمن"
+  },
+  "external_Zottman_Preacher_Curl": {
+    "name": "ثني الذراع زوتمن على مسند الواعظ"
+  },
+  "external_3_4_Sit-Up": {
+    "instructions": [
+      "استلقِ على الأرض وثبّت قدميك، مع ثني الركبتين.",
+      "ضع يديك خلف رأسك أو بجانبيه. ابدأ وظهرك ملامس للأرض.",
+      "اثنِ الوركين والعمود الفقري لرفع جذعك باتجاه ركبتيك.",
+      "عند أعلى الحركة، اجعل جذعك عمودياً على الأرض. ثم اعكس الحركة وانزل حتى ثلاثة أرباع المسافة فقط.",
+      "كرر الحركة للعدد المطلوب من التكرارات."
+    ]
+  },
+  "external_90_90_Hamstring": {
+    "instructions": [
+      "استلقِ على ظهرك مع مد إحدى ساقيك بشكل مستقيم.",
+      "اثنِ الورك والركبة في الساق الأخرى بزاوية 90 درجة. يمكنك تثبيت الساق بيديك عند الحاجة. هذا هو وضع البداية.",
+      "مدّ ساقك إلى الأعلى بشكل مستقيم، وتوقف للحظة في أعلى الحركة، ثم أعدها إلى وضع البداية.",
+      "كرر الحركة من 10 إلى 20 مرة، ثم بدّل الساق."
+    ]
+  },
+  "external_Ab_Crunch_Machine": {
+    "instructions": [
+      "اختر مقاومة خفيفة واجلس على جهاز تمارين البطن. ضع قدميك أسفل الوسادات المخصصة، وأمسك بالمقابض العلوية. يجب أن تكون ذراعاك مثنيتين بزاوية 90 درجة مع إسناد العضلة ثلاثية الرؤوس على الوسادات. هذا هو وضع البداية.",
+      "ابدأ برفع ساقيك بالتزامن مع ثني الجزء العلوي من جذعك. أخرج الهواء أثناء الحركة. احرص على أداء الحركة ببطء وتحكم، وركز على استخدام عضلات البطن لتحريك الوزن مع إرخاء الساقين والقدمين.",
+      "توقف للحظة، ثم عد ببطء إلى وضع البداية مع استنشاق الهواء.",
+      "كرر الحركة للعدد المحدد من التكرارات."
+    ]
+  },
+  "external_Ab_Roller": {
+    "instructions": [
+      "أمسك عجلة تمارين البطن بكلتا يديك واجثُ على الأرض.",
+      "ضع العجلة على الأرض أمامك، بحيث ترتكز على يديك وركبتيك، مثل وضعية تمرين الضغط على الركبتين. هذا هو وضع البداية.",
+      "حرّك العجلة ببطء إلى الأمام في خط مستقيم، ومدّ جسمك حتى يصبح مستقيماً. حاول الوصول إلى أبعد مسافة ممكنة دون أن يلامس جسمك الأرض. استنشق الهواء أثناء هذه الحركة.",
+      "بعد التوقف للحظة في وضعية التمدد، ابدأ بسحب العجلة والعودة إلى وضع البداية مع إخراج الهواء. تحرك ببطء وحافظ على شد عضلات البطن طوال الوقت."
+    ]
+  },
+  "external_Adductor": {
+    "instructions": [
+      "استلقِ على بطنك وضع إحدى ساقيك فوق أسطوانة التدليك الرغوية.",
+      "أدر ساقك حتى تلامس الأسطوانة الجزء الداخلي من الفخذ. انقل أكبر قدر يمكنك تحمله من وزن جسمك إلى الأسطوانة.",
+      "حاول إرخاء عضلات الفخذ الداخلية، ثم حرّك الأسطوانة ذهاباً وإياباً بين الورك والركبة، وتوقف عند نقاط الشد لمدة تتراوح بين 10 و30 ثانية. كرر التمرين بالساق الأخرى."
+    ]
+  },
+  "external_Adductor_Groin": {
+    "instructions": [
+      "استلقِ على ظهرك وارفع قدميك باتجاه السقف.",
+      "اطلب من شريك التمرين تثبيت قدميك أو كاحليك. أبعد ساقيك عن بعضهما قدر استطاعتك. هذا هو وضع البداية.",
+      "حاول ضم ساقيك معاً لمدة 10 ثوانٍ أو أكثر، بينما يمنعك شريك التمرين من ذلك.",
+      "أرخِ عضلات ساقيك، ودع شريك التمرين يدفع قدميك إلى الخارج لتمديدهما بالقدر المريح لك. أخبر شريكك عندما تصل إلى مدى التمدد المناسب لتجنب المبالغة أو الإصابة."
+    ]
+  },
+  "external_Advanced_Kettlebell_Windmill": {
+    "instructions": [
+      "ارفع كرة الكيتل بيل إلى أعلى بيد واحدة باستخدام حركة الرفع ثم الدفع فوق الرأس.",
+      "حافظ على مد ذراعك الحاملة للكرة وثباتها طوال التمرين، وادفع الوركين إلى الخارج باتجاه الذراع المرفوعة. أبقِ الذراع الأخرى خلف ظهرك، وأدر قدميك بزاوية 45 درجة بعيداً عن جهة الذراع الحاملة للكرة.",
+      "اخفض جسمك إلى أدنى مستوى تستطيع الوصول إليه مع الحفاظ على وضعية الذراع.",
+      "توقف للحظة، ثم اعكس الحركة وعد إلى وضع البداية."
+    ]
+  },
+  "external_Air_Bike": {
+    "instructions": [
+      "استلقِ على ظهرك بشكل مستقيم، واضغط أسفل ظهرك باتجاه الأرض. ضع يديك بجانب رأسك، واحرص على عدم إجهاد رقبتك أثناء التمرين. ارفع كتفيك إلى وضعية تمرين البطن.",
+      "ارفع ركبتيك حتى تصبحان عموديتين على الأرض، مع جعل أسفل ساقيك موازياً للأرض. هذا هو وضع البداية.",
+      "ابدأ بحركة تشبه تدوير دواسات الدراجة ببطء؛ مدّ ساقك اليمنى إلى الأمام واسحب ركبتك اليسرى نحوك في الوقت نفسه. قرّب مرفقك الأيمن من ركبتك اليسرى عن طريق لف جذعك جانبياً، مع إخراج الهواء.",
+      "عد إلى وضع البداية مع استنشاق الهواء.",
+      "لف جذعك إلى الجانب الآخر أثناء تبديل حركة الساقين، وقرّب مرفقك الأيسر من ركبتك اليمنى مع إخراج الهواء.",
+      "استمر في التبديل بين الجانبين حتى تكمل عدد التكرارات المطلوب لكل جانب."
+    ]
+  },
+  "external_All_Fours_Quad_Stretch": {
+    "instructions": [
+      "ابدأ بالارتكاز على يديك وركبتيك، ثم ارفع إحدى ساقيك عن الأرض وأمسك قدمك بيدك.",
+      "أمسك القدم أو الكاحل بيدك، مع إبقاء الركبة مثنية بالكامل، لتمديد العضلة الرباعية في الفخذ وعضلات ثني الورك.",
+      "ركز على مد الوركين ودفعهما باتجاه الأرض. حافظ على وضعية التمدد لمدة 10 إلى 20 ثانية، ثم بدّل إلى الجانب الآخر."
+    ]
+  }
+}

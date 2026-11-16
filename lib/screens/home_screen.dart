@@ -293,52 +293,52 @@ if (_isLoading)
   )
 else ...[
   Row(
-    children: [
-      Expanded(
-        child: _StatCard(
-          icon: Icons.fitness_center,
-          iconColor: purpleColor,
-          title: l10n.todayActivity,
-          value: '${_stats?.workoutCount ?? 0}',
-          subtitle: l10n.todayActivity,
-        ),
+  children: [
+    Expanded(
+      child: _StatCard(
+        icon: Icons.fitness_center,
+        iconColor: purpleColor,
+        title: 'التمارين المنجزة',
+        value: '${_stats?.workoutCount ?? 0}',
+        subtitle: 'إجمالي التمارين',
       ),
-      const SizedBox(width: 12),
-      Expanded(
-        child: _StatCard(
-          icon: Icons.calendar_month,
-          iconColor: pinkColor,
-          title: l10n.todayActivity,
-          value: '${_stats?.trainingDays ?? 0}',
-          subtitle: l10n.todayActivity,
-        ),
+    ),
+    const SizedBox(width: 12),
+    Expanded(
+      child: _StatCard(
+        icon: Icons.calendar_month,
+        iconColor: pinkColor,
+        title: 'أيام التدريب',
+        value: '${_stats?.trainingDays ?? 0}',
+        subtitle: 'أيام مارست فيها التدريب',
       ),
-    ],
-  ),
-  const SizedBox(height: 12),
-  Row(
-    children: [
-      Expanded(
-        child: _StatCard(
-          icon: Icons.timer_outlined,
-          iconColor: Colors.orangeAccent,
-          title: l10n.workoutTime,
-          value: (_stats?.totalDuration.inMinutes ?? 0).toString(),
-          subtitle: l10n.minutesTarget,
-        ),
+    ),
+  ],
+),
+const SizedBox(height: 12),
+Row(
+  children: [
+    Expanded(
+      child: _StatCard(
+        icon: Icons.timer_outlined,
+        iconColor: Colors.orangeAccent,
+        title: 'وقت التدريب',
+        value: '${_stats?.totalDuration.inMinutes ?? 0} دقيقة',
+        subtitle: 'إجمالي وقت التمرين',
       ),
-      const SizedBox(width: 12),
-      Expanded(
-        child: _StatCard(
-          icon: Icons.monitor_weight_outlined,
-          iconColor: Colors.lightBlueAccent,
-          title: l10n.totalWeightLifted,
-          value: (_stats?.totalWeightLifted ?? 0).toStringAsFixed(0),
-          subtitle: l10n.workoutTime,
-        ),
+    ),
+    const SizedBox(width: 12),
+    Expanded(
+      child: _StatCard(
+        icon: Icons.monitor_weight_outlined,
+        iconColor: Colors.lightBlueAccent,
+        title: 'إجمالي الوزن',
+        value: '${(_stats?.totalWeightLifted ?? 0).toStringAsFixed(0)} كغم',
+        subtitle: 'مجموع الأوزان المرفوعة',
       ),
-    ],
-  ),
+    ),
+  ],
+),
 ],
 
               // Programs header
@@ -390,7 +390,7 @@ else ...[
                 return _ProgramCard(
                   title: program.nameFor(isArabic),
                   subtitle:
-                      '${program.durationWeeks} ${l10n.weeks4}',
+                      '${program.durationWeeks} ${l10n.weeks}',
                   icon: Icons.fitness_center,
                 );
               },

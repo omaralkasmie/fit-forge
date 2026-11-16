@@ -636,6 +636,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get progressPeriodHours => 'Training Hours';
 
   @override
+  String get weeks => 'weeks';
+
+  @override
   String get progressUnlocked => 'Achievement Unlocked';
 
   @override

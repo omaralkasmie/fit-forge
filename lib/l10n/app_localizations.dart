@@ -1325,6 +1325,12 @@ abstract class AppLocalizations {
   /// **'Training Hours'**
   String get progressPeriodHours;
 
+  /// No description provided for @weeks.
+  ///
+  /// In en, this message translates to:
+  /// **'weeks'**
+  String get weeks;
+
   /// No description provided for @progressUnlocked.
   ///
   /// In en, this message translates to:

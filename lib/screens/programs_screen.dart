@@ -4,6 +4,8 @@ import '../widgets/custom_bottom_navigation.dart';
 import '../services/training_program_manager.dart';
 import '../services/training_program_scope.dart';
 import '../models/training_program.dart';
+import 'package:go_router/go_router.dart';
+import '../routes/app_router.dart';
 
 const Color programsBg = Color(0xFF080B1B);
 const Color programsCard = Color(0xFF10142B);
@@ -137,6 +139,7 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
     color: style.color,
     category: program.category,
     image: style.image,
+    sourceProgram: program,
   );
 }
 
@@ -211,7 +214,7 @@ class _ProgramsScreenState extends State<ProgramsScreen> {
           ),
         ],
       ),
-    );
+  );
   }
 
   Widget _buildFilters(AppLocalizations l10n) {
@@ -268,6 +271,7 @@ class _Program {
   final Color color;
   final int category;
   final String image;
+  final TrainingProgram sourceProgram;
 
   const _Program({
     required this.id,
@@ -279,6 +283,7 @@ class _Program {
     required this.color,
     required this.category,
     required this.image,
+    required this.sourceProgram,
   });
 }
 
@@ -293,7 +298,15 @@ class _ProgramCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return InkWell (
+      borderRadius: BorderRadius.circular(22),
+      onTap: () {
+        context.push(
+          AppRouter.programDetails,
+          extra: program.sourceProgram,
+        );
+      },
+    child: Container(
       height: 202,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
@@ -407,6 +420,7 @@ class _ProgramCard extends StatelessWidget {
           ),
         ],
       ),
+    ),
     );
   }
 }
