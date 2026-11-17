@@ -1528,6 +1528,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Advanced'**
   String get difficultyAdvanced;
+
+  /// No description provided for @freeWorkoutLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Free Workout'**
+  String get freeWorkoutLabel;
+
+  /// No description provided for @programWorkoutLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Program Workout'**
+  String get programWorkoutLabel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

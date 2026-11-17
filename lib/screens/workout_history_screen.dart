@@ -196,13 +196,28 @@ class _WorkoutHistoryScreenState extends State<WorkoutHistoryScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      workoutType,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+  workoutType,
+  style: const TextStyle(
+    color: Colors.white,
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+  ),
+),
+
+if (item.type != 'free' &&
+    item.programName != null &&
+    item.programName!.isNotEmpty) ...[
+  const SizedBox(height: 4),
+  Text(
+    item.programName!,
+    style: const TextStyle(
+      color: _purpleColor,
+      fontSize: 13,
+      fontWeight: FontWeight.w600,
+    ),
+  ),
+],
+
                     const SizedBox(height: 5),
                     Text(
                       '$date • $time',

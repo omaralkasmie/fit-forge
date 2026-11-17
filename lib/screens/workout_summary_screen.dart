@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../l10n/app_localizations.dart';
 import '../routes/app_router.dart';
 import '../services/workout_scope.dart';
+import '../models/workout_session.dart';
 
 const Color _bgColor = Color(0xFF0B0B16);
 const Color _cardColor = Color(0xFF15182F);
@@ -97,6 +98,57 @@ class WorkoutSummaryScreen extends StatelessWidget {
                 l10n.workoutSummaryTitle,
                 style: const TextStyle(color: Colors.white54, fontSize: 15),
               ),
+
+              Container(
+  width: double.infinity,
+  padding: const EdgeInsets.all(16),
+  decoration: BoxDecoration(
+    color: _cardColor,
+    borderRadius: BorderRadius.circular(16),
+    border: Border.all(
+      color: _purpleColor.withValues(alpha: 0.4),
+    ),
+  ),
+  child: Row(
+    children: [
+      const Icon(
+        Icons.fitness_center,
+        color: _pinkColor,
+        size: 26,
+      ),
+      const SizedBox(width: 12),
+      Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              session.type == WorkoutType.program
+                  ?l10n.programWorkoutLabel
+                  : l10n.freeWorkoutLabel,
+              style: const TextStyle(
+                color: Colors.white70,
+                fontSize: 13,
+              ),
+            ),
+            if (session.type == WorkoutType.program &&
+                session.programName != null) ...[
+              const SizedBox(height: 5),
+              Text(
+                session.programName!,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+    ],
+  ),
+),
+const SizedBox(height: 20),
 
               const SizedBox(height: 35),
 

@@ -738,4 +738,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get difficultyAdvanced => 'متقدم';
+
+  @override
+  String get freeWorkoutLabel => 'تمرين حر';
+
+  @override
+  String get programWorkoutLabel => 'تمرين برنامج';
 }

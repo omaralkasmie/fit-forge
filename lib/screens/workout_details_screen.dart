@@ -74,7 +74,7 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> {
           return ListView(
             padding: const EdgeInsets.all(16),
             children: [
-              _buildSummaryCard(workout, l10n),
+              _buildSummaryCard(workout, l10n, isArabic),
               const SizedBox(height: 24),
               Text(
                 l10n.workoutExercisesTitle,
@@ -100,106 +100,133 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> {
   }
 
   Widget _buildSummaryCard(
-    WorkoutSessionDetails workout,
-    AppLocalizations l10n,
-  ) {
-    final duration = workout.duration;
-    final hours = duration.inHours;
-    final minutes = duration.inMinutes.remainder(60);
-    final seconds = duration.inSeconds.remainder(60);
+  WorkoutSessionDetails workout,
+  AppLocalizations l10n,
+  bool isArabic,
+) {
+  final duration = workout.duration;
+  final hours = duration.inHours;
+  final minutes = duration.inMinutes.remainder(60);
+  final seconds = duration.inSeconds.remainder(60);
 
-    return Container(
-      padding: const EdgeInsets.all(18),
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [
-            Color(0xFF29204F),
-            Color(0xFF17182F),
-          ],
-        ),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: _purpleColor.withValues(alpha: 0.3),
-        ),
-      ),
-      child: Column(
-        children: [
-          _summaryRow(
-            Icons.calendar_today,
-            l10n.workoutDetailsDate,
-            '${workout.startTime.year}/'
-                '${workout.startTime.month.toString().padLeft(2, '0')}/'
-                '${workout.startTime.day.toString().padLeft(2, '0')}',
-          ),
-          const SizedBox(height: 16),
-          _summaryRow(
-            Icons.access_time,
-            l10n.workoutDetailsDuration,
-            hours > 0
-                ? '${hours}h ${minutes}m'
-                : '${minutes}m ${seconds}s',
-          ),
-          const SizedBox(height: 16),
-          _summaryRow(
-            Icons.fitness_center,
-            l10n.workoutDetailsExercises,
-            '${workout.exercises.length}',
-          ),
-          const SizedBox(height: 16),
-          _summaryRow(
-            Icons.check_circle_outline,
-            l10n.workoutDetailsCompletedSets,
-            '${workout.completedSets}',
-          ),
-          const Divider(
-            color: Colors.white12,
-            height: 28,
-          ),
-          _summaryRow(
-            Icons.monitor_weight_outlined,
-            l10n.workoutDetailsTotalWeight,
-            '${workout.totalWeightLifted.toStringAsFixed(1)} kg',
-            valueColor: _greenColor,
-          ),
+  return Container(
+    padding: const EdgeInsets.all(18),
+    decoration: BoxDecoration(
+      gradient: const LinearGradient(
+        colors: [
+          Color(0xFF29204F),
+          Color(0xFF17182F),
         ],
       ),
-    );
-  }
-
-  Widget _summaryRow(
-    IconData icon,
-    String label,
-    String value, {
-    Color valueColor = Colors.white,
-  }) {
-    return Row(
+      borderRadius: BorderRadius.circular(20),
+      border: Border.all(
+        color: _purpleColor.withValues(alpha: 0.3),
+      ),
+    ),
+    child: Column(
       children: [
-        Icon(
-          icon,
-          color: _purpleColor,
-          size: 20,
+        _summaryRow(
+          Icons.fitness_center,
+          isArabic ? 'نوع التمرين' : 'Workout Type',
+          workout.type == 'free'
+              ? l10n.freeWorkout
+              : l10n.programWorkout,
         ),
-        const SizedBox(width: 10),
-        Expanded(
-          child: Text(
-            label,
-            style: const TextStyle(
-              color: Colors.white70,
-              fontSize: 13,
-            ),
+
+        if (workout.type != 'free' &&
+            workout.programName != null &&
+            workout.programName!.isNotEmpty) ...[
+          const SizedBox(height: 16),
+          _summaryRow(
+            Icons.assignment,
+            isArabic ? 'اسم البرنامج' : 'Program Name',
+            workout.programName!,
+            valueColor: _purpleColor,
           ),
+        ],
+
+        const SizedBox(height: 16),
+        _summaryRow(
+          Icons.calendar_today,
+          l10n.workoutDetailsDate,
+          '${workout.startTime.year}/'
+              '${workout.startTime.month.toString().padLeft(2, '0')}/'
+              '${workout.startTime.day.toString().padLeft(2, '0')}',
         ),
-        Text(
-          value,
-          style: TextStyle(
-            color: valueColor,
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-          ),
+
+        const SizedBox(height: 16),
+        _summaryRow(
+          Icons.access_time,
+          l10n.workoutDetailsDuration,
+          hours > 0
+              ? '${hours}h ${minutes}m'
+              : '${minutes}m ${seconds}s',
+        ),
+
+        const SizedBox(height: 16),
+        _summaryRow(
+          Icons.fitness_center,
+          l10n.workoutDetailsExercises,
+          '${workout.exercises.length}',
+        ),
+
+        const SizedBox(height: 16),
+        _summaryRow(
+          Icons.check_circle_outline,
+          l10n.workoutDetailsCompletedSets,
+          '${workout.completedSets}',
+        ),
+
+        const Divider(
+          color: Colors.white12,
+          height: 28,
+        ),
+
+        _summaryRow(
+          Icons.monitor_weight_outlined,
+          l10n.workoutDetailsTotalWeight,
+          '${workout.totalWeightLifted.toStringAsFixed(1)} kg',
+          valueColor: _greenColor,
         ),
       ],
-    );
-  }
+    ),
+  );
+}
+
+Widget _summaryRow(
+  IconData icon,
+  String label,
+  String value, {
+  Color valueColor = Colors.white,
+}) {
+  return Row(
+    children: [
+      Icon(
+        icon,
+        color: _purpleColor,
+        size: 20,
+      ),
+      const SizedBox(width: 10),
+      Expanded(
+        child: Text(
+          label,
+          style: const TextStyle(
+            color: Colors.white70,
+            fontSize: 13,
+          ),
+        ),
+      ),
+      Text(
+        value,
+        style: TextStyle(
+          color: valueColor,
+          fontWeight: FontWeight.bold,
+          fontSize: 14,
+        ),
+      ),
+    ],
+  );
+}
 
   Widget _buildExerciseCard(
     WorkoutExerciseDetails exercise,

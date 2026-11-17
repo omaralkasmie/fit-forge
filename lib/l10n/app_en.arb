@@ -252,5 +252,7 @@
 "equipmentOther": "Other",
 "difficultyBeginner": "Beginner",
 "difficultyIntermediate": "Intermediate",
-"difficultyAdvanced": "Advanced"
+"difficultyAdvanced": "Advanced",
+"freeWorkoutLabel": "Free Workout",
+"programWorkoutLabel": "Program Workout"
 }

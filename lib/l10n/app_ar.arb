@@ -252,5 +252,7 @@
 "difficultyBeginner": "مبتدئ",
 "difficultyIntermediate": "متوسط",
 "difficultyAdvanced": "متقدم",
-"weeks": "أسابيع"
+"weeks": "أسابيع",
+"freeWorkoutLabel": "تمرين حر",
+"programWorkoutLabel": "تمرين برنامج"
 }
