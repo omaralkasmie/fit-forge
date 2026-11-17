@@ -10,6 +10,8 @@ import '../models/workout_progress_stats.dart';
 import '../models/workout_achievement.dart';
 import '../repositories/training_cycle_repository.dart';
 import '../models/training_cycle_progress.dart';
+import '../models/program_exercise.dart';
+import '../models/workout_set.dart';
 
 class WorkoutManager extends ChangeNotifier {
   final WorkoutRepository _workoutRepository;
@@ -79,6 +81,50 @@ class WorkoutManager extends ChangeNotifier {
       programName: programName,
     );
   }
+
+  void startProgramWorkoutWithSets({
+  required String programName,
+  required List<Exercise> exercises,
+  required List<ProgramExercise> programExercises,
+}) {
+  final workoutExercises = <WorkoutExercise>[];
+
+  final sortedProgramExercises = [...programExercises]
+    ..sort((a, b) => a.exerciseOrder.compareTo(b.exerciseOrder));
+
+  for (final programExercise in sortedProgramExercises) {
+    final exercise = exercises.firstWhere(
+      (item) => item.id == programExercise.exerciseId,
+    );
+
+    final sets = programExercise.sets.map((programSet) {
+      return WorkoutSet(
+        setNumber: programSet.setNumber,
+        weight: programSet.targetWeight,
+        reps: programSet.targetReps,
+      );
+    }).toList();
+
+    workoutExercises.add(
+      WorkoutExercise(
+        exercise: exercise,
+        sets: sets,
+      ),
+    );
+  }
+
+  _completedSession = null;
+  _workoutEndTime = null;
+
+  _session = WorkoutSession(
+    id: DateTime.now().microsecondsSinceEpoch.toString(),
+    type: WorkoutType.program,
+    programName: programName,
+    exercises: workoutExercises,
+  );
+
+  notifyListeners();
+}
 
   void _startWorkout({
     required List<Exercise> exercises,

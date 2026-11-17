@@ -135,30 +135,254 @@ ProgramExercise(
     levelAr: 'مبتدئ',
     levelEn: 'Beginner',
     category: 2,
+    exercises: [
+  ProgramExercise(
+    exerciseId: 'chest_005',
+    exerciseOrder: 1,
+    sets: [
+      ProgramSet(setNumber: 1, targetReps: 15),
+      ProgramSet(setNumber: 2, targetReps: 15),
+      ProgramSet(setNumber: 3, targetReps: 15),
+    ],
+  ),
+ProgramExercise(
+  exerciseId: 'back_001',
+  exerciseOrder: 2,
+  sets: [
+    ProgramSet(setNumber: 1, targetReps: 15),
+    ProgramSet(setNumber: 2, targetReps: 15),
+    ProgramSet(setNumber: 3, targetReps: 15),
+  ],
+),
+ProgramExercise(
+  exerciseId: 'leg_001',
+  exerciseOrder: 3,
+  sets: [
+    ProgramSet(setNumber: 1, targetReps: 12),
+    ProgramSet(setNumber: 2, targetReps: 12),
+    ProgramSet(setNumber: 3, targetReps: 12),
+  ],
+),
+ProgramExercise(
+  exerciseId: 'shoulder_002',
+  exerciseOrder: 4,
+  sets: [
+    ProgramSet(setNumber: 1, targetReps: 15),
+    ProgramSet(setNumber: 2, targetReps: 15),
+    ProgramSet(setNumber: 3, targetReps: 15),
+  ],
+),
+ProgramExercise(
+  exerciseId: 'arms_002',
+  exerciseOrder: 5,
+  sets: [
+    ProgramSet(setNumber: 1, targetReps: 15),
+    ProgramSet(setNumber: 2, targetReps: 15),
+    ProgramSet(setNumber: 3, targetReps: 15),
+  ],
+),
+ProgramExercise(
+  exerciseId: 'abs_001',
+  exerciseOrder: 6,
+  sets: [
+    ProgramSet(setNumber: 1, targetReps: 15),
+    ProgramSet(setNumber: 2, targetReps: 15),
+    ProgramSet(setNumber: 3, targetReps: 15),
+  ],
+),
+ProgramExercise(
+  exerciseId: 'abs_002',
+  exerciseOrder: 7,
+  sets: [
+    ProgramSet(setNumber: 1, targetReps: 30),
+    ProgramSet(setNumber: 2, targetReps: 30),
+    ProgramSet(setNumber: 3, targetReps: 30),
+  ],
+),
+    ],
     type: ProgramType.builtIn,
   ),
   TrainingProgram(
-    id: 'general_fitness',
-    nameAr: 'اللياقة العامة',
-    nameEn: 'General Fitness',
-    descriptionAr: 'تحسين اللياقة البدنية والصحة العامة وزيادة النشاط اليومي.',
-    descriptionEn: 'Improve fitness, overall health, and daily activity.',
-    durationWeeks: 4,
-    levelAr: 'مبتدئ',
-    levelEn: 'Beginner',
-    category: 3,
-    type: ProgramType.builtIn,
-  ),
+  id: 'general_fitness',
+  nameAr: 'اللياقة العامة',
+  nameEn: 'General Fitness',
+  descriptionAr: 'تحسين اللياقة البدنية والصحة العامة وزيادة النشاط اليومي.',
+  descriptionEn: 'Improve fitness, overall health, and daily activity.',
+  durationWeeks: 4,
+  levelAr: 'مبتدئ',
+  levelEn: 'Beginner',
+  category: 3,
+  type: ProgramType.builtIn,
+  exercises: [
+    ProgramExercise(
+      exerciseId: 'chest_005',
+      exerciseOrder: 1,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 12),
+        ProgramSet(setNumber: 2, targetReps: 12),
+        ProgramSet(setNumber: 3, targetReps: 12),
+      ],
+    ),
+    ProgramExercise(
+      exerciseId: 'back_002',
+      exerciseOrder: 2,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 12),
+        ProgramSet(setNumber: 2, targetReps: 12),
+        ProgramSet(setNumber: 3, targetReps: 12),
+      ],
+    ),
+    ProgramExercise(
+      exerciseId: 'leg_002',
+      exerciseOrder: 3,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 12),
+        ProgramSet(setNumber: 2, targetReps: 12),
+        ProgramSet(setNumber: 3, targetReps: 12),
+      ],
+    ),
+    ProgramExercise(
+      exerciseId: 'shoulder_001',
+      exerciseOrder: 4,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 10),
+        ProgramSet(setNumber: 2, targetReps: 10),
+        ProgramSet(setNumber: 3, targetReps: 10),
+      ],
+    ),
+    ProgramExercise(
+      exerciseId: 'arms_001',
+      exerciseOrder: 5,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 12),
+        ProgramSet(setNumber: 2, targetReps: 12),
+        ProgramSet(setNumber: 3, targetReps: 12),
+      ],
+    ),
+    ProgramExercise(
+      exerciseId: 'abs_001',
+      exerciseOrder: 6,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 15),
+        ProgramSet(setNumber: 2, targetReps: 15),
+        ProgramSet(setNumber: 3, targetReps: 15),
+      ],
+    ),
+  ],
+),
   TrainingProgram(
-    id: 'advanced_program',
-    nameAr: 'برنامج متقدم',
-    nameEn: 'Advanced Program',
-    descriptionAr: 'تحدٍّ أقوى للمتمرنين لتحقيق أفضل النتائج.',
-    descriptionEn: 'A tougher challenge for experienced athletes to achieve better results.',
-    durationWeeks: 8,
-    levelAr: 'متقدم',
-    levelEn: 'Advanced',
-    category: 1,
-    type: ProgramType.builtIn,
-  ),
+  id: 'advanced_program',
+  nameAr: 'برنامج متقدم',
+  nameEn: 'Advanced Program',
+  descriptionAr: 'تحدٍّ أقوى للمتمرنين لتحقيق أفضل النتائج.',
+  descriptionEn: 'A tougher challenge for experienced athletes to achieve better results.',
+  durationWeeks: 8,
+  levelAr: 'متقدم',
+  levelEn: 'Advanced',
+  category: 1,
+  type: ProgramType.builtIn,
+  exercises: [
+    ProgramExercise(
+      exerciseId: 'chest_001',
+      exerciseOrder: 1,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 8),
+        ProgramSet(setNumber: 2, targetReps: 8),
+        ProgramSet(setNumber: 3, targetReps: 8),
+        ProgramSet(setNumber: 4, targetReps: 8),
+      ],
+    ),
+    ProgramExercise(
+      exerciseId: 'chest_003',
+      exerciseOrder: 2,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 10),
+        ProgramSet(setNumber: 2, targetReps: 10),
+        ProgramSet(setNumber: 3, targetReps: 10),
+      ],
+    ),
+    ProgramExercise(
+      exerciseId: 'back_005',
+      exerciseOrder: 3,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 6),
+        ProgramSet(setNumber: 2, targetReps: 6),
+        ProgramSet(setNumber: 3, targetReps: 6),
+      ],
+    ),
+    ProgramExercise(
+      exerciseId: 'back_003',
+      exerciseOrder: 4,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 8),
+        ProgramSet(setNumber: 2, targetReps: 8),
+        ProgramSet(setNumber: 3, targetReps: 8),
+      ],
+    ),
+    ProgramExercise(
+      exerciseId: 'shoulder_001',
+      exerciseOrder: 5,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 8),
+        ProgramSet(setNumber: 2, targetReps: 8),
+        ProgramSet(setNumber: 3, targetReps: 8),
+      ],
+    ),
+    ProgramExercise(
+      exerciseId: 'shoulder_004',
+      exerciseOrder: 6,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 12),
+        ProgramSet(setNumber: 2, targetReps: 12),
+        ProgramSet(setNumber: 3, targetReps: 12),
+      ],
+    ),
+    ProgramExercise(
+      exerciseId: 'leg_001',
+      exerciseOrder: 7,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 8),
+        ProgramSet(setNumber: 2, targetReps: 8),
+        ProgramSet(setNumber: 3, targetReps: 8),
+        ProgramSet(setNumber: 4, targetReps: 8),
+      ],
+    ),
+    ProgramExercise(
+      exerciseId: 'leg_004',
+      exerciseOrder: 8,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 10),
+        ProgramSet(setNumber: 2, targetReps: 10),
+        ProgramSet(setNumber: 3, targetReps: 10),
+      ],
+    ),
+    ProgramExercise(
+      exerciseId: 'arms_003',
+      exerciseOrder: 9,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 10),
+        ProgramSet(setNumber: 2, targetReps: 10),
+        ProgramSet(setNumber: 3, targetReps: 10),
+      ],
+    ),
+    ProgramExercise(
+      exerciseId: 'arms_005',
+      exerciseOrder: 10,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 10),
+        ProgramSet(setNumber: 2, targetReps: 10),
+        ProgramSet(setNumber: 3, targetReps: 10),
+      ],
+    ),
+    ProgramExercise(
+      exerciseId: 'abs_003',
+      exerciseOrder: 11,
+      sets: [
+        ProgramSet(setNumber: 1, targetReps: 12),
+        ProgramSet(setNumber: 2, targetReps: 12),
+        ProgramSet(setNumber: 3, targetReps: 12),
+      ],
+    ),
+  ],
+),
 ];

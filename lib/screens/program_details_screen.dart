@@ -4,6 +4,9 @@ import '../models/training_program.dart';
 import '../data/workouts/exercise_library.dart';
 import '../models/exercise.dart';
 import '../models/program_exercise.dart';
+import 'package:go_router/go_router.dart';
+import '../routes/app_router.dart';
+import '../services/workout_scope.dart';
 
 class ProgramDetailsScreen extends StatefulWidget {
   final TrainingProgram program;
@@ -76,68 +79,160 @@ class _ProgramDetailsScreenState
 
   // معلومات البرنامج
   Widget _buildProgramHeader() {
-    final isArabic =
-        Localizations.localeOf(context).languageCode == 'ar';
+  final isArabic =
+      Localizations.localeOf(context).languageCode == 'ar';
 
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: const Color(0xFF15182F),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: const Color(0xFF7138FF).withValues(alpha: 0.4),
-        ),
+  const cardColor = Color(0xFF10142B);
+
+  final metadata = {
+    'muscle_building': (
+      icon: Icons.fitness_center,
+      color: const Color(0xFF7138FF),
+      image: 'assets/images/muscle_building.jpg',
+    ),
+    'fat_burning': (
+      icon: Icons.local_fire_department,
+      color: const Color(0xFFED168E),
+      image: 'assets/images/fat_burning.jpg',
+    ),
+    'general_fitness': (
+      icon: Icons.directions_run,
+      color: const Color(0xFF168BFF),
+      image: 'assets/images/general_fitness.jpg',
+    ),
+    'advanced_program': (
+      icon: Icons.star,
+      color: const Color(0xFFFF851B),
+      image: 'assets/images/advanced_program.png',
+    ),
+  };
+
+  final style =
+      metadata[widget.program.sourceProgramId ?? widget.program.id] ??
+      (
+        icon: Icons.fitness_center,
+        color: const Color(0xFF7138FF),
+        image: '',
+      );
+
+  return Container(
+    height: 202,
+    padding: const EdgeInsets.all(18),
+    decoration: BoxDecoration(
+      color: cardColor,
+      borderRadius: BorderRadius.circular(22),
+      border: Border.all(
+        color: style.color.withValues(alpha: 0.8),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            widget.program.nameFor(isArabic),
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            widget.program.descriptionFor(isArabic),
-            style: const TextStyle(
-              color: Colors.white70,
-              fontSize: 14,
-              height: 1.6,
-            ),
-          ),
-          const SizedBox(height: 20),
-          Row(
-            children: [
-              const Icon(
-                Icons.calendar_month,
-                color: Color(0xFF9B5CFF),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                '${widget.program.durationWeeks} ${isArabic ? 'أسابيع' : 'weeks'}',
-                style: const TextStyle(color: Colors.white),
-              ),
-              const SizedBox(width: 20),
-              const Icon(
-                Icons.signal_cellular_alt,
-                color: Color(0xFF9B5CFF),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  widget.program.levelFor(isArabic),
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ),
-            ],
-          ),
+      gradient: LinearGradient(
+        colors: [
+          style.color.withValues(alpha: 0.12),
+          cardColor,
         ],
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
       ),
-    );
-  }
+    ),
+    child: Row(
+      textDirection: TextDirection.ltr,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: Opacity(
+            opacity: 0.75,
+            child: Image.asset(
+              style.image,
+              width: 166,
+              height: 175,
+              fit: BoxFit.cover,
+              alignment: const Alignment(0, -0.7),
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  width: 60,
+                  height: 70,
+                  color: style.color.withValues(alpha: 0.22),
+                  child: Icon(
+                    style.icon,
+                    size: 38,
+                    color: style.color,
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
+        const SizedBox(width: 14),
+        Expanded(
+          child: Directionality(
+            textDirection:
+                isArabic ? TextDirection.rtl : TextDirection.ltr,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.program.nameFor(isArabic),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 19,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Expanded(
+                  child: Text(
+                    widget.program.descriptionFor(isArabic),
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      color: Color(0xFFBFC5E8),
+                      fontSize: 14,
+                      height: 1.5,
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.calendar_month,
+                      color: style.color,
+                      size: 18,
+                    ),
+                    const SizedBox(width: 5),
+                    Text(
+                      isArabic
+                          ? '${widget.program.durationWeeks} أسابيع'
+                          : '${widget.program.durationWeeks} weeks',
+                      style: const TextStyle(
+                        color: Color(0xFFBFC5E8),
+                        fontSize: 13,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Icon(
+                      Icons.signal_cellular_alt,
+                      color: style.color,
+                      size: 18,
+                    ),
+                    const SizedBox(width: 4),
+                    Expanded(
+                      child: Text(
+                        widget.program.levelFor(isArabic),
+                        style: const TextStyle(
+                          color: Color(0xFFBFC5E8),
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
 
   // بطاقة التمرين
   Widget _buildExerciseCard(
@@ -257,6 +352,31 @@ class _ProgramDetailsScreenState
       ),
     );
   }
+  void _startProgramWorkout() {
+  final programExercises = _programExercises;
+
+  final exercises = <Exercise>[];
+
+  for (final programExercise in programExercises) {
+    final exercise = _getExercise(programExercise.exerciseId);
+
+    if (exercise != null) {
+      exercises.add(exercise);
+    }
+  }
+
+  if (exercises.isEmpty) return;
+
+  WorkoutScope.of(context).startProgramWorkoutWithSets(
+    programName: widget.program.nameFor(
+      Localizations.localeOf(context).languageCode == 'ar',
+    ),
+    exercises: exercises,
+    programExercises: programExercises,
+  );
+
+  context.push(AppRouter.activeWorkout);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -301,6 +421,34 @@ class _ProgramDetailsScreenState
                     programExercise,
                   );
                 }),
+                const SizedBox(height: 24),
+
+SizedBox(
+  width: double.infinity,
+  height: 56,
+  child: ElevatedButton.icon(
+    onPressed: _startProgramWorkout,
+    icon: const Icon(Icons.play_arrow_rounded),
+    label: Text(
+      Localizations.localeOf(context).languageCode == 'ar'
+          ? 'بدء التمرين'
+          : 'Start Workout',
+    ),
+    style: ElevatedButton.styleFrom(
+      backgroundColor: const Color(0xFF7138FF),
+      foregroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      textStyle: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+  ),
+),
+
+const SizedBox(height: 20),
               ],
             ),
     );
