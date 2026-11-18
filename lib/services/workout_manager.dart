@@ -18,9 +18,9 @@ class WorkoutManager extends ChangeNotifier {
   final TrainingCycleRepository _trainingCycleRepository;
 
   WorkoutManager({
-  required this._workoutRepository,
-  required this._trainingCycleRepository,
-});
+    required this._workoutRepository,
+    required this._trainingCycleRepository,
+  });
 
   WorkoutSession? _session;
 
@@ -33,8 +33,29 @@ class WorkoutManager extends ChangeNotifier {
   int get completedExercises => _session?.completedExercises ?? 0;
 
   int get totalExercises => _session?.exercises.length ?? 0;
+
+  bool _isSessionComplete() {
+    final currentSession = _session;
+
+    if (currentSession == null) return false;
+
+    if (currentSession.exercises.isEmpty) return false;
+
+    for (final exercise in currentSession.exercises) {
+      if (exercise.sets.isEmpty) return false;
+
+      for (final set in exercise.sets) {
+        if (!set.isCompleted) return false;
+      }
+    }
+
+    return true;
+  }
+
   WorkoutSession? _completedSession;
   DateTime? _workoutEndTime;
+
+  bool _isFinishingWorkout = false;
 
   WorkoutSession? get completedSession => _completedSession;
 
@@ -83,54 +104,62 @@ class WorkoutManager extends ChangeNotifier {
   }
 
   void startProgramWorkoutWithSets({
-  required String programName,
-  required List<Exercise> exercises,
-  required List<ProgramExercise> programExercises,
-}) {
-  final workoutExercises = <WorkoutExercise>[];
+    required String programName,
+    required List<Exercise> exercises,
+    required List<ProgramExercise> programExercises,
+  }) {
+    if (exercises.isEmpty || programExercises.isEmpty) return;
 
-  final sortedProgramExercises = [...programExercises]
-    ..sort((a, b) => a.exerciseOrder.compareTo(b.exerciseOrder));
+    final sortedProgramExercises = [...programExercises]
+      ..sort((a, b) => a.exerciseOrder.compareTo(b.exerciseOrder));
 
-  for (final programExercise in sortedProgramExercises) {
-    final exercise = exercises.firstWhere(
-      (item) => item.id == programExercise.exerciseId,
-    );
-
-    final sets = programExercise.sets.map((programSet) {
-      return WorkoutSet(
-        setNumber: programSet.setNumber,
-        weight: programSet.targetWeight,
-        reps: programSet.targetReps,
+    // التحقق من وجود جميع التمارين قبل إنشاء الجلسة.
+    for (final programExercise in sortedProgramExercises) {
+      final exists = exercises.any(
+        (item) => item.id == programExercise.exerciseId,
       );
-    }).toList();
 
-    workoutExercises.add(
-      WorkoutExercise(
-        exercise: exercise,
-        sets: sets,
-      ),
+      if (!exists) return;
+    }
+
+    final workoutExercises = <WorkoutExercise>[];
+
+    for (final programExercise in sortedProgramExercises) {
+      final exercise = exercises.firstWhere(
+        (item) => item.id == programExercise.exerciseId,
+      );
+
+      final sets = programExercise.sets.map((programSet) {
+        return WorkoutSet(
+          setNumber: programSet.setNumber,
+          weight: programSet.targetWeight,
+          reps: programSet.targetReps,
+        );
+      }).toList();
+
+      workoutExercises.add(WorkoutExercise(exercise: exercise, sets: sets));
+    }
+
+    _completedSession = null;
+    _workoutEndTime = null;
+
+    _session = WorkoutSession(
+      id: DateTime.now().microsecondsSinceEpoch.toString(),
+      type: WorkoutType.program,
+      programName: programName,
+      exercises: workoutExercises,
     );
+
+    notifyListeners();
   }
-
-  _completedSession = null;
-  _workoutEndTime = null;
-
-  _session = WorkoutSession(
-    id: DateTime.now().microsecondsSinceEpoch.toString(),
-    type: WorkoutType.program,
-    programName: programName,
-    exercises: workoutExercises,
-  );
-
-  notifyListeners();
-}
 
   void _startWorkout({
     required List<Exercise> exercises,
     required WorkoutType type,
     String? programName,
   }) {
+    if (exercises.isEmpty) return;
+
     _completedSession = null;
     _workoutEndTime = null;
 
@@ -202,9 +231,11 @@ class WorkoutManager extends ChangeNotifier {
 
     if (set.isCompleted) return;
 
+    if (!weight.isFinite || weight < 0) return;
+    if (reps <= 0) return;
+
     set.weight = weight;
     set.reps = reps;
-
     notifyListeners();
   }
 
@@ -218,7 +249,10 @@ class WorkoutManager extends ChangeNotifier {
 
     final set = workoutExercise.sets[setIndex];
 
-    if (set.isCompleted || set.reps <= 0 || set.weight < 0) {
+    if (set.isCompleted ||
+        set.reps <= 0 ||
+        !set.weight.isFinite ||
+        set.weight < 0) {
       return false;
     }
 
@@ -253,7 +287,11 @@ class WorkoutManager extends ChangeNotifier {
   }
 
   Future<bool> finishWorkout() async {
-    if (_session == null) return false;
+    if (_isFinishingWorkout) return false;
+
+    if (!_isSessionComplete()) return false;
+
+    _isFinishingWorkout = true;
 
     final sessionToSave = _session!;
     final endTime = DateTime.now();
@@ -276,6 +314,9 @@ class WorkoutManager extends ChangeNotifier {
       debugPrintStack(stackTrace: stackTrace);
 
       return false;
+    } finally {
+      _isFinishingWorkout = false;
+      notifyListeners();
     }
   }
 
@@ -290,127 +331,123 @@ class WorkoutManager extends ChangeNotifier {
 
     notifyListeners();
   }
-  Future<WorkoutSessionDetails?> getWorkoutDetails(
-  String sessionId,
-) {
-  return _workoutRepository.getWorkoutDetails(sessionId);
-}
-Future<WorkoutProgressStats> getProgressStats({
-  required DateTime startDate,
-  required DateTime endDate,
-}) async {
-  final history = await getWorkoutHistory();
 
-  final filteredWorkouts = history.where((workout) {
-    return !workout.startTime.isBefore(startDate) &&
-        workout.startTime.isBefore(endDate);
-  }).toList();
+  Future<WorkoutSessionDetails?> getWorkoutDetails(String sessionId) {
+    return _workoutRepository.getWorkoutDetails(sessionId);
+  }
 
-  final trainingDays = <String>{};
-  final dailyActivity = <DateTime, WorkoutActivityPoint>{};
+  Future<WorkoutProgressStats> getProgressStats({
+    required DateTime startDate,
+    required DateTime endDate,
+  }) async {
+    final history = await getWorkoutHistory();
 
-  Duration totalDuration = Duration.zero;
-  double totalWeightLifted = 0;
+    final filteredWorkouts = history.where((workout) {
+      return !workout.startTime.isBefore(startDate) &&
+          workout.startTime.isBefore(endDate);
+    }).toList();
 
-  for (final workout in filteredWorkouts) {
-    final date = DateTime(
-      workout.startTime.year,
-      workout.startTime.month,
-      workout.startTime.day,
-    );
+    final trainingDays = <String>{};
+    final dailyActivity = <DateTime, WorkoutActivityPoint>{};
 
-    final dateKey = '${date.year}-${date.month}-${date.day}';
+    Duration totalDuration = Duration.zero;
+    double totalWeightLifted = 0;
 
-    trainingDays.add(dateKey);
+    for (final workout in filteredWorkouts) {
+      final date = DateTime(
+        workout.startTime.year,
+        workout.startTime.month,
+        workout.startTime.day,
+      );
 
-    totalDuration += workout.duration;
-    totalWeightLifted += workout.totalWeightLifted;
+      final dateKey = '${date.year}-${date.month}-${date.day}';
 
-    final previous = dailyActivity[date];
+      trainingDays.add(dateKey);
 
-    dailyActivity[date] = WorkoutActivityPoint(
-      date: date,
-      workoutCount: (previous?.workoutCount ?? 0) + 1,
-      totalWeightLifted:
-          (previous?.totalWeightLifted ?? 0) +
-              workout.totalWeightLifted,
+      totalDuration += workout.duration;
+      totalWeightLifted += workout.totalWeightLifted;
+
+      final previous = dailyActivity[date];
+
+      dailyActivity[date] = WorkoutActivityPoint(
+        date: date,
+        workoutCount: (previous?.workoutCount ?? 0) + 1,
+        totalWeightLifted:
+            (previous?.totalWeightLifted ?? 0) + workout.totalWeightLifted,
+      );
+    }
+
+    final activityPoints = dailyActivity.values.toList()
+      ..sort((a, b) => a.date.compareTo(b.date));
+
+    return WorkoutProgressStats(
+      workoutCount: filteredWorkouts.length,
+      trainingDays: trainingDays.length,
+      totalDuration: totalDuration,
+      totalWeightLifted: totalWeightLifted,
+      activityPoints: activityPoints,
     );
   }
 
-  final activityPoints = dailyActivity.values.toList()
-    ..sort((a, b) => a.date.compareTo(b.date));
+  Future<List<WorkoutAchievement>> getWorkoutAchievements() async {
+    final history = await getWorkoutHistory();
 
-  return WorkoutProgressStats(
-    workoutCount: filteredWorkouts.length,
-    trainingDays: trainingDays.length,
-    totalDuration: totalDuration,
-    totalWeightLifted: totalWeightLifted,
-    activityPoints: activityPoints,
-  );
-}
-Future<List<WorkoutAchievement>> getWorkoutAchievements() async {
-  final history = await getWorkoutHistory();
+    final completedWorkouts = history
+        .where((workout) => workout.completedSets > 0)
+        .toList();
 
-  final completedWorkouts = history
-      .where((workout) => workout.completedSets > 0)
-      .toList();
+    final trainingDays = <String>{};
 
-  final trainingDays = <String>{};
+    for (final workout in completedWorkouts) {
+      final date = workout.startTime;
 
-  for (final workout in completedWorkouts) {
-    final date = workout.startTime;
+      trainingDays.add('${date.year}-${date.month}-${date.day}');
+    }
 
-    trainingDays.add(
-      '${date.year}-${date.month}-${date.day}',
-    );
+    return [
+      WorkoutAchievement(
+        id: 'first_workout',
+        currentValue: completedWorkouts.length,
+        targetValue: 1,
+      ),
+      WorkoutAchievement(
+        id: 'five_workouts',
+        currentValue: completedWorkouts.length,
+        targetValue: 5,
+      ),
+      WorkoutAchievement(
+        id: 'ten_workouts',
+        currentValue: completedWorkouts.length,
+        targetValue: 10,
+      ),
+      WorkoutAchievement(
+        id: 'ten_training_days',
+        currentValue: trainingDays.length,
+        targetValue: 10,
+      ),
+      WorkoutAchievement(
+        id: 'twenty_five_workouts',
+        currentValue: completedWorkouts.length,
+        targetValue: 25,
+      ),
+      WorkoutAchievement(
+        id: 'fifty_workouts',
+        currentValue: completedWorkouts.length,
+        targetValue: 50,
+      ),
+    ];
   }
 
-  return [
-    WorkoutAchievement(
-      id: 'first_workout',
-      currentValue: completedWorkouts.length,
-      targetValue: 1,
-    ),
-    WorkoutAchievement(
-      id: 'five_workouts',
-      currentValue: completedWorkouts.length,
-      targetValue: 5,
-    ),
-    WorkoutAchievement(
-      id: 'ten_workouts',
-      currentValue: completedWorkouts.length,
-      targetValue: 10,
-    ),
-    WorkoutAchievement(
-      id: 'ten_training_days',
-      currentValue: trainingDays.length,
-      targetValue: 10,
-    ),
-    WorkoutAchievement(
-      id: 'twenty_five_workouts',
-      currentValue: completedWorkouts.length,
-      targetValue: 25,
-    ),
-    WorkoutAchievement(
-      id: 'fifty_workouts',
-      currentValue: completedWorkouts.length,
-      targetValue: 50,
-    ),
-  ];
-}
-Future<TrainingCycleProgress> getTrainingCycleProgress() async {
-  final cycle = await _trainingCycleRepository.getOrCreateCycle();
+  Future<TrainingCycleProgress> getTrainingCycleProgress() async {
+    final cycle = await _trainingCycleRepository.getOrCreateCycle();
 
-  final completedDays =
-      await _workoutRepository.getCompletedTrainingDaysSince(
-    cycle.startDate,
-  );
+    final completedDays = await _workoutRepository
+        .getCompletedTrainingDaysSince(cycle.startDate);
 
-  return TrainingCycleProgress(
-    completedDays: completedDays.clamp(0, cycle.targetDays),
-    targetDays: cycle.targetDays,
-    startDate: cycle.startDate,
-  );
-}
-
+    return TrainingCycleProgress(
+      completedDays: completedDays.clamp(0, cycle.targetDays),
+      targetDays: cycle.targetDays,
+      startDate: cycle.startDate,
+    );
+  }
 }

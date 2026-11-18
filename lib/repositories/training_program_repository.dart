@@ -10,22 +10,60 @@ class TrainingProgramRepository {
 
   TrainingProgramRepository(this.database);
 
+  bool _isValidProgram(TrainingProgram program) {
+    if (program.id.trim().isEmpty) return false;
+    if (program.nameAr.trim().isEmpty) return false;
+    if (program.nameEn.trim().isEmpty) return false;
+    if (program.durationWeeks <= 0) return false;
+    if (program.exercises.isEmpty) return false;
+
+    final exerciseIds = <String>{};
+    final exerciseOrders = <int>{};
+
+    for (final exercise in program.exercises) {
+      if (exercise.exerciseId.trim().isEmpty) return false;
+      if (exercise.exerciseOrder <= 0) return false;
+
+      if (!exerciseIds.add(exercise.exerciseId)) return false;
+      if (!exerciseOrders.add(exercise.exerciseOrder)) return false;
+
+      if (exercise.sets.isEmpty) return false;
+
+      final setNumbers = <int>{};
+
+      for (final set in exercise.sets) {
+        if (set.setNumber <= 0) return false;
+        if (!setNumbers.add(set.setNumber)) return false;
+
+        if (set.targetReps <= 0) return false;
+        if (!set.targetWeight.isFinite || set.targetWeight < 0) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
   // حفظ برنامج جديد أو تحديث برنامج موجود.
   Future<void> saveProgram(TrainingProgram program) async {
     if (program.type == ProgramType.builtIn) {
-      throw ArgumentError(
-        'Built-in programs cannot be saved directly.',
-      );
+      throw ArgumentError('Built-in programs cannot be saved directly.');
+    }
+    if (!_isValidProgram(program)) {
+      throw ArgumentError('Invalid training program data.');
     }
 
     await database.transaction(() async {
       // حذف النسخة القديمة إن وجدت.
-      await (database.delete(database.trainingPrograms)
-            ..where((table) => table.id.equals(program.id)))
-          .go();
+      await (database.delete(
+        database.trainingPrograms,
+      )..where((table) => table.id.equals(program.id))).go();
 
       // حفظ بيانات البرنامج.
-      await database.into(database.trainingPrograms).insert(
+      await database
+          .into(database.trainingPrograms)
+          .insert(
             db.TrainingProgramsCompanion.insert(
               id: program.id,
               nameAr: program.nameAr,
@@ -43,10 +81,11 @@ class TrainingProgramRepository {
 
       // حفظ تمارين البرنامج ومجموعاتها.
       for (final exercise in program.exercises) {
-        final exerciseId =
-            '${program.id}_exercise_${exercise.exerciseOrder}';
+        final exerciseId = '${program.id}_exercise_${exercise.exerciseOrder}';
 
-        await database.into(database.programExercises).insert(
+        await database
+            .into(database.programExercises)
+            .insert(
               db.ProgramExercisesCompanion.insert(
                 id: exerciseId,
                 programId: program.id,
@@ -56,7 +95,9 @@ class TrainingProgramRepository {
             );
 
         for (final set in exercise.sets) {
-          await database.into(database.programSets).insert(
+          await database
+              .into(database.programSets)
+              .insert(
                 db.ProgramSetsCompanion.insert(
                   id: '${exerciseId}_set_${set.setNumber}',
                   programExerciseId: exerciseId,
@@ -89,31 +130,28 @@ class TrainingProgramRepository {
 
   // جلب برنامج محدد مع تمارينه ومجموعاته.
   Future<TrainingProgram?> getProgramById(String programId) async {
-    final row = await (database.select(database.trainingPrograms)
-          ..where((table) => table.id.equals(programId)))
-        .getSingleOrNull();
+    final row = await (database.select(
+      database.trainingPrograms,
+    )..where((table) => table.id.equals(programId))).getSingleOrNull();
 
     if (row == null) return null;
 
-    final exerciseRows = await (database.select(database.programExercises)
-          ..where((table) => table.programId.equals(programId))
-          ..orderBy([
-            (table) => OrderingTerm.asc(table.exerciseOrder),
-          ]))
-        .get();
+    final exerciseRows =
+        await (database.select(database.programExercises)
+              ..where((table) => table.programId.equals(programId))
+              ..orderBy([(table) => OrderingTerm.asc(table.exerciseOrder)]))
+            .get();
 
     final exercises = <ProgramExercise>[];
 
     for (final exerciseRow in exerciseRows) {
-      final setRows = await (database.select(database.programSets)
-            ..where(
-              (table) =>
-                  table.programExerciseId.equals(exerciseRow.id),
-            )
-            ..orderBy([
-              (table) => OrderingTerm.asc(table.setNumber),
-            ]))
-          .get();
+      final setRows =
+          await (database.select(database.programSets)
+                ..where(
+                  (table) => table.programExerciseId.equals(exerciseRow.id),
+                )
+                ..orderBy([(table) => OrderingTerm.asc(table.setNumber)]))
+              .get();
 
       exercises.add(
         ProgramExercise(
@@ -151,8 +189,8 @@ class TrainingProgramRepository {
 
   // حذف برنامج محفوظ.
   Future<void> deleteProgram(String programId) async {
-    await (database.delete(database.trainingPrograms)
-          ..where((table) => table.id.equals(programId)))
-        .go();
+    await (database.delete(
+      database.trainingPrograms,
+    )..where((table) => table.id.equals(programId))).go();
   }
 }
