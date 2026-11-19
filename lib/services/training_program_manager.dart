@@ -5,6 +5,8 @@ import '../models/training_program.dart';
 import '../repositories/training_program_repository.dart';
 
 class TrainingProgramManager extends ChangeNotifier {
+  Object? _loadError;
+
   final TrainingProgramRepository _repository;
 
   TrainingProgramManager(this._repository);
@@ -17,8 +19,11 @@ class TrainingProgramManager extends ChangeNotifier {
 
   bool get isLoading => _isLoading;
 
+  Object? get loadError => _loadError;
+
   Future<void> loadPrograms() async {
     _isLoading = true;
+    _loadError = null;
     notifyListeners();
 
     try {
@@ -40,10 +45,12 @@ class TrainingProgramManager extends ChangeNotifier {
         return modified.isNotEmpty ? modified.first : original;
       }).toList();
 
-      _programs = [
-        ...mergedPrograms,
-        ...customPrograms,
-      ];
+      _programs = [...mergedPrograms, ...customPrograms];
+    } catch (error, stackTrace) {
+      _loadError = error;
+
+      debugPrint('Failed to load training programs: $error');
+      debugPrintStack(stackTrace: stackTrace);
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -56,9 +63,7 @@ class TrainingProgramManager extends ChangeNotifier {
   }
 
   Future<void> deleteProgram(String programId) async {
-    final program = _programs.where(
-      (item) => item.id == programId,
-    );
+    final program = _programs.where((item) => item.id == programId);
 
     if (program.isEmpty || program.first.type != ProgramType.custom) {
       return;

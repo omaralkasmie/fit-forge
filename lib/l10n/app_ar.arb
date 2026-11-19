@@ -254,5 +254,9 @@
 "difficultyAdvanced": "متقدم",
 "weeks": "أسابيع",
 "freeWorkoutLabel": "تمرين حر",
-"programWorkoutLabel": "تمرين برنامج"
+"programWorkoutLabel": "تمرين برنامج",
+"loadingPrograms": "جارٍ تحميل البرامج...",
+"programsLoadError": "تعذر تحميل البرامج التدريبية.",
+"retry": "إعادة المحاولة",
+"noProgramsFound": "لا توجد برامج مطابقة للتصفية المختارة."
 }

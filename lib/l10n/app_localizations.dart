@@ -1540,6 +1540,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Program Workout'**
   String get programWorkoutLabel;
+
+  /// No description provided for @loadingPrograms.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading training programs...'**
+  String get loadingPrograms;
+
+  /// No description provided for @programsLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to load training programs.'**
+  String get programsLoadError;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
+
+  /// No description provided for @noProgramsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No programs match the selected filter.'**
+  String get noProgramsFound;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -19,5 +19,9 @@ class WorkoutHistoryItem {
     required this.totalWeightLifted,
   });
 
-  Duration get duration => endTime.difference(startTime);
+  Duration get duration {
+    final difference = endTime.difference(startTime);
+
+    return difference.isNegative ? Duration.zero : difference;
+  }
 }

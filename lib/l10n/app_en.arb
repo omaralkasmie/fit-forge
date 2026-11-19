@@ -254,5 +254,9 @@
 "difficultyIntermediate": "Intermediate",
 "difficultyAdvanced": "Advanced",
 "freeWorkoutLabel": "Free Workout",
-"programWorkoutLabel": "Program Workout"
+"programWorkoutLabel": "Program Workout",
+"loadingPrograms": "Loading training programs...",
+"programsLoadError": "Unable to load training programs.",
+"retry": "Retry",
+"noProgramsFound": "No programs match the selected filter."
 }

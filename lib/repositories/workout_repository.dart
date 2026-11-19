@@ -81,88 +81,140 @@ class WorkoutRepository {
   Future<List<WorkoutHistoryItem>> getWorkoutHistoryItems() async {
     final sessions = await getWorkoutHistory();
 
-    final historyItems = <WorkoutHistoryItem>[];
+    if (sessions.isEmpty) return [];
 
-    for (final session in sessions) {
-      final exercises = await (database.select(
-        database.workoutExercises,
-      )..where((exercise) => exercise.sessionId.equals(session.id))).get();
+    final sessionIds = sessions.map((session) => session.id).toList();
 
-      int completedSets = 0;
-      double totalWeightLifted = 0;
+    // Load all exercises for all sessions in one query.
+    final exercises = await (database.select(
+      database.workoutExercises,
+    )..where((exercise) => exercise.sessionId.isIn(sessionIds))).get();
 
-      for (final exercise in exercises) {
-        final sets = await (database.select(
-          database.workoutSets,
-        )..where((set) => set.workoutExerciseId.equals(exercise.id))).get();
+    final exerciseIds = exercises.map((exercise) => exercise.id).toList();
 
-        for (final set in sets) {
-          if (set.isCompleted) {
-            completedSets++;
-            totalWeightLifted += set.weight * set.reps;
-          }
-        }
-      }
+    // Map each exercise to its session.
+    final sessionIdByExerciseId = {
+      for (final exercise in exercises) exercise.id: exercise.sessionId,
+    };
 
-      historyItems.add(
-        WorkoutHistoryItem(
-          id: session.id,
-          type: session.type,
-          programName: session.programName,
-          startTime: session.startTime,
-          endTime: session.endTime,
-          exerciseCount: exercises.length,
-          completedSets: completedSets,
-          totalWeightLifted: totalWeightLifted,
-        ),
+    // Count exercises per session.
+    final exerciseCountBySession = <String, int>{};
+
+    for (final exercise in exercises) {
+      exerciseCountBySession.update(
+        exercise.sessionId,
+        (count) => count + 1,
+        ifAbsent: () => 1,
       );
     }
 
-    return historyItems;
+    // Load all sets in one query.
+    final sets = exerciseIds.isEmpty
+        ? []
+        : await (database.select(
+            database.workoutSets,
+          )..where((set) => set.workoutExerciseId.isIn(exerciseIds))).get();
+
+    final completedSetsBySession = <String, int>{};
+    final totalWeightBySession = <String, double>{};
+
+    for (final set in sets) {
+      if (!set.isCompleted) continue;
+
+      final sessionId = sessionIdByExerciseId[set.workoutExerciseId];
+      if (sessionId == null) continue;
+
+      completedSetsBySession.update(
+        sessionId,
+        (count) => count + 1,
+        ifAbsent: () => 1,
+      );
+
+      totalWeightBySession.update(
+        sessionId,
+        (weight) => weight + (set.weight * set.reps),
+        ifAbsent: () => set.weight * set.reps,
+      );
+    }
+
+    return sessions.map((session) {
+      return WorkoutHistoryItem(
+        id: session.id,
+        type: session.type,
+        programName: session.programName,
+        startTime: session.startTime,
+        endTime: session.endTime,
+        exerciseCount: exerciseCountBySession[session.id] ?? 0,
+        completedSets: completedSetsBySession[session.id] ?? 0,
+        totalWeightLifted: totalWeightBySession[session.id] ?? 0,
+      );
+    }).toList();
   }
 
   Future<WorkoutSessionDetails?> getWorkoutDetails(String sessionId) async {
+    // 1. جلب الجلسة.
     final session = await (database.select(
       database.workoutSessions,
     )..where((table) => table.id.equals(sessionId))).getSingleOrNull();
 
     if (session == null) return null;
 
+    // 2. جلب جميع تمارين الجلسة.
     final exercises =
         await (database.select(database.workoutExercises)
               ..where((table) => table.sessionId.equals(sessionId))
               ..orderBy([(table) => OrderingTerm.asc(table.exerciseOrder)]))
             .get();
 
-    final exerciseDetails = <WorkoutExerciseDetails>[];
+    if (exercises.isEmpty) {
+      return WorkoutSessionDetails(
+        id: session.id,
+        type: session.type,
+        programName: session.programName,
+        startTime: session.startTime,
+        endTime: session.endTime,
+        exercises: [],
+      );
+    }
 
-    for (final exercise in exercises) {
-      final sets =
-          await (database.select(database.workoutSets)
-                ..where((table) => table.workoutExerciseId.equals(exercise.id))
-                ..orderBy([(table) => OrderingTerm.asc(table.setNumber)]))
-              .get();
+    final exerciseIds = exercises.map((exercise) => exercise.id).toList();
 
-      exerciseDetails.add(
-        WorkoutExerciseDetails(
-          id: exercise.id,
-          exerciseId: exercise.exerciseId,
-          exerciseName: exercise.exerciseName,
-          exerciseNameEn: exercise.exerciseNameEn,
-          muscleGroup: exercise.muscleGroup,
-          muscleGroupEn: exercise.muscleGroupEn,
-          exerciseOrder: exercise.exerciseOrder,
-          sets: sets.map((set) {
-            return WorkoutSetDetails(
+    // 3. جلب جميع مجموعات التمارين باستعلام واحد.
+    final sets =
+        await (database.select(database.workoutSets)
+              ..where((table) => table.workoutExerciseId.isIn(exerciseIds))
+              ..orderBy([(table) => OrderingTerm.asc(table.setNumber)]))
+            .get();
+
+    // تجميع المجموعات حسب التمرين.
+    final setsByExerciseId = <String, List<WorkoutSetDetails>>{};
+
+    for (final set in sets) {
+      setsByExerciseId
+          .putIfAbsent(set.workoutExerciseId, () => [])
+          .add(
+            WorkoutSetDetails(
               setNumber: set.setNumber,
               weight: set.weight,
               reps: set.reps,
               isCompleted: set.isCompleted,
-            );
-          }).toList(),
-        ),
-      );
+            ),
+          );
     }
+
+    // بناء تفاصيل التمارين.
+    final exerciseDetails = exercises.map((exercise) {
+      return WorkoutExerciseDetails(
+        id: exercise.id,
+        exerciseId: exercise.exerciseId,
+        exerciseName: exercise.exerciseName,
+        exerciseNameEn: exercise.exerciseNameEn,
+        muscleGroup: exercise.muscleGroup,
+        muscleGroupEn: exercise.muscleGroupEn,
+        exerciseOrder: exercise.exerciseOrder,
+        sets: setsByExerciseId[exercise.id] ?? [],
+      );
+    }).toList();
 
     return WorkoutSessionDetails(
       id: session.id,

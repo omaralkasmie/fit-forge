@@ -744,4 +744,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get programWorkoutLabel => 'Program Workout';
+
+  @override
+  String get loadingPrograms => 'Loading training programs...';
+
+  @override
+  String get programsLoadError => 'Unable to load training programs.';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get noProgramsFound => 'No programs match the selected filter.';
 }

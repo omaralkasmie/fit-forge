@@ -744,4 +744,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get programWorkoutLabel => 'تمرين برنامج';
+
+  @override
+  String get loadingPrograms => 'جارٍ تحميل البرامج...';
+
+  @override
+  String get programsLoadError => 'تعذر تحميل البرامج التدريبية.';
+
+  @override
+  String get retry => 'إعادة المحاولة';
+
+  @override
+  String get noProgramsFound => 'لا توجد برامج مطابقة للتصفية المختارة.';
 }

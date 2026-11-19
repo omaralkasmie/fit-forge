@@ -9,16 +9,16 @@ void main() {
   late AppDatabase database;
   late TrainingCycleRepository repository;
 
-  setUp(() {
-    database = AppDatabase(NativeDatabase.memory());
-    repository = TrainingCycleRepository(database);
-  });
-
-  tearDown(() async {
-    await database.close();
-  });
-
   group('TrainingCycleRepository', () {
+    setUp(() {
+      database = AppDatabase(NativeDatabase.memory());
+      repository = TrainingCycleRepository(database);
+    });
+
+    tearDown(() async {
+      await database.close();
+    });
+
     test('creates a new cycle with 28 training days', () async {
       final cycle = await repository.getOrCreateCycle();
 
@@ -31,7 +31,6 @@ void main() {
       'returns the existing cycle without resetting its start date',
       () async {
         final firstCycle = await repository.getOrCreateCycle();
-
         final secondCycle = await repository.getOrCreateCycle();
 
         expect(secondCycle.id, firstCycle.id);
@@ -39,31 +38,31 @@ void main() {
         expect(secondCycle.targetDays, firstCycle.targetDays);
       },
     );
-    test('persists cycle after closing and reopening database', () async {
-      final directory = await Directory.systemTemp.createTemp();
-      final file = File('${directory.path}/training_cycle.sqlite');
+  });
 
-      final firstDatabase = AppDatabase(NativeDatabase(file));
-      final firstRepository = TrainingCycleRepository(firstDatabase);
+  test('persists cycle after closing and reopening database', () async {
+    final directory = await Directory.systemTemp.createTemp();
+    final file = File('${directory.path}/training_cycle.sqlite');
 
-      final firstCycle = await firstRepository.getOrCreateCycle();
+    final firstDatabase = AppDatabase(NativeDatabase(file));
+    final firstRepository = TrainingCycleRepository(firstDatabase);
 
-      await firstDatabase.close();
+    final firstCycle = await firstRepository.getOrCreateCycle();
 
-      final reopenedDatabase = AppDatabase(NativeDatabase(file));
+    await firstDatabase.close();
 
-      try {
-        final reopenedRepository = TrainingCycleRepository(reopenedDatabase);
+    final reopenedDatabase = AppDatabase(NativeDatabase(file));
 
-        final reopenedCycle = await reopenedRepository.getOrCreateCycle();
+    try {
+      final reopenedRepository = TrainingCycleRepository(reopenedDatabase);
+      final reopenedCycle = await reopenedRepository.getOrCreateCycle();
 
-        expect(reopenedCycle.id, firstCycle.id);
-        expect(reopenedCycle.startDate, firstCycle.startDate);
-        expect(reopenedCycle.targetDays, 28);
-      } finally {
-        await reopenedDatabase.close();
-        await directory.delete(recursive: true);
-      }
-    });
+      expect(reopenedCycle.id, firstCycle.id);
+      expect(reopenedCycle.startDate, firstCycle.startDate);
+      expect(reopenedCycle.targetDays, 28);
+    } finally {
+      await reopenedDatabase.close();
+      await directory.delete(recursive: true);
+    }
   });
 }

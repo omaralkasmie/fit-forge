@@ -66,7 +66,13 @@ void main() {
   group('getCompletedTrainingDaysSince', () {
     test('multiple workouts on the same day count as one day', () async {
       final now = DateTime.now();
-      final day = DateTime(now.year, now.month, now.day, 9);
+      final day = DateTime(
+        now.year,
+        now.month,
+        now.day,
+      ).subtract(const Duration(
+        days:1
+      )).add(const Duration(hours: 9));
       final startDate = day.subtract(const Duration(days: 5));
 
       await addWorkout(id: 'workout_1', startTime: day);
@@ -82,7 +88,11 @@ void main() {
 
     test('different training days count separately', () async {
       final now = DateTime.now();
-      final day1 = DateTime(now.year, now.month, now.day, 9);
+      final day1 = DateTime(
+  now.year,
+  now.month,
+  now.day,
+).subtract(const Duration(days: 1)).add(const Duration(hours: 9));
       final day2 = day1.subtract(const Duration(days: 1));
       final startDate = day2.subtract(const Duration(days: 5));
 

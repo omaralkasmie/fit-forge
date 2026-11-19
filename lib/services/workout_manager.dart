@@ -18,9 +18,10 @@ class WorkoutManager extends ChangeNotifier {
   final TrainingCycleRepository _trainingCycleRepository;
 
   WorkoutManager({
-    required this._workoutRepository,
-    required this._trainingCycleRepository,
-  });
+    required WorkoutRepository workoutRepository,
+    required TrainingCycleRepository trainingCycleRepository,
+  }) : _workoutRepository = workoutRepository,
+       _trainingCycleRepository = trainingCycleRepository;
 
   WorkoutSession? _session;
 
@@ -232,7 +233,6 @@ class WorkoutManager extends ChangeNotifier {
     if (set.isCompleted) return;
 
     if (!weight.isFinite || weight < 0) return;
-    if (reps <= 0) return;
 
     set.weight = weight;
     set.reps = reps;

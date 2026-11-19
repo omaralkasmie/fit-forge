@@ -111,21 +111,83 @@ class TrainingProgramRepository {
     });
   }
 
-  // جلب جميع البرامج المحفوظة.
+  // جلب جميع البرامج المحفوظة باستعلامات مجمعة.
   Future<List<TrainingProgram>> getSavedPrograms() async {
+    // 1. جلب البرامج.
     final rows = await database.select(database.trainingPrograms).get();
 
-    final programs = <TrainingProgram>[];
+    if (rows.isEmpty) return [];
 
-    for (final row in rows) {
-      final program = await getProgramById(row.id);
+    final programIds = rows.map((row) => row.id).toList();
 
-      if (program != null) {
-        programs.add(program);
-      }
+    // 2. جلب تمارين جميع البرامج باستعلام واحد.
+    final exerciseRows =
+        await (database.select(database.programExercises)
+              ..where((table) => table.programId.isIn(programIds))
+              ..orderBy([(table) => OrderingTerm.asc(table.exerciseOrder)]))
+            .get();
+
+    if (exerciseRows.isEmpty) return [];
+
+    final exerciseIds = exerciseRows.map((row) => row.id).toList();
+
+    // 3. جلب مجموعات جميع التمارين باستعلام واحد.
+    final setRows =
+        await (database.select(database.programSets)
+              ..where((table) => table.programExerciseId.isIn(exerciseIds))
+              ..orderBy([(table) => OrderingTerm.asc(table.setNumber)]))
+            .get();
+
+    // 4. تجميع المجموعات حسب التمرين.
+    final setsByExerciseId = <String, List<ProgramSet>>{};
+
+    for (final row in setRows) {
+      setsByExerciseId
+          .putIfAbsent(row.programExerciseId, () => [])
+          .add(
+            ProgramSet(
+              setNumber: row.setNumber,
+              targetWeight: row.targetWeight,
+              targetReps: row.targetReps,
+            ),
+          );
     }
 
-    return programs;
+    // 5. تجميع التمارين حسب البرنامج.
+    final exercisesByProgramId = <String, List<ProgramExercise>>{};
+
+    for (final row in exerciseRows) {
+      exercisesByProgramId
+          .putIfAbsent(row.programId, () => [])
+          .add(
+            ProgramExercise(
+              exerciseId: row.exerciseId,
+              exerciseOrder: row.exerciseOrder,
+              sets: setsByExerciseId[row.id] ?? [],
+            ),
+          );
+    }
+
+    // 6. بناء البرامج وإرجاعها.
+    return rows.map((row) {
+      return TrainingProgram(
+        id: row.id,
+        nameAr: row.nameAr,
+        nameEn: row.nameEn,
+        descriptionAr: row.descriptionAr,
+        descriptionEn: row.descriptionEn,
+        durationWeeks: row.durationWeeks,
+        levelAr: row.levelAr,
+        levelEn: row.levelEn,
+        category: row.category,
+        type: ProgramType.values.firstWhere(
+          (type) => type.name == row.type,
+          orElse: () => ProgramType.custom,
+        ),
+        sourceProgramId: row.sourceProgramId,
+        exercises: exercisesByProgramId[row.id] ?? [],
+      );
+    }).toList();
   }
 
   // جلب برنامج محدد مع تمارينه ومجموعاته.
