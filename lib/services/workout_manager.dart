@@ -109,6 +109,7 @@ class WorkoutManager extends ChangeNotifier {
     required List<Exercise> exercises,
     required List<ProgramExercise> programExercises,
   }) {
+    if (_isFinishingWorkout) return;
     if (exercises.isEmpty || programExercises.isEmpty) return;
 
     final sortedProgramExercises = [...programExercises]
@@ -159,6 +160,7 @@ class WorkoutManager extends ChangeNotifier {
     required WorkoutType type,
     String? programName,
   }) {
+    if (_isFinishingWorkout) return;
     if (exercises.isEmpty) return;
 
     _completedSession = null;
@@ -177,6 +179,7 @@ class WorkoutManager extends ChangeNotifier {
   }
 
   void addExercise(Exercise exercise) {
+    if (_isFinishingWorkout) return;
     if (_session == null) return;
 
     final exists = _session!.exercises.any(
@@ -192,6 +195,7 @@ class WorkoutManager extends ChangeNotifier {
   }
 
   void removeExercise(int index) {
+    if (_isFinishingWorkout) return;
     if (_session == null) return;
     if (index < 0 || index >= totalExercises) return;
 
@@ -202,6 +206,7 @@ class WorkoutManager extends ChangeNotifier {
   }
 
   void reorderExercises(int oldIndex, int newIndex) {
+    if (_isFinishingWorkout) return;
     if (_session == null) return;
 
     final exercises = [..._session!.exercises];
@@ -221,6 +226,7 @@ class WorkoutManager extends ChangeNotifier {
     required double weight,
     required int reps,
   }) {
+    if (_isFinishingWorkout) return;
     final workoutExercise = _getExercise(exerciseIndex);
     if (workoutExercise == null) return;
 
@@ -240,6 +246,7 @@ class WorkoutManager extends ChangeNotifier {
   }
 
   bool completeSet({required int exerciseIndex, required int setIndex}) {
+    if (_isFinishingWorkout) return false;
     final workoutExercise = _getExercise(exerciseIndex);
     if (workoutExercise == null) return false;
 
@@ -325,6 +332,7 @@ class WorkoutManager extends ChangeNotifier {
   }
 
   void cancelWorkout() {
+    if (_isFinishingWorkout) return;
     _session = null;
     _completedSession = null;
     _workoutEndTime = null;

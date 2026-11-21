@@ -111,7 +111,7 @@ class TrainingProgramRepository {
     });
   }
 
-  // جلب جميع البرامج المحفوظة باستعلامات مجمعة.
+ // جلب جميع البرامج المحفوظة باستعلامات مجمعة.
   Future<List<TrainingProgram>> getSavedPrograms() async {
     // 1. جلب البرامج.
     final rows = await database.select(database.trainingPrograms).get();
@@ -124,7 +124,9 @@ class TrainingProgramRepository {
     final exerciseRows =
         await (database.select(database.programExercises)
               ..where((table) => table.programId.isIn(programIds))
-              ..orderBy([(table) => OrderingTerm.asc(table.exerciseOrder)]))
+              ..orderBy([
+                (table) => OrderingTerm.asc(table.exerciseOrder),
+              ]))
             .get();
 
     if (exerciseRows.isEmpty) return [];
@@ -134,38 +136,44 @@ class TrainingProgramRepository {
     // 3. جلب مجموعات جميع التمارين باستعلام واحد.
     final setRows =
         await (database.select(database.programSets)
-              ..where((table) => table.programExerciseId.isIn(exerciseIds))
-              ..orderBy([(table) => OrderingTerm.asc(table.setNumber)]))
+              ..where(
+                (table) => table.programExerciseId.isIn(exerciseIds),
+              )
+              ..orderBy([
+                (table) => OrderingTerm.asc(table.setNumber),
+              ]))
             .get();
 
     // 4. تجميع المجموعات حسب التمرين.
     final setsByExerciseId = <String, List<ProgramSet>>{};
 
     for (final row in setRows) {
-      setsByExerciseId
-          .putIfAbsent(row.programExerciseId, () => [])
-          .add(
-            ProgramSet(
-              setNumber: row.setNumber,
-              targetWeight: row.targetWeight,
-              targetReps: row.targetReps,
-            ),
-          );
+      setsByExerciseId.putIfAbsent(
+        row.programExerciseId,
+        () => [],
+      ).add(
+        ProgramSet(
+          setNumber: row.setNumber,
+          targetWeight: row.targetWeight,
+          targetReps: row.targetReps,
+        ),
+      );
     }
 
     // 5. تجميع التمارين حسب البرنامج.
     final exercisesByProgramId = <String, List<ProgramExercise>>{};
 
     for (final row in exerciseRows) {
-      exercisesByProgramId
-          .putIfAbsent(row.programId, () => [])
-          .add(
-            ProgramExercise(
-              exerciseId: row.exerciseId,
-              exerciseOrder: row.exerciseOrder,
-              sets: setsByExerciseId[row.id] ?? [],
-            ),
-          );
+      exercisesByProgramId.putIfAbsent(
+        row.programId,
+        () => [],
+      ).add(
+        ProgramExercise(
+          exerciseId: row.exerciseId,
+          exerciseOrder: row.exerciseOrder,
+          sets: setsByExerciseId[row.id] ?? [],
+        ),
+      );
     }
 
     // 6. بناء البرامج وإرجاعها.
