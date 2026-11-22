@@ -50,18 +50,20 @@ class WorkoutSets extends Table {
   TextColumn get workoutExerciseId =>
       text().references(WorkoutExercises, #id, onDelete: KeyAction.cascade)();
 
-  IntColumn get setNumber => integer()();
+  IntColumn get setNumber =>
+      integer().customConstraint('NOT NULL CHECK (set_number > 0)')();
 
-  RealColumn get weight => real()();
+  RealColumn get weight =>
+      real().customConstraint('NOT NULL CHECK (weight >= 0)')();
 
-  IntColumn get reps => integer()();
+  IntColumn get reps =>
+      integer().customConstraint('NOT NULL CHECK (reps >= 0)')();
 
   BoolColumn get isCompleted => boolean()();
 
   @override
   Set<Column> get primaryKey => {id};
 }
-
 // ==============================
 // Training Programs Tables
 // ==============================
@@ -71,21 +73,17 @@ class TrainingPrograms extends Table {
 
   TextColumn get nameAr => text()();
 
-TextColumn get nameEn => text()();
+  TextColumn get nameEn => text()();
 
-TextColumn get descriptionAr => text()();
+  TextColumn get descriptionAr => text()();
 
-TextColumn get descriptionEn => text()();
+  TextColumn get descriptionEn => text()();
 
-TextColumn get levelAr => text()();
+  TextColumn get levelAr => text()();
 
-TextColumn get levelEn => text()();
-
-  
+  TextColumn get levelEn => text()();
 
   IntColumn get durationWeeks => integer()();
-
-  
 
   IntColumn get category => integer()();
 
@@ -116,17 +114,18 @@ class ProgramSets extends Table {
 
   TextColumn get programExerciseId =>
       text().references(ProgramExercises, #id, onDelete: KeyAction.cascade)();
+  IntColumn get setNumber =>
+      integer().customConstraint('NOT NULL CHECK (set_number > 0)')();
 
-  IntColumn get setNumber => integer()();
+  RealColumn get targetWeight =>
+      real().customConstraint('NOT NULL CHECK (target_weight >= 0)')();
 
-  RealColumn get targetWeight => real()();
-
-  IntColumn get targetReps => integer()();
+  IntColumn get targetReps =>
+      integer().customConstraint('NOT NULL CHECK (target_reps >= 0)')();
 
   @override
   Set<Column> get primaryKey => {id};
 }
-
 // ==============================
 // Training Cycle Table
 // ==============================
@@ -136,8 +135,9 @@ class TrainingCycle extends Table {
 
   DateTimeColumn get startDate => dateTime()();
 
-  IntColumn get targetDays =>
-      integer().withDefault(const Constant(28))();
+  IntColumn get targetDays => integer()
+      .withDefault(const Constant(28))
+      .customConstraint('NOT NULL DEFAULT 28 CHECK (target_days > 0)')();
 
   @override
   Set<Column> get primaryKey => {id};
@@ -162,24 +162,32 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase([QueryExecutor? executor]) : super(executor ?? _openConnection());
 
   @override
-  int get schemaVersion => 3;
+  int get schemaVersion => 4;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
-        onCreate: (m) async {
-          await m.createAll();
-        },
-        onUpgrade: (m, from, to) async {
-          if (from < 2) {
-            await m.createTable(trainingPrograms);
-            await m.createTable(programExercises);
-            await m.createTable(programSets);
-          }
-          if (from < 3) {
-            await m.createTable(trainingCycle);
-          }
-        },
-      );
+    onCreate: (m) async {
+      await m.createAll();
+    },
+    onUpgrade: (m, from, to) async {
+      if (from < 2) {
+        await m.createTable(trainingPrograms);
+        await m.createTable(programExercises);
+        await m.createTable(programSets);
+      }
+      if (from < 3) {
+        await m.createTable(trainingCycle);
+      }
+      if (from < 4) {
+        await m.alterTable(TableMigration(workoutSets));
+        await m.alterTable(TableMigration(programSets));
+        await m.alterTable(TableMigration(trainingCycle));
+      }
+    },
+    beforeOpen: (details) async {
+      await customStatement('PRAGMA foreign_keys = ON');
+    },
+  );
 }
 
 QueryExecutor _openConnection() {

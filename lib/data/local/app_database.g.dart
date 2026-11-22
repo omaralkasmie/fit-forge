@@ -957,6 +957,7 @@ class $WorkoutSetsTable extends WorkoutSets
     false,
     type: DriftSqlType.int,
     requiredDuringInsert: true,
+    $customConstraints: 'NOT NULL CHECK (set_number > 0)',
   );
   static const VerificationMeta _weightMeta = const VerificationMeta('weight');
   @override
@@ -966,6 +967,7 @@ class $WorkoutSetsTable extends WorkoutSets
     false,
     type: DriftSqlType.double,
     requiredDuringInsert: true,
+    $customConstraints: 'NOT NULL CHECK (weight >= 0)',
   );
   static const VerificationMeta _repsMeta = const VerificationMeta('reps');
   @override
@@ -975,6 +977,7 @@ class $WorkoutSetsTable extends WorkoutSets
     false,
     type: DriftSqlType.int,
     requiredDuringInsert: true,
+    $customConstraints: 'NOT NULL CHECK (reps >= 0)',
   );
   static const VerificationMeta _isCompletedMeta = const VerificationMeta(
     'isCompleted',
@@ -2378,6 +2381,7 @@ class $ProgramSetsTable extends ProgramSets
     false,
     type: DriftSqlType.int,
     requiredDuringInsert: true,
+    $customConstraints: 'NOT NULL CHECK (set_number > 0)',
   );
   static const VerificationMeta _targetWeightMeta = const VerificationMeta(
     'targetWeight',
@@ -2389,6 +2393,7 @@ class $ProgramSetsTable extends ProgramSets
     false,
     type: DriftSqlType.double,
     requiredDuringInsert: true,
+    $customConstraints: 'NOT NULL CHECK (target_weight >= 0)',
   );
   static const VerificationMeta _targetRepsMeta = const VerificationMeta(
     'targetReps',
@@ -2400,6 +2405,7 @@ class $ProgramSetsTable extends ProgramSets
     false,
     type: DriftSqlType.int,
     requiredDuringInsert: true,
+    $customConstraints: 'NOT NULL CHECK (target_reps >= 0)',
   );
   @override
   List<GeneratedColumn> get $columns => [
@@ -2753,7 +2759,8 @@ class $TrainingCycleTable extends TrainingCycle
     false,
     type: DriftSqlType.int,
     requiredDuringInsert: false,
-    defaultValue: const Constant(28),
+    $customConstraints: 'NOT NULL DEFAULT 28 CHECK (target_days > 0)',
+    defaultValue: const CustomExpression('28'),
   );
   @override
   List<GeneratedColumn> get $columns => [id, startDate, targetDays];
