@@ -1,4 +1,5 @@
 import '../../models/exercise.dart';
+import '../../constants/exercise_filters.dart';
 
 const List<Exercise> shoulderExercises = [
   Exercise(
@@ -14,6 +15,11 @@ const List<Exercise> shoulderExercises = [
     difficultyEn: 'Intermediate',
     equipment: 'دمبل',
     equipmentEn: 'Dumbbells',
+    difficultyId: ExerciseDifficulty.intermediate,
+equipmentIds: [
+  ExerciseEquipment.dumbbell,
+  ExerciseEquipment.bench,
+],
     targetMuscles: ['الكتف الأمامي', 'الكتف الجانبي', 'الترايسبس'],
     targetMusclesEn: ['Anterior Deltoid', 'Lateral Deltoid', 'Triceps'],
     instructions: [
@@ -52,6 +58,10 @@ const List<Exercise> shoulderExercises = [
     difficultyEn: 'Beginner',
     equipment: 'دمبل',
     equipmentEn: 'Dumbbells',
+    difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.dumbbell,
+],
     targetMuscles: ['الكتف الجانبي'],
     targetMusclesEn: ['Lateral Deltoid'],
     instructions: [
@@ -92,6 +102,10 @@ const List<Exercise> shoulderExercises = [
     difficultyEn: 'Beginner',
     equipment: 'دمبل',
     equipmentEn: 'Dumbbells',
+    difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.dumbbell,
+],
     targetMuscles: ['الكتف الأمامي'],
     targetMusclesEn: ['Anterior Deltoid'],
     instructions: [
@@ -132,6 +146,10 @@ const List<Exercise> shoulderExercises = [
     difficultyEn: 'Beginner',
     equipment: 'جهاز Pec Deck',
     equipmentEn: 'Pec Deck Machine',
+    difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.machine,
+],
     targetMuscles: ['الكتف الخلفي', 'منتصف الظهر'],
     targetMusclesEn: ['Posterior Deltoid', 'Mid Back'],
     instructions: [
@@ -172,6 +190,11 @@ const List<Exercise> shoulderExercises = [
     difficultyEn: 'Beginner',
     equipment: 'جهاز الكابل والحبل',
     equipmentEn: 'Cable Machine and Rope',
+    difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.cable,
+  ExerciseEquipment.machine,
+],
     targetMuscles: [
       'الكتف الخلفي',
       'العضلة شبه المنحرفة',

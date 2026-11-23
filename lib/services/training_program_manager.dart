@@ -72,19 +72,21 @@ class TrainingProgramManager extends ChangeNotifier {
     await _repository.deleteProgram(programId);
     await loadPrograms();
   }
-
   Future<void> resetToOriginal(String originalProgramId) async {
-    final savedPrograms = await _repository.getSavedPrograms();
+  final savedPrograms = await _repository.getSavedPrograms();
 
-    final modified = savedPrograms.where(
-      (program) =>
-          program.type == ProgramType.modified &&
-          program.sourceProgramId == originalProgramId,
-    );
+  final modifiedPrograms = savedPrograms.where(
+    (program) =>
+        program.type == ProgramType.modified &&
+        program.sourceProgramId == originalProgramId,
+  ).toList();
 
-    if (modified.isEmpty) return;
+  if (modifiedPrograms.isEmpty) return;
 
-    await _repository.deleteProgram(modified.first.id);
-    await loadPrograms();
+  for (final program in modifiedPrograms) {
+    await _repository.deleteProgram(program.id);
   }
+
+  await loadPrograms();
+}
 }

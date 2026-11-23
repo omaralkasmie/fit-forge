@@ -41,6 +41,11 @@ class Exercise {
 
   final String source;
 
+  // Standardized filter identifiers
+
+  final List<String> equipmentIds;
+  final String? difficultyId;
+
   const Exercise({
     required this.id,
     required this.name,
@@ -70,6 +75,8 @@ class Exercise {
     this.force,
     this.images = const [],
     this.source = 'local',
+    this.equipmentIds = const [],
+    this.difficultyId,
   });
 
   // Localized content helpers

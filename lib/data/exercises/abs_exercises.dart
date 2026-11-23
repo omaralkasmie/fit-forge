@@ -1,4 +1,5 @@
 import '../../models/exercise.dart';
+import '../../constants/exercise_filters.dart';
 
 const List<Exercise> absExercises = [
   Exercise(
@@ -13,6 +14,10 @@ const List<Exercise> absExercises = [
     difficultyEn: 'Beginner',
     equipment: 'بدون معدات',
     equipmentEn: 'No Equipment',
+    difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.bodyweight,
+],
     targetMuscles: ['العضلة المستقيمة البطنية'],
     targetMusclesEn: ['Rectus Abdominis'],
     instructions: [
@@ -54,6 +59,10 @@ const List<Exercise> absExercises = [
     difficultyEn: 'Beginner',
     equipment: 'بدون معدات',
     equipmentEn: 'No Equipment',
+     difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.bodyweight,
+],
     targetMuscles: ['عضلات البطن', 'عضلات الجذع'],
     targetMusclesEn: ['Abdominals', 'Core Muscles'],
     instructions: [
@@ -95,6 +104,10 @@ const List<Exercise> absExercises = [
     difficultyEn: 'Advanced',
     equipment: 'عقلة',
     equipmentEn: 'Pull-Up Bar',
+     difficultyId: ExerciseDifficulty.advanced,
+equipmentIds: [
+  ExerciseEquipment.pullUpBar,
+],
     targetMuscles: ['العضلة المستقيمة البطنية', 'مثنيات الورك'],
     targetMusclesEn: ['Rectus Abdominis', 'Hip Flexors'],
     instructions: [
@@ -136,6 +149,11 @@ const List<Exercise> absExercises = [
     difficultyEn: 'Intermediate',
     equipment: 'جهاز الكابل وحبل',
     equipmentEn: 'Cable Machine and Rope',
+     difficultyId: ExerciseDifficulty.intermediate,
+equipmentIds: [
+  ExerciseEquipment.cable,
+  ExerciseEquipment.machine,
+],
     targetMuscles: ['العضلة المستقيمة البطنية'],
     targetMusclesEn: ['Rectus Abdominis'],
     instructions: [
@@ -178,6 +196,10 @@ const List<Exercise> absExercises = [
     difficultyEn: 'Beginner',
     equipment: 'بدون معدات',
     equipmentEn: 'No Equipment',
+     difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.bodyweight,
+],
     targetMuscles: ['العضلة المستقيمة البطنية'],
     targetMusclesEn: ['Rectus Abdominis'],
     instructions: [

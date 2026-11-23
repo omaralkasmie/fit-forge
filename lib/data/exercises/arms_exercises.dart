@@ -1,4 +1,5 @@
 import '../../models/exercise.dart';
+import '../../constants/exercise_filters.dart';
 
 const List<Exercise> armsExercises = [
   Exercise(
@@ -14,6 +15,10 @@ const List<Exercise> armsExercises = [
     difficultyEn: 'Intermediate',
     equipment: 'بار حديد',
     equipmentEn: 'Barbell',
+    difficultyId: ExerciseDifficulty.intermediate,
+equipmentIds: [
+  ExerciseEquipment.barbell,
+],
     targetMuscles: ['البايسبس'],
     targetMusclesEn: ['Biceps'],
     instructions: [
@@ -56,6 +61,10 @@ const List<Exercise> armsExercises = [
     difficultyEn: 'Beginner',
     equipment: 'دمبل',
     equipmentEn: 'Dumbbells',
+    difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.dumbbell,
+],
     targetMuscles: ['البايسبس', 'العضلة العضدية', 'الساعد'],
     targetMusclesEn: ['Biceps', 'Brachialis', 'Forearms'],
     instructions: [
@@ -98,6 +107,12 @@ const List<Exercise> armsExercises = [
     difficultyEn: 'Intermediate',
     equipment: 'جهاز بريتشر وبار أو دمبل',
     equipmentEn: 'Preacher Bench and Barbell or Dumbbell',
+    difficultyId: ExerciseDifficulty.intermediate,
+equipmentIds: [
+  ExerciseEquipment.bench,
+  ExerciseEquipment.barbell,
+  ExerciseEquipment.dumbbell,
+],
     targetMuscles: ['البايسبس'],
     targetMusclesEn: ['Biceps'],
     instructions: [
@@ -141,6 +156,11 @@ const List<Exercise> armsExercises = [
     difficultyEn: 'Beginner',
     equipment: 'جهاز الكابل والحبل أو المقبض',
     equipmentEn: 'Cable Machine with Rope or Handle',
+    difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.cable,
+  ExerciseEquipment.machine,
+],
     targetMuscles: ['الترايسبس'],
     targetMusclesEn: ['Triceps'],
     instructions: [
@@ -183,6 +203,12 @@ const List<Exercise> armsExercises = [
     difficultyEn: 'Intermediate',
     equipment: 'دمبل أو جهاز كابل',
     equipmentEn: 'Dumbbell or Cable Machine',
+    difficultyId: ExerciseDifficulty.intermediate,
+equipmentIds: [
+  ExerciseEquipment.dumbbell,
+   ExerciseEquipment.cable,
+    ExerciseEquipment.machine,
+],
     targetMuscles: ['الترايسبس'],
     targetMusclesEn: ['Triceps'],
     instructions: [

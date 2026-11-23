@@ -7,6 +7,9 @@ import 'package:fit_forge/models/training_program.dart';
 import 'package:fit_forge/repositories/training_program_repository.dart';
 import 'package:fit_forge/services/training_program_manager.dart';
 import 'package:fit_forge/data/programs/default_programs.dart';
+import 'package:fit_forge/models/program_exercise.dart';
+import 'package:fit_forge/models/program_set.dart';
+
 
 class FakeTrainingProgramRepository extends TrainingProgramRepository {
   FakeTrainingProgramRepository(super.database);
@@ -22,6 +25,19 @@ class FakeTrainingProgramRepository extends TrainingProgramRepository {
 
     return savedPrograms;
   }
+
+  @override
+  Future<void> deleteProgram(String id) async {
+    savedPrograms.removeWhere((program) => program.id == id);
+  }
+  @override
+Future<void> saveProgram(TrainingProgram program) async {
+  savedPrograms.removeWhere(
+    (item) => item.id == program.id,
+  );
+
+  savedPrograms.add(program);
+}
 }
 
 void main() {
@@ -134,4 +150,130 @@ void main() {
       expect(manager.isLoading, false);
     });
   });
+  test('resets modified program to original', () async {
+  final modifiedProgram = createProgram(
+    id: 'modified_muscle',
+    type: ProgramType.modified,
+    sourceProgramId: 'muscle_building',
+    nameAr: 'نسخة معدلة',
+  );
+
+  repository.savedPrograms = [modifiedProgram];
+
+  await manager.loadPrograms();
+
+  await manager.resetToOriginal('muscle_building');
+
+  expect(
+    manager.programs.any(
+      (program) => program.id == 'modified_muscle',
+    ),
+    isFalse,
+  );
+
+  expect(
+    manager.programs.any(
+      (program) => program.id == 'muscle_building',
+    ),
+    isTrue,
+  );
+});
+ test('resets all modified versions of the same original program', () async {
+  final firstModified = createProgram(
+    id: 'modified_muscle_1',
+    type: ProgramType.modified,
+    sourceProgramId: 'muscle_building',
+  );
+
+  final secondModified = createProgram(
+    id: 'modified_muscle_2',
+    type: ProgramType.modified,
+    sourceProgramId: 'muscle_building',
+  );
+
+  repository.savedPrograms = [
+    firstModified,
+    secondModified,
+  ];
+
+  await manager.loadPrograms();
+  await manager.resetToOriginal('muscle_building');
+
+  expect(
+    manager.programs.where(
+      (program) => program.type == ProgramType.modified &&
+          program.sourceProgramId == 'muscle_building',
+    ),
+    isEmpty,
+  );
+
+  expect(
+    manager.programs.any((program) => program.id == 'muscle_building'),
+    isTrue,
+  );
+});
+test('deletes custom program', () async {
+  final customProgram = createProgram(
+    id: 'custom_001',
+    type: ProgramType.custom,
+  );
+
+  repository.savedPrograms = [customProgram];
+
+  await manager.loadPrograms();
+  await manager.deleteProgram('custom_001');
+
+  expect(
+    manager.programs.any((program) => program.id == 'custom_001'),
+    isFalse,
+  );
+});
+test('does not delete built-in program', () async {
+  await manager.loadPrograms();
+
+  await manager.deleteProgram('muscle_building');
+
+  expect(
+    manager.programs.any((program) => program.id == 'muscle_building'),
+    isTrue,
+  );
+});
+test('saves custom program and updates program list', () async {
+  final customProgram = createProgram(
+    id: 'custom_002',
+    type: ProgramType.custom,
+  );
+
+  final validProgram = TrainingProgram(
+    id: customProgram.id,
+    nameAr: customProgram.nameAr,
+    nameEn: customProgram.nameEn,
+    descriptionAr: customProgram.descriptionAr,
+    descriptionEn: customProgram.descriptionEn,
+    durationWeeks: customProgram.durationWeeks,
+    levelAr: customProgram.levelAr,
+    levelEn: customProgram.levelEn,
+    category: customProgram.category,
+    type: customProgram.type,
+    exercises: [
+      ProgramExercise(
+        exerciseId: 'chest_001',
+        exerciseOrder: 1,
+        sets: [
+          ProgramSet(
+            setNumber: 1,
+            targetReps: 10,
+          ),
+        ],
+      ),
+    ],
+  );
+
+  await manager.saveProgram(validProgram);
+
+  expect(
+    manager.programs.any((program) => program.id == 'custom_002'),
+    isTrue,
+  );
+});
 }

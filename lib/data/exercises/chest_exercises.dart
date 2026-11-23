@@ -1,4 +1,5 @@
 import '../../models/exercise.dart';
+import '../../constants/exercise_filters.dart';
 
 const List<Exercise> chestExercises = [
   Exercise(
@@ -11,6 +12,11 @@ const List<Exercise> chestExercises = [
     suggestedReps: 10,
     difficulty: 'متوسط',
     equipment: 'بار حديدي',
+    difficultyId: ExerciseDifficulty.intermediate,
+equipmentIds: [
+  ExerciseEquipment.barbell,
+  ExerciseEquipment.bench,
+],
     targetMuscles: [
       'عضلات الصدر الكبرى',
       'العضلة ثلاثية الرؤوس',
@@ -59,6 +65,11 @@ const List<Exercise> chestExercises = [
     suggestedReps: 10,
     difficulty: 'مبتدئ',
     equipment: 'دمبل',
+    difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.barbell,
+  ExerciseEquipment.bench,
+],
     targetMuscles: [
       'عضلات الصدر الكبرى',
       'العضلة ثلاثية الرؤوس',
@@ -107,6 +118,11 @@ const List<Exercise> chestExercises = [
     suggestedReps: 12,
     difficulty: 'متوسط',
     equipment: 'دمبل',
+    difficultyId: ExerciseDifficulty.intermediate,
+equipmentIds: [
+  ExerciseEquipment.barbell,
+  ExerciseEquipment.bench,
+],
     targetMuscles: [
       'الجزء العلوي من عضلات الصدر',
       'الكتف الأمامي',
@@ -155,6 +171,11 @@ const List<Exercise> chestExercises = [
     suggestedReps: 12,
     difficulty: 'مبتدئ',
     equipment: 'دمبل',
+    difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.barbell,
+  ExerciseEquipment.bench,
+],
     targetMuscles: ['عضلات الصدر الكبرى', 'الجزء الداخلي من حركة عضلات الصدر'],
     instructions: [
       'استلقِ على المقعد مع حمل دمبل في كل يد.',
@@ -199,6 +220,11 @@ const List<Exercise> chestExercises = [
     suggestedReps: 15,
     difficulty: 'مبتدئ',
     equipment: 'وزن الجسم',
+    difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.barbell,
+  ExerciseEquipment.bench,
+],
     targetMuscles: [
       'عضلات الصدر الكبرى',
       'العضلة ثلاثية الرؤوس',

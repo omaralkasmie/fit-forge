@@ -1,4 +1,5 @@
 import '../../models/exercise.dart';
+import '../../constants/exercise_filters.dart';
 
 const List<Exercise> backExercises = [
   Exercise(
@@ -13,6 +14,11 @@ const List<Exercise> backExercises = [
     difficultyEn: 'Beginner',
     equipment: 'جهاز الكابل',
     equipmentEn: 'Cable Machine',
+   difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.cable,
+  ExerciseEquipment.machine,
+],
     targetMuscles: ['العضلة الظهرية العريضة', 'العضلة ذات الرأسين'],
     targetMusclesEn: ['Latissimus Dorsi', 'Biceps'],
     instructions: [
@@ -53,6 +59,11 @@ const List<Exercise> backExercises = [
     difficultyEn: 'Beginner',
     equipment: 'جهاز الكابل',
     equipmentEn: 'Cable Machine',
+    difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.cable,
+  ExerciseEquipment.machine,
+],
     targetMuscles: ['منتصف الظهر', 'العضلة الظهرية العريضة'],
     targetMusclesEn: ['Mid Back', 'Latissimus Dorsi'],
     instructions: [
@@ -94,6 +105,11 @@ const List<Exercise> backExercises = [
     difficultyEn: 'Intermediate',
     equipment: 'بار وأوزان',
     equipmentEn: 'Barbell and Plates',
+   difficultyId: ExerciseDifficulty.intermediate,
+equipmentIds: [
+  ExerciseEquipment.cable,
+  ExerciseEquipment.machine,
+],
     targetMuscles: [
       'منتصف الظهر',
       'العضلة الظهرية العريضة',
@@ -139,6 +155,11 @@ const List<Exercise> backExercises = [
     difficultyEn: 'Beginner',
     equipment: 'دمبل ومقعد',
     equipmentEn: 'Dumbbell and Bench',
+    difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.cable,
+  ExerciseEquipment.machine,
+],
     targetMuscles: ['العضلة الظهرية العريضة', 'منتصف الظهر'],
     targetMusclesEn: ['Latissimus Dorsi', 'Mid Back'],
     instructions: [
@@ -180,6 +201,11 @@ const List<Exercise> backExercises = [
     difficultyEn: 'Advanced',
     equipment: 'بار وأوزان',
     equipmentEn: 'Barbell and Plates',
+    difficultyId: ExerciseDifficulty.advanced,
+equipmentIds: [
+  ExerciseEquipment.barbell,
+  
+],
     targetMuscles: [
       'أسفل الظهر',
       'الأرداف',

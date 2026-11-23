@@ -173,4 +173,107 @@ void main() {
       await expectLater(repository.saveProgram(program), throwsArgumentError);
     });
   });
+  test('returns saved programs even when they have no exercises', () async {
+    await database
+        .into(database.trainingPrograms)
+        .insert(
+          TrainingProgramsCompanion.insert(
+            id: 'empty_program',
+            nameAr: 'برنامج فارغ',
+            nameEn: 'Empty Program',
+            descriptionAr: '',
+            descriptionEn: '',
+            durationWeeks: 4,
+            levelAr: 'مبتدئ',
+            levelEn: 'Beginner',
+            category: 1,
+            type: ProgramType.custom.name,
+          ),
+        );
+
+    final programs = await repository.getSavedPrograms();
+
+    expect(programs.length, 1);
+    expect(programs.first.id, 'empty_program');
+    expect(programs.first.exercises, isEmpty);
+  });
+  test('replaces old exercises and sets when updating a program', () async {
+    final originalProgram = createValidProgram();
+
+    await repository.saveProgram(originalProgram);
+
+    final updatedProgram = createValidProgram(
+      id: originalProgram.id,
+      exercises: [
+        ProgramExercise(
+          exerciseId: 'back_001',
+          exerciseOrder: 1,
+          sets: [
+            ProgramSet(setNumber: 1, targetReps: 12),
+            ProgramSet(setNumber: 2, targetReps: 10),
+          ],
+        ),
+      ],
+    );
+
+    await repository.saveProgram(updatedProgram);
+
+    final savedProgram = await repository.getProgramById(originalProgram.id);
+
+    expect(savedProgram, isNotNull);
+    expect(savedProgram!.exercises.length, 1);
+    expect(savedProgram.exercises.first.exerciseId, 'back_001');
+    expect(savedProgram.exercises.first.sets.length, 2);
+  });
+  test('deletes a program and its exercises and sets', () async {
+    final program = createValidProgram();
+
+    await repository.saveProgram(program);
+
+    await repository.deleteProgram(program.id);
+
+    final savedProgram = await repository.getProgramById(program.id);
+
+    final exercises = await database.select(database.programExercises).get();
+
+    final sets = await database.select(database.programSets).get();
+
+    expect(savedProgram, isNull);
+    expect(exercises, isEmpty);
+    expect(sets, isEmpty);
+  });
+  test('retrieves multiple exercises and sets in correct order', () async {
+    final program = createValidProgram(
+      exercises: [
+        ProgramExercise(
+          exerciseId: 'chest_001',
+          exerciseOrder: 2,
+          sets: [
+            ProgramSet(setNumber: 2, targetReps: 8),
+            ProgramSet(setNumber: 1, targetReps: 12),
+          ],
+        ),
+        ProgramExercise(
+          exerciseId: 'back_001',
+          exerciseOrder: 1,
+          sets: [ProgramSet(setNumber: 1, targetReps: 10)],
+        ),
+      ],
+    );
+
+    await repository.saveProgram(program);
+
+    final savedProgram = await repository.getProgramById(program.id);
+
+    expect(savedProgram, isNotNull);
+    expect(savedProgram!.exercises.map((e) => e.exerciseId).toList(), [
+      'back_001',
+      'chest_001',
+    ]);
+    expect(savedProgram.exercises.last.sets.map((s) => s.setNumber).toList(), [
+      1,
+      2,
+    ]);
+  });
+ 
 }

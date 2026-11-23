@@ -1,4 +1,6 @@
 import '../../models/exercise.dart';
+import '../../constants/exercise_filters.dart';
+
 
 const List<Exercise> legExercises = [
   Exercise(
@@ -13,6 +15,10 @@ const List<Exercise> legExercises = [
     difficultyEn: 'Intermediate',
     equipment: 'بار وأوزان',
     equipmentEn: 'Barbell and Plates',
+    difficultyId: ExerciseDifficulty.intermediate,
+equipmentIds: [
+  ExerciseEquipment.barbell,
+],
     targetMuscles: ['الفخذ الأمامي', 'الأرداف', 'الفخذ الخلفي'],
     targetMusclesEn: ['Quadriceps', 'Glutes', 'Hamstrings'],
     instructions: [
@@ -55,6 +61,10 @@ const List<Exercise> legExercises = [
     difficultyEn: 'Beginner',
     equipment: 'جهاز ضغط الأرجل',
     equipmentEn: 'Leg Press Machine',
+    difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.machine,
+],
     targetMuscles: ['الفخذ الأمامي', 'الأرداف', 'الفخذ الخلفي'],
     targetMusclesEn: ['Quadriceps', 'Glutes', 'Hamstrings'],
     instructions: [
@@ -96,6 +106,10 @@ const List<Exercise> legExercises = [
     difficultyEn: 'Beginner',
     equipment: 'جهاز تمديد الأرجل',
     equipmentEn: 'Leg Extension Machine',
+    difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.machine,
+],
     targetMuscles: ['الفخذ الأمامي'],
     targetMusclesEn: ['Quadriceps'],
     instructions: [
@@ -139,6 +153,10 @@ const List<Exercise> legExercises = [
     equipmentEn: 'Leg Curl Machine',
     targetMuscles: ['الفخذ الخلفي'],
     targetMusclesEn: ['Hamstrings'],
+    difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.machine,
+],
     instructions: [
       'استلقِ على الجهاز واضبط الوسادة خلف أسفل الساقين.',
       'أمسك المقابض وثبّت الوركين على المقعد.',
@@ -177,6 +195,10 @@ const List<Exercise> legExercises = [
     difficultyEn: 'Beginner',
     equipment: 'جهاز السمانة',
     equipmentEn: 'Calf Raise Machine',
+    difficultyId: ExerciseDifficulty.beginner,
+equipmentIds: [
+  ExerciseEquipment.machine,
+],
     targetMuscles: ['عضلة السمانة', 'العضلة النعلية'],
     targetMusclesEn: ['Gastrocnemius', 'Soleus'],
     instructions: [
