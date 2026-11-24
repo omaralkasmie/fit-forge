@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../data/workouts/exercise_library.dart';
 import '../l10n/app_localizations.dart';
 import '../models/exercise.dart';
+import '../constants/exercise_filters.dart';
 
 const Color _bgColor = Color(0xFF0B0B16);
 const Color _cardColor = Color(0xFF15182F);
@@ -122,34 +123,30 @@ class _WorkoutExerciseSelectionScreenState
     _scrollController.dispose();
     super.dispose();
   }
+List<Exercise> get _filteredExercises {
+  final query = _searchController.text.trim().toLowerCase();
 
-  List<Exercise> get _filteredExercises {
-    final query = _searchController.text.trim().toLowerCase();
+  final exercises = _categories[_selectedCategory].exercises;
 
-    final exercises = _categories[_selectedCategory].exercises;
-    return exercises.where((exercise) {
-      final matchesSearch =
-          query.isEmpty ||
-          exercise.name.toLowerCase().contains(query) ||
-          (exercise.nameEn?.toLowerCase().contains(query) ?? false) ||
-          exercise.muscleGroup.toLowerCase().contains(query) ||
-          (exercise.muscleGroupEn?.toLowerCase().contains(query) ?? false);
+  return exercises.where((exercise) {
+    final matchesSearch =
+        query.isEmpty ||
+        exercise.name.toLowerCase().contains(query) ||
+        (exercise.nameEn?.toLowerCase().contains(query) ?? false) ||
+        exercise.muscleGroup.toLowerCase().contains(query) ||
+        (exercise.muscleGroupEn?.toLowerCase().contains(query) ?? false);
 
-      final equipment = (exercise.equipmentEn ?? exercise.equipment)
-          .trim()
-          .toLowerCase();
+    final matchesEquipment =
+        _selectedEquipment == null ||
+        exercise.equipmentIds.contains(_selectedEquipment);
 
-      final matchesEquipment =
-          _selectedEquipment == null || equipment == _selectedEquipment;
+    final matchesDifficulty =
+        _selectedDifficulty == null ||
+        exercise.difficultyId == _selectedDifficulty;
 
-      final difficulty = exercise.difficulty.trim().toLowerCase();
-
-      final matchesDifficulty =
-          _selectedDifficulty == null || difficulty == _selectedDifficulty;
-
-      return matchesSearch && matchesEquipment && matchesDifficulty;
-    }).toList();
-  }
+    return matchesSearch && matchesEquipment && matchesDifficulty;
+  }).toList();
+}
 
   bool _isSelected(Exercise exercise) {
     return _selectedExercises.any((item) => item.id == exercise.id);
@@ -355,51 +352,51 @@ class _WorkoutExerciseSelectionScreenState
                         scrollDirection: Axis.horizontal,
                         children: [
                           _buildEquipmentChip(
-                            value: 'bands',
+                            value: ExerciseEquipment.bands,
                             label: l10n.equipmentBands,
                           ),
                           _buildEquipmentChip(
-                            value: 'barbell',
+                            value: ExerciseEquipment.barbell,
                             label: l10n.equipmentBarbell,
                           ),
                           _buildEquipmentChip(
-                            value: 'body only',
+                            value: ExerciseEquipment.bodyweight,
                             label: l10n.equipmentBodyOnly,
                           ),
                           _buildEquipmentChip(
-                            value: 'cable',
+                            value: ExerciseEquipment.cable,
                             label: l10n.equipmentCable,
                           ),
                           _buildEquipmentChip(
-                            value: 'dumbbell',
+                            value: ExerciseEquipment.dumbbell,
                             label: l10n.equipmentDumbbell,
                           ),
                           _buildEquipmentChip(
-                            value: 'e-z curl bar',
+                            value: ExerciseEquipment.barbell,
                             label: l10n.equipmentEzCurlBar,
                           ),
                           _buildEquipmentChip(
-                            value: 'exercise ball',
+                            value: ExerciseEquipment.exerciseBall,
                             label: l10n.equipmentExerciseBall,
                           ),
                           _buildEquipmentChip(
-                            value: 'foam roll',
+                            value: ExerciseEquipment.foamRoller,
                             label: l10n.equipmentFoamRoll,
                           ),
                           _buildEquipmentChip(
-                            value: 'kettlebells',
+                            value: ExerciseEquipment.kettlebell,
                             label: l10n.equipmentKettlebells,
                           ),
                           _buildEquipmentChip(
-                            value: 'machine',
+                            value: ExerciseEquipment.machine,
                             label: l10n.equipmentMachine,
                           ),
                           _buildEquipmentChip(
-                            value: 'medicine ball',
+                            value: ExerciseEquipment.medicineBall,
                             label: l10n.equipmentMedicineBall,
                           ),
                           _buildEquipmentChip(
-                            value: 'other',
+                            value: ExerciseEquipment.other,
                             label: l10n.equipmentOther,
                           ),
                         ],
@@ -427,15 +424,15 @@ class _WorkoutExerciseSelectionScreenState
                         scrollDirection: Axis.horizontal,
                         children: [
                           _buildDifficultyChip(
-                            value: 'مبتدئ',
+                            value: ExerciseDifficulty.beginner,
                             label: l10n.difficultyBeginner,
                           ),
                           _buildDifficultyChip(
-                            value: 'متوسط',
+                            value: ExerciseDifficulty.intermediate,
                             label: l10n.difficultyIntermediate,
                           ),
                           _buildDifficultyChip(
-                            value: 'متقدم',
+                            value: ExerciseDifficulty.advanced,
                             label: l10n.difficultyAdvanced,
                           ),
                         ],
