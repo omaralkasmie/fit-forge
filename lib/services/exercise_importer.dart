@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 import '../models/exercise.dart';
+import '../constants/exercise_filters.dart';
 
 class ExerciseImporter {
   static Future<List<Exercise>> loadExercises() async {
@@ -60,6 +61,9 @@ class ExerciseImporter {
       final String difficulty = _translateDifficulty(
         json['level'] ?? 'beginner',
       );
+      final List<String> equipmentIds = _mapEquipmentIds(json['equipment']);
+
+      final String difficultyId = _mapDifficultyId(json['level']);
 
       return Exercise(
         id: exerciseId,
@@ -78,6 +82,8 @@ class ExerciseImporter {
         suggestedSets: 3,
         suggestedReps: 10,
         difficulty: difficulty,
+        equipmentIds: equipmentIds,
+        difficultyId: difficultyId,
         difficultyEn: json['level'] ?? 'beginner',
         equipment: equipment,
         equipmentEn: json['equipment'] ?? 'other',
@@ -147,6 +153,45 @@ class ExerciseImporter {
 
     return translations[equipment] ?? equipment;
   }
+
+  static List<String> _mapEquipmentIds(dynamic equipment) {
+  if (equipment == null || equipment is! String || equipment.isEmpty) {
+    return [];
+  }
+  const equipmentMap = {
+    'bands': ExerciseEquipment.bands,
+    'barbell': ExerciseEquipment.barbell,
+    'body only': ExerciseEquipment.bodyweight,
+    'cable': ExerciseEquipment.cable,
+    'dumbbell': ExerciseEquipment.dumbbell,
+    'e-z curl bar': ExerciseEquipment.barbell,
+    'exercise ball': ExerciseEquipment.exerciseBall,
+    'foam roll': ExerciseEquipment.foamRoller,
+    'kettlebells': ExerciseEquipment.kettlebell,
+    'machine': ExerciseEquipment.machine,
+    'medicine ball': ExerciseEquipment.medicineBall,
+    'other': ExerciseEquipment.other,
+  };
+
+  final String? equipmentId = equipmentMap[equipment.trim().toLowerCase()];
+
+  return equipmentId == null ? [] : [equipmentId];
+}
+
+static String _mapDifficultyId(dynamic level) {
+  if (level is! String || level.isEmpty) {
+    return ExerciseDifficulty.beginner;
+  }
+
+  const difficultyMap = {
+    'beginner': ExerciseDifficulty.beginner,
+    'intermediate': ExerciseDifficulty.intermediate,
+    'expert': ExerciseDifficulty.advanced,
+  };
+
+  return difficultyMap[level.trim().toLowerCase()] ??
+      ExerciseDifficulty.beginner;
+}
 
   static String _translateMuscleGroup(String muscle) {
     const groups = {
