@@ -66,6 +66,12 @@ class _ProgramDetailsScreenState
     return null;
   }
 
+  List<ProgramExercise> get _missingExercises {
+  return _programExercises.where((programExercise) {
+    return _getExercise(programExercise.exerciseId) == null;
+  }).toList();
+}
+
   // ترتيب تمارين البرنامج
   List<ProgramExercise> get _programExercises {
     final exercises = [...widget.program.exercises];
@@ -378,79 +384,120 @@ class _ProgramDetailsScreenState
   context.push(AppRouter.activeWorkout);
 }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+ @override
+Widget build(BuildContext context) {
+  final isArabic =
+      Localizations.localeOf(context).languageCode == 'ar';
+
+  return Scaffold(
+    backgroundColor: const Color(0xFF080B1B),
+    appBar: AppBar(
       backgroundColor: const Color(0xFF080B1B),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF080B1B),
-        foregroundColor: Colors.white,
-        title: const Text('تفاصيل البرنامج'),
-      ),
-      body: _isLoading
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : ListView(
-              padding: const EdgeInsets.all(16),
-              children: [
-                _buildProgramHeader(),
-                const SizedBox(height: 24),
-                Text(
-                  Localizations.localeOf(context).languageCode == 'ar'
-                      ? 'تمارين البرنامج'
-                      : 'Program Exercises',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+      foregroundColor: Colors.white,
+      title: Text(isArabic ? 'تفاصيل البرنامج' : 'Program Details'),
+    ),
+    body: _isLoading
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : ListView(
+            padding: const EdgeInsets.all(16),
+            children: [
+              _buildProgramHeader(),
+              const SizedBox(height: 16),
+
+              if (_missingExercises.isNotEmpty)
+                Container(
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    color: Colors.red.withValues(alpha: 0.12),
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(
+                      color: Colors.redAccent.withValues(alpha: 0.5),
+                    ),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Icon(
+                        Icons.warning_amber_rounded,
+                        color: Colors.redAccent,
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          isArabic
+                              ? 'هذا البرنامج يحتوي على ${_missingExercises.length} تمرين غير متاح في مكتبة التمارين. لا يمكن بدء البرنامج حتى يتم إصلاحه.'
+                              : 'This program contains ${_missingExercises.length} unavailable exercise(s). The program cannot be started until this is fixed.',
+                          style: const TextStyle(
+                            color: Colors.redAccent,
+                            height: 1.5,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 16),
-                ..._programExercises.map((programExercise) {
-                  final exercise = _getExercise(
-                    programExercise.exerciseId,
-                  );
 
-                  if (exercise == null) {
-                    return const SizedBox.shrink();
-                  }
+              const SizedBox(height: 24),
 
-                  return _buildExerciseCard(
-                    exercise,
-                    programExercise,
-                  );
-                }),
-                const SizedBox(height: 24),
+              Text(
+                isArabic ? 'تمارين البرنامج' : 'Program Exercises',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 16),
 
-SizedBox(
-  width: double.infinity,
-  height: 56,
-  child: ElevatedButton.icon(
-    onPressed: _startProgramWorkout,
-    icon: const Icon(Icons.play_arrow_rounded),
-    label: Text(
-      Localizations.localeOf(context).languageCode == 'ar'
-          ? 'بدء التمرين'
-          : 'Start Workout',
-    ),
-    style: ElevatedButton.styleFrom(
-      backgroundColor: const Color(0xFF7138FF),
-      foregroundColor: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      textStyle: const TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-  ),
-),
+              ..._programExercises.map((programExercise) {
+                final exercise = _getExercise(
+                  programExercise.exerciseId,
+                );
 
-const SizedBox(height: 20),
-              ],
-            ),
-    );
-  }
+                if (exercise == null) {
+                  return const SizedBox.shrink();
+                }
+
+                return _buildExerciseCard(
+                  exercise,
+                  programExercise,
+                );
+              }),
+
+              const SizedBox(height: 24),
+
+              SizedBox(
+                width: double.infinity,
+                height: 56,
+                child: ElevatedButton.icon(
+                  onPressed: _missingExercises.isNotEmpty
+                      ? null
+                      : _startProgramWorkout,
+                  icon: const Icon(Icons.play_arrow_rounded),
+                  label: Text(
+                    isArabic ? 'بدء التمرين' : 'Start Workout',
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF7138FF),
+                    foregroundColor: Colors.white,
+                    disabledBackgroundColor: Colors.grey.shade800,
+                    disabledForegroundColor: Colors.white54,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    textStyle: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+            ],
+          ),
+  );
+}
 }

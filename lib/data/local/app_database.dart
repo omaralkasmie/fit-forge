@@ -64,6 +64,65 @@ class WorkoutSets extends Table {
   @override
   Set<Column> get primaryKey => {id};
 }
+
+// ==============================
+// Active Workout Tables
+// ==============================
+
+class ActiveWorkoutSessions extends Table {
+  TextColumn get id => text()();
+
+  TextColumn get type => text()();
+
+  TextColumn get programName => text().nullable()();
+
+  DateTimeColumn get startTime => dateTime()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+class ActiveWorkoutExercises extends Table {
+  TextColumn get id => text()();
+
+  TextColumn get sessionId => text().references(
+    ActiveWorkoutSessions,
+    #id,
+    onDelete: KeyAction.cascade,
+  )();
+
+  // Complete Exercise data stored as JSON.
+  TextColumn get exerciseData => text()();
+
+  IntColumn get exerciseOrder => integer()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+class ActiveWorkoutSets extends Table {
+  TextColumn get id => text()();
+
+  TextColumn get workoutExerciseId => text().references(
+    ActiveWorkoutExercises,
+    #id,
+    onDelete: KeyAction.cascade,
+  )();
+
+  IntColumn get setNumber =>
+      integer().customConstraint('NOT NULL CHECK (set_number > 0)')();
+
+  RealColumn get weight =>
+      real().customConstraint('NOT NULL CHECK (weight >= 0)')();
+
+  IntColumn get reps =>
+      integer().customConstraint('NOT NULL CHECK (reps >= 0)')();
+
+  BoolColumn get isCompleted => boolean()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
 // ==============================
 // Training Programs Tables
 // ==============================
@@ -136,7 +195,6 @@ class TrainingCycle extends Table {
   DateTimeColumn get startDate => dateTime()();
 
   IntColumn get targetDays => integer()
-      .withDefault(const Constant(28))
       .customConstraint('NOT NULL DEFAULT 28 CHECK (target_days > 0)')();
 
   @override
@@ -156,13 +214,16 @@ class TrainingCycle extends Table {
     ProgramExercises,
     ProgramSets,
     TrainingCycle,
+    ActiveWorkoutSessions,
+ActiveWorkoutExercises,
+ActiveWorkoutSets,
   ],
 )
 class AppDatabase extends _$AppDatabase {
   AppDatabase([QueryExecutor? executor]) : super(executor ?? _openConnection());
 
   @override
-  int get schemaVersion => 4;
+  int get schemaVersion => 5;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -182,6 +243,13 @@ class AppDatabase extends _$AppDatabase {
         await m.alterTable(TableMigration(workoutSets));
         await m.alterTable(TableMigration(programSets));
         await m.alterTable(TableMigration(trainingCycle));
+      }
+      if (from < 5){
+       if (from < 5) {
+  await m.createTable(activeWorkoutSessions);
+  await m.createTable(activeWorkoutExercises);
+  await m.createTable(activeWorkoutSets);
+}
       }
     },
     beforeOpen: (details) async {

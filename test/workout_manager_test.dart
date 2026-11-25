@@ -19,6 +19,7 @@ import 'package:fit_forge/repositories/training_cycle_repository.dart';
 import 'package:fit_forge/services/workout_manager.dart';
 import 'package:fit_forge/models/program_exercise.dart' as program_models;
 import 'package:fit_forge/models/program_set.dart' as program_set_models;
+import 'package:fit_forge/repositories/active_workout_repository.dart';
 
 class DelayedWorkoutRepository extends WorkoutRepository {
   DelayedWorkoutRepository(super.database);
@@ -42,18 +43,21 @@ class DelayedWorkoutRepository extends WorkoutRepository {
 void main() {
   late AppDatabase database;
   late WorkoutRepository workoutRepository;
+  late ActiveWorkoutRepository activeWorkoutRepository;
   late TrainingCycleRepository trainingCycleRepository;
   late WorkoutManager manager;
 
   setUp(() {
     database = AppDatabase(NativeDatabase.memory());
 
+    activeWorkoutRepository = ActiveWorkoutRepository(database);
     workoutRepository = WorkoutRepository(database);
     trainingCycleRepository = TrainingCycleRepository(database);
 
     manager = WorkoutManager(
       workoutRepository: workoutRepository,
       trainingCycleRepository: trainingCycleRepository,
+      activeWorkoutRepository: activeWorkoutRepository,
     );
   });
 
@@ -336,10 +340,10 @@ void main() {
   group('WorkoutManager save protection', () {
     test('does not cancel workout while saving', () async {
       final delayedRepository = DelayedWorkoutRepository(database);
-
       final delayedManager = WorkoutManager(
         workoutRepository: delayedRepository,
         trainingCycleRepository: trainingCycleRepository,
+        activeWorkoutRepository: ActiveWorkoutRepository(database),
       );
 
       try {
@@ -391,10 +395,10 @@ void main() {
     });
     test('does not start a valid program workout while saving', () async {
       final delayedRepository = DelayedWorkoutRepository(database);
-
       final delayedManager = WorkoutManager(
         workoutRepository: delayedRepository,
         trainingCycleRepository: trainingCycleRepository,
+        activeWorkoutRepository: ActiveWorkoutRepository(database),
       );
 
       try {
@@ -462,10 +466,10 @@ void main() {
     });
     test('does not start a program workout while saving', () async {
       final delayedRepository = DelayedWorkoutRepository(database);
-
       final delayedManager = WorkoutManager(
         workoutRepository: delayedRepository,
         trainingCycleRepository: trainingCycleRepository,
+        activeWorkoutRepository: ActiveWorkoutRepository(database),
       );
 
       try {

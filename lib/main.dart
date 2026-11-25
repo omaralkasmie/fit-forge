@@ -14,6 +14,8 @@ import 'data/local/app_database.dart';
 import 'repositories/workout_repository.dart';
 import 'repositories/training_program_repository.dart';
 import 'repositories/training_cycle_repository.dart';
+import 'repositories/active_workout_repository.dart';
+
 
 void main() {
   runApp(const FitForgeApp());
@@ -34,6 +36,7 @@ class _FitForgeAppState extends State<FitForgeApp> {
   late final AppDatabase _database;
 
   late final WorkoutRepository _workoutRepository;
+  late ActiveWorkoutRepository _activeWorkoutRepository;
   late final TrainingProgramRepository _trainingProgramRepository;
 
   late final WorkoutManager _workoutManager;
@@ -47,13 +50,16 @@ void initState() {
   _database = widget.database ?? AppDatabase();
 
   _workoutRepository = WorkoutRepository(_database);
+  _activeWorkoutRepository = ActiveWorkoutRepository(_database);
   _trainingProgramRepository = TrainingProgramRepository(_database);
   _trainingCycleRepository = TrainingCycleRepository(_database);
 
+
   _workoutManager = WorkoutManager(
-    workoutRepository: _workoutRepository,
-    trainingCycleRepository: _trainingCycleRepository,
-  );
+  workoutRepository: _workoutRepository,
+  trainingCycleRepository: _trainingCycleRepository,
+  activeWorkoutRepository: _activeWorkoutRepository,
+);
 
   _trainingProgramManager = TrainingProgramManager(
     _trainingProgramRepository,

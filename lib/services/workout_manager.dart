@@ -12,16 +12,20 @@ import '../repositories/training_cycle_repository.dart';
 import '../models/training_cycle_progress.dart';
 import '../models/program_exercise.dart';
 import '../models/workout_set.dart';
+import '../repositories/active_workout_repository.dart';
 
 class WorkoutManager extends ChangeNotifier {
   final WorkoutRepository _workoutRepository;
   final TrainingCycleRepository _trainingCycleRepository;
+  final ActiveWorkoutRepository _activeWorkoutRepository;
 
   WorkoutManager({
-    required WorkoutRepository workoutRepository,
-    required TrainingCycleRepository trainingCycleRepository,
-  }) : _workoutRepository = workoutRepository,
-       _trainingCycleRepository = trainingCycleRepository;
+  required WorkoutRepository workoutRepository,
+  required TrainingCycleRepository trainingCycleRepository,
+  required ActiveWorkoutRepository activeWorkoutRepository,
+}) : _workoutRepository = workoutRepository,
+     _trainingCycleRepository = trainingCycleRepository,
+     _activeWorkoutRepository = activeWorkoutRepository;
 
   WorkoutSession? _session;
 
