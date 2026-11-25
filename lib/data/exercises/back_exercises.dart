@@ -107,8 +107,7 @@ equipmentIds: [
     equipmentEn: 'Barbell and Plates',
    difficultyId: ExerciseDifficulty.intermediate,
 equipmentIds: [
-  ExerciseEquipment.cable,
-  ExerciseEquipment.machine,
+  ExerciseEquipment.barbell,
 ],
     targetMuscles: [
       'منتصف الظهر',
@@ -157,8 +156,8 @@ equipmentIds: [
     equipmentEn: 'Dumbbell and Bench',
     difficultyId: ExerciseDifficulty.beginner,
 equipmentIds: [
-  ExerciseEquipment.cable,
-  ExerciseEquipment.machine,
+  ExerciseEquipment.dumbbell,
+  ExerciseEquipment.bench,
 ],
     targetMuscles: ['العضلة الظهرية العريضة', 'منتصف الظهر'],
     targetMusclesEn: ['Latissimus Dorsi', 'Mid Back'],

@@ -109,9 +109,7 @@ equipmentIds: [
     equipmentEn: 'Preacher Bench and Barbell or Dumbbell',
     difficultyId: ExerciseDifficulty.intermediate,
 equipmentIds: [
-  ExerciseEquipment.bench,
-  ExerciseEquipment.barbell,
-  ExerciseEquipment.dumbbell,
+  ExerciseEquipment.machine,
 ],
     targetMuscles: ['البايسبس'],
     targetMusclesEn: ['Biceps'],
@@ -206,8 +204,7 @@ equipmentIds: [
     difficultyId: ExerciseDifficulty.intermediate,
 equipmentIds: [
   ExerciseEquipment.dumbbell,
-   ExerciseEquipment.cable,
-    ExerciseEquipment.machine,
+  ExerciseEquipment.cable,
 ],
     targetMuscles: ['الترايسبس'],
     targetMusclesEn: ['Triceps'],

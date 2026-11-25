@@ -67,7 +67,7 @@ equipmentIds: [
     equipment: 'دمبل',
     difficultyId: ExerciseDifficulty.beginner,
 equipmentIds: [
-  ExerciseEquipment.barbell,
+  ExerciseEquipment.dumbbell,
   ExerciseEquipment.bench,
 ],
     targetMuscles: [
@@ -120,7 +120,7 @@ equipmentIds: [
     equipment: 'دمبل',
     difficultyId: ExerciseDifficulty.intermediate,
 equipmentIds: [
-  ExerciseEquipment.barbell,
+  ExerciseEquipment.dumbbell,
   ExerciseEquipment.bench,
 ],
     targetMuscles: [
@@ -173,7 +173,7 @@ equipmentIds: [
     equipment: 'دمبل',
     difficultyId: ExerciseDifficulty.beginner,
 equipmentIds: [
-  ExerciseEquipment.barbell,
+  ExerciseEquipment.dumbbell,
   ExerciseEquipment.bench,
 ],
     targetMuscles: ['عضلات الصدر الكبرى', 'الجزء الداخلي من حركة عضلات الصدر'],
@@ -222,8 +222,7 @@ equipmentIds: [
     equipment: 'وزن الجسم',
     difficultyId: ExerciseDifficulty.beginner,
 equipmentIds: [
-  ExerciseEquipment.barbell,
-  ExerciseEquipment.bench,
+  ExerciseEquipment.bodyweight,
 ],
     targetMuscles: [
       'عضلات الصدر الكبرى',
