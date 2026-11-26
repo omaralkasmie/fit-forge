@@ -27,9 +27,49 @@ class WorkoutManager extends ChangeNotifier {
      _trainingCycleRepository = trainingCycleRepository,
      _activeWorkoutRepository = activeWorkoutRepository;
 
-  WorkoutSession? _session;
+WorkoutSession? _session;
 
-  WorkoutSession? get session => _session;
+Future<void> _persistenceQueue = Future<void>.value();
+
+Future<void> _saveActiveWorkout() {
+  final currentSession = _session;
+
+  _persistenceQueue = _persistenceQueue.then((_) async {
+    if (currentSession == null) {
+      return;
+    }
+
+    await _activeWorkoutRepository.saveActiveWorkout(
+      session: currentSession,
+    );
+  });
+
+  return _persistenceQueue;
+}
+
+bool _isReady = false;
+
+bool get isReady => _isReady;
+
+Future<void>? _restoreFuture;
+
+WorkoutSession? get session => _session;
+
+Future<void> restoreActiveWorkout() {
+  return _restoreFuture ??= _restoreActiveWorkoutInternal();
+}
+
+Future<void> _restoreActiveWorkoutInternal() async {
+  try {
+    _session = await _activeWorkoutRepository.getActiveWorkout();
+    _isReady = true;
+  } catch (_) {
+    _restoreFuture = null;
+    rethrow;
+  } finally {
+    notifyListeners();
+  }
+}
 
   bool get hasActiveWorkout => _session != null;
 
@@ -113,7 +153,7 @@ class WorkoutManager extends ChangeNotifier {
     required List<Exercise> exercises,
     required List<ProgramExercise> programExercises,
   }) {
-    if (_isFinishingWorkout) return;
+    if (!_isReady || _isFinishingWorkout) return;
     if (exercises.isEmpty || programExercises.isEmpty) return;
 
     final sortedProgramExercises = [...programExercises]
@@ -164,7 +204,7 @@ class WorkoutManager extends ChangeNotifier {
     required WorkoutType type,
     String? programName,
   }) {
-    if (_isFinishingWorkout) return;
+    if (!_isReady || _isFinishingWorkout) return;
     if (exercises.isEmpty) return;
 
     _completedSession = null;
@@ -178,6 +218,8 @@ class WorkoutManager extends ChangeNotifier {
           .map((exercise) => WorkoutExercise(exercise: exercise))
           .toList(),
     );
+
+    _saveActiveWorkout();
 
     notifyListeners();
   }
@@ -246,6 +288,7 @@ class WorkoutManager extends ChangeNotifier {
 
     set.weight = weight;
     set.reps = reps;
+    _saveActiveWorkout();
     notifyListeners();
   }
 
@@ -268,6 +311,8 @@ class WorkoutManager extends ChangeNotifier {
     }
 
     set.isCompleted = true;
+
+    _saveActiveWorkout();
 
     notifyListeners();
     return true;
@@ -294,55 +339,75 @@ class WorkoutManager extends ChangeNotifier {
       startTime: current.startTime,
     );
 
+    _saveActiveWorkout();
+
     notifyListeners();
   }
 
   Future<bool> finishWorkout() async {
-    if (_isFinishingWorkout) return false;
+  if (_isFinishingWorkout) return false;
 
-    if (!_isSessionComplete()) return false;
+  if (!_isSessionComplete()) return false;
 
-    _isFinishingWorkout = true;
+  _isFinishingWorkout = true;
 
-    final sessionToSave = _session!;
-    final endTime = DateTime.now();
+  final sessionToSave = _session!;
+  final endTime = DateTime.now();
 
-    try {
-      await _workoutRepository.saveWorkout(
-        session: sessionToSave,
-        endTime: endTime,
-      );
+  try {
+    await _persistenceQueue;
 
-      _completedSession = sessionToSave;
-      _workoutEndTime = endTime;
-      _session = null;
+    await _workoutRepository.saveAndDeleteActiveWorkout(
+      session: sessionToSave,
+      endTime: endTime,
+    );
 
-      notifyListeners();
+    _completedSession = sessionToSave;
+    _workoutEndTime = endTime;
+    _session = null;
 
-      return true;
-    } catch (error, stackTrace) {
-      debugPrint('Failed to save workout: $error');
-      debugPrintStack(stackTrace: stackTrace);
+    notifyListeners();
 
-      return false;
-    } finally {
-      _isFinishingWorkout = false;
-      notifyListeners();
-    }
+    return true;
+  } catch (error, stackTrace) {
+    debugPrint('Failed to save workout: $error');
+    debugPrintStack(stackTrace: stackTrace);
+
+    return false;
+  } finally {
+    _isFinishingWorkout = false;
+    notifyListeners();
   }
+}
 
   Future<List<WorkoutHistoryItem>> getWorkoutHistory() {
     return _workoutRepository.getWorkoutHistoryItems();
   }
 
-  void cancelWorkout() {
-    if (_isFinishingWorkout) return;
+  Future<void> cancelWorkout() async {
+  if (_isFinishingWorkout) return;
+
+  final sessionToDelete = _session;
+
+  if (sessionToDelete == null) return;
+
+  try {
+    await _persistenceQueue;
+
+    await _activeWorkoutRepository.deleteActiveWorkout(
+      sessionToDelete.id,
+    );
+
     _session = null;
     _completedSession = null;
     _workoutEndTime = null;
 
     notifyListeners();
+  } catch (error, stackTrace) {
+    debugPrint('Failed to cancel workout: $error');
+    debugPrintStack(stackTrace: stackTrace);
   }
+}
 
   Future<WorkoutSessionDetails?> getWorkoutDetails(String sessionId) {
     return _workoutRepository.getWorkoutDetails(sessionId);

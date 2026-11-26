@@ -42,6 +42,7 @@ class _FitForgeAppState extends State<FitForgeApp> {
   late final WorkoutManager _workoutManager;
   late final TrainingProgramManager _trainingProgramManager;
   late TrainingCycleRepository _trainingCycleRepository;
+  late Future<void> _workoutInitialization;
 
 @override
 void initState() {
@@ -61,6 +62,8 @@ void initState() {
   activeWorkoutRepository: _activeWorkoutRepository,
 );
 
+_workoutInitialization = _workoutManager.restoreActiveWorkout();
+
   _trainingProgramManager = TrainingProgramManager(
     _trainingProgramRepository,
   );
@@ -78,35 +81,67 @@ void initState() {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return WorkoutScope(
-      notifier: _workoutManager,
-      child: TrainingProgramScope(
-        notifier: _trainingProgramManager,
-        child: MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          onGenerateTitle: (context) =>
-              AppLocalizations.of(context)!.appName,
-          theme: ThemeData(
-            brightness: Brightness.dark,
-            scaffoldBackgroundColor: const Color(0xFF0B0B12),
-            colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color(0xFF9B5CFF),
-              brightness: Brightness.dark,
+Widget build(BuildContext context) {
+  return FutureBuilder<void>(
+    future: _workoutInitialization,
+    builder: (context, snapshot) {
+      if (snapshot.connectionState != ConnectionState.done) {
+        return MaterialApp(
+          home: Scaffold(
+            backgroundColor: const Color(0xFF0B0B12),
+            body: Center(
+              child: CircularProgressIndicator(
+                color: Color(0xFF9B5CFF),
+              ),
             ),
-            useMaterial3: true,
           ),
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          locale: const Locale('ar'),
-          supportedLocales: AppLocalizations.supportedLocales,
-          routerConfig: appRouter,
+        );
+      }
+
+      if (snapshot.hasError) {
+        return MaterialApp(
+          home: Scaffold(
+            backgroundColor: const Color(0xFF0B0B12),
+            body: Center(
+              child: Text(
+                'حدث خطأ أثناء استعادة جلسة التمرين',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+        );
+      }
+
+      return WorkoutScope(
+        notifier: _workoutManager,
+        child: TrainingProgramScope(
+          notifier: _trainingProgramManager,
+          child: MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            onGenerateTitle: (context) =>
+                AppLocalizations.of(context)!.appName,
+            theme: ThemeData(
+              brightness: Brightness.dark,
+              scaffoldBackgroundColor: const Color(0xFF0B0B12),
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: const Color(0xFF9B5CFF),
+                brightness: Brightness.dark,
+              ),
+              useMaterial3: true,
+            ),
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            locale: const Locale('ar'),
+            supportedLocales: AppLocalizations.supportedLocales,
+            routerConfig: appRouter,
+          ),
         ),
-      ),
-    );
-  }
+      );
+    },
+  );
+}
 }

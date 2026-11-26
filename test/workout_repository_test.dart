@@ -7,6 +7,7 @@ import 'package:fit_forge/models/workout_session.dart';
 import 'package:fit_forge/models/workout_exercise.dart';
 import 'package:fit_forge/models/workout_set.dart';
 import 'package:fit_forge/models/exercise.dart';
+import 'package:fit_forge/repositories/active_workout_repository.dart';
 
 void main() {
   late AppDatabase database;
@@ -20,6 +21,91 @@ void main() {
   tearDown(() async {
     await database.close();
   });
+
+  group('saveAndDeleteActiveWorkout', () {
+  test('saves workout to history and deletes active snapshot', () async {
+    final activeRepository = ActiveWorkoutRepository(database);
+
+    final exercise = Exercise(
+      id: 'atomic_test_exercise',
+      name: 'تمرين الاختبار الذري',
+      muscleGroup: 'الصدر',
+      description: '',
+      image: '',
+      suggestedSets: 2,
+      suggestedReps: 10,
+      difficulty: 'متوسط',
+      equipment: 'بار',
+    );
+
+    final session = WorkoutSession(
+      id: 'atomic_test_session',
+      type: WorkoutType.free,
+      startTime: DateTime(2026, 11, 26, 10),
+      exercises: [
+        WorkoutExercise(
+          exercise: exercise,
+          sets: [
+            WorkoutSet(
+              setNumber: 1,
+              weight: 40,
+              reps: 10,
+              isCompleted: true,
+            ),
+            WorkoutSet(
+              setNumber: 2,
+              weight: 45,
+              reps: 8,
+              isCompleted: true,
+            ),
+          ],
+        ),
+      ],
+    );
+
+    final endTime = DateTime(2026, 11, 26, 10, 45);
+
+    // حفظ نسخة الجلسة النشطة أولاً.
+    await activeRepository.saveActiveWorkout(session: session);
+
+    // حفظها في السجل وحذف النسخة النشطة ذرياً.
+    await repository.saveAndDeleteActiveWorkout(
+      session: session,
+      endTime: endTime,
+    );
+
+    // التأكد من وجود الجلسة في سجل التمارين.
+    final history = await repository.getWorkoutHistory();
+
+    expect(history.length, 1);
+    expect(history.single.id, session.id);
+
+    // التأكد من سلامة تفاصيل الجلسة المحفوظة.
+    final details = await repository.getWorkoutDetails(session.id);
+
+    expect(details, isNotNull);
+    expect(details!.exercises.length, 1);
+    expect(details.exercises.single.exerciseId, exercise.id);
+    expect(details.exercises.single.sets.length, 2);
+    expect(details.exercises.single.sets[0].weight, 40);
+    expect(details.exercises.single.sets[1].reps, 8);
+
+    // التأكد من حذف النسخة النشطة.
+    final activeWorkout = await activeRepository.getActiveWorkout();
+
+    expect(activeWorkout, isNull);
+
+    expect(
+      await database.select(database.activeWorkoutExercises).get(),
+      isEmpty,
+    );
+
+    expect(
+      await database.select(database.activeWorkoutSets).get(),
+      isEmpty,
+    );
+  });
+});
 
   Future<void> addWorkout({
     required String id,

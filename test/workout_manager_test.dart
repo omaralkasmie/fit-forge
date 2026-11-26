@@ -37,9 +37,30 @@ class DelayedWorkoutRepository extends WorkoutRepository {
     }
 
     await allowSave.future;
+
+    await super.saveWorkout(
+      session: session,
+      endTime: endTime,
+    );
+  }
+
+  @override
+  Future<void> saveAndDeleteActiveWorkout({
+    required WorkoutSession session,
+    required DateTime endTime,
+  }) async {
+    if (!saveStarted.isCompleted) {
+      saveStarted.complete();
+    }
+
+    await allowSave.future;
+
+    await super.saveAndDeleteActiveWorkout(
+      session: session,
+      endTime: endTime,
+    );
   }
 }
-
 void main() {
   late AppDatabase database;
   late WorkoutRepository workoutRepository;
@@ -346,6 +367,8 @@ void main() {
         activeWorkoutRepository: ActiveWorkoutRepository(database),
       );
 
+      await delayedManager.restoreActiveWorkout();
+
       try {
         final exercise = Exercise(
           id: 'protection_test',
@@ -368,14 +391,18 @@ void main() {
           reps: 10,
         );
 
-        expect(delayedManager.completeSet(exerciseIndex: 0, setIndex: 0), true);
+        final completed = delayedManager.completeSet(
+          exerciseIndex: 0,
+          setIndex: 0,
+        );
+        expect(completed, true);
 
         final finishFuture = delayedManager.finishWorkout();
 
         await delayedRepository.saveStarted.future;
 
         // محاولة إلغاء الجلسة أثناء الحفظ.
-        delayedManager.cancelWorkout();
+        await delayedManager.cancelWorkout();
 
         expect(delayedManager.session, isNotNull);
         expect(delayedManager.session!.id, isNotEmpty);
@@ -400,6 +427,8 @@ void main() {
         trainingCycleRepository: trainingCycleRepository,
         activeWorkoutRepository: ActiveWorkoutRepository(database),
       );
+
+      await delayedManager.restoreActiveWorkout();
 
       try {
         final exercise = Exercise(
@@ -465,63 +494,69 @@ void main() {
       }
     });
     test('does not start a program workout while saving', () async {
-      final delayedRepository = DelayedWorkoutRepository(database);
-      final delayedManager = WorkoutManager(
-        workoutRepository: delayedRepository,
-        trainingCycleRepository: trainingCycleRepository,
-        activeWorkoutRepository: ActiveWorkoutRepository(database),
-      );
+  final delayedRepository = DelayedWorkoutRepository(database);
 
-      try {
-        final exercise = Exercise(
-          id: 'program_protection_test',
-          name: 'تمرين البرنامج',
-          muscleGroup: 'الصدر',
-          description: '',
-          image: '',
-          suggestedSets: 1,
-          suggestedReps: 10,
-          difficulty: 'مبتدئ',
-          equipment: 'دمبل',
-        );
+  final delayedManager = WorkoutManager(
+    workoutRepository: delayedRepository,
+    trainingCycleRepository: trainingCycleRepository,
+    activeWorkoutRepository: ActiveWorkoutRepository(database),
+  );
 
-        delayedManager.startFreeWorkout([exercise]);
+  await delayedManager.restoreActiveWorkout();
 
-        delayedManager.updateSet(
-          exerciseIndex: 0,
-          setIndex: 0,
-          weight: 20,
-          reps: 10,
-        );
+  try {
+    final exercise = Exercise(
+      id: 'program_protection_test',
+      name: 'تمرين البرنامج',
+      muscleGroup: 'الصدر',
+      description: '',
+      image: '',
+      suggestedSets: 1,
+      suggestedReps: 10,
+      difficulty: 'مبتدئ',
+      equipment: 'دمبل',
+    );
 
-        expect(delayedManager.completeSet(exerciseIndex: 0, setIndex: 0), true);
+    delayedManager.startFreeWorkout([exercise]);
 
-        final originalSessionId = delayedManager.session!.id;
+    delayedManager.updateSet(
+      exerciseIndex: 0,
+      setIndex: 0,
+      weight: 20,
+      reps: 10,
+    );
 
-        final finishFuture = delayedManager.finishWorkout();
+    expect(
+      delayedManager.completeSet(exerciseIndex: 0, setIndex: 0),
+      true,
+    );
 
-        await delayedRepository.saveStarted.future;
+    final originalSessionId = delayedManager.session!.id;
 
-        delayedManager.startProgramWorkoutWithSets(
-          programName: 'برنامج الاختبار',
-          exercises: [exercise],
-          programExercises: [],
-        );
+    final finishFuture = delayedManager.finishWorkout();
 
-        expect(delayedManager.session, isNotNull);
-        expect(delayedManager.session!.id, originalSessionId);
+    await delayedRepository.saveStarted.future;
 
-        delayedRepository.allowSave.complete();
+    delayedManager.startProgramWorkoutWithSets(
+      programName: 'برنامج الاختبار',
+      exercises: [exercise],
+      programExercises: [],
+    );
 
-        expect(await finishFuture, true);
-        expect(delayedManager.session, isNull);
-      } finally {
-        if (!delayedRepository.allowSave.isCompleted) {
-          delayedRepository.allowSave.complete();
-        }
+    expect(delayedManager.session, isNotNull);
+    expect(delayedManager.session!.id, originalSessionId);
 
-        delayedManager.dispose();
-      }
-    });
+    delayedRepository.allowSave.complete();
+
+    expect(await finishFuture, true);
+    expect(delayedManager.session, isNull);
+  } finally {
+    if (!delayedRepository.allowSave.isCompleted) {
+      delayedRepository.allowSave.complete();
+    }
+
+    delayedManager.dispose();
+  }
+});
   });
 }
