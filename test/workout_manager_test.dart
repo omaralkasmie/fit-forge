@@ -38,10 +38,7 @@ class DelayedWorkoutRepository extends WorkoutRepository {
 
     await allowSave.future;
 
-    await super.saveWorkout(
-      session: session,
-      endTime: endTime,
-    );
+    await super.saveWorkout(session: session, endTime: endTime);
   }
 
   @override
@@ -55,12 +52,10 @@ class DelayedWorkoutRepository extends WorkoutRepository {
 
     await allowSave.future;
 
-    await super.saveAndDeleteActiveWorkout(
-      session: session,
-      endTime: endTime,
-    );
+    await super.saveAndDeleteActiveWorkout(session: session, endTime: endTime);
   }
 }
+
 void main() {
   late AppDatabase database;
   late WorkoutRepository workoutRepository;
@@ -358,6 +353,49 @@ void main() {
       expect(trainingDaysAchievement.currentValue, 1);
     });
   });
+  group('WorkoutManager cancelWorkout', () {
+    test('deletes the active workout and prevents restoration', () async {
+      await manager.restoreActiveWorkout();
+
+      final exercise = Exercise(
+        id: 'cancel_test',
+        name: 'تمرين الإلغاء',
+        muscleGroup: 'الصدر',
+        description: '',
+        image: '',
+        suggestedSets: 1,
+        suggestedReps: 10,
+        difficulty: 'مبتدئ',
+        equipment: 'دمبل',
+      );
+
+      manager.startFreeWorkout([exercise]);
+
+      expect(manager.session, isNotNull);
+
+      await manager.cancelWorkout();
+
+      expect(manager.session, isNull);
+
+      final activeWorkout = await activeWorkoutRepository.getActiveWorkout();
+
+      expect(activeWorkout, isNull);
+
+      final restoredManager = WorkoutManager(
+        workoutRepository: workoutRepository,
+        trainingCycleRepository: trainingCycleRepository,
+        activeWorkoutRepository: activeWorkoutRepository,
+      );
+
+      try {
+        await restoredManager.restoreActiveWorkout();
+
+        expect(restoredManager.session, isNull);
+      } finally {
+        restoredManager.dispose();
+      }
+    });
+  });
   group('WorkoutManager save protection', () {
     test('does not cancel workout while saving', () async {
       final delayedRepository = DelayedWorkoutRepository(database);
@@ -494,69 +532,66 @@ void main() {
       }
     });
     test('does not start a program workout while saving', () async {
-  final delayedRepository = DelayedWorkoutRepository(database);
+      final delayedRepository = DelayedWorkoutRepository(database);
 
-  final delayedManager = WorkoutManager(
-    workoutRepository: delayedRepository,
-    trainingCycleRepository: trainingCycleRepository,
-    activeWorkoutRepository: ActiveWorkoutRepository(database),
-  );
+      final delayedManager = WorkoutManager(
+        workoutRepository: delayedRepository,
+        trainingCycleRepository: trainingCycleRepository,
+        activeWorkoutRepository: ActiveWorkoutRepository(database),
+      );
 
-  await delayedManager.restoreActiveWorkout();
+      await delayedManager.restoreActiveWorkout();
 
-  try {
-    final exercise = Exercise(
-      id: 'program_protection_test',
-      name: 'تمرين البرنامج',
-      muscleGroup: 'الصدر',
-      description: '',
-      image: '',
-      suggestedSets: 1,
-      suggestedReps: 10,
-      difficulty: 'مبتدئ',
-      equipment: 'دمبل',
-    );
+      try {
+        final exercise = Exercise(
+          id: 'program_protection_test',
+          name: 'تمرين البرنامج',
+          muscleGroup: 'الصدر',
+          description: '',
+          image: '',
+          suggestedSets: 1,
+          suggestedReps: 10,
+          difficulty: 'مبتدئ',
+          equipment: 'دمبل',
+        );
 
-    delayedManager.startFreeWorkout([exercise]);
+        delayedManager.startFreeWorkout([exercise]);
 
-    delayedManager.updateSet(
-      exerciseIndex: 0,
-      setIndex: 0,
-      weight: 20,
-      reps: 10,
-    );
+        delayedManager.updateSet(
+          exerciseIndex: 0,
+          setIndex: 0,
+          weight: 20,
+          reps: 10,
+        );
 
-    expect(
-      delayedManager.completeSet(exerciseIndex: 0, setIndex: 0),
-      true,
-    );
+        expect(delayedManager.completeSet(exerciseIndex: 0, setIndex: 0), true);
 
-    final originalSessionId = delayedManager.session!.id;
+        final originalSessionId = delayedManager.session!.id;
 
-    final finishFuture = delayedManager.finishWorkout();
+        final finishFuture = delayedManager.finishWorkout();
 
-    await delayedRepository.saveStarted.future;
+        await delayedRepository.saveStarted.future;
 
-    delayedManager.startProgramWorkoutWithSets(
-      programName: 'برنامج الاختبار',
-      exercises: [exercise],
-      programExercises: [],
-    );
+        delayedManager.startProgramWorkoutWithSets(
+          programName: 'برنامج الاختبار',
+          exercises: [exercise],
+          programExercises: [],
+        );
 
-    expect(delayedManager.session, isNotNull);
-    expect(delayedManager.session!.id, originalSessionId);
+        expect(delayedManager.session, isNotNull);
+        expect(delayedManager.session!.id, originalSessionId);
 
-    delayedRepository.allowSave.complete();
+        delayedRepository.allowSave.complete();
 
-    expect(await finishFuture, true);
-    expect(delayedManager.session, isNull);
-  } finally {
-    if (!delayedRepository.allowSave.isCompleted) {
-      delayedRepository.allowSave.complete();
-    }
+        expect(await finishFuture, true);
+        expect(delayedManager.session, isNull);
+      } finally {
+        if (!delayedRepository.allowSave.isCompleted) {
+          delayedRepository.allowSave.complete();
+        }
 
-    delayedManager.dispose();
-  }
-});
+        delayedManager.dispose();
+      }
+    });
   });
 }
