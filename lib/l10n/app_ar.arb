@@ -258,5 +258,15 @@
 "loadingPrograms": "جارٍ تحميل البرامج...",
 "programsLoadError": "تعذر تحميل البرامج التدريبية.",
 "retry": "إعادة المحاولة",
-"noProgramsFound": "لا توجد برامج مطابقة للتصفية المختارة."
+"noProgramsFound": "لا توجد برامج مطابقة للتصفية المختارة.",
+"genderLabel": "الجنس",
+"male": "ذكر",
+"female": "أنثى",
+"other": "آخر",
+"save": "حفظ",
+"cancel": "إلغاء",
+"nameHint": "أدخل اسمك",
+"profileSaved": "تم حفظ بياناتك بنجاح",
+"profileSaveError": "تعذر حفظ بيانات الملف الشخصي",
+"requiredName": "يرجى إدخال الاسم"
 }

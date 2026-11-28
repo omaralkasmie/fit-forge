@@ -258,5 +258,15 @@
 "loadingPrograms": "Loading training programs...",
 "programsLoadError": "Unable to load training programs.",
 "retry": "Retry",
-"noProgramsFound": "No programs match the selected filter."
+"noProgramsFound": "No programs match the selected filter.",
+"genderLabel": "Gender",
+"male": "Male",
+"female": "Female",
+"other": "Other",
+"save": "Save",
+"cancel": "Cancel",
+"nameHint": "Enter your name",
+"profileSaved": "Your profile was saved successfully",
+"profileSaveError": "Unable to save profile information",
+"requiredName": "Please enter your name"
 }

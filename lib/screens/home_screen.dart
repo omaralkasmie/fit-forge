@@ -10,6 +10,8 @@ import '../services/training_program_scope.dart';
 import '../models/exercise.dart';
 import '../data/workouts/exercise_library.dart';
 import '../models/training_cycle_progress.dart';
+import '../services/user_scope.dart';
+
 
 const Color bgColor = Color(0xFF0B0B16);
 const Color cardColor = Color(0xFF15182F);
@@ -103,6 +105,8 @@ void didChangeDependencies() {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
+    final userProfile = UserScope.of(context).profile;
+
     final programManager = TrainingProgramScope.of(context);
 
 final programs = programManager.programs;
@@ -154,7 +158,9 @@ final isArabic =
 
               // Welcome
               Text(
-                l10n.homeWelcome,
+                userProfile == null || userProfile.name.trim().isEmpty
+                  ? l10n.homeWelcome
+                  : '${l10n.homeWelcome}، ${userProfile.name}',
                 style: const TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,

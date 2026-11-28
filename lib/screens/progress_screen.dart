@@ -10,6 +10,7 @@ import '../services/workout_manager.dart';
 import '../services/workout_scope.dart';
 import '../widgets/custom_bottom_navigation.dart';
 import '../models/workout_achievement.dart';
+import '../services/user_scope.dart';
 
 
 const Color progressBg = Color(0xFF080B1B);
@@ -115,6 +116,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final userProfile = UserScope.of(context).profile;
 
     return Scaffold(
       backgroundColor: progressBg,
@@ -130,7 +132,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          _buildHeader(l10n),
+          _buildHeader(l10n, userProfile?.name),
           const SizedBox(height: 16),
           _buildWorkoutHistoryButton(l10n),
           const SizedBox(height: 24),
@@ -194,7 +196,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
     );
   }
 
-  Widget _buildHeader(AppLocalizations l10n) {
+  Widget _buildHeader(AppLocalizations l10n, String? userName) {
     return Container(
       padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
@@ -218,6 +220,17 @@ class _ProgressScreenState extends State<ProgressScreen> {
               fontWeight: FontWeight.bold,
             ),
           ),
+          if(userName != null && userName.trim().isNotEmpty)...[
+            const SizedBox(height: 6),
+            Text(
+              userName,
+              style: const TextStyle(
+                color: Color(0xFFE4D9FF),
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
           const SizedBox(height: 8),
           Text(
             l10n.progressSubtitle,

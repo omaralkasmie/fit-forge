@@ -202,6 +202,35 @@ class TrainingCycle extends Table {
 }
 
 // ==============================
+// User Profile Table
+// ==============================
+
+class UserProfiles extends Table {
+  TextColumn get id => text()();
+
+  TextColumn get name => text()();
+
+  TextColumn get email => text().nullable()();
+
+  IntColumn get age => integer().nullable()();
+
+  RealColumn get weight => real().nullable()();
+
+  RealColumn get height => real().nullable()();
+
+  TextColumn get fitnessGoal => text().nullable()();
+
+  TextColumn get gender => text().nullable()();
+
+  DateTimeColumn get createdAt => dateTime()();
+
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+// ==============================
 // Database
 // ==============================
 
@@ -217,13 +246,14 @@ class TrainingCycle extends Table {
     ActiveWorkoutSessions,
 ActiveWorkoutExercises,
 ActiveWorkoutSets,
+UserProfiles,
   ],
 )
 class AppDatabase extends _$AppDatabase {
   AppDatabase([QueryExecutor? executor]) : super(executor ?? _openConnection());
 
   @override
-  int get schemaVersion => 5;
+  int get schemaVersion => 6;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -250,6 +280,9 @@ class AppDatabase extends _$AppDatabase {
   await m.createTable(activeWorkoutExercises);
   await m.createTable(activeWorkoutSets);
 }
+      }
+      if (from < 6) {
+        await m.createTable(userProfiles);
       }
     },
     beforeOpen: (details) async {

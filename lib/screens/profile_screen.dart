@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
+import '../services/user_scope.dart';
 
 import '../widgets/custom_bottom_navigation.dart';
+import 'package:go_router/go_router.dart';
+import '../routes/app_router.dart';
+import '../services/training_program_scope.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -10,6 +14,9 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final isArabic = Localizations.localeOf(context).languageCode == 'ar';
+    final userManager = UserScope.of(context);
+    final profile = userManager.profile;
+    final trainingProgramManager = TrainingProgramScope.of(context);
 
     return Scaffold(
       backgroundColor: const Color(0xFF080B1B),
@@ -54,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  l10n.username,
+                  profile?.name ?? l10n.username,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -74,15 +81,15 @@ class ProfileScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     _ProfileStat(
-                      value: '75',
+                      value: profile?.weight?.toString() ?? '_',
                       label: l10n.weightProfile,
                     ),
                     _ProfileStat(
-                      value: '175',
+                      value: profile?.height?.toString() ?? '_',
                       label: l10n.heightProfile,
                     ),
                     _ProfileStat(
-                      value: '3',
+                      value: trainingProgramManager.programs.length.toString(),
                       label: l10n.programsCount,
                     ),
                   ],
@@ -95,19 +102,19 @@ class ProfileScreen extends StatelessWidget {
           _InfoCard(
             icon: Icons.email_outlined,
             title: l10n.emailAddress,
-            value: 'user@example.com',
+            value: profile?.email ?? '_',
             isArabic: isArabic,
           ),
           _InfoCard(
             icon: Icons.calendar_month,
             title: l10n.ageLabel,
-            value: l10n.ageValue,
+            value: profile?.age?.toString() ?? '_',
             isArabic: isArabic,
           ),
           _InfoCard(
             icon: Icons.flag_outlined,
             title: l10n.fitnessGoal,
-            value: isArabic ? 'بناء العضلات' : 'Muscle Building',
+            value: profile?.fitnessGoal ?? '_',
             isArabic: isArabic,
           ),
           const SizedBox(height: 28),
@@ -116,7 +123,7 @@ class ProfileScreen extends StatelessWidget {
             icon: Icons.edit_outlined,
             title: l10n.editProfile,
             subtitle: l10n.updatePersonalInfo,
-            onTap: () => _showMessage(context, l10n.editProfileComingSoon),
+            onTap: () => context.push(AppRouter.editProfile),
           ),
           _SettingsCard(
             icon: Icons.lock_outline,

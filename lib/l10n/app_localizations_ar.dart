@@ -756,4 +756,34 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noProgramsFound => 'لا توجد برامج مطابقة للتصفية المختارة.';
+
+  @override
+  String get genderLabel => 'الجنس';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'أنثى';
+
+  @override
+  String get other => 'آخر';
+
+  @override
+  String get save => 'حفظ';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get nameHint => 'أدخل اسمك';
+
+  @override
+  String get profileSaved => 'تم حفظ بياناتك بنجاح';
+
+  @override
+  String get profileSaveError => 'تعذر حفظ بيانات الملف الشخصي';
+
+  @override
+  String get requiredName => 'يرجى إدخال الاسم';
 }

@@ -756,4 +756,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noProgramsFound => 'No programs match the selected filter.';
+
+  @override
+  String get genderLabel => 'Gender';
+
+  @override
+  String get male => 'Male';
+
+  @override
+  String get female => 'Female';
+
+  @override
+  String get other => 'Other';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get nameHint => 'Enter your name';
+
+  @override
+  String get profileSaved => 'Your profile was saved successfully';
+
+  @override
+  String get profileSaveError => 'Unable to save profile information';
+
+  @override
+  String get requiredName => 'Please enter your name';
 }
